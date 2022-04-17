@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { Provider } from "react-redux";
 
 import theme from "@source/theme";
-import { HeaderContainer, styles } from ".";
+import { HeaderContainer, styles, Footer } from ".";
 
 const Layout = ({ pageProps, Component, store }) => (
   <>
@@ -21,6 +21,7 @@ const Layout = ({ pageProps, Component, store }) => (
       <Box className={styles.layout}>
         <HeaderContainer />
         <Component {...pageProps} />
+        <Footer />
       </Box>
     </Provider>
   </>

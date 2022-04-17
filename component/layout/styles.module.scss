@@ -21,6 +21,12 @@
     }
   }
 
+  a,
+  a:link {
+    text-decoration: none;
+    color: initial;
+  }
+
   ::-webkit-scrollbar {
     display: none;
   }
