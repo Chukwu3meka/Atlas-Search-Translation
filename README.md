@@ -1,3 +1,5 @@
+git remote set-url origin https://github.com/viewcrunch/Translator.git
+
 # NextJs starter
 
 ### Prerequisites
