@@ -1,7 +1,7 @@
 {
-  "name": "nextjs_starter",
+  "name": "open_translation",
   "version": "1.0.1",
-  "description": "NextJs starter kit",
+  "description": "OpenTranslation",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,9 +9,9 @@
     "export": "next export"
   },
   "keywords": [
-    "NextJS starter"
+    "OpenTranslation"
   ],
-  "author": "ViewCrunch",
+  "author": "OpenTranslation",
   "license": "MIT",
   "dependencies": {
     "@emotion/cache": "^11.7.1",

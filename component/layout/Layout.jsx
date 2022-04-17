@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { connect } from "react-redux";
 import { Provider } from "react-redux";
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import theme from "@source/theme";
-import { Header, Footer, styles } from ".";
+import { Header, styles } from ".";
 import { setDeviceWidthAction } from "@store/actions";
+import { Box } from "@mui/material";
 
 const Layout = ({ pageProps, Component, store, setDeviceWidthAction }) => {
   useEffect(() => {
@@ -14,28 +15,26 @@ const Layout = ({ pageProps, Component, store, setDeviceWidthAction }) => {
 
   return (
     <>
-      {" "}
       <Head>
-        <title>ViewCrunch: Next.Js Starter</title>
+        <title>OpenTranslation</title>
         <link rel="manifest" href="/manifest.json" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <meta property="og:url" content="https://www.viewcrunch.com/" />
-        <meta name="keywords" content="ViewCrunch, view" />
+        {/* <meta property="og:url" content="https://www.opentranslation.com/" /> */}
+        <meta name="keywords" content="OpenTranslation, view" />
         <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="ViewCrunch: Sharing your view" />
-        <meta property="og:title" content="ViewCrunch" />
-        <meta property="og:description" content="ViewCrunch: Sharing your view" />
+        <meta name="description" content="OpenTranslation" />
+        <meta property="og:title" content="OpenTranslation" />
+        <meta property="og:description" content="OpenTranslation" />
       </Head>
       <Provider store={store}>
-        <div className={styles.layout}>
+        <Box className={styles.layout}>
           <Header />
-          <div>
+          <Box>
             <Component {...pageProps} />
-          </div>
-          <Footer />
-        </div>
+          </Box>
+        </Box>
       </Provider>
     </>
   );

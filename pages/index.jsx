@@ -1,9 +1,5 @@
 import Link from "next/link";
 
-const Index = () => (
-  <Link href="/contact">
-    <a>Contact</a>
-  </Link>
-);
+const Index = () => "OpenTranslation";
 
 export default Index;
