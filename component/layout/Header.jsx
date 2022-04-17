@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 const Header = ({ navBar, toggleDrawer }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ padding: 0 }}>
+      <AppBar position="static" sx={{ padding: 0 }} color="transparent">
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 1 }} onClick={toggleDrawer(true)}>
             <MenuIcon />
