@@ -1,4 +1,6 @@
 import Translate from "./Translate";
+import TextTranslator from "./TextTranslator";
 import TranslateContainer from "./TranslateContainer";
+import styles from "./styles.module.scss";
 
-export { Translate, TranslateContainer as default };
+export { styles, Translate, TextTranslator, TranslateContainer as default };
