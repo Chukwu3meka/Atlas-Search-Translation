@@ -1,5 +1,5 @@
-import Link from "next/link";
+import TranslateContainer from "@component/translate";
 
-const Index = () => "OpenTranslation";
+const HomePage = () => <TranslateContainer />;
 
-export default Index;
+export default HomePage;

@@ -1,5 +1,7 @@
+import { Box } from "@mui/material";
+
 const Translate = () => {
-  return <div>Translate</div>;
+  return <Box p={1}>Translate</Box>;
 };
 
 export default Translate;
