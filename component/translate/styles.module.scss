@@ -2,14 +2,12 @@
 
 .translate {
   & > div:first-of-type {
-    background-color: darken($color: white, $amount: 4);
+    background-color: darken($color: white, $amount: 3);
     height: 100px;
-    border: 1px groove white;
-    border: 1px groove #dee7fd;
   }
   & > div:last-of-type {
     margin: auto;
-    max-width: 1200px;
+    max-width: 1300px;
     & > div {
       margin-top: -80px;
     }
