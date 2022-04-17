@@ -2,12 +2,10 @@
 
 .layout {
   margin: 0;
-  padding: 10px;
-  width: 100vw;
-  height: 100vh;
-  font-size: 14px;
+  padding: 0;
+  font-size: 16px;
   box-sizing: border-box;
-  font-family: "Merienda", cursive;
+  font-family: "Playfair Display", cursive;
   -webkit-box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -26,7 +24,4 @@
   ::-webkit-scrollbar {
     display: none;
   }
-  background-color: darken($color: white, $amount: 20);
-  @include flex(column);
-  justify-content: space-between;
 }

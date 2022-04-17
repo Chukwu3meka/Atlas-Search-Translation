@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Layout from "./Layout";
 import styles from "./styles.module.scss";
+import HeaderContainer from "./HeaderContainer";
 
-export { styles, Header, Layout as default };
+export { styles, Header, HeaderContainer, Layout as default };
