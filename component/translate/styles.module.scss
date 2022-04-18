@@ -1,15 +1,37 @@
 @import "@source/_variables";
 
 .translate {
+  // grey area in UI
   & > div:first-of-type {
-    background-color: darken($color: white, $amount: 3);
+    background-color: darken($color: white, $amount: 1);
     height: 100px;
+    border: 1px groove white;
   }
+  // main div
   & > div:last-of-type {
-    margin: auto;
+    margin: -95px auto 0;
     max-width: 1300px;
-    & > div {
-      margin-top: -80px;
+    padding: 10px;
+    .translateContainer {
+      border-radius: 0;
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      // border: 3px solid red;
+    }
+  }
+
+  // 1280
+}
+
+@media screen and (min-width: 1280px) {
+  .translate > div:last-of-type {
+    padding: 10px 50px;
+
+    .translateContainer {
+      border-radius: 8px;
+      width: (100%);
+      margin-left: 0;
+      // border: 3px solid red;
     }
   }
 }

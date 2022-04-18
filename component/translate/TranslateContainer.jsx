@@ -6,7 +6,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 
 import { useState } from "react";
 
-const mainButtons = [
+const translateOptions = [
   { label: "Text", icon: <TranslateIcon /> },
   { label: "Documents", icon: <PlagiarismIcon /> },
   { label: "Websites", icon: <LanguageIcon /> },
@@ -17,7 +17,7 @@ const TranslateContainer = () => {
 
   const translateTypeHandler = (value) => () => setTranslateType(value);
 
-  return <Translate mainButtons={mainButtons} translateType={translateType} translateTypeHandler={translateTypeHandler} />;
+  return <Translate translateOptions={translateOptions} translateType={translateType} translateTypeHandler={translateTypeHandler} />;
 };
 
 export default TranslateContainer;

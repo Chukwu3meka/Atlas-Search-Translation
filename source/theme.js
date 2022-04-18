@@ -11,7 +11,7 @@ const muiTheme = createTheme({
         root: {
           padding: 5,
           boxSizing: "border-box",
-          borderRadius: 8,
+          // borderRadius: 8,
         },
       },
     },
