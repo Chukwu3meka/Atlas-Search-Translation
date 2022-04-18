@@ -29,7 +29,7 @@ const Footer = () => (
             <IconButton aria-label={label} sx={{ border: "1px solid #dad7d7", padding: 2.2 }}>
               {icon}
             </IconButton>
-            <Typography variant="body2" color="text.primary">
+            <Typography variant="body2" color="text.secondary">
               {label}
             </Typography>
           </Stack>

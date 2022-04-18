@@ -15,7 +15,7 @@ const Header = ({ navBar, toggleDrawer }) => {
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 1 }} onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" fontSize={21} sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} color="text.secondary">
             OpenTranslation
           </Typography>
           <Avatar alt="Remy Sharp" src="/images/profile.png" />

@@ -17,7 +17,11 @@ const TextTranslator = () => {
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="scrollable" scrollButtons="auto">
           <Tab
-            label="Item One"
+            label={
+              <Typography fontWeight={600} color="text.secondary">
+                Detect Language
+              </Typography>
+            }
             // {...a11yProps(0)}
           />
           <Tab
