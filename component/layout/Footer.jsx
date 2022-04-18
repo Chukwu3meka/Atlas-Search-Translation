@@ -15,21 +15,21 @@ const Footer = () => (
   <Box
     margin="auto"
     sx={{
+      width: "fit-content",
       display: "flex",
       flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-evenly",
-      maxWidth: 500,
-      marginTop: 10,
+      gap: 7,
+      margin: "auto",
+      marginTop: 7,
     }}>
     {bottomButtons.map(({ label, icon }) => (
       <Link href={`/${label.toLowerCase()}`}>
         <a>
           <Stack direction="column" spacing={1} key={label} justifyContent="center" alignItems="center">
-            <IconButton aria-label={label} sx={{ border: "1px solid #dad7d7", padding: 2 }}>
+            <IconButton aria-label={label} sx={{ border: "1px solid #dad7d7", padding: 2.2 }}>
               {icon}
             </IconButton>
-            <Typography variant="body2" color="grey">
+            <Typography variant="body2" color="text.primary">
               {label}
             </Typography>
           </Stack>
