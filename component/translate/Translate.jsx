@@ -1,5 +1,6 @@
-import { DocumentsTranslate, styles, TextTranslate, WebsitesTranslate } from ".";
+import { DocumentsTranslate, styles, WebsitesTranslate } from ".";
 import { Box, Button, Paper, Typography } from "@mui/material";
+import TextTranslate from "./textTranslate";
 
 const Translate = ({ translateOptions, translateType, translateTypeHandler }) => (
   <Box className={styles.translate}>

@@ -1,8 +1,7 @@
-import Translate from "./Translate";
 import DocumentsTranslate from "./DocumentsTranslate";
+import Translate from "./Translate";
 import styles from "./styles.module.scss";
-import TextTranslate from "./TextTranslate";
 import TranslateContainer from "./TranslateContainer";
 import WebsitesTranslate from "./WebsitesTranslate";
 
-export { styles, Translate, WebsitesTranslate, DocumentsTranslate, TextTranslate, TranslateContainer as default };
+export { styles, Translate, WebsitesTranslate, DocumentsTranslate, TranslateContainer as default };

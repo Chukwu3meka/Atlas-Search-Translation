@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -12,20 +13,21 @@ import MicIcon from "@mui/icons-material/Mic";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import Tooltip from "@mui/material/Tooltip";
-import { useState } from "react";
+import CloseSharpIcon from "@mui/icons-material/CloseSharp";
+import { Translation } from ".";
 
 const languageOptions = ["English", "French", "Spanish"];
 
 const TextTranslator = () => {
-  const [fromLanguageTab, setFromLanguageTab] = useState("English");
+  const [activeSourceLanguageTab, setActiveSourceLanguageTab] = useState("English");
 
-  const [fromText, setFromText] = useState("");
+  const [sourceText, setSourceText] = useState("");
 
-  const handleFromLanguageTabChange = (event, newValue) => {
-    setFromLanguageTab(newValue);
+  const handleSourceLanguageTabChange = (event, newValue) => {
+    setActiveSourceLanguageTab(newValue);
   };
 
-  const handleFromTextChange = ({ target: { value } }) => setFromText(value);
+  const handleFromTextChange = ({ target: { value } }) => setSourceText(value);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -34,8 +36,8 @@ const TextTranslator = () => {
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs
-                value={fromLanguageTab}
-                onChange={handleFromLanguageTabChange}
+                value={activeSourceLanguageTab}
+                onChange={handleSourceLanguageTabChange}
                 aria-label="basic tabs example"
                 variant="scrollable"
                 scrollButtons="auto">
@@ -52,26 +54,31 @@ const TextTranslator = () => {
                 ))}
               </Tabs>
             </Box>
-            <Box p={2}>
+            <Box p={2} alignItems="flex-start" display="flex">
               <Input
                 fullWidth
                 multiline
                 disableUnderline={true}
                 minRows={4}
                 fullWidth
-                value={fromText}
+                value={sourceText}
                 sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
                 onChange={handleFromTextChange}
               />
+              <Tooltip title="Clear source text" arrow sx={{ ml: 1 }}>
+                <IconButton aria-label="clear-source-text">
+                  <CloseSharpIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
-            <Box alignItems="center" display="flex" pb={1}>
-              <Tooltip title="Add" arrow>
-                <IconButton aria-label="microphone">
+            <Box pb={1} display="flex" alignItems="center">
+              <Tooltip title="Translate by voice" arrow>
+                <IconButton aria-label="translate-by-voice">
                   <MicIcon />
                 </IconButton>
               </Tooltip>
-              {fromText.length ? (
-                <Tooltip title="Add" arrow>
+              {sourceText.length ? (
+                <Tooltip title="Listen" arrow>
                   <IconButton aria-label="listen">
                     <VolumeUpIcon />
                   </IconButton>
@@ -81,27 +88,19 @@ const TextTranslator = () => {
               )}
               <Box sx={{ flexGrow: 1 }} />
               <Typography color="text.secondary" fontSize={14} mr={1}>
-                {`${fromText.length}/5000`}
+                {`${sourceText.length}/5000`}
               </Typography>
-              <Tooltip title="Add" arrow>
-                <IconButton aria-label="keyboard">
+              <Tooltip title="Turn on Virtual Keyboard" arrow>
+                <IconButton aria-label="turn-on-virtual-keyboard">
                   <KeyboardIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
             </Box>
-
-            {/* <TabPanel value={value} index={0}>
-              Item One
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              Item Three
-            </TabPanel> */}
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Translation />
+        </Grid>
       </Grid>
     </Box>
   );
