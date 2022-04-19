@@ -1,5 +1,3 @@
-import * as React from "react";
-import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -13,15 +11,21 @@ import Input from "@mui/material/Input";
 import MicIcon from "@mui/icons-material/Mic";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
+import Tooltip from "@mui/material/Tooltip";
+import { useState } from "react";
+
+const languageOptions = ["English", "French", "Spanish"];
 
 const TextTranslator = () => {
-  const [value, setValue] = React.useState(0);
+  const [fromLanguageTab, setFromLanguageTab] = useState("English");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [fromText, setFromText] = useState("");
+
+  const handleFromLanguageTabChange = (event, newValue) => {
+    setFromLanguageTab(newValue);
   };
 
-  const languageOptions = ["English", "French", "Spanish"];
+  const handleFromTextChange = ({ target: { value } }) => setFromText(value);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -29,10 +33,16 @@ const TextTranslator = () => {
         <Grid item xs={12} sm={6}>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="scrollable" scrollButtons="auto">
+              <Tabs
+                value={fromLanguageTab}
+                onChange={handleFromLanguageTabChange}
+                aria-label="basic tabs example"
+                variant="scrollable"
+                scrollButtons="auto">
                 {languageOptions.map((label) => (
                   <Tab
                     value={label}
+                    key={label}
                     label={
                       <Typography fontWeight={600} color="text.secondary">
                         {label}
@@ -48,37 +58,36 @@ const TextTranslator = () => {
                 multiline
                 disableUnderline={true}
                 minRows={4}
-                sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
                 fullWidth
-                // value={x}
-                InputProps={
-                  {
-                    // disableUnderline: true,
-                    //
-                  }
-                }
-                onChange={(e) => {
-                  // const tempContent = [...formatContentArray()];
-                  // tempContent[index] = e.target.value;
-                  // setContentArray([...tempContent]);
-                }}
+                value={fromText}
+                sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
+                onChange={handleFromTextChange}
               />
             </Box>
-            <Box alignItems="center" display="flex">
-              <IconButton aria-label="microphone">
-                <MicIcon />
-              </IconButton>
-              <IconButton aria-label="listen">
-                <VolumeUpIcon />
-              </IconButton>
+            <Box alignItems="center" display="flex" pb={1}>
+              <Tooltip title="Add" arrow>
+                <IconButton aria-label="microphone">
+                  <MicIcon />
+                </IconButton>
+              </Tooltip>
+              {fromText.length ? (
+                <Tooltip title="Add" arrow>
+                  <IconButton aria-label="listen">
+                    <VolumeUpIcon />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                ""
+              )}
               <Box sx={{ flexGrow: 1 }} />
-              <Typography color="text.secondary" fontSize={14}>
-                /5000
+              <Typography color="text.secondary" fontSize={14} mr={1}>
+                {`${fromText.length}/5000`}
               </Typography>
-
-              <IconButton aria-label="keyboard">
-                <KeyboardIcon fontSize="small" />
-              </IconButton>
+              <Tooltip title="Add" arrow>
+                <IconButton aria-label="keyboard">
+                  <KeyboardIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
             </Box>
 
             {/* <TabPanel value={value} index={0}>

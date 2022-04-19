@@ -23,7 +23,7 @@ const Footer = () => (
       marginTop: 7,
     }}>
     {bottomButtons.map(({ label, icon }) => (
-      <Link href={`/${label.toLowerCase()}`}>
+      <Link href={`/${label.toLowerCase()}`} key={label}>
         <a>
           <Stack direction="column" spacing={1} key={label} justifyContent="center" alignItems="center">
             <IconButton aria-label={label} sx={{ border: "1px solid #dad7d7", padding: 2.2 }}>
