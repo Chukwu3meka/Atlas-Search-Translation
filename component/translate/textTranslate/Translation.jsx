@@ -15,6 +15,8 @@ import KeyboardIcon from "@mui/icons-material/Keyboard";
 import Tooltip from "@mui/material/Tooltip";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
+import SwapHorizSharpIcon from "@mui/icons-material/SwapHorizSharp";
+
 const languageOptions = ["English", "French", "Spanish"];
 
 const TextTranslator = () => {
@@ -30,7 +32,8 @@ const TextTranslator = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box display="flex" alignItems="center" sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <SwapHorizSharpIcon />
         <Tabs
           value={activeSourceLanguageTab}
           onChange={handleSourceLanguageTabChange}

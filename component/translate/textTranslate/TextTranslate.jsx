@@ -31,7 +31,7 @@ const TextTranslator = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid item xs={12} sm={6}>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
