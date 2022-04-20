@@ -28,9 +28,11 @@ const Translate = ({ translateOptions, translateType, translateTypeHandler }) =>
         elevation={4}
         className={styles.translateContainer}
         sx={{
+          p: 0,
           mt: 2,
           mb: 0.5,
-          minHeight: translateType === "Documents" ? 300 : translateType === "Websites" ? 260 : 270,
+          // border: "3px solid red",
+          // minHeight: translateType === "Documents" ? 300 : translateType === "Websites" ? 260 : 270,
         }}>
         {translateType === "Text" ? <TextTranslate /> : translateType === "Documents" ? <DocumentsTranslate /> : <WebsitesTranslate />}
       </Paper>

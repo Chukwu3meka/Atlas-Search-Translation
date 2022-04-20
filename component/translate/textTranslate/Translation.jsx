@@ -13,9 +13,12 @@ import MicIcon from "@mui/icons-material/Mic";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import Tooltip from "@mui/material/Tooltip";
-import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
+import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import SwapHorizSharpIcon from "@mui/icons-material/SwapHorizSharp";
+import ShareIcon from "@mui/icons-material/Share";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
 const languageOptions = ["English", "French", "Spanish"];
 
@@ -33,7 +36,12 @@ const TextTranslator = () => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box display="flex" alignItems="center" sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <SwapHorizSharpIcon />
+        <Tooltip title="Swap Languages (Ctrl_Shift+S)" arrow>
+          {/* margin left to put swap at center of source&translation */}
+          <IconButton aria-label="listen" sx={{ ml: -2.5 }}>
+            <SwapHorizSharpIcon />
+          </IconButton>
+        </Tooltip>
         <Tabs
           value={activeSourceLanguageTab}
           onChange={handleSourceLanguageTabChange}
@@ -53,7 +61,7 @@ const TextTranslator = () => {
           ))}
         </Tabs>
       </Box>
-      <Box p={2} alignItems="flex-start" display="flex">
+      <Box p={2} alignItems="flex-start" display="flex" bgcolor="#eeeeee">
         <Input
           fullWidth
           multiline
@@ -61,27 +69,39 @@ const TextTranslator = () => {
           minRows={4}
           fullWidth
           value={sourceText}
+          // to align text to the right
+          inputProps={{ style: { textAlign: "right" } }}
           sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
           onChange={handleFromTextChange}
         />
         <Tooltip title="Clear source text" arrow sx={{ ml: 1 }}>
           <IconButton aria-label="clear-source-text">
-            <CloseSharpIcon />
+            <StarBorderSharpIcon />
           </IconButton>
         </Tooltip>
       </Box>
-      <Box pb={1} display="flex" alignItems="center">
+      <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
         <Tooltip title="Listen" arrow>
           <IconButton aria-label="listen">
             <VolumeUpIcon />
           </IconButton>
         </Tooltip>
         <Box sx={{ flexGrow: 1 }} />
-        {/* <Tooltip title="Turn on Virtual Keyboard" arrow>
+        <Tooltip title="Turn on Virtual Keyboard" arrow>
           <IconButton aria-label="turn-on-virtual-keyboard">
-            <KeyboardIcon fontSize="small" />
+            <ContentCopyIcon fontSize="small" />
           </IconButton>
-        </Tooltip> */}
+        </Tooltip>
+        <Tooltip title="Turn on Virtual Keyboard" arrow>
+          <IconButton aria-label="turn-on-virtual-keyboard">
+            <ThumbsUpDownOutlinedIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Turn on Virtual Keyboard" arrow>
+          <IconButton aria-label="turn-on-virtual-keyboard">
+            <ShareIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </Box>
     </Box>
   );
