@@ -1,35 +1,23 @@
-import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import Tabs from "@mui/material/Tabs";
 import Input from "@mui/material/Input";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
+import Tooltip from "@mui/material/Tooltip";
 import MicIcon from "@mui/icons-material/Mic";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
-import Tooltip from "@mui/material/Tooltip";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
-const SourceText = ({
-  activeSourceLanguageTab,
-  setActiveSourceLanguageTab,
-  sourceText,
-  setSourceText,
-  handleSourceLanguageTabChange,
-  languageOptions,
-  clearTextHandler,
-  handleSourceTextChange,
-}) => (
+const SourceText = ({ sourceText, sourceLanguage, languageOptions, clearTextHandler, handleLanguageChange, handleSourceTextChange }) => (
   <Box sx={{ width: "100%" }}>
+    {/* language tab  */}
     <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
       <Tabs
-        value={activeSourceLanguageTab}
-        onChange={handleSourceLanguageTabChange}
+        value={sourceLanguage}
+        onChange={(_, value) => handleLanguageChange({ target: "source", value })}
         aria-label="basic tabs example"
         variant="scrollable"
         scrollButtons="auto">

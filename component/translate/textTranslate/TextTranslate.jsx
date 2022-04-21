@@ -1,45 +1,44 @@
 import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import Input from "@mui/material/Input";
-
-import MicIcon from "@mui/icons-material/Mic";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import KeyboardIcon from "@mui/icons-material/Keyboard";
-import Tooltip from "@mui/material/Tooltip";
-import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 import { Translation, SourceText } from ".";
 
 const languageOptions = ["English", "French", "Spanish"];
 
 const TextTranslator = () => {
-  const [activeSourceLanguageTab, setActiveSourceLanguageTab] = useState("English");
-  const [translationSaved, setTranslationSaved] = useState(false);
-  const [sourceText, setSourceText] = useState("");
-  const [translationText, setTranslationText] = useState("");
-  const handleSourceLanguageTabChange = (event, newValue) => {
-    setActiveSourceLanguageTab(newValue);
+  const [sourceText, setSourceText] = useState(""),
+    [translationText, setTranslationText] = useState(""),
+    [sourceLanguage, setSourceLanguage] = useState("English"),
+    [translationSaved, setTranslationSaved] = useState(false),
+    [translationLanguage, setTranslationLanguage] = useState("French");
+
+  const handleLanguageChange = ({ target, value }) => {
+    // functions can be called from any point in the program as they are already loaded
+    if (target === "source") {
+      setSourceLanguage(value);
+      if (value === translationLanguage) swapLanguageHandler();
+    }
+    if (target === "translation") {
+      setTranslationLanguage(value);
+      if (value === sourceLanguage) swapLanguageHandler();
+    }
+  };
+
+  const clearTextHandler = () => setSourceText("");
+
+  const saveTranslationHandler = () => setTranslationSaved(!translationSaved);
+
+  const copyTranslationHandler = () => navigator && navigator.clipboard.writeText(translationText);
+
+  const swapLanguageHandler = () => {
+    // regardless of call useState(set state)hook takes effect after function call
+    setSourceLanguage(translationLanguage);
+    setTranslationLanguage(sourceLanguage);
   };
 
   const handleSourceTextChange = ({ target: { value } }) => {
     setSourceText(value);
     setTranslationText(value);
-  };
-
-  const clearTextHandler = () => setSourceText("");
-
-  const saveTranslationHandler = () => {
-    setTranslationSaved(!translationSaved);
-  };
-
-  const copyTranslationHandler = () => {
-    if (navigator) navigator.clipboard.writeText(translationText);
   };
 
   return (
@@ -49,11 +48,11 @@ const TextTranslator = () => {
           <SourceText
             {...{
               clearTextHandler,
-              activeSourceLanguageTab,
-              setActiveSourceLanguageTab,
+              sourceLanguage,
+              setSourceLanguage,
+              handleLanguageChange,
               sourceText,
               setSourceText,
-              handleSourceLanguageTabChange,
               handleSourceTextChange,
               languageOptions,
               translationSaved,
@@ -62,7 +61,17 @@ const TextTranslator = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Translation {...{ translationSaved, translationText, saveTranslationHandler, copyTranslationHandler }} />
+          <Translation
+            {...{
+              handleLanguageChange,
+              translationText,
+              translationSaved,
+              swapLanguageHandler,
+              copyTranslationHandler,
+              saveTranslationHandler,
+              translationLanguage,
+            }}
+          />
         </Grid>
       </Grid>
     </Box>
