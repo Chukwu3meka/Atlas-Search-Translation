@@ -57,20 +57,20 @@ const SourceText = ({
           sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
           onChange={handleFromTextChange}
         />
-        <Tooltip title="Clear source text" arrow sx={{ ml: 1 }}>
+        <Tooltip title="Clear source text" sx={{ ml: 1 }}>
           <IconButton aria-label="clear-source-text">
             <CloseSharpIcon />
           </IconButton>
         </Tooltip>
       </Box>
       <Box display="flex" alignItems="center" pb={1}>
-        <Tooltip title="Translate by voice" arrow>
+        <Tooltip title="Translate by voice">
           <IconButton aria-label="translate-by-voice">
             <MicIcon />
           </IconButton>
         </Tooltip>
         {sourceText.length ? (
-          <Tooltip title="Listen" arrow>
+          <Tooltip title="Listen">
             <IconButton aria-label="listen">
               <VolumeUpIcon />
             </IconButton>
@@ -82,7 +82,7 @@ const SourceText = ({
         <Typography color="text.secondary" fontSize={14} mr={1}>
           {`${sourceText.length}/5000`}
         </Typography>
-        <Tooltip title="Turn on Virtual Keyboard" arrow>
+        <Tooltip title="Turn on Virtual Keyboard">
           <IconButton aria-label="turn-on-virtual-keyboard">
             <KeyboardIcon fontSize="small" />
           </IconButton>

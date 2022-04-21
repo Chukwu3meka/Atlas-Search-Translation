@@ -36,9 +36,9 @@ const TextTranslator = () => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box display="flex" alignItems="center" sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tooltip title="Swap Languages (Ctrl_Shift+S)" arrow>
+        <Tooltip title="Swap Languages (Ctrl_Shift+S)">
           {/* margin left to put swap at center of source&translation */}
-          <IconButton aria-label="listen" sx={{ ml: -2.5 }}>
+          <IconButton aria-label="swap-languages(ctrl_shift_s)" sx={{ ml: -2.5 }}>
             <SwapHorizSharpIcon />
           </IconButton>
         </Tooltip>
@@ -74,31 +74,31 @@ const TextTranslator = () => {
           sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
           onChange={handleFromTextChange}
         />
-        <Tooltip title="Clear source text" arrow sx={{ ml: 1 }}>
-          <IconButton aria-label="clear-source-text">
+        <Tooltip title="Save Translation" sx={{ ml: 1 }}>
+          <IconButton aria-label="save-translation">
             <StarBorderSharpIcon />
           </IconButton>
         </Tooltip>
       </Box>
       <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
-        <Tooltip title="Listen" arrow>
+        <Tooltip title="Listen">
           <IconButton aria-label="listen">
             <VolumeUpIcon />
           </IconButton>
         </Tooltip>
         <Box sx={{ flexGrow: 1 }} />
-        <Tooltip title="Turn on Virtual Keyboard" arrow>
-          <IconButton aria-label="turn-on-virtual-keyboard">
+        <Tooltip title="Copy Translation">
+          <IconButton aria-label="copy-translation">
             <ContentCopyIcon fontSize="small" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Turn on Virtual Keyboard" arrow>
-          <IconButton aria-label="turn-on-virtual-keyboard">
+        <Tooltip title="Rate this translation">
+          <IconButton aria-label="rate-this-translation">
             <ThumbsUpDownOutlinedIcon fontSize="small" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Turn on Virtual Keyboard" arrow>
-          <IconButton aria-label="turn-on-virtual-keyboard">
+        <Tooltip title="Share translation">
+          <IconButton aria-label="share-translation">
             <ShareIcon fontSize="small" />
           </IconButton>
         </Tooltip>

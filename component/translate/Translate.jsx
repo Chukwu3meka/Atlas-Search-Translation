@@ -25,7 +25,7 @@ const Translate = ({ translateOptions, translateType, translateTypeHandler }) =>
       ))}
 
       <Paper
-        elevation={4}
+        elevation={2}
         className={styles.translateContainer}
         sx={{
           p: 0,
