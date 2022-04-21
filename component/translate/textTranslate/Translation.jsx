@@ -14,6 +14,7 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import Tooltip from "@mui/material/Tooltip";
 
+import StarSharpIcon from "@mui/icons-material/StarSharp";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import SwapHorizSharpIcon from "@mui/icons-material/SwapHorizSharp";
 import ShareIcon from "@mui/icons-material/Share";
@@ -22,7 +23,7 @@ import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
 const languageOptions = ["English", "French", "Spanish"];
 
-const TextTranslator = () => {
+const TextTranslator = ({ translationSaved, translationText, saveTranslationHandler, copyTranslationHandler }) => {
   const [activeSourceLanguageTab, setActiveSourceLanguageTab] = useState("English");
 
   const [sourceText, setSourceText] = useState("");
@@ -68,15 +69,15 @@ const TextTranslator = () => {
           disableUnderline={true}
           minRows={4}
           fullWidth
-          value={sourceText}
+          value={translationText}
           // to align text to the right
           inputProps={{ style: { textAlign: "right" } }}
           sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-          onChange={handleFromTextChange}
+          // onChange={handleFromTextChange}
         />
-        <Tooltip title="Save Translation" sx={{ ml: 1 }}>
+        <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
           <IconButton aria-label="save-translation">
-            <StarBorderSharpIcon />
+            {translationSaved ? <StarSharpIcon color="secondary" /> : <StarBorderSharpIcon />}
           </IconButton>
         </Tooltip>
       </Box>
@@ -88,7 +89,7 @@ const TextTranslator = () => {
         </Tooltip>
         <Box sx={{ flexGrow: 1 }} />
         <Tooltip title="Copy Translation">
-          <IconButton aria-label="copy-translation">
+          <IconButton aria-label="copy-translation" onClick={copyTranslationHandler}>
             <ContentCopyIcon fontSize="small" />
           </IconButton>
         </Tooltip>

@@ -20,14 +20,27 @@ const languageOptions = ["English", "French", "Spanish"];
 
 const TextTranslator = () => {
   const [activeSourceLanguageTab, setActiveSourceLanguageTab] = useState("English");
-
+  const [translationSaved, setTranslationSaved] = useState(false);
   const [sourceText, setSourceText] = useState("");
-
+  const [translationText, setTranslationText] = useState("");
   const handleSourceLanguageTabChange = (event, newValue) => {
     setActiveSourceLanguageTab(newValue);
   };
 
-  const handleFromTextChange = ({ target: { value } }) => setSourceText(value);
+  const handleSourceTextChange = ({ target: { value } }) => {
+    setSourceText(value);
+    setTranslationText(value);
+  };
+
+  const clearTextHandler = () => setSourceText("");
+
+  const saveTranslationHandler = () => {
+    setTranslationSaved(!translationSaved);
+  };
+
+  const copyTranslationHandler = () => {
+    if (navigator) navigator.clipboard.writeText(translationText);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -35,18 +48,21 @@ const TextTranslator = () => {
         <Grid item xs={12} sm={6}>
           <SourceText
             {...{
+              clearTextHandler,
               activeSourceLanguageTab,
               setActiveSourceLanguageTab,
               sourceText,
               setSourceText,
               handleSourceLanguageTabChange,
-              handleFromTextChange,
+              handleSourceTextChange,
               languageOptions,
+              translationSaved,
+              saveTranslationHandler,
             }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Translation />
+          <Translation {...{ translationSaved, translationText, saveTranslationHandler, copyTranslationHandler }} />
         </Grid>
       </Grid>
     </Box>
