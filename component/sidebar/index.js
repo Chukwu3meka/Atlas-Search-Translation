@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebars";
+import Sidebar from "./Sidebar";
 import History from "./History";
 import Contribute from "./Contribute";
 import Saved from "./Saved";
