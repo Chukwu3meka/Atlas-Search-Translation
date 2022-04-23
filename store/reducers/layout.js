@@ -1,9 +1,7 @@
 const layoutReducer = (state = {}, { payload, type }) => {
   switch (type) {
-    case "SET_SLIDE_TEXT":
-      return { ...state, slideText: payload };
-    case "SET_DEVICE_WIDTH":
-      return { ...state, deviceWidth: payload };
+    case "DISPLAY_SIDEBAR":
+      return { ...state, displaySidebar: payload };
     default:
       return state;
   }

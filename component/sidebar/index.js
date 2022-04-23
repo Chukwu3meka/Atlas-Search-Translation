@@ -1,4 +1,6 @@
-import SideBar from "./SideBar";
+import Sidebar from "./Sidebar";
 import History from "./History";
+import Contribute from "./Contribute";
+import Saved from "./Saved";
 
-export { History, SideBar as default };
+export { Saved, History, Contribute, Sidebar as default };

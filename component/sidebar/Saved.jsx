@@ -1,11 +1,11 @@
 import { IconButton, Box, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-const History = ({ hideSidebarHandler }) => (
+const Saved = ({ hideSidebarHandler }) => (
   <>
     <Box display="flex" padding={2}>
       <Typography flexGrow={1} variant="h5">
-        History
+        Saved
       </Typography>
 
       <IconButton onClick={hideSidebarHandler}>
@@ -14,4 +14,4 @@ const History = ({ hideSidebarHandler }) => (
     </Box>
   </>
 );
-export default History;
+export default Saved;

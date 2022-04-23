@@ -14,3 +14,7 @@
 5. Run development Server
    `npm run dev`
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br />
+6. [Live Preview](http://opentranslation.vercel.app/)
+
+<!-- Marcus -->
+<!-- https://github.com/MarcusSorealheis -->

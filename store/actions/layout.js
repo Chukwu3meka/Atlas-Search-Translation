@@ -1,23 +1,13 @@
 import { removeErrorAction, catchErr } from "./error";
 
-export const setAuthSlideTextAction = (payload) => {
+export const displaySidebarAction = (payload) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: "SET_SLIDE_TEXT", payload });
-      await dispatch(removeErrorAction("SLIDE_TEXT"));
+      console.log(payload);
+      dispatch({ type: "DISPLAY_SIDEBAR", payload });
+      await dispatch(removeErrorAction("DISPLAY_SIDEBAR"));
     } catch (err) {
-      return catchErr(dispatch, err, "SLIDE_TEXT");
-    }
-  };
-};
-
-export const setDeviceWidthAction = (payload) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: "SET_DEVICE_WIDTH", payload });
-      await dispatch(removeErrorAction("SET_DEVICE_WIDTH"));
-    } catch (err) {
-      return catchErr(dispatch, err, "SET_DEVICE_WIDTH");
+      return catchErr(dispatch, err, "DISPLAY_SIDEBAR");
     }
   };
 };
