@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { displaySidebarAction } from "@store/actions";
-import Head from "next/head";
 import { Box, Paper, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
+
 import { Contribute, History, Saved } from ".";
+import { displaySidebarAction } from "@store/actions";
 
 const Sidebar = (props) => {
   const { displaySidebarAction } = props;
