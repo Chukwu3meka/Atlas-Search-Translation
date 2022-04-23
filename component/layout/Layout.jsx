@@ -1,40 +1,42 @@
 import Head from "next/head";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 import { Box, Stack } from "@mui/material";
 
-import theme from "@source/theme";
 import Sidebar from "@component/sidebar";
 import { HeaderContainer, styles, Footer } from ".";
+import { useEffect, useState } from "react";
 
-const Layout = ({ pageProps, Component, store }) => (
-  <>
-    <Head>
-      <title>OpenTranslation</title>
-      <meta name="theme-color" content={theme.palette.primary.main} />
-      <meta name="keywords" content="OpenTranslation, view" />
-      <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="OpenTranslation" />
-      <meta property="og:title" content="OpenTranslation" />
-      <meta property="og:description" content="OpenTranslation" />
-    </Head>
-    <Provider store={store}>
-      <Box className={styles.layout}>
-        <HeaderContainer />
-        <Stack direction="row">
-          <Box
-            // allow box take remaining space
-            flexGrow={1}
-            // hide main view on mobile device
-            sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
-            <Component {...pageProps} />
-            <Footer />
-          </Box>
-          <Sidebar />
-        </Stack>
-      </Box>
-    </Provider>
-  </>
-);
+const Layout = (props) => {
+  const { pageProps, Component } = props;
+  const [sidebar, setSidebar] = useState(props.sidebar || null);
 
-export default Layout;
+  // detect when sidebar state is updated
+  useEffect(() => {
+    setSidebar(props.sidebar);
+  }, [props.sidebar]);
+
+  // sidebar;
+  return (
+    <Box className={styles.layout}>
+      <HeaderContainer />
+      <Stack direction="row">
+        <Box
+          // allow box take remaining space
+          flexGrow={1}
+          // hide main view on mobile device when sidebar is active
+          sx={sidebar ? { display: { xs: "none", sm: "none", md: "block" } } : null}>
+          <Component {...pageProps} />
+          <Footer />
+        </Box>
+        <Sidebar />
+      </Stack>
+    </Box>
+  );
+};
+
+const mapStateToProps = (state) => ({
+    sidebar: state.layout.displaySidebar,
+  }),
+  mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
