@@ -11,10 +11,10 @@ import ListItemText from "@mui/material/ListItemText";
 import { Header } from ".";
 
 const navBarLinks = [
-  { label: "Privacy & Terms", path: "Privacy&Terms" },
+  { label: "Privacy & Terms", path: "/Privacy&Terms" },
   { label: "Help", path: "/help" },
   { label: "Send feedback", path: "/sendFeedback" },
-  { label: "About Google", path: "AboutOpenTranslation" },
+  { label: "About OpenTranslation", path: "/aboutOpenTranslation" },
 ];
 
 const HeaderContainer = () => {

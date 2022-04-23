@@ -1,8 +1,9 @@
 import Head from "next/head";
-import { Box } from "@mui/material";
 import { Provider } from "react-redux";
+import { Box, Stack } from "@mui/material";
 
 import theme from "@source/theme";
+import Sidebar from "@component/sidebar";
 import { HeaderContainer, styles, Footer } from ".";
 
 const Layout = ({ pageProps, Component, store }) => (
@@ -20,8 +21,17 @@ const Layout = ({ pageProps, Component, store }) => (
     <Provider store={store}>
       <Box className={styles.layout}>
         <HeaderContainer />
-        <Component {...pageProps} />
-        <Footer />
+        <Stack direction="row">
+          <Box
+            // allow box take remaining space
+            flexGrow={1}
+            // hide main view on mobile device
+            sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+            <Component {...pageProps} />
+            <Footer />
+          </Box>
+          <Sidebar />
+        </Stack>
       </Box>
     </Provider>
   </>
