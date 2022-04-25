@@ -1,11 +1,19 @@
 import { Language } from ".";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const languageOptions = ["English", "French", "Spanish"];
 
 const LanguageContainer = () => {
-  const [sourceLanguage, setSourceLanguage] = useState("English"),
+  const [mobileDevice, setMobileDevice] = useState(false),
+    [sourceLanguage, setSourceLanguage] = useState("English"),
     [translationLanguage, setTranslationLanguage] = useState("French");
+
+  useEffect(() => {
+    setMobileDevice(window.innerWidth < 720);
+    return () => {
+      setMobileDevice(window.innerWidth < 720);
+    };
+  }, []);
 
   const handleLanguageChange = ({ target, value }) => {
     // functions can be called from any point in the program as they are already loaded
@@ -25,7 +33,9 @@ const LanguageContainer = () => {
     setTranslationLanguage(sourceLanguage);
   };
 
-  return <Language {...{ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage }} />;
+  return (
+    <Language {...{ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage, mobileDevice }} />
+  );
 };
 
 export default LanguageContainer;

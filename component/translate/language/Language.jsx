@@ -9,62 +9,84 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import SwapHorizSharpIcon from "@mui/icons-material/SwapHorizSharp";
 
-const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage }) => (
-  <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-    <Grid container>
-      <Grid item xs={6}>
-        <Box>
-          <Tabs
-            value={sourceLanguage}
-            onChange={(_, value) => handleLanguageChange({ target: "source", value })}
-            aria-label="basic tabs example"
-            variant="scrollable"
-            scrollButtons="auto">
-            {languageOptions.map((label) => (
-              <Tab
-                value={label}
-                key={label}
-                label={
-                  <Typography fontWeight={600} color="text.secondary">
-                    {label}
-                  </Typography>
-                }
-              />
-            ))}
-          </Tabs>
-        </Box>
-      </Grid>
+const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage, mobileDevice }) =>
+  mobileDevice ? (
+    <Box
+      sx={{
+        borderBottom: 1,
+        borderColor: "divider",
+        display: { xs: "flex", sm: "flex", md: "none" },
+        justifyContent: "space-evenly",
+        alignItems: "center",
+      }}>
+      <Typography fontWeight={600} textTransform="uppercase" color="primary">
+        {sourceLanguage}
+      </Typography>
+      <Tooltip title="Swap Languages (Ctrl_Shift+S)">
+        <IconButton aria-label="swap-languages(ctrl_shift_s)" onClick={swapLanguageHandler}>
+          <SwapHorizSharpIcon />
+        </IconButton>
+      </Tooltip>
+      <Typography fontWeight={600} textTransform="uppercase" color="primary">
+        {translationLanguage}
+      </Typography>
+    </Box>
+  ) : (
+    <Box sx={{ borderBottom: 1, borderColor: "divider", display: { xs: "none", sm: "none", md: "unset" } }}>
+      <Grid container>
+        <Grid item xs={6}>
+          <Box>
+            <Tabs
+              value={sourceLanguage}
+              onChange={(_, value) => handleLanguageChange({ target: "source", value })}
+              aria-label="basic tabs example"
+              variant="scrollable"
+              scrollButtons="auto">
+              {languageOptions.map((label) => (
+                <Tab
+                  value={label}
+                  key={label}
+                  label={
+                    <Typography fontWeight={600} color="text.secondary">
+                      {label}
+                    </Typography>
+                  }
+                />
+              ))}
+            </Tabs>
+          </Box>
+        </Grid>
 
-      <Grid item xs={6}>
-        <Box display="flex" alignItems="center">
-          <Tooltip title="Swap Languages (Ctrl_Shift+S)">
-            {/* margin left to put swap at center of source&translation */}
-            <IconButton aria-label="swap-languages(ctrl_shift_s)" sx={{ ml: -2.5 }} onClick={swapLanguageHandler}>
-              <SwapHorizSharpIcon />
-            </IconButton>
-          </Tooltip>
-          <Tabs
-            value={translationLanguage}
-            onChange={(_, value) => handleLanguageChange({ target: "translation", value })}
-            aria-label="basic tabs example"
-            variant="scrollable"
-            scrollButtons="auto">
-            {languageOptions.map((label) => (
-              <Tab
-                value={label}
-                key={label}
-                label={
-                  <Typography fontWeight={600} color="text.secondary">
-                    {label}
-                  </Typography>
-                }
-              />
-            ))}
-          </Tabs>
-        </Box>
+        <Grid item xs={6}>
+          <Box display="flex" alignItems="center">
+            <Tooltip title="Swap Languages (Ctrl_Shift+S)">
+              {/* margin left to put swap at center of source&translation */}
+              <IconButton aria-label="swap-languages(ctrl_shift_s)" sx={{ ml: -2.5 }} onClick={swapLanguageHandler}>
+                <SwapHorizSharpIcon />
+              </IconButton>
+            </Tooltip>
+            <Tabs
+              value={translationLanguage}
+              onChange={(_, value) => handleLanguageChange({ target: "translation", value })}
+              aria-label="basic tabs example"
+              variant="scrollable"
+              scrollButtons="auto">
+              {languageOptions.map((label) => (
+                <Tab
+                  value={label}
+                  key={label}
+                  label={
+                    <Typography fontWeight={600} color="text.secondary">
+                      {label}
+                    </Typography>
+                  }
+                />
+              ))}
+            </Tabs>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
-);
+    </Box>
+  );
 
 export default Language;
