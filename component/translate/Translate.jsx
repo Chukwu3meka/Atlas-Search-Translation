@@ -1,6 +1,8 @@
-import { DocumentsTranslate, styles, WebsitesTranslate } from ".";
 import { Box, Button, Paper, Typography } from "@mui/material";
+
 import TextTranslate from "./textTranslate";
+import LanguageContainer from "./language";
+import { DocumentsTranslate, styles, WebsitesTranslate } from ".";
 
 const Translate = ({ translateOptions, translateType, translateTypeHandler }) => (
   <Box className={styles.translate}>
@@ -34,6 +36,7 @@ const Translate = ({ translateOptions, translateType, translateTypeHandler }) =>
           // border: "3px solid red",
           // minHeight: translateType === "Documents" ? 300 : translateType === "Websites" ? 260 : 270,
         }}>
+        <LanguageContainer />
         {translateType === "Text" ? <TextTranslate /> : translateType === "Documents" ? <DocumentsTranslate /> : <WebsitesTranslate />}
       </Paper>
       <Typography textAlign="right" fontSize={12}>

@@ -45,33 +45,10 @@ const TextTranslator = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container>
         <Grid item xs={12} sm={6}>
-          <SourceText
-            {...{
-              clearTextHandler,
-              sourceLanguage,
-              setSourceLanguage,
-              handleLanguageChange,
-              sourceText,
-              setSourceText,
-              handleSourceTextChange,
-              languageOptions,
-              translationSaved,
-              saveTranslationHandler,
-            }}
-          />
+          <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange }} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Translation
-            {...{
-              handleLanguageChange,
-              translationText,
-              translationSaved,
-              swapLanguageHandler,
-              copyTranslationHandler,
-              saveTranslationHandler,
-              translationLanguage,
-            }}
-          />
+          <Translation {...{ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }} />
         </Grid>
       </Grid>
     </Box>

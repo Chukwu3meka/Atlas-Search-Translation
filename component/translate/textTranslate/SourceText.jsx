@@ -1,6 +1,4 @@
-import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import Tabs from "@mui/material/Tabs";
 import Input from "@mui/material/Input";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -11,29 +9,8 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
-const SourceText = ({ sourceText, sourceLanguage, languageOptions, clearTextHandler, handleLanguageChange, handleSourceTextChange }) => (
+const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange }) => (
   <Box sx={{ width: "100%" }}>
-    {/* language tab  */}
-    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-      <Tabs
-        value={sourceLanguage}
-        onChange={(_, value) => handleLanguageChange({ target: "source", value })}
-        aria-label="basic tabs example"
-        variant="scrollable"
-        scrollButtons="auto">
-        {languageOptions.map((label) => (
-          <Tab
-            value={label}
-            key={label}
-            label={
-              <Typography fontWeight={600} color="text.secondary">
-                {label}
-              </Typography>
-            }
-          />
-        ))}
-      </Tabs>
-    </Box>
     <Box p={2} alignItems="flex-start" display="flex">
       <Input
         fullWidth
