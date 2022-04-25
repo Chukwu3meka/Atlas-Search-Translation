@@ -2,7 +2,7 @@
 
 Translation is an act, process, or instance of translating: such as. a : a rendering from one language into another also : the product of such a rendering. b : a change to a different substance, form, or appearance : conversion.
 
-> instantly translates words, phrases, and web pages between English, French and Spanish
+> Instantly translates words, phrases, and web pages between English, French and Spanish
 
 ### Installation, Development and Production
 
