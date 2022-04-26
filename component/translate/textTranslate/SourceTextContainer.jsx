@@ -25,11 +25,13 @@ const TextTranslator = (props) => {
   const clearTextHandler = () => setSourceText("");
 
   const handleSourceTextChange = async (value) => {
-    setSourceText(value);
+    if (value.length <= 5000) {
+      setSourceText(value);
 
-    const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
+      const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
 
-    setTextTranslationAction(translation);
+      setTextTranslationAction(translation);
+    }
   };
 
   return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange }} />;
