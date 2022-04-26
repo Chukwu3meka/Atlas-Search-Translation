@@ -10,7 +10,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
-const TextTranslator = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }) => (
+const Translation = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex" bgcolor="#eeeeee">
       <Input
@@ -59,4 +59,4 @@ const TextTranslator = ({ translationText, translationSaved, copyTranslationHand
   </Box>
 );
 
-export default TextTranslator;
+export default Translation;

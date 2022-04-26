@@ -19,3 +19,13 @@ export const addDays = (date = new Date(), days = 7) => {
   date.setDate(date.getDate() + days);
   return date.toDateString();
 };
+
+// api fetcher function
+export const fetcher = (endpoint, data) => {
+  return fetch(`/api/${endpoint}`, {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(data),
+    credentials: "same-origin",
+  }).then((res) => res.json());
+};

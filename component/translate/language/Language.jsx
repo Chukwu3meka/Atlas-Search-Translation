@@ -13,11 +13,12 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
   mobileDevice ? (
     <Box
       sx={{
+        padding: 0.5,
         borderBottom: 1,
-        borderColor: "divider",
-        display: { xs: "flex", sm: "flex", md: "none" },
-        justifyContent: "space-evenly",
         alignItems: "center",
+        borderColor: "divider",
+        justifyContent: "space-evenly",
+        display: { xs: "flex", sm: "flex", md: "none" },
       }}>
       <Typography fontWeight={600} textTransform="uppercase" color="primary">
         {sourceLanguage}
