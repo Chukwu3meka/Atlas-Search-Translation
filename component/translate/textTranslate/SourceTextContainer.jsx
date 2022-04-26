@@ -11,14 +11,20 @@ const TextTranslator = (props) => {
     [sourceLanguage, setSourceLanguage] = useState(props.sourceLanguage),
     [translationLanguage, setTranslationLanguage] = useState(props.translationLanguage);
 
+  //detect language change
   useEffect(() => {
     setSourceLanguage(props.sourceLanguage);
     setTranslationLanguage(props.translationLanguage);
   }, [props.sourceLanguage, props.translationLanguage]);
 
+  // run translation again only when language is changed
+  useEffect(() => {
+    if (sourceText) handleSourceTextChange(sourceText);
+  }, [sourceLanguage, translationLanguage]);
+
   const clearTextHandler = () => setSourceText("");
 
-  const handleSourceTextChange = async ({ target: { value } }) => {
+  const handleSourceTextChange = async (value) => {
     setSourceText(value);
 
     const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });

@@ -20,7 +20,7 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange }) =>
         fullWidth
         value={sourceText}
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        onChange={handleSourceTextChange}
+        onChange={(e) => handleSourceTextChange(e.target.value)}
       />
       <Tooltip title="Clear source text" sx={{ ml: 1 }}>
         <IconButton aria-label="clear-source-text" onClick={clearTextHandler}>
