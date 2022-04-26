@@ -8,8 +8,8 @@ import { useState } from "react";
 
 const translateOptions = [
   { label: "Text", icon: <TranslateIcon /> },
-  { label: "Documents", icon: <PlagiarismIcon /> },
-  { label: "Websites", icon: <LanguageIcon /> },
+  // { label: "Documents", icon: <PlagiarismIcon /> },
+  // { label: "Websites", icon: <LanguageIcon /> },
 ];
 
 const TranslateContainer = () => {

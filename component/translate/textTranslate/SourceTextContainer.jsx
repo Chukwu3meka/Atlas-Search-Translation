@@ -20,9 +20,10 @@ const TextTranslator = (props) => {
 
   const handleSourceTextChange = async ({ target: { value } }) => {
     setSourceText(value);
-    // const textTranslation = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
-    // setTextTranslationAction(textTranslation);
-    setTextTranslationAction("textTranslation");
+
+    const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
+
+    setTextTranslationAction(translation);
   };
 
   return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange }} />;

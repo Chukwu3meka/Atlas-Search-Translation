@@ -21,11 +21,14 @@ export const addDays = (date = new Date(), days = 7) => {
 };
 
 // api fetcher function
-export const fetcher = (endpoint, data) => {
-  return fetch(`/api/${endpoint}`, {
+export const fetcher = async (endpoint, data) => {
+  return fetch(`/api${endpoint}`, {
     method: "POST",
-    headers: new Headers({ "Content-Type": "application/json" }),
+    // response must come back as json else you keep getting error
+    headers: new Headers({ "Content-Type": "application/json", Accept: "application/json" }),
     body: JSON.stringify(data),
     credentials: "same-origin",
-  }).then((res) => res.json());
+  })
+    .then((res) => res.json())
+    .catch(() => null);
 };
