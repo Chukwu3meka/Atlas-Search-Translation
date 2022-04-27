@@ -30,10 +30,10 @@ const TextTranslator = (props) => {
     setSourceText(value);
     if (!value.length) {
       // text.query cannot be empty so we add a condition to check if value is greter than one
-      enqueueSnackbar("Text to be translated cannot be empty", { variant: "error" });
+      // enqueueSnackbar("Text to be translated cannot be empty", { variant: "error" });
     } else if (value.length > 5000) {
       // we've limited the length of transfer to 5000 characters, so a condition is also included
-      enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "error" });
+      enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "warning" });
     } else {
       const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
       setTextTranslationAction(translation);
