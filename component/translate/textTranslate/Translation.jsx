@@ -17,7 +17,7 @@ const Translation = ({ translationText, translationSaved, copyTranslationHandler
         fullWidth
         multiline
         disableUnderline={true}
-        minRows={4}
+        minRows={3}
         fullWidth
         value={translationText}
         // to align text to the right

@@ -15,6 +15,7 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
       sx={{
         padding: 0.5,
         borderBottom: 1,
+        display: "flex",
         alignItems: "center",
         borderColor: "divider",
         justifyContent: "space-evenly",

@@ -16,7 +16,7 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange }) =>
         fullWidth
         multiline
         disableUnderline={true}
-        minRows={4}
+        minRows={3}
         fullWidth
         value={sourceText}
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
