@@ -14,12 +14,15 @@ let cachedClient = null;
 let cachedDb = null;
 
 // we'll export our collections here, once connection is established
-const collections = async (db) => {
-  // const Greetings = await db.collection("greetings");
+// const collections = async (db) => {
+const collections = (db) => {
   const Greetings = db.collection("greetings");
-  const Words = db.collection("words");
+  // const Words = db.collection("words");
 
-  return { Words, Greetings };
+  return {
+    // Words,
+    Greetings,
+  };
 };
 
 async function connectToDatabase() {
