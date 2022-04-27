@@ -9,6 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@source/theme";
 import Layout from "@component/layout";
 import { useStore } from "@store/index";
+import { SnackbarProvider } from "notistack"; //for notifications
 import createEmotionCache from "@source/createEmotionCache";
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -41,7 +42,9 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) =>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Provider store={store}>
-            <Layout {...{ pageProps, Component }} />
+            <SnackbarProvider maxSnack={1} preventDuplicate>
+              <Layout {...{ pageProps, Component }} />
+            </SnackbarProvider>
           </Provider>
         </ThemeProvider>
       </CacheProvider>
