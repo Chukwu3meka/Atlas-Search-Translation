@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb";
 
+let uri = process.env.MONGODB_URI;
+let dbName = process.env.MONGODB_DB;
+
 // throw an error, if mongodb uri is not found
-if (!process.env.MONGODB_URI) {
+if (!uri) {
   throw new Error("Please add your Mongo URI to env variables");
 }
 
@@ -12,9 +15,11 @@ let cachedDb = null;
 
 // we'll export our collections here, once connection is established
 const collections = async (db) => {
-  const Greetings = await db.collection("greetings");
+  // const Greetings = await db.collection("greetings");
+  const Greetings = db.collection("greetings");
+  const Words = db.collection("words");
 
-  return { Greetings };
+  return { Words, Greetings };
 };
 
 async function connectToDatabase() {
@@ -23,20 +28,21 @@ async function connectToDatabase() {
   if (cachedClient && cachedDb) return await collections(cachedDb);
 
   // create new MongoDB connection
-  const client = await MongoClient.connect(process.env.MONGODB_URI, {
+  const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
   // create a new database instance, using dbname passed in the MongoDB URI
-  const db = await client.db();
+  const db = await client.db(dbName);
 
   // store connection instance in cache
   cachedClient = client;
   cachedDb = db;
 
   // return list of available connections
-  return await collections(db);
+  // return await collections(db);
+  return collections(db);
 }
 
 export default connectToDatabase;

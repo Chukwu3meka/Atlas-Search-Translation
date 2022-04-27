@@ -15,9 +15,7 @@ export default async (req, res) => {
           },
         },
       },
-      {
-        $project: projectOption,
-      },
+      { $project: projectOption },
     ];
 
     const result = await Greetings.aggregate(searchQuery, { cursor: { batchSize: 1 } }).toArray();
