@@ -2,8 +2,8 @@ export default async (req, res) => {
   try {
     const { Greetings } = await require("@db").default();
 
-    // // you don't need to tell an attacker, he/she sent a wrong key. Let them go through the pain
-    if (req.body.adminKey !== process.env.ADMIN_KEY) throw "service unavailable/wrong URL queried";
+    // you don't need to tell an attacker, he/she sent a wrong key. Let them go through the pain
+    if (process.env.NODE_ENV !== "development") throw "service unavailable/wrong URL queried";
 
     // Removes all documents that match the filter from a collection.
     // but not the collection itself

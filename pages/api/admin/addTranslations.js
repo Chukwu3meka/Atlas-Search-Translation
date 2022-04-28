@@ -1,16 +1,20 @@
 export default async (req, res) => {
   try {
     const translations = require("@source/translations").default;
+    const localTranslations = require("@source/localTranslations").default;
 
     const { Greetings } = await require("@db").default();
 
-    // // you don't need to tell an attacker, he/she sent a wrong key. Let them go through the pain
-    if (req.body.adminKey !== process.env.ADMIN_KEY) throw "service unavailable/wrong URL queried";
+    // you don't need to tell an attacker, he/she sent a wrong key. Let them go through the pain
+    if (process.env.NODE_ENV !== "development") throw "service unavailable/wrong URL queried";
+
+    // remove translations already in db
+    const nonDuplicateTranslation = await translations.filter((x) => {
+      if (!localTranslations.find((y) => y.english.toLowerCase() === x.english.toLowerCase())) return x;
+    });
 
     //   // insertMany is best for adding multiple documents to MongoDB, we could have used `.insert` or `.create`, but in a situation where we hav 70,000 files, that won't be wise
-    await Greetings.insertMany(translations);
-
-    // console.log(translations);
+    await Greetings.insertMany(nonDuplicateTranslation);
 
     return res.status(200).json("success");
   } catch (error) {

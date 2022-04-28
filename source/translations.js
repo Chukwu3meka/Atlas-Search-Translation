@@ -1,6 +1,6 @@
 export default [
   {
-    english: "",
+    english: "So far as he’s concerned, nothing is as important as his daughter",
     french: "",
     spanish: "",
   },
