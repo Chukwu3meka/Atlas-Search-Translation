@@ -1,10 +1,12 @@
 import { connect } from "react-redux";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 import { Translation } from ".";
 
 const TextTranslator = (props) => {
-  const [translationText, setTranslationText] = useState(""),
+  const { enqueueSnackbar } = useSnackbar(),
+    [translationText, setTranslationText] = useState(""),
     [translationSaved, setTranslationSaved] = useState(false);
 
   // detect text translation change
@@ -12,8 +14,12 @@ const TextTranslator = (props) => {
 
   const saveTranslationHandler = () => setTranslationSaved(!translationSaved);
 
-  const copyTranslationHandler = () => navigator && navigator.clipboard.writeText(translationText);
-
+  const copyTranslationHandler = () => {
+    if (navigator) {
+      navigator.clipboard.writeText(translationText);
+      enqueueSnackbar("Translation copied", { variant: "default" });
+    }
+  };
   return <Translation {...{ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }} />;
 };
 

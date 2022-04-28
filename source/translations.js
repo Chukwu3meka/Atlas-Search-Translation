@@ -1,6 +1,31 @@
 export default [
   {
+    english: "So far",
+    french: "Jusqu'à présent",
+    spanish: "Hasta aquí",
+  },
+  {
+    english: "So far as he’s concerned",
+    french: "En ce qui le concerne",
+    spanish: "En lo que a él le concierne",
+  },
+  {
+    english: "So far as he’s concerned, nothing is as important",
+    french: "Pour lui, rien n'est aussi important",
+    spanish: "En lo que a él respecta, nada es tan importante",
+  },
+  {
     english: "So far as he’s concerned, nothing is as important as his daughter",
+    french: "Pour lui, rien n'est aussi important que sa fillel",
+    spanish: "En lo que a él respecta, nada es tan importante como su hija",
+  },
+  {
+    english: "",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "",
     french: "",
     spanish: "",
   },
