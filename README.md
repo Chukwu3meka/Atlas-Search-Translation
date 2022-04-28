@@ -24,3 +24,5 @@ Translation is an act, process, or instance of translating: such as. a : a rende
 
 <!-- Marcus -->
 <!-- https://github.com/MarcusSorealheis -->
+
+<!-- https://cloud.mongodb.com/v2/6266f035f8818000903c457b#metrics/replicaSet/6266f149a9ab1b5880de47b9/explorer/translations/greetings/find -->
