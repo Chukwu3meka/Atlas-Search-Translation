@@ -10,7 +10,7 @@ export default async (req, res) => {
 
     // remove translations already in db
     const nonDuplicateTranslation = await translations.filter((x) => {
-      if (!localTranslations.find((y) => y.english.toLowerCase() === x.english.toLowerCase())) return x;
+      if (x.english && !localTranslations.find((y) => y.english.toLowerCase() === x.english.toLowerCase())) return x;
     });
 
     //   // insertMany is best for adding multiple documents to MongoDB, we could have used `.insert` or `.create`, but in a situation where we hav 70,000 files, that won't be wise
