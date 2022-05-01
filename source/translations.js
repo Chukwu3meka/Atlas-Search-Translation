@@ -260,6 +260,96 @@ export default [
     spanish: "Apoyo esta medida, pero no significa que te apoye sin reservas.",
   },
   {
+    english: " I like",
+    french: "J'aime",
+    spanish: "me gusta",
+  },
+  {
+    english: " I like you",
+    french: "je vous aime bien",
+    spanish: "me gustas",
+  },
+  {
+    english: " I like you, but this doesn’t mean",
+    french: "Je t'aime bien, mais cela ne veut pas dire",
+    spanish: "Me gustas, pero esto no significa",
+  },
+  {
+    english: " I like you, but this doesn’t mean that I’ll marry",
+    french: "Je t'aime bien, mais ça ne veut pas dire que je vais me marier",
+    spanish: "Me gustas, pero esto no significa que me casaré.",
+  },
+  {
+    english: " I like you, but this doesn’t mean that I’ll marry you",
+    french: "Je t'aime bien, mais ça ne veut pas dire que je vais t'épouser",
+    spanish: "Me gustas, pero esto no significa que me casaré contigo.",
+  },
+  {
+    english: "By",
+    french: "Par",
+    spanish: "Por",
+  },
+  {
+    english: "By the",
+    french: "Par le",
+    spanish: "Por el",
+  },
+  {
+    english: "By the way",
+    french: "D'ailleurs",
+    spanish: "De paso",
+  },
+  {
+    english: "By the way, is there",
+    french: "Au fait, y a-t-il",
+    spanish: "Por cierto, ¿hay",
+  },
+  {
+    english: "By the way, is there a bathroom",
+    french: "Au fait, y a-t-il une salle de bains",
+    spanish: "Por cierto, ¿hay un baño?",
+  },
+  {
+    english: "By the way, is there a bathroom in the apartment",
+    french: "Au fait, y a-t-il une salle de bain dans l'appartement",
+    spanish: "Por cierto, ¿hay baño en el apartamento",
+  },
+  {
+    english: "By the way, do",
+    french: "D'ailleurs, fais",
+    spanish: "Por cierto, haz",
+  },
+  {
+    english: "By the way, do you",
+    french: "Au fait, est-ce que tu",
+    spanish: "Por cierto, ¿tú",
+  },
+  {
+    english: "By the way, do you have",
+    french: "Au fait, avez-vous",
+    spanish: "Por cierto, ¿tienes",
+  },
+  {
+    english: "By the way, do you have any",
+    french: "Au fait, avez-vous des",
+    spanish: "Por cierto, ¿tienes alguna",
+  },
+  {
+    english: "By the way, do you have any change",
+    french: "Au fait, avez-vous de la monnaie",
+    spanish: "Por cierto, ¿tienes algún cambio?",
+  },
+  {
+    english: "By the way, do you have any change on",
+    french: "Au fait, avez-vous du changement sur",
+    spanish: "Por cierto, ¿tienes algún cambio en",
+  },
+  {
+    english: "By the way, do you have any change on you",
+    french: "Au fait, avez-vous de la monnaie sur vous",
+    spanish: "Por cierto, ¿tienes algún cambio en ti?",
+  },
+  {
     english: "",
     french: "",
     spanish: "",
@@ -269,7 +359,16 @@ export default [
     french: "",
     spanish: "",
   },
-
+  {
+    english: "",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "",
+    french: "",
+    spanish: "",
+  },
   //
   //
   //
