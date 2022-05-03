@@ -22,4 +22,6 @@ npm-debug.log*
 
 .git/
 
-*/localTranslations.js
+*/databaseTranslations.js
+*/newTranslations.js
+logs.invalidTranslations.js
