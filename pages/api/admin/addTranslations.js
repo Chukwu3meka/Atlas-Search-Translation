@@ -29,7 +29,7 @@ export default async (req, res) => {
 
     //   // insertMany is best for adding multiple documents to MongoDB, we could have used `.insert` or `.create`, but in a situation where we hav 70,000 files, that won't be wise
 
-    // await Greetings.insertMany(nonDuplicateTranslation);
+    await Greetings.insertMany(nonDuplicateTranslation);
 
     // write invalidTranslations to logs.invalidTranslations.js in root file
     fs.writeFile("./logs.invalidTranslations.js", `export default ${JSON.stringify(invalidTranslations)}`, (err) => console.log(err));
