@@ -1,1403 +1,1663 @@
 export default [
   {
-    english: "good",
-    french: "bonne || bon",
-    spanish: "buena || bueno",
-  },
-  {
-    english: "good morning",
-    french: "bonjour",
-    spanish: "buenos días",
-  },
-  {
-    english: "good day",
-    french: "bonne journée",
-    spanish: "Buenos días",
-  },
-  {
-    english: "good afterenoon",
-    french: "bonne après-midi",
-    spanish: "buena tarde",
-  },
-  {
-    english: "good evening",
-    french: "bonsoir",
-    spanish: "buenas noches",
-  },
-  {
-    english: "good night",
-    french: "bonne nuit",
-    spanish: "buenas noches",
-  },
-  {
-    english: "hey",
-    french: "Hey",
-    spanish: "Oye",
-  },
-  {
-    english: "hi",
-    french: "salut",
-    spanish: "hola",
-  },
-  {
-    english: "hello",
-    french: "salut",
-    spanish: "Hola",
-  },
-  {
     english: "are",
-    french: "sont",
-    spanish: "son",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you",
-    french: "êtes-vous",
-    spanish: "eres tú",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure",
-    french: "es-tu sûr",
-    spanish: "Estas segura || Estas seguro",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure about",
-    french: "es-tu sûr de",
-    spanish: "Estas segura de || Estas seguro de",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you sure about that",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure of",
-    french: "es-tu sûr de",
-    spanish: "Estas segura de || Estas seguro de",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure of what",
-    french: "es-tu sûr de quoi",
-    spanish: "Estas segura de que || Estas seguro de que",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure of what you",
-    french: "êtes-vous sûr de ce que vous",
-    spanish: "Estas segura de lo que tu || Estas seguro de lo que tu",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you sure of what you said",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure that",
-    french: "êtes-vous sûr que",
-    spanish: "Estas segura de que || Estas seguro de que",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure that he",
-    french: "es-tu sûr qu'il",
-    spanish: "Estas segura de que el || Estas seguro de que el",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure that he is",
-    french: "es-tu sûr qu'il est",
-    spanish: "Estas segura de que el es || Estas seguro de que el es",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you sure that he is not",
-    french: "es-tu sûr qu'il n'est pas",
-    spanish: "¿estás seguro de que él no es",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you sure that he is not coming",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used",
-    french: "es-tu habitué",
-    spanish: "¿Estás acostumbrado?",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used to",
-    french: "as-tu l'habitude de",
-    spanish: "estas acostumbrado",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used to using",
-    french: "avez-vous l'habitude d'utiliser",
-    spanish: "estas acostumbrado a usar",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you used to using chopsticks",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used to life",
-    french: "Es-tu habitué à la vie",
-    spanish: "¿Estás acostumbrado a la vida?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you used to life here",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used to staying",
-    french: "as-tu l'habitude de rester",
-    spanish: "¿Estás acostumbrado a quedarte?",
+    french: "",
+    spanish: "",
   },
   {
     english: "are you used to staying up",
-    french: "as-tu l'habitude de rester debout",
-    spanish: "¿Estás acostumbrado a quedarte despierto?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "are you used to staying up late",
+    french: "",
+    spanish: "",
   },
   {
     english: "as",
-    french: "comme",
-    spanish: "como",
+    french: "",
+    spanish: "",
   },
   {
     english: "as far",
-    french: "aussi loin",
-    spanish: "tan lejos",
+    french: "",
+    spanish: "",
   },
   {
     english: "as far as",
-    french: "Pour autant que",
-    spanish: "hasta",
+    french: "",
+    spanish: "",
   },
   {
     english: "as far as i",
-    french: "aussi loin que je",
-    spanish: "Tan lejos como yo",
+    french: "",
+    spanish: "",
   },
   {
     english: "as far as i can",
-    french: "autant que je peux",
-    spanish: "Tan lejos como pueda",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as far as i can remember",
+    french: "",
+    spanish: "",
   },
   {
     english: "he",
-    french: "il",
-    spanish: "él",
+    french: "",
+    spanish: "",
   },
   {
     english: "he didn’t",
-    french: "il n'a pas",
-    spanish: "el no lo hizo",
+    french: "",
+    spanish: "",
   },
   {
     english: "he didn’t come",
-    french: "il n'est pas venu",
-    spanish: "el no vino",
+    french: "",
+    spanish: "",
   },
   {
     english: "he didn’t come home",
-    french: "il n'est pas rentré",
-    spanish: "él no vino a casa",
+    french: "",
+    spanish: "",
   },
   {
     english: "he didn’t come home until",
-    french: "il n'est pas rentré avant",
-    spanish: "no volvió a casa hasta",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he didn’t come home until midnight",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as far as i recollect",
+    french: "",
+    spanish: "",
   },
   {
     english: "there",
-    french: "là",
-    spanish: "allí",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were",
-    french: "Il y avait",
-    spanish: "había",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were few",
-    french: "il y avait peu",
-    spanish: "Había pocas || Había pocos",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were few people",
-    french: "il y avait peu de monde",
-    spanish: "Había pocas personas || Había pocos personas",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were few people in",
-    french: "il y avait peu de monde dans",
-    spanish: "habia poca gente en",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were few people in the",
-    french: "il y avait peu de monde dans",
-    spanish: "habia poca gente en el",
+    french: "",
+    spanish: "",
   },
   {
     english: "there were few people in the village",
-    french: "il y avait peu de monde dans le village",
-    spanish: "habia poca gente en el pueblo",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there were few people in the village then",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as far as i recall",
+    french: "",
+    spanish: "",
   },
   {
     english: "they",
-    french: "elles || ils",
-    spanish: "ellas || ellos",
+    french: "",
+    spanish: "",
   },
   {
     english: "they quarreled",
-    french: "ils se disputaient",
-    spanish: "Ellas pelearon || Ellos pelearon",
+    french: "",
+    spanish: "",
   },
   {
     english: "they quarreled very",
-    french: "ils se sont beaucoup disputés",
-    spanish: "Ellas pelearon muy || Ellos pelearon muy",
+    french: "",
+    spanish: "",
   },
   {
     english: "they quarreled very often",
-    french: "ils se disputaient très souvent",
-    spanish: "Ellas pelearon muy a menudo || Ellos pelearon muy a menudo",
+    french: "",
+    spanish: "",
   },
   {
     english: "they quarreled very often at",
-    french: "ils se disputaient très souvent à",
-    spanish: "Ellas pelearon muy a menudo en || Ellos pelearon muy a menudo en",
+    french: "",
+    spanish: "",
   },
   {
     english: "they quarreled very often at that",
-    french: "ils se disputaient très souvent à ce sujet",
-    spanish: "Ellas pelearon muy a menudo en eso || Ellos pelearon muy a menudo en eso",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "they quarreled very often at that time",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as far as i can see",
+    french: "",
+    spanish: "",
   },
   {
     english: "he’s",
-    french: "il est",
-    spanish: "él es",
+    french: "",
+    spanish: "",
   },
   {
     english: "he’s a",
-    french: "il est un",
-    spanish: "él es un",
+    french: "",
+    spanish: "",
   },
   {
     english: "he’s a big",
-    french: "il est grand",
-    spanish: "el es un grande",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he’s a big liar",
+    french: "",
+    spanish: "",
   },
   {
     english: "as far as i’m",
-    french: "autant que je suis",
-    spanish: "tan lejos como estoy",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as far as i’m concerned",
+    french: "",
+    spanish: "",
   },
   {
     english: "i",
-    french: "je",
-    spanish: "i",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t",
-    french: "je ne",
-    spanish: "yo no",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t mind",
-    french: "cela ne me dérange pas",
-    spanish: "no me importa",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t mind that",
-    french: "ça ne me dérange pas",
-    spanish: "no me importa eso",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t mind that you",
-    french: "ça ne me dérange pas que tu",
-    spanish: "no me importa que tu",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t mind that you wear",
-    french: "ça ne me dérange pas que tu portes",
-    spanish: "no me importa que te pongas",
+    french: "",
+    spanish: "",
   },
   {
     english: "i don’t mind that you wear this",
-    french: "ça ne me dérange pas que tu portes ça",
-    spanish: "no me importa que uses esto",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i don’t mind that you wear this mini-skirt",
+    french: "",
+    spanish: "",
   },
   {
     english: "the",
-    french: "la || le",
-    spanish: "la || el",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat",
-    french: "le manteau",
-    spanish: "el abrigo",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is",
-    french: "le manteau est",
-    spanish: "el abrigo es",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is fine",
-    french: "le manteau est bien",
-    spanish: "el abrigo esta bien",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is fine as",
-    french: "le manteau est bien comme",
-    spanish: "el abrigo esta bien como",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is fine as far",
-    french: "le manteau est bien jusqu'à présent",
-    spanish: "el abrigo está bien hasta ahora",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is fine as far as",
-    french: "le manteau est bien dans la mesure où",
-    spanish: "el abrigo está bien en cuanto a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the coat is fine as far as color",
+    french: "",
+    spanish: "",
   },
   {
     english: "the coat is fine as far as color is",
-    french: "le pelage est bien en ce qui concerne la couleur",
-    spanish: "el pelaje esta bien en cuanto a color",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the coat is fine as far as color is concerned",
+    french: "",
+    spanish: "",
   },
   {
     english: "but",
-    french: "mais",
-    spanish: "pero",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it",
-    french: "mais ça",
-    spanish: "pero",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it is",
-    french: "mais il est",
-    spanish: "pero es",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it is not",
-    french: "mais ce n'est pas",
-    spanish: "pero no lo es",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it is not very",
-    french: "mais ce n'est pas très",
-    spanish: "pero no es muy",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it is not very good",
-    french: "mais ce n'est pas très bon",
-    spanish: "pero no es muy bueno",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but it is not very good quality",
+    french: "",
+    spanish: "",
   },
   {
     english: "so",
-    french: "alors",
-    spanish: "asi que",
+    french: "",
+    spanish: "",
   },
   {
     english: "so far",
-    french: "jusqu'à présent",
-    spanish: "hasta aquí",
+    french: "",
+    spanish: "",
   },
   {
     english: "so far as",
-    french: "pour autant que",
-    spanish: "tan lejos como",
+    french: "",
+    spanish: "",
   },
   {
     english: "so far as he’s",
-    french: "pour autant qu'il soit",
-    spanish: "en la medida en que él es",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "so far as he’s concerned",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing",
-    french: "rien",
-    spanish: "ninguna cosa",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing is",
-    french: "rien n'est",
-    spanish: "nada es",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing is as",
-    french: "rien n'est comme",
-    spanish: "nada es como",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing is as important",
-    french: "rien n'est aussi important",
-    spanish: "nada es tan importante",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing is as important as",
-    french: "rien n'est aussi important que",
-    spanish: "nada es tan importante como",
+    french: "",
+    spanish: "",
   },
   {
     english: "nothing is as important as his",
-    french: "rien n'est aussi important que le sien",
-    spanish: "nada es tan importante como su",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "nothing is as important as his daughter",
+    french: "",
+    spanish: "",
   },
   {
     english: "we",
-    french: "nous",
-    spanish: "Nosotras || Nosotros",
+    french: "",
+    spanish: "",
   },
   {
     english: "we are",
-    french: "nous sommes",
-    spanish: "Nosotras somos || Nosotros somos",
+    french: "",
+    spanish: "",
   },
   {
     english: "we are your",
-    french: "nous sommes votre",
-    spanish: "Nosotras somos tu || Nosotros somos tu",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we are your employees",
+    french: "",
+    spanish: "",
   },
   {
     english: "but ",
-    french: "mais",
-    spanish: "pero",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this",
-    french: "mais ça",
-    spanish: "pero esto",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t",
-    french: "mais ce n'est pas le cas",
-    spanish: "pero esto no",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t mean",
-    french: "mais cela ne signifie pas",
-    spanish: "pero esto no significa",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t mean that ",
-    french: "mais cela ne veut pas dire que",
-    spanish: "pero esto no significa que",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t mean that  we",
-    french: "mais cela ne signifie pas que nous",
-    spanish: "Pero esto no significa que nosotras || Pero esto no significa que nosotros",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t mean that  we must ",
-    french: "mais cela ne signifie pas que nous devons",
-    spanish: "pero esto no significa que debamos",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  this doesn’t mean that  we must  obey",
-    french: "mais cela ne veut pas dire que nous devons obéir",
-    spanish: "pero esto no significa que debamos obedecer",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but  this doesn’t mean that  we must  obey you unconditionally",
+    french: "",
+    spanish: "",
   },
   {
     english: "you",
-    french: "tu",
-    spanish: "usted",
+    french: "",
+    spanish: "",
   },
   {
     english: "you are",
-    french: "vous êtes",
-    spanish: "usted está",
+    french: "",
+    spanish: "",
   },
   {
     english: "you are much",
-    french: "tu es beaucoup",
-    spanish: "eres mucho",
+    french: "",
+    spanish: "",
   },
   {
     english: "you are much older",
-    french: "tu es beaucoup plus vieux",
-    spanish: "eres mucho mayor",
+    french: "",
+    spanish: "",
   },
   {
     english: "you are much older than",
-    french: "tu es beaucoup plus vieux que",
-    spanish: "eres mucho mayor que",
+    french: "",
+    spanish: "",
   },
   {
     english: "you are much older than i",
-    french: "tu es beaucoup plus vieux que moi",
-    spanish: "eres mucho mayor que yo",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you are much older than i am",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t",
-    french: "mais ce n'est pas le cas",
-    spanish: "pero no",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t mean",
-    french: "mais cela ne veut pas dire",
-    spanish: "pero no significa",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t mean that",
-    french: "mais cela ne veut pas dire que",
-    spanish: "pero eso no significa que",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t mean that you",
-    french: "mais cela ne signifie pas que vous",
-    spanish: "pero eso no significa que tu",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t mean that you are",
-    french: "mais cela ne signifie pas que vous êtes",
-    spanish: "pero eso no significa que seas",
+    french: "",
+    spanish: "",
   },
   {
     english: "but it doesn’t mean that you are right",
-    french: "mais ça ne veut pas dire que tu as raison",
-    spanish: "pero eso no quiere decir que tengas razón",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but it doesn’t mean that you are right about everything",
+    french: "",
+    spanish: "",
   },
   {
     english: "i ",
-    french: "je",
-    spanish: "i",
+    french: "",
+    spanish: "",
   },
   {
     english: "i  support ",
-    french: "je soutiens",
-    spanish: "Yo apoyo",
+    french: "",
+    spanish: "",
   },
   {
     english: "i  support  this",
-    french: "je soutiens cela",
-    spanish: "apoyo esto",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i  support  this measure",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it ",
-    french: "mais ça",
-    spanish: "pero",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t",
-    french: "mais ce n'est pas le cas",
-    spanish: "pero no",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t mean",
-    french: "mais ça ne veut pas dire",
-    spanish: "pero no significa",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t mean that ",
-    french: "mais ça ne veut pas dire que",
-    spanish: "pero eso no significa que",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t mean that  i ",
-    french: "mais ça ne veut pas dire que je",
-    spanish: "pero eso no significa que yo",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t mean that  i  support ",
-    french: "mais cela ne signifie pas que je soutiens",
-    spanish: "pero eso no significa que lo apoye",
+    french: "",
+    spanish: "",
   },
   {
     english: "but  it  doesn’t mean that  i  support  you ",
-    french: "mais ça ne veut pas dire que je te soutiens",
-    spanish: "pero eso no quiere decir que te apoye",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but  it  doesn’t mean that  i  support  you  without reservation",
+    french: "",
+    spanish: "",
   },
   {
     english: "i like",
-    french: "j'apprécie",
-    spanish: "Me gusta",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i like you",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this",
-    french: "mais ça",
-    spanish: "pero esto",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this doesn’t",
-    french: "mais ce n'est pas",
-    spanish: "pero esto no",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this doesn’t mean",
-    french: "mais cela ne veut pas dire",
-    spanish: "pero esto no significa",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this doesn’t mean that",
-    french: "mais cela ne veut pas dire que",
-    spanish: "pero esto no significa que",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this doesn’t mean that i’ll",
-    french: "mais cela ne veut pas dire que je vais",
-    spanish: "pero esto no significa que voy a",
+    french: "",
+    spanish: "",
   },
   {
     english: "but this doesn’t mean that i’ll marry",
-    french: "mais cela ne veut pas dire que je vais me marier",
-    spanish: "pero esto no significa que me casaré",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but this doesn’t mean that i’ll marry you",
+    french: "",
+    spanish: "",
   },
   {
     english: "be",
-    french: "être",
-    spanish: "ser",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful",
-    french: "fais attention",
-    spanish: "ten cuidado",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful with",
-    french: "attention à",
-    spanish: "ten cuidado con",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful with the",
-    french: "être prudent avec le",
-    spanish: "ten cuidado con el",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful with the wet",
-    french: "attention au mouillé",
-    spanish: "cuidado con la humedad",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "be careful with the wet paint",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that",
-    french: "faire attention que",
-    spanish: "ten cuidado de que",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you",
-    french: "veillez à ce que vous",
-    spanish: "ten cuidado de que tu",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t ",
-    french: "veillez à ne pas",
-    spanish: "ten cuidado de que no",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch",
-    french: "veillez à ne pas attraper",
-    spanish: "ten cuidado de no atrapar",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a",
-    french: "veillez à ne pas attraper un",
-    spanish: "ten cuidado de no atrapar un",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold",
-    french: "veillez à ne pas attraper un rhume",
-    spanish: "ten cuidado de que no te resfríes",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put",
-    french: "veillez à ne pas attraper un rhume",
-    spanish: "ten cuidado de no coger un resfriado",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put on",
-    french: "veillez à ne pas attraper un rhume",
-    spanish: "ten cuidado de que no te resfríes ponte",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put on more",
-    french: "faites attention à ne pas attraper un rhume, enfilez plus",
-    spanish: "ten cuidado que no te resfríes ponte más",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put on more clothes",
-    french: "faites attention à ne pas attraper un rhume, mettez plus de vêtements",
-    spanish: "ten cuidado de no resfriarte ponte más ropa",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put on more clothes before",
-    french: "faites attention à ne pas attraper un rhume, mettez plus de vêtements avant",
-    spanish: "ten cuidado de no resfriarte ponte más ropa antes",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful that you don’t  catch a cold put on more clothes before you",
-    french: "ten cuidado de no resfriarte ponte más ropa antes de",
-    spanish: "faites attention à ne pas attraper un rhume, mettez plus de vêtements avant de",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "be careful that you don’t  catch a cold put on more clothes before you go out",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful not",
-    french: "attention pas",
-    spanish: "ten cuidado de no",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful not to",
-    french: "attention à ne pas",
-    spanish: "tenga cuidado de no",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful not to spill",
-    french: "attention à ne pas renverser",
-    spanish: "tenga cuidado de no derramar",
+    french: "",
+    spanish: "",
   },
   {
     english: "be careful not to spill the",
-    french: "attention à ne pas renverser",
-    spanish: "tenga cuidado de no derramar el",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "be careful not to spill the milk",
+    french: "",
+    spanish: "",
   },
   {
     english: "compared",
-    french: "par rapport",
-    spanish: "comparada || comparado",
+    french: "",
+    spanish: "",
   },
   {
     english: "compared to",
-    french: "par rapport à",
-    spanish: "comparado con",
+    french: "",
+    spanish: "",
   },
   {
     english: "compared to other",
-    french: "par rapport aux autres",
-    spanish: "Comparado a otro",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "compared to other students",
+    french: "",
+    spanish: "",
   },
   {
     english: "she",
-    french: "elle",
-    spanish: "ella",
+    french: "",
+    spanish: "",
   },
   {
     english: "she is",
-    french: "elle est",
-    spanish: "ella es",
+    french: "",
+    spanish: "",
   },
   {
     english: "she is quite",
-    french: "elle est assez",
-    spanish: "ella es bastante",
+    french: "",
+    spanish: "",
   },
   {
     english: "she is quite hard",
-    french: "elle est assez dure",
-    spanish: "ella es bastante dura",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "she is quite hard working",
+    french: "",
+    spanish: "",
   },
   {
     english: "compared to city",
-    french: "par rapport à la ville",
-    spanish: "en comparación con la ciudad",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "compared to city life",
+    french: "",
+    spanish: "",
   },
   {
     english: "country",
-    french: "pays",
-    spanish: "país",
+    french: "",
+    spanish: "",
   },
   {
     english: "country life",
-    french: "vie à la campagne",
-    spanish: "vida de campo",
+    french: "",
+    spanish: "",
   },
   {
     english: "country life is",
-    french: "la vie à la campagne est",
-    spanish: "la vida en el campo es",
+    french: "",
+    spanish: "",
   },
   {
     english: "country life is quiet",
-    french: "la vie à la campagne est calme",
-    spanish: "la vida en el campo es tranquila",
+    french: "",
+    spanish: "",
   },
   {
     english: "country life is quiet and",
-    french: "la vie à la campagne est calme et",
-    spanish: "la vida en el campo es tranquila y",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "country life is quiet and peaceful",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "compared to fans",
+    french: "",
+    spanish: "",
   },
   {
     english: "air-conditioners",
-    french: "climatiseurs",
-    spanish: "acondicionadores de aire",
+    french: "",
+    spanish: "",
   },
   {
     english: "air-conditioners are",
-    french: "les climatiseurs sont",
-    spanish: "los acondicionadores de aire son",
+    french: "",
+    spanish: "",
   },
   {
     english: "air-conditioners are more",
-    french: "les climatiseurs sont plus",
-    spanish: "Los acondicionadores de aire son más",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "air-conditioners are more comfortable",
+    french: "",
+    spanish: "",
   },
   {
     english: "by",
-    french: "par",
-    spanish: "por",
+    french: "",
+    spanish: "",
   },
   {
     english: "by the",
-    french: "par le",
-    spanish: "por el",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "by the way",
+    french: "",
+    spanish: "",
   },
   {
     english: "is",
-    french: "est",
-    spanish: "es",
+    french: "",
+    spanish: "",
   },
   {
     english: "is there",
-    french: "y a-t-il",
-    spanish: "esta ahí",
+    french: "",
+    spanish: "",
   },
   {
     english: "is there a",
-    french: "Y a-t-il un",
-    spanish: "Hay un",
+    french: "",
+    spanish: "",
   },
   {
     english: "is there a bathroom",
-    french: "y a-t-il une salle de bain",
-    spanish: "hay un baño",
+    french: "",
+    spanish: "",
   },
   {
     english: "is there a bathroom in",
-    french: "y a-t-il une salle de bain dans",
-    spanish: "¿Hay un baño en",
+    french: "",
+    spanish: "",
   },
   {
     english: "is there a bathroom in the",
-    french: "y a-t-il une salle de bain dans le",
-    spanish: "¿Hay un baño en el",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "is there a bathroom in the apartment",
+    french: "",
+    spanish: "",
   },
   {
     english: "do",
-    french: "faire",
-    spanish: "hacer",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you",
-    french: "est-ce que vous",
-    spanish: "Vos si",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have",
-    french: "as-tu",
-    spanish: "tienes",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any",
-    french: "Avez-vous des",
-    spanish: "usted tiene alguna",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any change",
-    french: "avez-vous du changement",
-    spanish: "tienes cambio",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any change on",
-    french: "avez-vous du changement sur",
-    spanish: "¿Tienes algún cambio?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you have any change on you",
+    french: "",
+    spanish: "",
   },
   {
     english: "he is",
-    french: "il est",
-    spanish: "él es",
+    french: "",
+    spanish: "",
   },
   {
     english: "he is a",
-    french: "il est un",
-    spanish: "él es un",
+    french: "",
+    spanish: "",
   },
   {
     english: "he is a difficult",
-    french: "c'est un difficile",
-    spanish: "el es un dificil",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he is a difficult person",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t",
-    french: "ne le faites pas",
-    spanish: "no",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever",
-    french: "ne jamais",
-    spanish: "nunca",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose",
-    french: "ne perdez jamais",
-    spanish: "nunca pierdas",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these",
-    french: "ne les perdez jamais",
-    spanish: "nunca pierdas estos",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers",
-    french: "ne perdez jamais ces papiers",
-    spanish: "nunca pierdas estos papeles",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they",
-    french: "ne perdez jamais ces papiers qu'ils",
-    spanish: "nunca pierdas estos papeles que",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are",
-    french: "ne perdez jamais ces papiers qu'ils sont",
-    spanish: "nunca pierdas estos papeles que son",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are of",
-    french: "ne perdez jamais ces papiers dont ils sont",
-    spanish: "nunca pierdas estos papeles que son de",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are of great",
-    french: "ne perdez jamais ces papiers ils sont d'une grande valeur",
-    spanish: "nunca pierdas estos papeles son de gran",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are of great importance",
-    french: "ne perdez jamais ces papiers ils sont d'une grande importance",
-    spanish: "nunca pierdas estos papeles son de gran importancia",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are of great importance to",
-    french: "ne perdez jamais ces papiers, ils sont d'une grande importance pour",
-    spanish: "nunca pierdas estos papeles, son de gran importancia para",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever lose these papers they are of great importance to our",
-    french: "ne perdez jamais ces papiers, ils sont d'une grande importance pour notre",
-    spanish: "nunca pierda estos papeles son de gran importancia para nuestro",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "don’t ever lose these papers they are of great importance to our company",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever miss",
-    french: "ne manquez jamais",
-    spanish: "nunca te pierdas",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever miss a",
-    french: "ne manquez jamais un",
-    spanish: "nunca te pierdas un",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever miss a good",
-    french: "ne manquez jamais un bien",
-    spanish: "nunca te pierdas una buena",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "don’t ever miss a good opportunity",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever arrive",
-    french: "n'arrive jamais",
-    spanish: "nunca llegues",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever arrive late",
-    french: "n'arrive jamais en retard",
-    spanish: "nunca llegues tarde",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever arrive late for",
-    french: "n'arrivez jamais en retard pour",
-    spanish: "nunca llegues tarde a",
+    french: "",
+    spanish: "",
   },
   {
     english: "don’t ever arrive late for an",
-    french: "n'arrivez jamais en retard pour un",
-    spanish: "Nunca llegues tarde para una || Nunca llegues tarde para un",
+    french: "",
+    spanish: "",
   },
   {
-    english: "do",
-    french: "faire",
-    spanish: "hacer",
-  },
-  {
-    english: "do you",
-    french: "est-ce que vous",
-    spanish: "Vos si",
+    english: "don’t ever arrive late for an interview",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree",
-    french: "êtes-vous d'accord",
-    spanish: "Estás de acuerdo",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree that",
-    french: "êtes-vous d'accord que",
-    spanish: "¿Estás de acuerdo con eso?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree that we",
-    french: "êtes-vous d'accord que nous",
-    spanish: "Estas de acuerdo que nosotras || Estas de acuerdo que nosotros",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree that we should",
-    french: "êtes-vous d'accord que nous devrions",
-    spanish: "¿Estás de acuerdo en que deberíamos",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree that we should start",
-    french: "êtes-vous d'accord pour commencer",
-    spanish: "¿Estás de acuerdo en que deberíamos empezar?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you agree that we should start early",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree with",
-    french: "es-tu d'accord avec",
-    spanish: "estas de acuerdo con",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you agree with my",
-    french: "êtes-vous d'accord avec mon",
-    spanish: "¿Estás de acuerdo con mi",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you agree with my plan",
+    french: "",
+    spanish: "",
   },
   {
     english: "will",
-    french: "sera",
-    spanish: "será",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he",
-    french: "sera-t-il",
-    spanish: "Va a",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree",
-    french: "sera-t-il d'accord",
-    spanish: "¿estará de acuerdo?",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree to",
-    french: "acceptera-t-il de",
-    spanish: "¿Él estará de acuerdo con",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree to the",
-    french: "acceptera-t-il la",
-    spanish: "¿Él estará de acuerdo con el",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree to the conditions",
-    french: "acceptera-t-il les conditions",
-    spanish: "¿Estará de acuerdo con las condiciones?",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree to the conditions in",
-    french: "acceptera-t-il les conditions de",
-    spanish: "¿Estará de acuerdo con las condiciones en",
+    french: "",
+    spanish: "",
   },
   {
     english: "will he agree to the conditions in the",
-    french: "acceptera-t-il les conditions du",
-    spanish: "¿Estará de acuerdo con las condiciones del",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "will he agree to the conditions in the contract",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you carry",
-    french: "portez-vous",
-    spanish: "llevas",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you carry this",
-    french: "est-ce que tu portes ça",
-    spanish: "llevas esto",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you carry this in",
-    french: "portez-vous cela dans",
-    spanish: "llevas esto en",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you carry this in size",
-    french: "portez-vous cette taille",
-    spanish: "¿Llevas esto en tamaño?",
+    french: "",
+    spanish: "",
   },
   {
-    english: "do you have",
-    french: "as-tu",
-    spanish: "tienes",
+    english: "do you carry this in size 10",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you carry this in beige",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have this",
-    french: "avez-vous ce",
-    spanish: "tienes esto",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have this in",
-    french: "avez-vous ceci dans",
-    spanish: "tienes esto en",
+    french: "",
+    spanish: "",
   },
   {
-    english: "do you have any",
-    french: "Avez-vous des",
-    spanish: "usted tiene alguna",
+    english: "do you have this in medium",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any single",
-    french: "avez-vous un seul",
-    spanish: "Tienes alguna soltera || Tienes algun soltero",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any single rooms",
-    french: "Avez-vous des chambres simples ?",
-    spanish: "¿Tiene habitaciones individuales?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you have any single rooms available",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any tickets",
-    french: "Avez-vous des billets",
-    spanish: "Tienes algún boleto",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you have any tickets available",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any shoes",
-    french: "avez-vous des chaussures",
-    spanish: "¿tienes zapatos?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any shoes in",
-    french: "avez-vous des chaussures dans",
-    spanish: "¿tienes zapatos?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any shoes in size",
-    french: "avez-vous des chaussures de taille",
-    spanish: "¿tienes algún tamaño de zapatos?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you have any shoes in size 20",
-    french: "Avez-vous des chaussures en taille 20?",
-    spanish: "tienes zapatos en talla 20",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you have any shoes in size 20 available",
+    french: "",
+    spanish: "",
   },
   {
     english: "did",
-    french: "a fait",
-    spanish: "hizo",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you",
-    french: "as-tu",
-    spanish: "Tuviste",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use",
-    french: "As-tu utilisé",
-    spanish: "usaste",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use to",
-    french: "aviez-vous l'habitude de",
-    spanish: "solías",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use to live",
-    french: "viviez-vous",
-    spanish: "solías vivir",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use to live in",
-    french: "avez-vous l'habitude de vivre dans",
-    spanish: "solías vivir en",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "did you use to live in tokyo",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use to get",
-    french: "avez-vous utilisé pour obtenir",
-    spanish: "solías conseguir",
+    french: "",
+    spanish: "",
   },
   {
     english: "did you use to get up",
-    french: "avais-tu l'habitude de te lever",
-    spanish: "solías levantarte",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "did you use to get up early",
+    french: "",
+    spanish: "",
   },
   {
     english: "you used",
-    french: "tu as utilisé",
-    spanish: "usaste",
+    french: "",
+    spanish: "",
   },
   {
     english: "you used to",
-    french: "tu avais l'habitude de",
-    spanish: "tu solías",
+    french: "",
+    spanish: "",
   },
   {
     english: "you used to smoke",
-    french: "tu fumais",
-    spanish: "solías fumar",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you used to smoke heavily",
+    french: "",
+    spanish: "",
   },
   {
     english: "didn’t",
-    french: "n'a pas",
-    spanish: "no",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "didn’t you",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel",
-    french: "est-ce que tu ressens",
-    spanish: "sientes",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like",
-    french: "avez vous l'impression que",
-    spanish: "Te sientes como",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going",
-    french: "avez-vous envie d'aller",
-    spanish: "tienes ganas de ir",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going for",
-    french: "avez-vous envie d'aller pour",
-    spanish: "tienes ganas de ir por",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going for a",
-    french: "avez-vous envie d'aller pour un",
-    spanish: "¿Tienes ganas de ir por un",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going for a walk",
-    french: "avez-vous envie d'aller vous promener",
-    spanish: "tienes ganas de ir a dar un paseo",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going for a walk on",
-    french: "avez-vous envie d'aller vous promener",
-    spanish: "tienes ganas de ir a dar un paseo",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going for a walk on the",
-    french: "avez-vous envie d'aller vous promener sur le",
-    spanish: "te apetece ir a dar un paseo por la",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you feel like going for a walk on the beach",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going shopping",
-    french: "avez-vous envie d'aller faire du shopping",
-    spanish: "tienes ganas de ir de compras",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going shopping at",
-    french: "avez-vous envie d'aller faire du shopping à",
-    spanish: "tienes ganas de ir de compras a",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like going shopping at the",
-    french: "avez-vous envie d'aller faire du shopping au",
-    spanish: "te apetece ir de compras al",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you feel like going shopping at the mall",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating",
-    french: "avez-vous envie de manger",
-    spanish: "tienes ganas de comer",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some",
-    french: "avez-vous envie de manger",
-    spanish: "tienes ganas de comer algo",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice",
-    french: "avez-vous envie de manger de la glace",
-    spanish: "tienes ganas de comer un poco de hielo",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice cream",
-    french: "avez-vous envie de manger une glace",
-    spanish: "tienes ganas de comer un poco de helado",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice cream or",
-    french: "avez-vous envie de manger une glace ou",
-    spanish: "¿Tienes ganas de comer un helado o",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice cream or having",
-    french: "avez-vous envie de manger une glace ou d'avoir",
-    spanish: "¿Tienes ganas de comer un poco de helado o tener",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice cream or having cake",
-    french: "avez-vous envie de manger une glace ou un gâteau",
-    spanish: "¿Tienes ganas de comer un poco de helado o un pastel",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like eating some ice cream or having cake or",
-    french: "avez-vous envie de manger une glace ou un gâteau ou",
-    spanish: "¿Tienes ganas de comer un poco de helado o un pastel o",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you feel like eating some ice cream or having cake or both",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like having",
-    french: "avez-vous envie d'avoir",
-    spanish: "tienes ganas de tener",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like having some",
-    french: "avez-vous envie d'avoir des",
-    spanish: "¿Tienes ganas de tener algunos",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you feel like having some coffee",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like getting",
-    french: "avez-vous envie d'obtenir",
-    spanish: "tienes ganas de conseguir",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like getting a",
-    french: "avez-vous envie d'obtenir un",
-    spanish: "¿tienes ganas de conseguir un",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like getting a bite",
-    french: "avez-vous envie de manger un morceau",
-    spanish: "¿Tienes ganas de conseguir un bocado",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you feel like getting a bite to",
-    french: "avez-vous envie de manger un morceau",
-    spanish: "¿Tienes ganas de darle un mordisco a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you feel like getting a bite to eat",
+    french: "",
+    spanish: "",
   },
   {
     english: "would",
-    french: "voudrais",
-    spanish: "haría",
+    french: "",
+    spanish: "",
   },
   {
     english: "would you",
-    french: "Voudriez-vous",
-    spanish: "lo harías",
+    french: "",
+    spanish: "",
   },
   {
     english: "would you mind",
-    french: "cela vous dérangerait",
-    spanish: "te importaría",
+    french: "",
+    spanish: "",
   },
   {
     english: "would you mind if",
-    french: "ça te dérangerait si",
-    spanish: "te importaría si",
+    french: "",
+    spanish: "",
   },
   {
     english: "would you mind if i",
-    french: "cela vous dérangerait-il si je",
-    spanish: "Te importaría si",
+    french: "",
+    spanish: "",
   },
   {
     english: "would you mind if i smoke",
-    french: "ça te dérangerait si je fume",
-    spanish: "¿Te importaría si fumo?",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "would you mind if i smoke here",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind",
-    french: "est-ce que je peux",
-    spanish: "Te importa",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening",
-    french: "cela vous dérange-t-il d'ouvrir",
-    spanish: "te importa abrir",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the",
-    french: "cela vous dérangerait-il d'ouvrir le",
-    spanish: "¿te importa abrir el",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the window",
-    french: "cela vous dérange-t-il d'ouvrir la fenêtre",
-    spanish: "¿te importa abrir la ventana?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the window it’s",
-    french: "ça te dérange d'ouvrir la fenêtre c'est",
-    spanish: "¿Te importa abrir la ventana?",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the window it’s so",
-    french: "ça te dérange d'ouvrir la fenêtre c'est tellement",
-    spanish: "¿Te importa abrir la ventana? Es tan",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the window it’s so stuffy",
-    french: "ça te dérange d'ouvrir la fenêtre c'est tellement étouffant",
-    spanish: "¿Te importaría abrir la ventana? Está tan mal ventilado",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind opening the window it’s so stuffy in",
-    french: "Est-ce que ça te dérange d'ouvrir la fenêtre, c'est tellement étouffant",
-    spanish: "¿Te importaría abrir la ventana? Está tan mal ventilado",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "do you mind opening the window it’s so stuffy in here",
+    french: "",
+    spanish: "",
   },
   {
     english: "do you mind if",
@@ -1425,6 +1685,11 @@ export default [
     spanish: "",
   },
   {
+    english: "do you mind if i ask you a question",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "shouldn’t",
     french: "",
     spanish: "",
@@ -1446,6 +1711,11 @@ export default [
   },
   {
     english: "shouldn’t we ask for permission",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "shouldn’t we ask for permission first",
     french: "",
     spanish: "",
   },
@@ -1490,6 +1760,11 @@ export default [
     spanish: "",
   },
   {
+    english: "shouldn’t we read the directions before we install the air conditioner",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "shouldn’t we check",
     french: "",
     spanish: "",
@@ -1516,6 +1791,11 @@ export default [
   },
   {
     english: "shouldn’t we check the weather before we go",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "shouldn’t we check the weather before we go out",
     french: "",
     spanish: "",
   },
@@ -1570,6 +1850,11 @@ export default [
     spanish: "",
   },
   {
+    english: "shouldn’t you try to save some money rather than spend it all",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "have",
     french: "",
     spanish: "",
@@ -1600,7 +1885,22 @@ export default [
     spanish: "",
   },
   {
+    english: "have you ever been to new york",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "have you ever been to nanjing",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "have you ever seen",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "have you ever seen ghost",
     french: "",
     spanish: "",
   },
@@ -1635,6 +1935,11 @@ export default [
     spanish: "",
   },
   {
+    english: "have you ever wondered if there is life after death",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "have you ever heard",
     french: "",
     spanish: "",
@@ -1645,12 +1950,7 @@ export default [
     spanish: "",
   },
   {
-    english: "he",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "he is",
+    english: "have you ever heard of it",
     french: "",
     spanish: "",
   },
@@ -1666,6 +1966,11 @@ export default [
   },
   {
     english: "he is either drunk or",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he is either drunk or mad",
     french: "",
     spanish: "",
   },
@@ -1700,6 +2005,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s either your fault or her fault",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "either",
     french: "",
     spanish: "",
@@ -1726,6 +2036,11 @@ export default [
   },
   {
     english: "either you are wrong or i",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "either you are wrong or i am",
     french: "",
     spanish: "",
   },
@@ -1775,6 +2090,11 @@ export default [
     spanish: "",
   },
   {
+    english: "don’t tell him the bad news until he finishes his exam",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "the secret",
     french: "",
     spanish: "",
@@ -1806,6 +2126,11 @@ export default [
   },
   {
     english: "the secret was not discovered until he was",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the secret was not discovered until he was dead",
     french: "",
     spanish: "",
   },
@@ -1845,6 +2170,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i won’t stop shouting until you let me go",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he is as",
     french: "",
     spanish: "",
@@ -1866,6 +2196,11 @@ export default [
   },
   {
     english: "he is as poor as a church",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he is as poor as a church mouse",
     french: "",
     spanish: "",
   },
@@ -1910,6 +2245,11 @@ export default [
     spanish: "",
   },
   {
+    english: "he is as fit as a fiddle though he is already seventy",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "shelly’s",
     french: "",
     spanish: "",
@@ -1946,6 +2286,11 @@ export default [
   },
   {
     english: "shelly’s father is always as busy as a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "shelly’s father is always as busy as a bee",
     french: "",
     spanish: "",
   },
@@ -1990,6 +2335,11 @@ export default [
     spanish: "",
   },
   {
+    english: "the twin sisters are as different as night and day",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "the lecture",
     french: "",
     spanish: "",
@@ -2015,6 +2365,11 @@ export default [
     spanish: "",
   },
   {
+    english: "the lecture is as dull as ditch-water",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he is not",
     french: "",
     spanish: "",
@@ -2025,7 +2380,17 @@ export default [
     spanish: "",
   },
   {
+    english: "he is not only humorous",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but also",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but also patient",
     french: "",
     spanish: "",
   },
@@ -2040,12 +2405,22 @@ export default [
     spanish: "",
   },
   {
+    english: "he is not only a good leader",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but also an",
     french: "",
     spanish: "",
   },
   {
     english: "but also an eloquent",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but also an eloquent speaker",
     french: "",
     spanish: "",
   },
@@ -2080,6 +2455,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m not only going to the party",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m also",
     french: "",
     spanish: "",
@@ -2101,6 +2481,11 @@ export default [
   },
   {
     english: "i’m also going to sing at",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m also going to sing at it",
     french: "",
     spanish: "",
   },
@@ -2130,7 +2515,7 @@ export default [
     spanish: "",
   },
   {
-    english: "so",
+    english: "not only do i support you",
     french: "",
     spanish: "",
   },
@@ -2141,6 +2526,11 @@ export default [
   },
   {
     english: "so do your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "so do your acquaintances",
     french: "",
     spanish: "",
   },
@@ -2185,6 +2575,11 @@ export default [
     spanish: "",
   },
   {
+    english: "make yourself at home help yourself to some fish",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "help",
     french: "",
     spanish: "",
@@ -2201,6 +2596,11 @@ export default [
   },
   {
     english: "help yourself to the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "help yourself to the refrigerator",
     french: "",
     spanish: "",
   },
@@ -2236,6 +2636,11 @@ export default [
   },
   {
     english: "help yourself to some steak i made it especially for",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "help yourself to some steak i made it especially for you",
     french: "",
     spanish: "",
   },
@@ -2305,6 +2710,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i was so interested in the film that i went to see it several times",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s so",
     french: "",
     spanish: "",
@@ -2346,6 +2756,11 @@ export default [
   },
   {
     english: "it’s so hot that none of us want to go",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s so hot that none of us want to go out",
     french: "",
     spanish: "",
   },
@@ -2400,6 +2815,11 @@ export default [
     spanish: "",
   },
   {
+    english: "he speaks french so well that we think he is a frenchman",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how",
     french: "",
     spanish: "",
@@ -2445,6 +2865,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how about going for a spin in my new car",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how about minding",
     french: "",
     spanish: "",
@@ -2460,7 +2885,17 @@ export default [
     spanish: "",
   },
   {
+    english: "how about minding your own business",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how about those",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how about those yankees!",
     french: "",
     spanish: "",
   },
@@ -2476,6 +2911,11 @@ export default [
   },
   {
     english: "what about your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what about your holidays",
     french: "",
     spanish: "",
   },
@@ -2496,6 +2936,11 @@ export default [
   },
   {
     english: "what about his qualifications for the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what about his qualifications for the job",
     french: "",
     spanish: "",
   },
@@ -2535,6 +2980,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you forgot to bring your homework again how come",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how come",
     french: "",
     spanish: "",
@@ -2561,6 +3011,11 @@ export default [
   },
   {
     english: "how come your little sister is so",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how come your little sister is so angry",
     french: "",
     spanish: "",
   },
@@ -2595,6 +3050,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how come we were not invited to the party",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how dare",
     french: "",
     spanish: "",
@@ -2611,6 +3071,11 @@ export default [
   },
   {
     english: "how dare you call me",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how dare you call me fat!",
     french: "",
     spanish: "",
   },
@@ -2635,6 +3100,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how dare you speak to me like that!",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how dare he",
     french: "",
     spanish: "",
@@ -2655,12 +3125,22 @@ export default [
     spanish: "",
   },
   {
+    english: "how dare he do that to me!",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how dare you turn",
     french: "",
     spanish: "",
   },
   {
     english: "how dare you turn him",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how dare you turn him down!",
     french: "",
     spanish: "",
   },
@@ -2690,12 +3170,22 @@ export default [
     spanish: "",
   },
   {
+    english: "how often is there a leap year",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how often is there a flight",
     french: "",
     spanish: "",
   },
   {
     english: "how often is there a flight to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how often is there a flight to shanghai",
     french: "",
     spanish: "",
   },
@@ -2725,6 +3215,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how often do you write to your parents",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how do",
     french: "",
     spanish: "",
@@ -2746,6 +3241,16 @@ export default [
   },
   {
     english: "how do you like your new",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how do you like your new apartment",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how do you like your new colleagues",
     french: "",
     spanish: "",
   },
@@ -2776,6 +3281,11 @@ export default [
   },
   {
     english: "how does your mother like the tea",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how does your mother like the tea set",
     french: "",
     spanish: "",
   },
@@ -2830,6 +3340,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how long does it take to get to the station by subway",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "how long will",
     french: "",
     spanish: "",
@@ -2856,6 +3371,11 @@ export default [
   },
   {
     english: "how long will it take to build the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how long will it take to build the stadium",
     french: "",
     spanish: "",
   },
@@ -2891,6 +3411,11 @@ export default [
   },
   {
     english: "how long did it take you to knit this",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "how long did it take you to knit this sweater",
     french: "",
     spanish: "",
   },
@@ -2955,6 +3480,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i can hardly believe that he is deaf; he can understand us so well",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can hardly believe that paul",
     french: "",
     spanish: "",
@@ -2985,6 +3515,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i can hardly believe that paul was put in prison for bribery",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can hardly believe what",
     french: "",
     spanish: "",
@@ -2996,6 +3531,11 @@ export default [
   },
   {
     english: "i can hardly believe what i have",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i can hardly believe what i have seen",
     french: "",
     spanish: "",
   },
@@ -3040,6 +3580,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i can’t help laughing every time i think of that",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i couldn’t",
     french: "",
     spanish: "",
@@ -3070,6 +3615,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i couldn’t help noticing your ring; it’s beautiful",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can’t help but",
     french: "",
     spanish: "",
@@ -3086,6 +3636,11 @@ export default [
   },
   {
     english: "i can’t help but feel sorry for",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i can’t help but feel sorry for him",
     french: "",
     spanish: "",
   },
@@ -3110,12 +3665,22 @@ export default [
     spanish: "",
   },
   {
+    english: "i can’t help remembering how beautiful she looked",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i bet",
     french: "",
     spanish: "",
   },
   {
     english: "i bet we’re",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i bet we’re lost",
     french: "",
     spanish: "",
   },
@@ -3135,6 +3700,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i bet he is home now",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i bet he will",
     french: "",
     spanish: "",
@@ -3150,12 +3720,22 @@ export default [
     spanish: "",
   },
   {
+    english: "i bet he will win the prize",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can’t say",
     french: "",
     spanish: "",
   },
   {
     english: "i can’t say for",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i can’t say for certain",
     french: "",
     spanish: "",
   },
@@ -3171,6 +3751,11 @@ export default [
   },
   {
     english: "i can’t say who did the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i can’t say who did the best",
     french: "",
     spanish: "",
   },
@@ -3230,6 +3815,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i can’t say with any certainty that eating less can be a cure for obesity",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can’t wait",
     french: "",
     spanish: "",
@@ -3250,6 +3840,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i can’t wait to see my family",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can’t wait to hear",
     french: "",
     spanish: "",
@@ -3260,12 +3855,22 @@ export default [
     spanish: "",
   },
   {
+    english: "i can’t wait to hear from you",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i can’t wait to buy",
     french: "",
     spanish: "",
   },
   {
     english: "i can’t wait to buy a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i can’t wait to buy a computer",
     french: "",
     spanish: "",
   },
@@ -3310,12 +3915,22 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d hate for you to think i didn’t care",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d hate for you to miss",
     french: "",
     spanish: "",
   },
   {
     english: "i’d hate for you to miss the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d hate for you to miss the party",
     french: "",
     spanish: "",
   },
@@ -3330,7 +3945,17 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d hate for you to leave our company",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d hate for you to get",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d hate for you to get sick",
     french: "",
     spanish: "",
   },
@@ -3365,6 +3990,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d like you to fetch some boiled water",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d like you to send",
     french: "",
     spanish: "",
@@ -3376,6 +4006,11 @@ export default [
   },
   {
     english: "i’d like you to send for a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d like you to send for a doctor",
     french: "",
     spanish: "",
   },
@@ -3406,6 +4041,11 @@ export default [
   },
   {
     english: "i’d like you to look after my baby for a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d like you to look after my baby for a while",
     french: "",
     spanish: "",
   },
@@ -3445,7 +4085,7 @@ export default [
     spanish: "",
   },
   {
-    english: "it’s",
+    english: "if  there is one thing that  annoys me",
     french: "",
     spanish: "",
   },
@@ -3466,6 +4106,11 @@ export default [
   },
   {
     english: "it’s people who don’t keep",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s people who don’t keep their promises",
     french: "",
     spanish: "",
   },
@@ -3500,6 +4145,11 @@ export default [
     spanish: "",
   },
   {
+    english: "if there is one thing that disappoints me",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s his",
     french: "",
     spanish: "",
@@ -3525,7 +4175,17 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s his failure to arrange his time responsibly",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "if there is one thing that upsets",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "if there is one thing that upsets me",
     french: "",
     spanish: "",
   },
@@ -3535,7 +4195,17 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s my forgetfulness",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "if there is one thing that surprises",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "if there is one thing that surprises me",
     french: "",
     spanish: "",
   },
@@ -3550,12 +4220,27 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s his winning the competition",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "if there is one thing that interests",
     french: "",
     spanish: "",
   },
   {
+    english: "if there is one thing that interests me",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s fashion",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s fashion design",
     french: "",
     spanish: "",
   },
@@ -3585,6 +4270,11 @@ export default [
     spanish: "",
   },
   {
+    english: "if it hadn’t been for your help",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "my",
     french: "",
     spanish: "",
@@ -3605,7 +4295,17 @@ export default [
     spanish: "",
   },
   {
+    english: "my experiments would have failed",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "if it hadn’t been for the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "if it hadn’t been for the lifeboat",
     french: "",
     spanish: "",
   },
@@ -3620,6 +4320,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i would have drowned",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "if it hadn’t been for her",
     french: "",
     spanish: "",
@@ -3630,7 +4335,7 @@ export default [
     spanish: "",
   },
   {
-    english: "the",
+    english: "if it hadn’t been for her careful arrangement",
     french: "",
     spanish: "",
   },
@@ -3660,12 +4365,22 @@ export default [
     spanish: "",
   },
   {
+    english: "the party would not have been a success",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "without",
     french: "",
     spanish: "",
   },
   {
     english: "without my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "without my persuasion",
     french: "",
     spanish: "",
   },
@@ -3685,6 +4400,11 @@ export default [
     spanish: "",
   },
   {
+    english: "he would not have come",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "without your",
     french: "",
     spanish: "",
@@ -3695,7 +4415,7 @@ export default [
     spanish: "",
   },
   {
-    english: "we",
+    english: "without your financial support",
     french: "",
     spanish: "",
   },
@@ -3721,6 +4441,11 @@ export default [
   },
   {
     english: "we could not have finished the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we could not have finished the project",
     french: "",
     spanish: "",
   },
@@ -3760,6 +4485,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i dare say you will succeed in the election",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i dare say he",
     french: "",
     spanish: "",
@@ -3770,12 +4500,27 @@ export default [
     spanish: "",
   },
   {
+    english: "i dare say he won’t come",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i would imagine",
     french: "",
     spanish: "",
   },
   {
     english: "i would imagine he’s",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i would imagine he’s forgotten",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i dare say he has",
     french: "",
     spanish: "",
   },
@@ -3791,6 +4536,11 @@ export default [
   },
   {
     english: "i’ve got to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ve got to go",
     french: "",
     spanish: "",
   },
@@ -3825,6 +4575,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i have got to buy something to drink",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i have got to mail",
     french: "",
     spanish: "",
@@ -3850,6 +4605,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i have got to mail some cards to my friends",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ve got to apologize",
     french: "",
     spanish: "",
@@ -3871,6 +4631,11 @@ export default [
   },
   {
     english: "i’ve got to apologize for troubling you so",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ve got to apologize for troubling you so much",
     french: "",
     spanish: "",
   },
@@ -3910,6 +4675,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you’ve got to try this dish; it’s tasty",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ll",
     french: "",
     spanish: "",
@@ -3940,6 +4710,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ll be back as soon as possible",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ll work",
     french: "",
     spanish: "",
@@ -3961,6 +4736,11 @@ export default [
   },
   {
     english: "i’ll work as hard as i",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ll work as hard as i can",
     french: "",
     spanish: "",
   },
@@ -3995,6 +4775,11 @@ export default [
     spanish: "",
   },
   {
+    english: "try to be as careful as possible",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "come",
     french: "",
     spanish: "",
@@ -4011,6 +4796,11 @@ export default [
   },
   {
     english: "come as quickly as",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "come as quickly as possible",
     french: "",
     spanish: "",
   },
@@ -4040,6 +4830,11 @@ export default [
     spanish: "",
   },
   {
+    english: "run as fast as you can",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d be",
     french: "",
     spanish: "",
@@ -4060,6 +4855,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d be grateful for your help",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d be grateful if",
     french: "",
     spanish: "",
@@ -4075,6 +4875,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d be grateful if you’d be quiet",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d be grateful if you’d give",
     french: "",
     spanish: "",
@@ -4086,6 +4891,11 @@ export default [
   },
   {
     english: "i’d be grateful if you’d give me a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d be grateful if you’d give me a hand",
     french: "",
     spanish: "",
   },
@@ -4110,6 +4920,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’d be grateful if you’d take care of my baby",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d be grateful if you",
     french: "",
     spanish: "",
@@ -4121,6 +4936,11 @@ export default [
   },
   {
     english: "i’d be grateful if you danced with",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d be grateful if you danced with me",
     french: "",
     spanish: "",
   },
@@ -4160,6 +4980,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ll let you know when i’m leaving for beijing",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ll let you know if",
     french: "",
     spanish: "",
@@ -4190,7 +5015,17 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ll let you know if i can make it for dinner",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ll let you know if i get",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ll let you know if i get bored",
     french: "",
     spanish: "",
   },
@@ -4201,6 +5036,11 @@ export default [
   },
   {
     english: "i’ll let you know when i get",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ll let you know when i get hungry",
     french: "",
     spanish: "",
   },
@@ -4240,6 +5080,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i had no idea that she was a thief",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he has",
     french: "",
     spanish: "",
@@ -4275,6 +5120,11 @@ export default [
     spanish: "",
   },
   {
+    english: "he has no idea how to operate these machines",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i have no",
     french: "",
     spanish: "",
@@ -4296,6 +5146,11 @@ export default [
   },
   {
     english: "i have no idea what time it",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i have no idea what time it is",
     french: "",
     spanish: "",
   },
@@ -4325,6 +5180,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m looking forward to working with you",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m looking forward to coming",
     french: "",
     spanish: "",
@@ -4336,6 +5196,11 @@ export default [
   },
   {
     english: "i’m looking forward to coming to china",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m looking forward to coming to china again",
     french: "",
     spanish: "",
   },
@@ -4361,6 +5226,11 @@ export default [
   },
   {
     english: "i’m really looking forward to the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m really looking forward to the holidays",
     french: "",
     spanish: "",
   },
@@ -4395,6 +5265,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m afraid you didn’t quite get his meaning",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "a:",
     french: "",
     spanish: "",
@@ -4416,6 +5291,16 @@ export default [
   },
   {
     english: "a: could i speak to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "a: could i speak to elizabeth",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "please",
     french: "",
     spanish: "",
   },
@@ -4465,6 +5350,11 @@ export default [
     spanish: "",
   },
   {
+    english: "b: i’m afraid she is not in at the moment",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m afraid we",
     french: "",
     spanish: "",
@@ -4490,6 +5380,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m afraid we are going to be late",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m afraid i",
     french: "",
     spanish: "",
@@ -4501,6 +5396,11 @@ export default [
   },
   {
     english: "i’m afraid i can’t make",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m afraid i can’t make it",
     french: "",
     spanish: "",
   },
@@ -4526,6 +5426,11 @@ export default [
   },
   {
     english: "i’m calling to say goodbye to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m calling to say goodbye to you",
     french: "",
     spanish: "",
   },
@@ -4565,6 +5470,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m calling to tell you that the concert begins at 7:00",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m calling to book",
     french: "",
     spanish: "",
@@ -4586,6 +5496,11 @@ export default [
   },
   {
     english: "i’m calling to book two tickets for tonight’s",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m calling to book two tickets for tonight’s film",
     french: "",
     spanish: "",
   },
@@ -4615,6 +5530,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m calling to warn you of the coming storm",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m not really",
     french: "",
     spanish: "",
@@ -4635,7 +5555,17 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m not really happy with their performance",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m not really happy with your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m not really happy with your behavior",
     french: "",
     spanish: "",
   },
@@ -4645,7 +5575,22 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m not really happy with your present situation",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m not really happy with their service",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m not really happy with my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’m not really happy with my life",
     french: "",
     spanish: "",
   },
@@ -4705,6 +5650,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it was jack who broke the window when we were playing football",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it is",
     french: "",
     spanish: "",
@@ -4731,6 +5681,11 @@ export default [
   },
   {
     english: "it is jane that i want to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it is jane that i want to marry",
     french: "",
     spanish: "",
   },
@@ -4780,6 +5735,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it was here in the supermarket that he met his first love",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i really",
     french: "",
     spanish: "",
@@ -4791,6 +5751,11 @@ export default [
   },
   {
     english: "i really go for",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i really go for beethoven",
     french: "",
     spanish: "",
   },
@@ -4810,7 +5775,7 @@ export default [
     spanish: "",
   },
   {
-    english: "she",
+    english: "i really go for this house it’s terrific",
     french: "",
     spanish: "",
   },
@@ -4840,6 +5805,11 @@ export default [
     spanish: "",
   },
   {
+    english: "she goes for tall and handsome men",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i don’t go",
     french: "",
     spanish: "",
@@ -4851,6 +5821,11 @@ export default [
   },
   {
     english: "i don’t go much for",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i don’t go much for modernism",
     french: "",
     spanish: "",
   },
@@ -4885,6 +5860,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s too bad that we lost the match",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s too bad that we have",
     french: "",
     spanish: "",
@@ -4905,12 +5885,22 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s too bad that we have to cancel the get-together",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s too bad that you",
     french: "",
     spanish: "",
   },
   {
     english: "it’s too bad that you can’t",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s too bad that you can’t come",
     french: "",
     spanish: "",
   },
@@ -4931,6 +5921,11 @@ export default [
   },
   {
     english: "it’s too bad that the rain spoiled our",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s too bad that the rain spoiled our picnic",
     french: "",
     spanish: "",
   },
@@ -4965,6 +5960,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m thinking about moving to a new house",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m thinking about taking",
     french: "",
     spanish: "",
@@ -4980,6 +5980,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’m thinking about taking a science course",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’m thinking about getting",
     french: "",
     spanish: "",
@@ -4990,7 +5995,7 @@ export default [
     spanish: "",
   },
   {
-    english: "it’s my",
+    english: "i’m thinking about getting a divorce",
     french: "",
     spanish: "",
   },
@@ -5011,6 +6016,11 @@ export default [
   },
   {
     english: "it’s my fault we missed the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s my fault we missed the bus",
     french: "",
     spanish: "",
   },
@@ -5040,12 +6050,22 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s my fault you didn’t get paid on time",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s my fault we lost",
     french: "",
     spanish: "",
   },
   {
     english: "it’s my fault we lost the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s my fault we lost the game",
     french: "",
     spanish: "",
   },
@@ -5075,12 +6095,22 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s on the tip of my tongue",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "let",
     french: "",
     spanish: "",
   },
   {
     english: "let me",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "let me see",
     french: "",
     spanish: "",
   },
@@ -5125,12 +6155,22 @@ export default [
     spanish: "",
   },
   {
+    english: "his address is on the tip of my tongue",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "wait",
     french: "",
     spanish: "",
   },
   {
     english: "wait a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "wait a minute",
     french: "",
     spanish: "",
   },
@@ -5190,6 +6230,11 @@ export default [
     spanish: "",
   },
   {
+    english: "the question she wanted to ask was on the tip of her tongue",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "a: do",
     french: "",
     spanish: "",
@@ -5235,6 +6280,11 @@ export default [
     spanish: "",
   },
   {
+    english: "a: do you want to eat a western or chinese meal",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "b: it’s",
     french: "",
     spanish: "",
@@ -5246,6 +6296,11 @@ export default [
   },
   {
     english: "b: it’s up to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "b: it’s up to you",
     french: "",
     spanish: "",
   },
@@ -5281,6 +6336,11 @@ export default [
   },
   {
     english: "it’s up to us to help those in",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s up to us to help those in need",
     french: "",
     spanish: "",
   },
@@ -5340,6 +6400,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s not up to you to tell me how to do my job",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it is said",
     french: "",
     spanish: "",
@@ -5380,6 +6445,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it is said that he is quite a handsome young man",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s said",
     french: "",
     spanish: "",
@@ -5411,6 +6481,11 @@ export default [
   },
   {
     english: "it’s said that a new president will be",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s said that a new president will be appointed",
     french: "",
     spanish: "",
   },
@@ -5470,6 +6545,13 @@ export default [
     spanish: "",
   },
   {
+    english: "it  should be pointed out  that  your proposals are theoretically correct  but practically impossible",
+
+    french: "",
+
+    spanish: "",
+  },
+  {
     english: "it has",
     french: "",
     spanish: "",
@@ -5506,6 +6588,11 @@ export default [
   },
   {
     english: "it has been proven that your method is the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it has been proven that your method is the best",
     french: "",
     spanish: "",
   },
@@ -5565,6 +6652,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it will be noted that what they have done to him is wrong",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s your",
     french: "",
     spanish: "",
@@ -5590,12 +6682,27 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s your turn to tell a story",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s your turn to cook",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s your turn to sweep",
     french: "",
     spanish: "",
   },
   {
     english: "it’s your turn to sweep the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s your turn to sweep the floor",
     french: "",
     spanish: "",
   },
@@ -5610,12 +6717,27 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s your turn to give a presentation",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s your turn to perform",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it may",
     french: "",
     spanish: "",
   },
   {
     english: "it may surprise",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it may surprise you",
     french: "",
     spanish: "",
   },
@@ -5660,6 +6782,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but i paid off all the debts in a year",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but maggie",
     french: "",
     spanish: "",
@@ -5671,6 +6798,11 @@ export default [
   },
   {
     english: "but maggie refused my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but maggie refused my proposal",
     french: "",
     spanish: "",
   },
@@ -5705,6 +6837,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but i bought all these books for 20 yuan",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but he’s",
     french: "",
     spanish: "",
@@ -5730,6 +6867,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but he’s just been promoted to manager",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but he",
     french: "",
     spanish: "",
@@ -5746,6 +6888,11 @@ export default [
   },
   {
     english: "but he was once in",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but he was once in prison",
     french: "",
     spanish: "",
   },
@@ -5775,6 +6922,11 @@ export default [
     spanish: "",
   },
   {
+    english: "it’s not that i don’t like the car",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but i think",
     french: "",
     spanish: "",
@@ -5795,6 +6947,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but i think it is too expensive",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s not that i am",
     french: "",
     spanish: "",
@@ -5811,6 +6968,11 @@ export default [
   },
   {
     english: "it’s not that i am unwilling to help",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s not that i am unwilling to help you",
     french: "",
     spanish: "",
   },
@@ -5845,6 +7007,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but i’m tied up with extra work these days",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "it’s not  that",
     french: "",
     spanish: "",
@@ -5866,6 +7033,11 @@ export default [
   },
   {
     english: "it’s not  that  he doesn’t need your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s not  that  he doesn’t need your help",
     french: "",
     spanish: "",
   },
@@ -5896,6 +7068,11 @@ export default [
   },
   {
     english: "but he thinks it  will be an inconvenience to",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but he thinks it  will be an inconvenience to you",
     french: "",
     spanish: "",
   },
@@ -5940,6 +7117,11 @@ export default [
     spanish: "",
   },
   {
+    english: "a mountain is not famous because it is high",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "but because",
     french: "",
     spanish: "",
@@ -5970,6 +7152,11 @@ export default [
     spanish: "",
   },
   {
+    english: "but because it has some spirit dwelling in it",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ve had",
     french: "",
     spanish: "",
@@ -5995,7 +7182,17 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ve had enough of her continual chatter",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ve had enough of your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ve had enough of your complaining",
     french: "",
     spanish: "",
   },
@@ -6050,6 +7247,11 @@ export default [
     spanish: "",
   },
   {
+    english: "haven’t you had enough of him i found him so boring",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ve had enough of the",
     french: "",
     spanish: "",
@@ -6060,7 +7262,17 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ve had enough of the traffic here",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’ve had enough of this",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’ve had enough of this city",
     french: "",
     spanish: "",
   },
@@ -6115,6 +7327,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i wonder if it would be convenient to visit you next monday",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i wonder if mr",
     french: "",
     spanish: "",
@@ -6146,6 +7363,11 @@ export default [
   },
   {
     english: "i wonder if mr wang could arrange a meeting with",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i wonder if mr wang could arrange a meeting with me",
     french: "",
     spanish: "",
   },
@@ -6190,6 +7412,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i was wondering if the manager would agree with my design",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i was wondering if you",
     french: "",
     spanish: "",
@@ -6225,6 +7452,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i was wondering if you could come to the meeting this afternoon",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i have been",
     french: "",
     spanish: "",
@@ -6255,6 +7487,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i have been learning english for almost ten years",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i have been living",
     french: "",
     spanish: "",
@@ -6271,6 +7508,11 @@ export default [
   },
   {
     english: "i have been living here for thirty",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i have been living here for thirty years",
     french: "",
     spanish: "",
   },
@@ -6325,6 +7567,11 @@ export default [
     spanish: "",
   },
   {
+    english: "where have you been we have been looking for you everywhere",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "no",
     french: "",
     spanish: "",
@@ -6345,12 +7592,17 @@ export default [
     spanish: "",
   },
   {
-    english: "don’t",
+    english: "no matter what he says",
     french: "",
     spanish: "",
   },
   {
     english: "don’t believe",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "don’t believe him",
     french: "",
     spanish: "",
   },
@@ -6370,17 +7622,12 @@ export default [
     spanish: "",
   },
   {
-    english: "it",
+    english: "no matter how you do it",
     french: "",
     spanish: "",
   },
   {
-    english: "it will",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "it will be",
+    english: "it will be wrong",
     french: "",
     spanish: "",
   },
@@ -6395,6 +7642,11 @@ export default [
     spanish: "",
   },
   {
+    english: "no matter where he goes",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he carries",
     french: "",
     spanish: "",
@@ -6405,12 +7657,22 @@ export default [
     spanish: "",
   },
   {
+    english: "he carries his suitcase",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "no matter how you spend",
     french: "",
     spanish: "",
   },
   {
     english: "no matter how you spend your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "no matter how you spend your holiday",
     french: "",
     spanish: "",
   },
@@ -6430,6 +7692,11 @@ export default [
     spanish: "",
   },
   {
+    english: "tell me about it",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i would rather",
     french: "",
     spanish: "",
@@ -6445,7 +7712,7 @@ export default [
     spanish: "",
   },
   {
-    english: "he would",
+    english: "i would rather stay than leave",
     french: "",
     spanish: "",
   },
@@ -6485,6 +7752,11 @@ export default [
     spanish: "",
   },
   {
+    english: "he would rather work all day long than do nothing",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "the mother",
     french: "",
     spanish: "",
@@ -6516,6 +7788,11 @@ export default [
   },
   {
     english: "the mother would rather die than lose her",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the mother would rather die than lose her child",
     french: "",
     spanish: "",
   },
@@ -6570,6 +7847,11 @@ export default [
     spanish: "",
   },
   {
+    english: "she’d rather resign than take part in such shameful business deals",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "now",
     french: "",
     spanish: "",
@@ -6605,6 +7887,11 @@ export default [
     spanish: "",
   },
   {
+    english: "now that i come to think about it",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you’re",
     french: "",
     spanish: "",
@@ -6625,7 +7912,7 @@ export default [
     spanish: "",
   },
   {
-    english: "how",
+    english: "you’re right to dismiss him",
     french: "",
     spanish: "",
   },
@@ -6640,6 +7927,11 @@ export default [
     spanish: "",
   },
   {
+    english: "how ignorant i was!",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "now that i think",
     french: "",
     spanish: "",
@@ -6650,12 +7942,7 @@ export default [
     spanish: "",
   },
   {
-    english: "you",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "you are",
+    english: "now that i think about it",
     french: "",
     spanish: "",
   },
@@ -6685,6 +7972,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you are wise not to have accepted him",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he is a person",
     french: "",
     spanish: "",
@@ -6696,6 +7988,11 @@ export default [
   },
   {
     english: "he is a person really worth",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he is a person really worth trusting",
     french: "",
     spanish: "",
   },
@@ -6740,6 +8037,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you eat so little no wonder you are so slim",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "are you a",
     french: "",
     spanish: "",
@@ -6780,7 +8082,7 @@ export default [
     spanish: "",
   },
   {
-    english: "there",
+    english: "are you a librarian no wonder you are so well read",
     french: "",
     spanish: "",
   },
@@ -6840,6 +8142,11 @@ export default [
     spanish: "",
   },
   {
+    english: "there is something wrong with your leg no wonder you walk so slowly",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i ran",
     french: "",
     spanish: "",
@@ -6895,6 +8202,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i ran to the station only to find that the train had left",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "she came",
     french: "",
     spanish: "",
@@ -6935,6 +8247,11 @@ export default [
     spanish: "",
   },
   {
+    english: "she came home excitedly only to find nobody was in",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i search",
     french: "",
     spanish: "",
@@ -6951,6 +8268,11 @@ export default [
   },
   {
     english: "i search desperately for my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i search desperately for my purse",
     french: "",
     spanish: "",
   },
@@ -6990,6 +8312,11 @@ export default [
     spanish: "",
   },
   {
+    english: "only to find all my money was gone",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i arrived",
     french: "",
     spanish: "",
@@ -7001,6 +8328,11 @@ export default [
   },
   {
     english: "i arrived at the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i arrived at the restaurant",
     french: "",
     spanish: "",
   },
@@ -7030,12 +8362,27 @@ export default [
     spanish: "",
   },
   {
+    english: "only to find i had no money on me",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "on",
     french: "",
     spanish: "",
   },
   {
     english: "on one",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "on one hand",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s convenient",
     french: "",
     spanish: "",
   },
@@ -7051,6 +8398,16 @@ export default [
   },
   {
     english: "but on the other",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "but on the other hand",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "it’s time-consuming",
     french: "",
     spanish: "",
   },
@@ -7095,12 +8452,22 @@ export default [
     spanish: "",
   },
   {
+    english: "he is very obedient to his wife; on the other hand",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he treats",
     french: "",
     spanish: "",
   },
   {
     english: "he treats his parents",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he treats his parents badly",
     french: "",
     spanish: "",
   },
@@ -7150,6 +8517,11 @@ export default [
     spanish: "",
   },
   {
+    english: "jason does everything in the  office;  on the other hand",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he does",
     french: "",
     spanish: "",
@@ -7165,7 +8537,17 @@ export default [
     spanish: "",
   },
   {
+    english: "he does nothing at home",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "as a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "as a teacher",
     french: "",
     spanish: "",
   },
@@ -7205,7 +8587,7 @@ export default [
     spanish: "",
   },
   {
-    english: "he is not",
+    english: "he is very patient in class; but on the other hand",
     french: "",
     spanish: "",
   },
@@ -7230,12 +8612,22 @@ export default [
     spanish: "",
   },
   {
+    english: "he is not so patient with his own child",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "once",
     french: "",
     spanish: "",
   },
   {
     english: "once you",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "once you decide",
     french: "",
     spanish: "",
   },
@@ -7255,12 +8647,22 @@ export default [
     spanish: "",
   },
   {
+    english: "you can’t change your mind",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "once you have",
     french: "",
     spanish: "",
   },
   {
     english: "once you have a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "once you have a stomachache",
     french: "",
     spanish: "",
   },
@@ -7290,6 +8692,11 @@ export default [
     spanish: "",
   },
   {
+    english: "take the medicine twice a day",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "once he",
     french: "",
     spanish: "",
@@ -7315,12 +8722,22 @@ export default [
     spanish: "",
   },
   {
+    english: "once he finds out what you’ve done",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "he’ll",
     french: "",
     spanish: "",
   },
   {
     english: "he’ll get",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "he’ll get mad",
     french: "",
     spanish: "",
   },
@@ -7340,12 +8757,7 @@ export default [
     spanish: "",
   },
   {
-    english: "have",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "have you",
+    english: "speaking of the movies",
     french: "",
     spanish: "",
   },
@@ -7356,6 +8768,16 @@ export default [
   },
   {
     english: "have you seen “the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "have you seen “the patriot”",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "speaking of honesty",
     french: "",
     spanish: "",
   },
@@ -7405,7 +8827,27 @@ export default [
     spanish: "",
   },
   {
+    english: "i know a lot of people who don’t pay bus fares",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "speaking of ben",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "have you seen him",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "have you seen him recently",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "speaking of bicycles",
     french: "",
     spanish: "",
   },
@@ -7436,6 +8878,11 @@ export default [
   },
   {
     english: "china is called “the kingdom of",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "china is called “the kingdom of bicycles”",
     french: "",
     spanish: "",
   },
@@ -7480,6 +8927,11 @@ export default [
     spanish: "",
   },
   {
+    english: "see that the door is locked before you leave",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "see that you",
     french: "",
     spanish: "",
@@ -7501,6 +8953,11 @@ export default [
   },
   {
     english: "see that you have enough sleep every",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "see that you have enough sleep every day",
     french: "",
     spanish: "",
   },
@@ -7530,6 +8987,11 @@ export default [
     spanish: "",
   },
   {
+    english: "see that you go to see your parents often",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "thanks",
     french: "",
     spanish: "",
@@ -7541,6 +9003,11 @@ export default [
   },
   {
     english: "thanks to their",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thanks to their help",
     french: "",
     spanish: "",
   },
@@ -7561,6 +9028,16 @@ export default [
   },
   {
     english: "we accomplished the task on",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we accomplished the task on time",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thanks to computers",
     french: "",
     spanish: "",
   },
@@ -7590,12 +9067,22 @@ export default [
     spanish: "",
   },
   {
+    english: "lots of tasks are now easier",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "thanks to your",
     french: "",
     spanish: "",
   },
   {
     english: "thanks to your timely",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thanks to your timely warning",
     french: "",
     spanish: "",
   },
@@ -7615,12 +9102,27 @@ export default [
     spanish: "",
   },
   {
+    english: "i didn’t make a mistake",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thanks to your stupidity",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "we lost",
     french: "",
     spanish: "",
   },
   {
     english: "we lost our",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we lost our game",
     french: "",
     spanish: "",
   },
@@ -7655,7 +9157,7 @@ export default [
     spanish: "",
   },
   {
-    english: "the more",
+    english: "the more you put your heart into english",
     french: "",
     spanish: "",
   },
@@ -7680,12 +9182,32 @@ export default [
     spanish: "",
   },
   {
-    english: "the more you",
+    english: "the more you’ll be interested in it",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the more you pay",
     french: "",
     spanish: "",
   },
   {
     english: "the more you will",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the more you will gain",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the sooner",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the better",
     french: "",
     spanish: "",
   },
@@ -7715,7 +9237,7 @@ export default [
     spanish: "",
   },
   {
-    english: "the sooner",
+    english: "the earlier you set about your work",
     french: "",
     spanish: "",
   },
@@ -7731,6 +9253,11 @@ export default [
   },
   {
     english: "the sooner you will finish",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the sooner you will finish it",
     french: "",
     spanish: "",
   },
@@ -7810,6 +9337,11 @@ export default [
     spanish: "",
   },
   {
+    english: "the first thing i’m going to do when i get home is sleep for a whole day",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "the first thing i’m going to do when i get a",
     french: "",
     spanish: "",
@@ -7850,6 +9382,11 @@ export default [
     spanish: "",
   },
   {
+    english: "the first thing i’m going to do when i get a pay raise is to treat you to dinner",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "the first thing i’m going to do when i spend",
     french: "",
     spanish: "",
@@ -7881,6 +9418,11 @@ export default [
   },
   {
     english: "the first thing i’m going to do when i spend my vacation in the country is",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "the first thing i’m going to do when i spend my vacation in the country is go fishing",
     french: "",
     spanish: "",
   },
@@ -7925,22 +9467,17 @@ export default [
     spanish: "",
   },
   {
+    english: "there is nothing as exciting as meeting an old friend unexpectedly",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "for",
     french: "",
     spanish: "",
   },
   {
-    english: "there is",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "there is nothing",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "there is nothing as",
+    english: "for me",
     french: "",
     spanish: "",
   },
@@ -7980,6 +9517,11 @@ export default [
     spanish: "",
   },
   {
+    english: "there is nothing as enjoyable as reading a novel on the grass",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "there is nothing as pleasant",
     french: "",
     spanish: "",
@@ -8015,6 +9557,11 @@ export default [
     spanish: "",
   },
   {
+    english: "there is nothing as pleasant as spending a weekend in the countryside",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "there is nothing as refreshing",
     french: "",
     spanish: "",
@@ -8036,6 +9583,11 @@ export default [
   },
   {
     english: "there is nothing as refreshing as having a good",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there is nothing as refreshing as having a good rest",
     french: "",
     spanish: "",
   },
@@ -8075,6 +9627,11 @@ export default [
     spanish: "",
   },
   {
+    english: "there is nothing i like better than listening to the radio",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "there is nothing women",
     french: "",
     spanish: "",
@@ -8091,6 +9648,11 @@ export default [
   },
   {
     english: "there is nothing women like better than",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there is nothing women like better than shopping",
     french: "",
     spanish: "",
   },
@@ -8121,6 +9683,11 @@ export default [
   },
   {
     english: "there is nothing she likes better than chatting with",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there is nothing she likes better than chatting with friends",
     french: "",
     spanish: "",
   },
@@ -8160,6 +9727,11 @@ export default [
     spanish: "",
   },
   {
+    english: "we’d be better off without them as neighbors",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "we’d be better off without him",
     french: "",
     spanish: "",
@@ -8171,6 +9743,11 @@ export default [
   },
   {
     english: "we’d be better off without him at the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we’d be better off without him at the party",
     french: "",
     spanish: "",
   },
@@ -8215,6 +9792,11 @@ export default [
     spanish: "",
   },
   {
+    english: "they’d be better off without their wives around them",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i’d be better",
     french: "",
     spanish: "",
@@ -8246,6 +9828,11 @@ export default [
   },
   {
     english: "i’d be better off without the incident on my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i’d be better off without the incident on my mind",
     french: "",
     spanish: "",
   },
@@ -8290,12 +9877,27 @@ export default [
     spanish: "",
   },
   {
+    english: "thank you for what you have done for me",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "thank you for your",
     french: "",
     spanish: "",
   },
   {
+    english: "thank you for your help",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "thank you for the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thank you for the gift",
     french: "",
     spanish: "",
   },
@@ -8315,6 +9917,16 @@ export default [
     spanish: "",
   },
   {
+    english: "thank you for giving me a lift",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "thank you for your advice",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "we’d better",
     french: "",
     spanish: "",
@@ -8326,6 +9938,11 @@ export default [
   },
   {
     english: "we’d better buy a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we’d better buy a computer",
     french: "",
     spanish: "",
   },
@@ -8350,6 +9967,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you’d better not ask him",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you had",
     french: "",
     spanish: "",
@@ -8370,12 +9992,22 @@ export default [
     spanish: "",
   },
   {
+    english: "you had best accept his success",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you had best set",
     french: "",
     spanish: "",
   },
   {
     english: "you had best set out",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you had best set out early",
     french: "",
     spanish: "",
   },
@@ -8396,6 +10028,11 @@ export default [
   },
   {
     english: "what became of the poor",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what became of the poor child",
     french: "",
     spanish: "",
   },
@@ -8445,6 +10082,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what will become of my family if my father goes bankrupt",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what will become of my dog",
     french: "",
     spanish: "",
@@ -8456,6 +10098,11 @@ export default [
   },
   {
     english: "what will become of my dog during my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what will become of my dog during my absence",
     french: "",
     spanish: "",
   },
@@ -8501,6 +10148,11 @@ export default [
   },
   {
     english: "what will become of the water if we put it outside during the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what will become of the water if we put it outside during the winter",
     french: "",
     spanish: "",
   },
@@ -8555,6 +10207,11 @@ export default [
     spanish: "",
   },
   {
+    english: "we may as well buy a benz since you don’t like ford",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "we may as well have",
     french: "",
     spanish: "",
@@ -8585,6 +10242,11 @@ export default [
     spanish: "",
   },
   {
+    english: "we may as well have a try since it’s worth doing",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "we may as well take",
     french: "",
     spanish: "",
@@ -8601,6 +10263,16 @@ export default [
   },
   {
     english: "we may as well take the risk nothing",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we may as well take the risk nothing ventured",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "nothing gained",
     french: "",
     spanish: "",
   },
@@ -8625,6 +10297,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what can i do for you",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what can i do to",
     french: "",
     spanish: "",
@@ -8640,6 +10317,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what can i do to cheer her up",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what can i do to make",
     french: "",
     spanish: "",
@@ -8650,7 +10332,17 @@ export default [
     spanish: "",
   },
   {
+    english: "what can i do to make him satisfied",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what can i do to stop",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what can i do to stop them",
     french: "",
     spanish: "",
   },
@@ -8670,6 +10362,11 @@ export default [
     spanish: "",
   },
   {
+    english: "i’ve got the what-do-you-call-it for you",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "i cannot",
     french: "",
     spanish: "",
@@ -8681,6 +10378,11 @@ export default [
   },
   {
     english: "i cannot find the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "i cannot find the what-do-you-call-it",
     french: "",
     spanish: "",
   },
@@ -8715,6 +10417,11 @@ export default [
     spanish: "",
   },
   {
+    english: "she’s just gone out with old what’s-his-name",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s-his-name",
     french: "",
     spanish: "",
@@ -8735,6 +10442,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s-his-name called you this morning",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "where did",
     french: "",
     spanish: "",
@@ -8751,6 +10463,11 @@ export default [
   },
   {
     english: "where did you put the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where did you put the what-do-you-call-it",
     french: "",
     spanish: "",
   },
@@ -8800,6 +10517,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what do you say about going to the cinema this afternoon",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "let’s",
     french: "",
     spanish: "",
@@ -8835,12 +10557,22 @@ export default [
     spanish: "",
   },
   {
+    english: "let’s go by plane what do you say",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what do you say about some",
     french: "",
     spanish: "",
   },
   {
     english: "what do you say about some light",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what do you say about some light music",
     french: "",
     spanish: "",
   },
@@ -8860,12 +10592,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what do you mean by saying that",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what do you mean by canceling",
     french: "",
     spanish: "",
   },
   {
     english: "what do you mean by canceling your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what do you mean by canceling your performance",
     french: "",
     spanish: "",
   },
@@ -8885,6 +10627,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what do you mean by “out of the question”",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what do you mean by asking",
     french: "",
     spanish: "",
@@ -8896,6 +10643,11 @@ export default [
   },
   {
     english: "what do you mean by asking such a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what do you mean by asking such a question",
     french: "",
     spanish: "",
   },
@@ -8945,6 +10697,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what if it rains when we have no umbrella with us",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what if they",
     french: "",
     spanish: "",
@@ -8956,6 +10713,11 @@ export default [
   },
   {
     english: "what if they are against",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what if they are against us",
     french: "",
     spanish: "",
   },
@@ -8981,6 +10743,11 @@ export default [
   },
   {
     english: "what if we get lost in the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what if we get lost in the jungle",
     french: "",
     spanish: "",
   },
@@ -9035,12 +10802,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what if they don’t approve of our earning some money in our spare time",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what is",
     french: "",
     spanish: "",
   },
   {
     english: "what is it",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what is it for",
     french: "",
     spanish: "",
   },
@@ -9065,6 +10842,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what did you say that for",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what do you need",
     french: "",
     spanish: "",
@@ -9081,6 +10863,11 @@ export default [
   },
   {
     english: "what do you need so much money",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what do you need so much money for",
     french: "",
     spanish: "",
   },
@@ -9135,12 +10922,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what i’m trying to say is that he is a good husband",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what i’m trying to say is that it’s",
     french: "",
     spanish: "",
   },
   {
     english: "what i’m trying to say is that it’s worth",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what i’m trying to say is that it’s worth buying",
     french: "",
     spanish: "",
   },
@@ -9156,6 +10953,11 @@ export default [
   },
   {
     english: "what i’m trying to say is that human nature doesn’t",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what i’m trying to say is that human nature doesn’t change",
     french: "",
     spanish: "",
   },
@@ -9180,12 +10982,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what i’m trying to say is that you should think of others",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what i’m trying to say is that smoking",
     french: "",
     spanish: "",
   },
   {
     english: "what i’m trying to say is that smoking is",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what i’m trying to say is that smoking is harmful",
     french: "",
     spanish: "",
   },
@@ -9220,12 +11032,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what would you do if you were me",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what would you do if you were in",
     french: "",
     spanish: "",
   },
   {
     english: "what would you do if you were in my",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what would you do if you were in my shoes",
     french: "",
     spanish: "",
   },
@@ -9250,6 +11072,16 @@ export default [
     spanish: "",
   },
   {
+    english: "what would you do if you had a lot of money",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what would you do if you failed",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what would you do if the",
     french: "",
     spanish: "",
@@ -9261,6 +11093,11 @@ export default [
   },
   {
     english: "what would you do if the rumors were",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what would you do if the rumors were true",
     french: "",
     spanish: "",
   },
@@ -9285,6 +11122,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s the matter with him",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s the matter with your",
     french: "",
     spanish: "",
@@ -9300,6 +11142,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s the matter with your finger it’s bleeding",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s wrong",
     french: "",
     spanish: "",
@@ -9311,6 +11158,16 @@ export default [
   },
   {
     english: "what’s wrong with this",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s wrong with this machine",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s wrong with you",
     french: "",
     spanish: "",
   },
@@ -9335,7 +11192,17 @@ export default [
     spanish: "",
   },
   {
+    english: "mum you look so pale",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s wrong with your",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s wrong with your car",
     french: "",
     spanish: "",
   },
@@ -9360,12 +11227,27 @@ export default [
     spanish: "",
   },
   {
+    english: "where can i get a map",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "where can i find",
     french: "",
     spanish: "",
   },
   {
     english: "where can i find a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where can i find a policeman",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where can i find him",
     french: "",
     spanish: "",
   },
@@ -9390,6 +11272,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s the use of talking about it",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s the use of crying",
     french: "",
     spanish: "",
@@ -9401,6 +11288,11 @@ export default [
   },
   {
     english: "what’s the use of crying over spilt",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s the use of crying over spilt milk",
     french: "",
     spanish: "",
   },
@@ -9425,6 +11317,11 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s the point of arguing with her",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "what’s the point of worrying",
     french: "",
     spanish: "",
@@ -9435,12 +11332,22 @@ export default [
     spanish: "",
   },
   {
+    english: "what’s the point of worrying about it",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "where there",
     french: "",
     spanish: "",
   },
   {
     english: "where there are",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where there are difficulties",
     french: "",
     spanish: "",
   },
@@ -9470,7 +11377,37 @@ export default [
     spanish: "",
   },
   {
+    english: "there are ways to get over them",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "where there is",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where there is opposition",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there are rebellions",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where there is contact",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there is friction",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "where there are women",
     french: "",
     spanish: "",
   },
@@ -9485,12 +11422,27 @@ export default [
     spanish: "",
   },
   {
+    english: "there are jealousy and suspicion",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "where there is a",
     french: "",
     spanish: "",
   },
   {
+    english: "where there is a will",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "there is a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "there is a way",
     french: "",
     spanish: "",
   },
@@ -9501,6 +11453,11 @@ export default [
   },
   {
     english: "what’s your favorite",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s your favorite dish",
     french: "",
     spanish: "",
   },
@@ -9530,6 +11487,16 @@ export default [
     spanish: "",
   },
   {
+    english: "who is your favorite film star",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "what’s your favorite subject",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "which",
     french: "",
     spanish: "",
@@ -9546,6 +11513,11 @@ export default [
   },
   {
     english: "which is your favorite",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "which is your favorite book",
     french: "",
     spanish: "",
   },
@@ -9595,6 +11567,11 @@ export default [
     spanish: "",
   },
   {
+    english: "why not try to persuade him to give up smoking",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "why don’t",
     french: "",
     spanish: "",
@@ -9620,6 +11597,11 @@ export default [
     spanish: "",
   },
   {
+    english: "why don’t you go ask the teacher",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "why not buy",
     french: "",
     spanish: "",
@@ -9631,6 +11613,11 @@ export default [
   },
   {
     english: "why not buy some ready-made",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "why not buy some ready-made food",
     french: "",
     spanish: "",
   },
@@ -9665,7 +11652,12 @@ export default [
     spanish: "",
   },
   {
-    english: "why",
+    english: "a: let’s go to see a film tonight",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "b: sure",
     french: "",
     spanish: "",
   },
@@ -9690,7 +11682,17 @@ export default [
     spanish: "",
   },
   {
+    english: "would you care for something to drink",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "would you care for some",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "would you care for some tea",
     french: "",
     spanish: "",
   },
@@ -9715,7 +11717,17 @@ export default [
     spanish: "",
   },
   {
+    english: "would you like to borrow my car",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "would you like to try",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "would you like to try yourself",
     french: "",
     spanish: "",
   },
@@ -9775,6 +11787,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you only have to ask her in order to know what has happened",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you only have to call",
     french: "",
     spanish: "",
@@ -9826,6 +11843,11 @@ export default [
   },
   {
     english: "you only have to call her in order to know whether she will come or",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you only have to call her in order to know whether she will come or not",
     french: "",
     spanish: "",
   },
@@ -9916,7 +11938,16 @@ export default [
   },
   {
     english: "i only have to consult the digital dictionary in order to find out the meaning of a word i don’t",
+
     french: "",
+
+    spanish: "",
+  },
+  {
+    english: "i only have to consult the digital dictionary in order to find out the meaning of a word i don’t know",
+
+    french: "",
+
     spanish: "",
   },
   {
@@ -9951,6 +11982,11 @@ export default [
   },
   {
     english: "you only have to ask the teacher in order to solve the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you only have to ask the teacher in order to solve the problem",
     french: "",
     spanish: "",
   },
@@ -10000,6 +12036,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you only have to get some newspapers in order to find the advertisements you need",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you are not",
     french: "",
     spanish: "",
@@ -10025,6 +12066,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you are not to doze off in class",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you are not to waste",
     french: "",
     spanish: "",
@@ -10045,6 +12091,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you are not to waste your time doing nothing",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you are not to scribble",
     french: "",
     spanish: "",
@@ -10056,6 +12107,11 @@ export default [
   },
   {
     english: "you are not to scribble on the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you are not to scribble on the wall",
     french: "",
     spanish: "",
   },
@@ -10076,6 +12132,11 @@ export default [
   },
   {
     english: "you are not to take photos in the",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you are not to take photos in the museum",
     french: "",
     spanish: "",
   },
@@ -10101,6 +12162,11 @@ export default [
   },
   {
     english: "you can never be too careful",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you can never be too careful driving",
     french: "",
     spanish: "",
   },
@@ -10131,6 +12197,11 @@ export default [
   },
   {
     english: "we cannot praise him enough as a",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we cannot praise him enough as a hero",
     french: "",
     spanish: "",
   },
@@ -10175,12 +12246,22 @@ export default [
     spanish: "",
   },
   {
+    english: "one cannot practice enough when learning a foreign language",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you can never overestimate",
     french: "",
     spanish: "",
   },
   {
     english: "you can never overestimate shakespeare’s",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you can never overestimate shakespeare’s plays",
     french: "",
     spanish: "",
   },
@@ -10210,6 +12291,11 @@ export default [
     spanish: "",
   },
   {
+    english: "you can never over-emphasize the importance of physical training",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "whether",
     french: "",
     spanish: "",
@@ -10226,6 +12312,11 @@ export default [
   },
   {
     english: "whether it rains or",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "whether it rains or not",
     french: "",
     spanish: "",
   },
@@ -10250,6 +12341,11 @@ export default [
     spanish: "",
   },
   {
+    english: "we’ll hold the sports meet",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "they’ll",
     french: "",
     spanish: "",
@@ -10270,7 +12366,7 @@ export default [
     spanish: "",
   },
   {
-    english: "whether",
+    english: "they’ll find out the truth",
     french: "",
     spanish: "",
   },
@@ -10305,12 +12401,7 @@ export default [
     spanish: "",
   },
   {
-    english: "whether or",
-    french: "",
-    spanish: "",
-  },
-  {
-    english: "whether or not",
+    english: "whether or not you tell it to them",
     french: "",
     spanish: "",
   },
@@ -10321,6 +12412,11 @@ export default [
   },
   {
     english: "whether or not we like",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "whether or not we like it",
     french: "",
     spanish: "",
   },
@@ -10336,6 +12432,11 @@ export default [
   },
   {
     english: "we have to accept",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "we have to accept it",
     french: "",
     spanish: "",
   },
@@ -10360,6 +12461,11 @@ export default [
     spanish: "",
   },
   {
+    english: "whether you are willing or not",
+    french: "",
+    spanish: "",
+  },
+  {
     english: "you have",
     french: "",
     spanish: "",
@@ -10371,6 +12477,11 @@ export default [
   },
   {
     english: "you have to do",
+    french: "",
+    spanish: "",
+  },
+  {
+    english: "you have to do it",
     french: "",
     spanish: "",
   },
