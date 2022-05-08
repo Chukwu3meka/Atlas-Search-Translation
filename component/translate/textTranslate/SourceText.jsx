@@ -39,17 +39,23 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
         </IconButton>
       </Tooltip>
       {sourceText.length ? (
-        <Tooltip title="Listen">
-          <IconButton
-            aria-label="listen"
-            onClick={() =>
-              speaking
-                ? textToSpeechHandler({ text: sourceText, language: sourceLanguage, setLoading: setSpeaking })
-                : stopTextToSpeechHandler()
-            }>
-            {speaking ? <StopIcon /> : <VolumeUpIcon />}
-          </IconButton>
-        </Tooltip>
+        <>
+          {speaking ? (
+            <Tooltip title="Stop Listening">
+              <IconButton aria-label="stop-listening" onClick={stopTextToSpeechHandler}>
+                <StopIcon />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Listen">
+              <IconButton
+                aria-label="listen"
+                onClick={() => textToSpeechHandler({ text: sourceText, language: sourceLanguage, setLoading: setSpeaking })}>
+                <VolumeUpIcon />
+              </IconButton>
+            </Tooltip>
+          )}
+        </>
       ) : (
         ""
       )}

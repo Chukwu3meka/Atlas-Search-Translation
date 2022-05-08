@@ -46,7 +46,7 @@ export const textToSpeechHandler = async ({ text, language, setLoading }) => {
   speech.lang = language === "Spanish" ? "es" : language === "French" ? "fr" : "en";
   // set text
   speech.text = text;
-  speech.volume = 1;
+  // speech.volume = 1;
 
   // Start Speaking
   window.speechSynthesis.speak(speech);

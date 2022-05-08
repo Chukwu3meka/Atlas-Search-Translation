@@ -3,6 +3,7 @@ import Input from "@mui/material/Input";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
+import StopIcon from "@mui/icons-material/Stop";
 import ShareIcon from "@mui/icons-material/Share";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarSharpIcon from "@mui/icons-material/StarSharp";
@@ -47,17 +48,23 @@ const Translation = ({
     {/* translation footer */}
     <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
       {translationText?.length && !translationText?.endsWith("...") ? (
-        <Tooltip title="Listen">
-          <IconButton
-            aria-label="listen"
-            onClick={() =>
-              speaking
-                ? textToSpeechHandler({ text: translationText, language: translationLanguage, setLoading: setSpeaking })
-                : stopTextToSpeechHandler()
-            }>
-            {speaking ? <StopIcon /> : <VolumeUpIcon />}
-          </IconButton>
-        </Tooltip>
+        <>
+          {speaking ? (
+            <Tooltip title="Stop Listening">
+              <IconButton aria-label="stop-listening" onClick={stopTextToSpeechHandler}>
+                <StopIcon />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Listen">
+              <IconButton
+                aria-label="listen"
+                onClick={() => textToSpeechHandler({ text: translationText, language: translationLanguage, setLoading: setSpeaking })}>
+                <VolumeUpIcon />
+              </IconButton>
+            </Tooltip>
+          )}
+        </>
       ) : (
         ""
       )}
