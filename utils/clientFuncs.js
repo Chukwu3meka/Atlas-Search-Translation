@@ -60,7 +60,6 @@ export const textToSpeechHandler = async ({ text, language, setLoading }) => {
 //  stop text to speech
 export const stopTextToSpeechHandler = async () => {
   if (!window) return;
-
   window.speechSynthesis.cancel();
 };
 
@@ -74,10 +73,10 @@ export const speechToTextHandler = async ({ setText, language }) => {
   // set recognition language
   recognition.lang = language === "Spanish" ? "es" : language === "French" ? "fr" : "en";
 
-  // This runs when the speech recognition service starts
-  recognition.onstart = function () {
-    console.log("We are listening. Try speaking into the microphone.");
-  };
+  // // This runs when the speech recognition service starts
+  // recognition.onstart = function () {
+  //   console.log("We are listening. Try speaking into the microphone.");
+  // };
 
   recognition.onspeechend = function () {
     // when user is done speaking
