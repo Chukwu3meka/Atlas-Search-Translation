@@ -34,20 +34,37 @@ export const fetcher = async (endpoint, data) => {
 };
 
 // text to speech
-export const textToSpeechHandler = async ({ text, language }) => {
-  const speech = new SpeechSynthesisUtterance();
+export const textToSpeechHandler = async ({ text, language, setLoading }) => {
+  if (!window) return; //detect if window is defined
+
+  setLoading(true);
+
+  // Initialize new SpeechSynthesisUtterance object
+  let speech = new SpeechSynthesisUtterance();
 
   // set speech language
   speech.lang = language === "Spanish" ? "es" : language === "French" ? "fr" : "en";
   // set text
   speech.text = text;
 
-  // window.speechSynthesis.speak(speech);
-  speechSynthesis.speak(speech);
+  // Start Speaking
+  window.speechSynthesis.speak(speech);
+
+  speech.onend = (event) => setLoading(false);
+  speech.onerror = (event) => setLoading(false);
+
+  // speechSynthesis.speak(speech);
+};
+
+//  stop text to speech
+export const stopTextToSpeechHandler = async () => {
+  if (!window) return;
+
+  window.speechSynthesis.cancel();
 };
 
 //  speech to text
-export const speechToTextHandler = async ({ text, language }) => {
+export const speechToTextHandler = async ({ setText, language }) => {
   // console.log("We are listening. Try speaking into the microphone.");
   // new speech recognition object
   const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
@@ -70,7 +87,9 @@ export const speechToTextHandler = async ({ text, language }) => {
   recognition.onresult = function (event) {
     var transcript = event.results[0][0].transcript;
     var confidence = event.results[0][0].confidence;
-    console.log({ text, language, transcript, confidence });
+
+    setText(transcript);
+    // console.log({ transcript });
   };
 
   // start recognition

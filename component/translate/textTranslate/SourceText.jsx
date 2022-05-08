@@ -5,13 +5,13 @@ import Typography from "@mui/material/Typography";
 
 import Tooltip from "@mui/material/Tooltip";
 import MicIcon from "@mui/icons-material/Mic";
+import StopIcon from "@mui/icons-material/Stop";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
+import { speechToTextHandler, stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
 
-import { speechToTextHandler, textToSpeechHandler } from "@utils/clientFuncs";
-
-const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage }) => (
+const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage, speaking, setSpeaking }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex">
       <Input
@@ -32,14 +32,22 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
     </Box>
     <Box display="flex" alignItems="center" pb={1}>
       <Tooltip title="Translate by voice">
-        <IconButton aria-label="translate-by-voice" onClick={() => speechToTextHandler({ text: sourceText, language: sourceLanguage })}>
+        <IconButton
+          aria-label="translate-by-voice"
+          onClick={() => speechToTextHandler({ setText: handleSourceTextChange, language: sourceLanguage })}>
           <MicIcon />
         </IconButton>
       </Tooltip>
       {sourceText.length ? (
         <Tooltip title="Listen">
-          <IconButton aria-label="listen" onClick={() => textToSpeechHandler({ text: sourceText, language: sourceLanguage })}>
-            <VolumeUpIcon />
+          <IconButton
+            aria-label="listen"
+            onClick={() =>
+              speaking
+                ? textToSpeechHandler({ text: sourceText, language: sourceLanguage, setLoading: setSpeaking })
+                : stopTextToSpeechHandler()
+            }>
+            {speaking ? <StopIcon /> : <VolumeUpIcon />}
           </IconButton>
         </Tooltip>
       ) : (

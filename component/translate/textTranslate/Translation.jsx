@@ -10,9 +10,17 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
-import { textToSpeechHandler } from "@utils/clientFuncs";
+import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
 
-const Translation = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler, translationLanguage }) => (
+const Translation = ({
+  speaking,
+  setSpeaking,
+  translationText,
+  translationSaved,
+  translationLanguage,
+  copyTranslationHandler,
+  saveTranslationHandler,
+}) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex" bgcolor="#eeeeee">
       <Input
@@ -20,15 +28,14 @@ const Translation = ({ translationText, translationSaved, copyTranslationHandler
         multiline
         disableUnderline={true}
         minRows={3}
+        lang={translationLanguage}
         fullWidth
         value={translationText}
         // to align text to the right
         inputProps={{ style: { textAlign: "right" } }}
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        disabled
-        onChange={(e) => {
-          console.log(e.target.value);
-        }}
+        // disable typing in react input
+        onKeyDown={(event) => event.preventDefault()}
       />
       <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
         <IconButton aria-label="save-translation">
@@ -39,11 +46,21 @@ const Translation = ({ translationText, translationSaved, copyTranslationHandler
 
     {/* translation footer */}
     <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
-      <Tooltip title="Listen">
-        <IconButton aria-label="listen" onClick={() => textToSpeechHandler({ text: translationText, language: translationLanguage })}>
-          <VolumeUpIcon />
-        </IconButton>
-      </Tooltip>
+      {translationText?.length ? (
+        <Tooltip title="Listen">
+          <IconButton
+            aria-label="listen"
+            onClick={() =>
+              speaking
+                ? textToSpeechHandler({ text: translationText, language: translationLanguage, setLoading: setSpeaking })
+                : stopTextToSpeechHandler()
+            }>
+            {speaking ? <StopIcon /> : <VolumeUpIcon />}
+          </IconButton>
+        </Tooltip>
+      ) : (
+        ""
+      )}
       <Box sx={{ flexGrow: 1 }} />
       <Tooltip title="Copy Translation">
         <IconButton aria-label="copy-translation" onClick={copyTranslationHandler}>

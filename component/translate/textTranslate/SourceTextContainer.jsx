@@ -9,6 +9,7 @@ import { setTextTranslationAction } from "@store/actions";
 const TextTranslator = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     { setTextTranslationAction } = props,
+    [speaking, setSpeaking] = useState(false),
     [sourceText, setSourceText] = useState(""),
     [sourceLanguage, setSourceLanguage] = useState(props.sourceLanguage),
     [translationLanguage, setTranslationLanguage] = useState(props.translationLanguage);
@@ -40,7 +41,7 @@ const TextTranslator = (props) => {
     }
   };
 
-  return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage }} />;
+  return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage, speaking, setSpeaking }} />;
 };
 
 const mapStateToProps = (state) => ({
