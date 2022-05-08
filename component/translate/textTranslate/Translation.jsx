@@ -46,7 +46,7 @@ const Translation = ({
 
     {/* translation footer */}
     <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
-      {translationText?.length ? (
+      {translationText?.length && !translationText?.endsWith("...") ? (
         <Tooltip title="Listen">
           <IconButton
             aria-label="listen"

@@ -11,6 +11,7 @@ const TextTranslator = (props) => {
     { setTextTranslationAction } = props,
     [speaking, setSpeaking] = useState(false),
     [sourceText, setSourceText] = useState(""),
+    [textTranslation, setTextTranslation] = useState(""),
     [sourceLanguage, setSourceLanguage] = useState(props.sourceLanguage),
     [translationLanguage, setTranslationLanguage] = useState(props.translationLanguage);
 
@@ -19,6 +20,11 @@ const TextTranslator = (props) => {
     setSourceLanguage(props.sourceLanguage);
     setTranslationLanguage(props.translationLanguage);
   }, [props.sourceLanguage, props.translationLanguage]);
+
+  //translation change
+  useEffect(() => {
+    setTextTranslation(props.textTranslation);
+  }, [props.textTranslation]);
 
   // run translation again only when language is changed
   useEffect(() => {
@@ -36,6 +42,9 @@ const TextTranslator = (props) => {
       // we've limited the length of transfer to 5000 characters, so a condition is also included
       enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "warning" });
     } else {
+      setTextTranslationAction(
+        textTranslation ? (textTranslation.endsWith("...") ? textTranslation : `${textTranslation}...`) : "Translating..."
+      );
       const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
       setTextTranslationAction(translation);
     }
@@ -46,6 +55,7 @@ const TextTranslator = (props) => {
 
 const mapStateToProps = (state) => ({
     sourceLanguage: state.language.sourceLanguage,
+    textTranslation: state.translation.textTranslation,
     translationLanguage: state.language.translationLanguage,
   }),
   mapDispatchToProps = { setTextTranslationAction };

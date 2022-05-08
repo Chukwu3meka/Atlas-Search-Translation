@@ -6,7 +6,7 @@ import { setSourceLanguageAction, setTranslationLanguageAction } from "@store/ac
 
 const LanguageContainer = ({ setSourceLanguageAction, setTranslationLanguageAction }) => {
   const [dialogTarget, setDialogTarget] = useState(),
-    [mobileDevice, setMobileDevice] = useState(false),
+    [mobileDevice, setMobileDevice] = useState(true),
     [displayLangDialog, setDisplayLangDialog] = useState(false),
     [sourceLanguage, setSourceLanguage] = useState("English"), // default language already in redux store
     [translationLanguage, setTranslationLanguage] = useState("French");
