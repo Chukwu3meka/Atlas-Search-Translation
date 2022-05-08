@@ -32,3 +32,47 @@ export const fetcher = async (endpoint, data) => {
     .then((res) => res.json())
     .catch(() => null);
 };
+
+// text to speech
+export const textToSpeechHandler = async ({ text, language }) => {
+  const speech = new SpeechSynthesisUtterance();
+
+  // set speech language
+  speech.lang = language === "Spanish" ? "es" : language === "French" ? "fr" : "en";
+  // set text
+  speech.text = text;
+
+  // window.speechSynthesis.speak(speech);
+  speechSynthesis.speak(speech);
+};
+
+//  speech to text
+export const speechToTextHandler = async ({ text, language }) => {
+  // console.log("We are listening. Try speaking into the microphone.");
+  // new speech recognition object
+  const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+
+  // set recognition language
+  recognition.lang = language === "Spanish" ? "es" : language === "French" ? "fr" : "en";
+
+  // This runs when the speech recognition service starts
+  recognition.onstart = function () {
+    console.log("We are listening. Try speaking into the microphone.");
+  };
+
+  recognition.onspeechend = function () {
+    // when user is done speaking
+    recognition.stop();
+  };
+
+  // This runs when the speech recognition service returns result
+  recognition.onresult = function (event) {
+    var transcript = event.results[0][0].transcript;
+    var confidence = event.results[0][0].confidence;
+    console.log({ text, language, transcript, confidence });
+  };
+
+  // start recognition
+  recognition.start();
+};

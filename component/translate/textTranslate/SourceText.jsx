@@ -8,8 +8,9 @@ import MicIcon from "@mui/icons-material/Mic";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
+import { speechToTextHandler, textToSpeechHandler } from "@utils/clientFuncs";
 
-const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange }) => (
+const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex">
       <Input
@@ -30,13 +31,13 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange }) =>
     </Box>
     <Box display="flex" alignItems="center" pb={1}>
       <Tooltip title="Translate by voice">
-        <IconButton aria-label="translate-by-voice">
+        <IconButton aria-label="translate-by-voice" onClick={() => speechToTextHandler({ text: sourceText, language: sourceLanguage })}>
           <MicIcon />
         </IconButton>
       </Tooltip>
       {sourceText.length ? (
         <Tooltip title="Listen">
-          <IconButton aria-label="listen">
+          <IconButton aria-label="listen" onClick={() => textToSpeechHandler({ text: sourceText, language: sourceLanguage })}>
             <VolumeUpIcon />
           </IconButton>
         </Tooltip>

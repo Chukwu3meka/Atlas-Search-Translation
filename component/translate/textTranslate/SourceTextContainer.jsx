@@ -40,7 +40,7 @@ const TextTranslator = (props) => {
     }
   };
 
-  return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange }} />;
+  return <SourceText {...{ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage }} />;
 };
 
 const mapStateToProps = (state) => ({

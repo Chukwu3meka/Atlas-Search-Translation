@@ -9,8 +9,9 @@ import StarSharpIcon from "@mui/icons-material/StarSharp";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
+import { textToSpeechHandler } from "@utils/clientFuncs";
 
-const Translation = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }) => (
+const Translation = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler, translationLanguage }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex" bgcolor="#eeeeee">
       <Input
@@ -35,7 +36,7 @@ const Translation = ({ translationText, translationSaved, copyTranslationHandler
     {/* translation footer */}
     <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
       <Tooltip title="Listen">
-        <IconButton aria-label="listen">
+        <IconButton aria-label="listen" onClick={() => textToSpeechHandler({ text: translationText, language: translationLanguage })}>
           <VolumeUpIcon />
         </IconButton>
       </Tooltip>

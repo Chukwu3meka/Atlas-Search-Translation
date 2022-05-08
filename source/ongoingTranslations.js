@@ -1,5 +1,4 @@
 export default [
-  { english: "i'm", french: "je suis", spanish: "soy" },
   {
     english: "what if",
     french: "",

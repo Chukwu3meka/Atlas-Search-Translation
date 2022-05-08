@@ -7,10 +7,13 @@ import { Translation } from ".";
 const TextTranslator = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     [translationText, setTranslationText] = useState(""),
-    [translationSaved, setTranslationSaved] = useState(false);
+    [translationSaved, setTranslationSaved] = useState(false),
+    [translationLanguage, setTranslationLanguage] = useState("French");
 
   // detect text translation change
   useEffect(() => setTranslationText(props.textTranslation), [props.textTranslation]);
+  // detect translation language change
+  useEffect(() => setTranslationLanguage(props.translationLanguage), [props.translationLanguage]);
 
   const saveTranslationHandler = () => setTranslationSaved(!translationSaved);
 
@@ -20,11 +23,12 @@ const TextTranslator = (props) => {
       enqueueSnackbar("Translation copied", { variant: "default" });
     }
   };
-  return <Translation {...{ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler }} />;
+  return <Translation {...{ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler, translationLanguage }} />;
 };
 
 const mapStateToProps = (state) => ({
     textTranslation: state.translation.textTranslation,
+    translationLanguage: state.language.translationLanguage,
   }),
   mapDispatchToProps = {};
 
