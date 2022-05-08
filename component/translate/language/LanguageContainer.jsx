@@ -1,15 +1,14 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { Language } from ".";
+import { Language, LanguageDialogContainer } from ".";
 import { setSourceLanguageAction, setTranslationLanguageAction } from "@store/actions";
 
-const languageOptions = ["English", "French", "Spanish"];
-
 const LanguageContainer = ({ setSourceLanguageAction, setTranslationLanguageAction }) => {
-  const [mobileDevice, setMobileDevice] = useState(false),
-    // default language already in redux store
-    [sourceLanguage, setSourceLanguage] = useState("English"),
+  const [dialogTarget, setDialogTarget] = useState(),
+    [mobileDevice, setMobileDevice] = useState(false),
+    [displayLangDialog, setDisplayLangDialog] = useState(false),
+    [sourceLanguage, setSourceLanguage] = useState("English"), // default language already in redux store
     [translationLanguage, setTranslationLanguage] = useState("French");
 
   useEffect(() => {
@@ -42,8 +41,36 @@ const LanguageContainer = ({ setSourceLanguageAction, setTranslationLanguageActi
     setTranslationLanguageAction(sourceLanguage);
   };
 
+  const displayDialogHandler = ({ dialogTarget, hide }) => {
+    if (hide) return setDisplayLangDialog(false);
+
+    // set target ("source" or "translation")
+    setDialogTarget(dialogTarget);
+
+    // set display dialog to true online on mobile devices
+    setDisplayLangDialog((displayLangDialog) => (mobileDevice ? !displayLangDialog : false));
+  };
+
   return (
-    <Language {...{ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage, mobileDevice }} />
+    <>
+      <Language
+        {...{
+          mobileDevice,
+          sourceLanguage,
+          handleLanguageChange,
+          swapLanguageHandler,
+          translationLanguage,
+          displayDialogHandler,
+        }}
+      />
+      <LanguageDialogContainer
+        dialogTarget={dialogTarget}
+        displayLangDialog={displayLangDialog}
+        displayDialogHandler={displayDialogHandler}
+        handleLanguageChange={handleLanguageChange}
+        selectedLanguage={dialogTarget === "source" ? sourceLanguage : translationLanguage}
+      />
+    </>
   );
 };
 

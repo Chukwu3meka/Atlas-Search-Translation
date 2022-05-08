@@ -8,8 +8,16 @@ import Typography from "@mui/material/Typography";
 
 import Tooltip from "@mui/material/Tooltip";
 import SwapHorizSharpIcon from "@mui/icons-material/SwapHorizSharp";
+import languages from "@source/languages";
 
-const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapLanguageHandler, translationLanguage, mobileDevice }) =>
+const Language = ({
+  mobileDevice,
+  sourceLanguage,
+  swapLanguageHandler,
+  translationLanguage,
+  handleLanguageChange,
+  displayDialogHandler, //display fullscreen dialog for language change on mobile device,
+}) =>
   mobileDevice ? (
     <Box
       sx={{
@@ -20,7 +28,12 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
         borderColor: "divider",
         justifyContent: "space-evenly",
       }}>
-      <Typography fontWeight={600} textTransform="uppercase" color="primary">
+      <Typography
+        color="primary"
+        fontWeight={600}
+        textTransform="uppercase"
+        sx={{ cursor: "pointer" }}
+        onClick={() => displayDialogHandler({ dialogTarget: "source" })}>
         {sourceLanguage}
       </Typography>
       <Tooltip title="Swap Languages (Ctrl_Shift+S)">
@@ -28,7 +41,12 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
           <SwapHorizSharpIcon />
         </IconButton>
       </Tooltip>
-      <Typography fontWeight={600} textTransform="uppercase" color="primary">
+      <Typography
+        color="primary"
+        fontWeight={600}
+        textTransform="uppercase"
+        sx={{ cursor: "pointer" }}
+        onClick={() => displayDialogHandler({ dialogTarget: "translation" })}>
         {translationLanguage}
       </Typography>
     </Box>
@@ -43,7 +61,7 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
               aria-label="basic tabs example"
               variant="scrollable"
               scrollButtons="auto">
-              {languageOptions.map((label) => (
+              {languages.map((label) => (
                 <Tab
                   value={label}
                   key={label}
@@ -72,7 +90,7 @@ const Language = ({ sourceLanguage, handleLanguageChange, languageOptions, swapL
               aria-label="basic tabs example"
               variant="scrollable"
               scrollButtons="auto">
-              {languageOptions.map((label) => (
+              {languages.map((label) => (
                 <Tab
                   value={label}
                   key={label}

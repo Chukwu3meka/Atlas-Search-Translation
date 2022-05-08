@@ -1,4 +1,6 @@
 import Language from "./Language";
+import LanguageDialog from "./LanguageDialog";
 import LanguageContainer from "./LanguageContainer";
+import LanguageDialogContainer from "./LanguageDialogContainer";
 
-export { Language, LanguageContainer as default };
+export { Language, LanguageDialog, LanguageDialogContainer, LanguageContainer as default };

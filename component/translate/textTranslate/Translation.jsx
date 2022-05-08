@@ -9,6 +9,7 @@ import StarSharpIcon from "@mui/icons-material/StarSharp";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
+
 import { textToSpeechHandler } from "@utils/clientFuncs";
 
 const Translation = ({ translationText, translationSaved, copyTranslationHandler, saveTranslationHandler, translationLanguage }) => (
@@ -24,7 +25,10 @@ const Translation = ({ translationText, translationSaved, copyTranslationHandler
         // to align text to the right
         inputProps={{ style: { textAlign: "right" } }}
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        // onChange={handleFromTextChange}
+        disabled
+        onChange={(e) => {
+          console.log(e.target.value);
+        }}
       />
       <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
         <IconButton aria-label="save-translation">
