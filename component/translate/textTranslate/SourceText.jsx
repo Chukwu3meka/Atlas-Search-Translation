@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
+import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
@@ -14,15 +14,21 @@ import { speechToTextHandler, stopTextToSpeechHandler, textToSpeechHandler } fro
 const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage, speaking, setSpeaking }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex">
-      <Input
+      <TextField
         fullWidth
         multiline
-        disableUnderline={true}
         minRows={3}
         fullWidth
         value={sourceText}
-        sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
+        // size={122}
+        variant="standard" // <== to enable us disable border
         onChange={(e) => handleSourceTextChange(e.target.value)}
+        sx={{ fontSize: 122, fontWeight: 500, color: "#474747" }}
+        inputProps={{ style: { fontSize: 22 } }} // font size of input text
+        InputProps={{
+          style: { fontSize: 22 }, // font size of input label
+          disableUnderline: true, // <== to hide underline in standard TextField variant
+        }}
       />
       <Tooltip title="Clear source text" sx={{ ml: 1 }}>
         <IconButton aria-label="clear-source-text" onClick={clearTextHandler}>

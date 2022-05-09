@@ -43,9 +43,13 @@ const TextTranslator = (props) => {
       enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "warning" });
     } else {
       setTextTranslationAction(
-        textTranslation ? (textTranslation.endsWith("...") ? textTranslation : `${textTranslation}...`) : "Translating..."
+        textTranslation ? (textTranslation?.endsWith("...") ? textTranslation : `${textTranslation}...`) : "Translating..."
       );
-      const { translation } = await fetcher("/translation/greetings", { sourceLanguage, sourceText: value, translationLanguage });
+      const { translation } = await fetcher("/translation/searchTranslation", {
+        sourceLanguage,
+        sourceText: value,
+        translationLanguage,
+      });
       setTextTranslationAction(translation);
     }
   };

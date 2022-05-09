@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
@@ -12,6 +12,7 @@ import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
+// import { TextField } from "@mui/material";
 
 const Translation = ({
   speaking,
@@ -24,19 +25,22 @@ const Translation = ({
 }) => (
   <Box sx={{ width: "100%" }}>
     <Box p={2} alignItems="flex-start" display="flex" bgcolor="#eeeeee">
-      <Input
+      <TextField
         fullWidth
         multiline
-        disableUnderline={true}
+        fullWidth
         minRows={3}
         lang={translationLanguage}
-        fullWidth
-        value={translationText}
-        // to align text to the right
-        inputProps={{ style: { textAlign: "right" } }}
+        variant="standard" // <== to enable us disable border
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        // disable typing in react input
-        onKeyDown={(event) => event.preventDefault()}
+        inputProps={{ style: { textAlign: "right" } }} // to align text to the right
+        onKeyDown={(event) => event.preventDefault()} // <== disable typing in react input
+        value={translationText === "no translation found..." ? "no translation found" : translationText}
+        inputProps={{ style: { fontSize: 22 } }} // font size of input text
+        InputProps={{
+          style: { fontSize: 22 }, // font size of input label
+          disableUnderline: true, // <== to hide underline in standard TextField variant
+        }}
       />
       <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
         <IconButton aria-label="save-translation">

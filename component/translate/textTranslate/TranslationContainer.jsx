@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Translation } from ".";
 
-const TextTranslator = (props) => {
+const TranslationContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     [speaking, setSpeaking] = useState(false),
     [translationText, setTranslationText] = useState(""),
@@ -19,9 +19,13 @@ const TextTranslator = (props) => {
   const saveTranslationHandler = () => setTranslationSaved(!translationSaved);
 
   const copyTranslationHandler = () => {
-    if (navigator) {
+    if (translationText === "no translation found") {
+      enqueueSnackbar("Please wait, while we translate", { variant: "info" });
+    } else if (navigator) {
       navigator.clipboard.writeText(translationText);
       enqueueSnackbar("Translation copied", { variant: "default" });
+    } else {
+      enqueueSnackbar("Nothing to copy", { variant: "info" });
     }
   };
   return (
@@ -45,4 +49,4 @@ const mapStateToProps = (state) => ({
   }),
   mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(TextTranslator);
+export default connect(mapStateToProps, mapDispatchToProps)(TranslationContainer);
