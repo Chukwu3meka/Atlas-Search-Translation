@@ -13,6 +13,7 @@ const TranslationContainer = (props) => {
 
   // detect text translation change
   useEffect(() => setTranslationText(props.textTranslation), [props.textTranslation]);
+
   // detect translation language change
   useEffect(() => setTranslationLanguage(props.translationLanguage), [props.translationLanguage]);
 

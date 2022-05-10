@@ -42,14 +42,24 @@ const TextTranslator = (props) => {
       // we've limited the length of transfer to 5000 characters, so a condition is also included
       enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "warning" });
     } else {
-      setTextTranslationAction(
-        textTranslation ? (textTranslation?.endsWith("...") ? textTranslation : `${textTranslation}...`) : "Translating..."
-      );
+      setTextTranslationAction(() => {
+        if (textTranslation === "no translation found") {
+          // check if translation is not found
+          return "no translation found";
+        } else if (textTranslation?.endsWith("...")) {
+          // check if translation is ongoing
+          return textTranslation;
+        } else {
+          return `${textTranslation}...`;
+        }
+      });
+
       const { translation } = await fetcher("/translation/searchTranslation", {
         sourceLanguage,
         sourceText: value,
         translationLanguage,
       });
+
       setTextTranslationAction(translation);
     }
   };

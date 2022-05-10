@@ -31,12 +31,12 @@ const Translation = ({
         multiline
         fullWidth
         minRows={3}
+        value={translationText}
         lang={translationLanguage}
         variant="standard" // <== to enable us disable border
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
         inputProps={{ style: { textAlign: "right" } }} // to align text to the right
         onKeyDown={(event) => event.preventDefault()} // <== disable typing in react input
-        value={translationText === "no translation found..." ? "no translation found" : translationText}
         inputProps={{ style: { fontSize: 22 } }} // font size of input text
         InputProps={{
           style: { fontSize: 22 }, // font size of input label
