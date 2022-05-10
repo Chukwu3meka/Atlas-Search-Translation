@@ -45,7 +45,7 @@ const TranslationContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    textTranslation: state.translation.textTranslation,
+    textTranslation: state.textTranslation.translation,
     translationLanguage: state.language.translationLanguage,
   }),
   mapDispatchToProps = {};

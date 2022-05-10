@@ -54,13 +54,13 @@ const TextTranslator = (props) => {
         }
       });
 
-      const { translation } = await fetcher("/translation/searchTranslation", {
+      const { translation, id } = await fetcher("/translation/searchTranslation", {
         sourceLanguage,
         sourceText: value,
         translationLanguage,
       });
 
-      setTextTranslationAction(translation);
+      setTextTranslationAction({ id, translation, source: value });
     }
   };
 
@@ -69,7 +69,7 @@ const TextTranslator = (props) => {
 
 const mapStateToProps = (state) => ({
     sourceLanguage: state.language.sourceLanguage,
-    textTranslation: state.translation.textTranslation,
+    textTranslation: state.textTranslation.translation,
     translationLanguage: state.language.translationLanguage,
   }),
   mapDispatchToProps = { setTextTranslationAction };

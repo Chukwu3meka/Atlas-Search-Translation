@@ -1,4 +1,8 @@
+import { connect } from "react-redux";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
+
+import { upvoteTranslationAction, downvoteTranslationAction } from "@store/actions";
+
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
@@ -10,9 +14,19 @@ import { Stack, Box, Paper, Typography } from "@mui/material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
-const FeedbackContainer = () => {
+const FeedbackContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  // translationID: state.textTranslation.id,
+  // goodTranslations: state.textTranslation.goodTranslations,
+  // poorTranslations: state.textTranslation.poorTranslations,
+
+  const { upvoteTranslationAction, downvoteTranslationAction } = props;
+
+  const upvoteTranslationHandler = () => {};
+
+  const downvoteTranslationHandler = () => {};
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -55,12 +69,16 @@ const FeedbackContainer = () => {
             </Typography>
 
             <Stack direction="row" spacing={3} key={"label"} justifyContent="center" alignItems="center" mt={1.6} mb={0.4}>
-              <IconButton aria-label={"label"} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
-                <ThumbUpOutlinedIcon />
-              </IconButton>
-              <IconButton aria-label={"label"} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
-                <ThumbDownOutlinedIcon />
-              </IconButton>
+              <Tooltip title="Good translation">
+                <IconButton aria-label={"label"} onClick={upvoteTranslationHandler} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
+                  <ThumbUpOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Poor translation">
+                <IconButton aria-label={"label"} onClick={downvoteTranslationHandler} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
             </Stack>
 
             <Button
@@ -83,4 +101,11 @@ const FeedbackContainer = () => {
   );
 };
 
-export default FeedbackContainer;
+const mapStateToProps = (state) => ({
+    translationID: state.textTranslation.id,
+    goodTranslations: state.textTranslation.goodTranslations,
+    poorTranslations: state.textTranslation.poorTranslations,
+  }),
+  mapDispatchToProps = { upvoteTranslationAction, downvoteTranslationAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackContainer);

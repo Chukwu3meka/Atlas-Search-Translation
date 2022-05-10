@@ -22,16 +22,14 @@ export default async (req, res) => {
 
     // const result = await Greetings.aggregate(searchQuery, { cursor: { batchSize: 1 } }).toArray();
     const result = await Greetings.aggregate(searchQuery).toArray();
-    // console.log({ result });
 
-    const translation = result
-      ? result[0]
-        ? result[0][`${translationLanguage.toLowerCase()}`]
-        : "no translation found"
-      : "no translation found";
+    console.log(result);
+
+    const id = result && result[0] ? result[0]._id : null,
+      translation = result && result[0] ? result[0][`${translationLanguage.toLowerCase()}`] : "no translation found";
 
     // res.status(200).json({ translation: "no translation found" });
-    res.status(200).json({ translation });
+    res.status(200).json({ translation, id });
   } catch (error) {
     process.env.NODE_ENV !== "production" && console.log(error);
     return res.status(401).json({ translation: "no translation found" });

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
+import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 
 import StopIcon from "@mui/icons-material/Stop";
@@ -9,11 +9,9 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarSharpIcon from "@mui/icons-material/StarSharp";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
-import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
 import FeedbackContainer from "@component/feedback/FeedbackContainer";
-// import { TextField } from "@mui/material";
 
 const Translation = ({
   speaking,
