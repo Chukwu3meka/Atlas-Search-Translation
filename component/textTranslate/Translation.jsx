@@ -12,6 +12,7 @@ import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
+import FeedbackContainer from "@component/feedback/FeedbackContainer";
 // import { TextField } from "@mui/material";
 
 const Translation = ({
@@ -78,11 +79,7 @@ const Translation = ({
           <ContentCopyIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Rate this translation">
-        <IconButton aria-label="rate-this-translation">
-          <ThumbsUpDownOutlinedIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
+      <FeedbackContainer />
       <Tooltip title="Share translation">
         <IconButton aria-label="share-translation">
           <ShareIcon fontSize="small" />

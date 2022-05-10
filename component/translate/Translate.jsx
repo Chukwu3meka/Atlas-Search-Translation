@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 
-import TextTranslate from "./textTranslate";
-import LanguageContainer from "./language";
+import LanguageContainer from "@component/language";
+import TextTranslate from "@component/textTranslate";
 import { DocumentsTranslate, styles, WebsitesTranslate } from ".";
 
 const Translate = ({ translateOptions, translateType, translateTypeHandler }) => (
