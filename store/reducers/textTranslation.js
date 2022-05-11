@@ -17,10 +17,10 @@ const translationReducer = (state = initialState, { payload, type }) => {
       };
     case "UPVOTE_TRANSLATION":
       // payload is translationID
-      return { ...state, goodTranslations: [...goodTranslations, payload] };
+      return { ...state, goodTranslations: [...state.goodTranslations, payload] };
     case "DOWNVOTE_TRANSLATION":
       // payload is translationID
-      return { ...state, poorTranslations: [...poorTranslations, payload] };
+      return { ...state, poorTranslations: [...state.poorTranslations, payload] };
     default:
       return state;
   }

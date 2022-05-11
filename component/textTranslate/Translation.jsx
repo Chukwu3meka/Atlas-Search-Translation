@@ -11,10 +11,11 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
-import FeedbackContainer from "@component/feedback/FeedbackContainer";
+import { FeedbackContainer } from ".";
 
 const Translation = ({
   speaking,
+  voteStatus,
   setSpeaking,
   translationText,
   translationSaved,
@@ -77,7 +78,7 @@ const Translation = ({
           <ContentCopyIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <FeedbackContainer />
+      <FeedbackContainer voteStatus={voteStatus} />
       <Tooltip title="Share translation">
         <IconButton aria-label="share-translation">
           <ShareIcon fontSize="small" />

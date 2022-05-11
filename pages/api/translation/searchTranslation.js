@@ -23,7 +23,7 @@ export default async (req, res) => {
     // const result = await Greetings.aggregate(searchQuery, { cursor: { batchSize: 1 } }).toArray();
     const result = await Greetings.aggregate(searchQuery).toArray();
 
-    console.log(result);
+    // console.log(result);
 
     const id = result && result[0] ? result[0]._id : null,
       translation = result && result[0] ? result[0][`${translationLanguage.toLowerCase()}`] : "no translation found";

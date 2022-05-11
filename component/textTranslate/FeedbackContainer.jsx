@@ -5,7 +5,7 @@ import { upvoteTranslationAction, downvoteTranslationAction } from "@store/actio
 
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
-
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,20 +13,52 @@ import { useState } from "react";
 import { Stack, Box, Paper, Typography } from "@mui/material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import { useEffect } from "react";
+
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const FeedbackContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
+  const { upvoteTranslationAction, downvoteTranslationAction } = props;
+  const [voteDisabled, setVoteDisabled] = useState(true);
   // translationID: state.textTranslation.id,
   // goodTranslations: state.textTranslation.goodTranslations,
   // poorTranslations: state.textTranslation.poorTranslations,
 
-  const { upvoteTranslationAction, downvoteTranslationAction } = props;
+  const [voteStatus, setVoteStatus] = useState(0);
 
-  const upvoteTranslationHandler = () => {};
+  const [translationID, setTranslationID] = useState(null);
+  const [goodTranslations, setGoodTranslations] = useState([]);
+  const [poorTranslations, setPoorTranslations] = useState([]);
+  const [translations, setTranslations] = useState([]); // voted translation
+  const [translationSource, setTranslationSource] = useState("");
+  // detect when good/poor translations has been modified
+  useEffect(() => {
+    setTranslations([...props.goodTranslations, ...props.poorTranslations]);
+    setVoteStatus(() => {
+      // if upvoted, set voteStatus to 1
+      // if not voted, set voteStatus to 0
+      // if downvoted, set voteStatus to -1
+      return props.goodTranslations.includes(translationID) ? 1 : props.poorTranslations.includes(translationID) ? -1 : 0;
+    });
+  }, [props.goodTranslations, props.poorTranslations]);
 
-  const downvoteTranslationHandler = () => {};
+  // detect when translationId has changed
+  useEffect(() => {
+    setTranslationID(props.translationID);
+    setTranslationSource(props.translationSource);
+    setVoteDisabled(translations.includes(props.translationID));
+  }, [props.translationID, props.translationSource]);
+
+  const upvoteTranslationHandler = () => {
+    setVoteDisabled(true);
+    upvoteTranslationAction(translationID);
+  };
+
+  const downvoteTranslationHandler = () => {
+    //  downvoteTranslationAction
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,7 +78,7 @@ const FeedbackContainer = (props) => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}>
-          <ThumbsUpDownOutlinedIcon fontSize="small" />
+          {voteStatus === 1 ? <ThumbUpIcon /> : voteStatus === -1 ? <ThumbDownIcon /> : <ThumbsUpDownOutlinedIcon fontSize="small" />}
         </IconButton>
       </Tooltip>
       <Menu
@@ -69,16 +101,21 @@ const FeedbackContainer = (props) => {
             </Typography>
 
             <Stack direction="row" spacing={3} key={"label"} justifyContent="center" alignItems="center" mt={1.6} mb={0.4}>
-              <Tooltip title="Good translation">
-                <IconButton aria-label={"label"} onClick={upvoteTranslationHandler} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
-                  <ThumbUpOutlinedIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Poor translation">
-                <IconButton aria-label={"label"} onClick={downvoteTranslationHandler} sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
-                  <ThumbDownOutlinedIcon />
-                </IconButton>
-              </Tooltip>
+              <IconButton
+                aria-label={"label"}
+                disabled={voteDisabled}
+                onClick={upvoteTranslationHandler}
+                sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
+                <Tooltip title="Good translation">{voteStatus === 1 ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}</Tooltip>
+              </IconButton>
+
+              <IconButton
+                aria-label={"label"}
+                disabled={voteDisabled}
+                onClick={downvoteTranslationHandler}
+                sx={{ border: "1px solid #dad7d7", padding: 1.5 }}>
+                <Tooltip title="Poor translation">{voteStatus === -1 ? <ThumbDownIcon /> : <ThumbDownOutlinedIcon />}</Tooltip>
+              </IconButton>
             </Stack>
 
             <Button
@@ -103,6 +140,7 @@ const FeedbackContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     translationID: state.textTranslation.id,
+    translationSource: state.textTranslation.source,
     goodTranslations: state.textTranslation.goodTranslations,
     poorTranslations: state.textTranslation.poorTranslations,
   }),
