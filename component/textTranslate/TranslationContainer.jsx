@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Translation } from ".";
 
 const TranslationContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
+    suggestAnEditRef = useRef(null),
     [speaking, setSpeaking] = useState(false),
+    [suggestAnEdit, setSuggestAnEdit] = useState(false),
     [translationText, setTranslationText] = useState(""),
     [translationSaved, setTranslationSaved] = useState(false),
     [translationLanguage, setTranslationLanguage] = useState("French");
@@ -19,6 +21,20 @@ const TranslationContainer = (props) => {
 
   // detect translation language change
   useEffect(() => setTranslationLanguage(props.translationLanguage), [props.translationLanguage]);
+
+  // detect status of suggestAnEdit
+  useEffect(() => {
+    setSuggestAnEdit(props.suggestAnEdit);
+    setTimeout(() => suggestAnEditRef.current.focus(), 100);
+  }, [props.suggestAnEdit]);
+
+  const suggestTranslationHandler = (e) => {
+    // update translation only when suggestAnEdit is not enabled
+    if (suggestAnEdit) {
+      const value = e.target.value;
+      setTranslationText(value);
+    }
+  };
 
   // detect vote event
   useEffect(() => {
@@ -51,11 +67,14 @@ const TranslationContainer = (props) => {
         speaking,
         voteStatus,
         setSpeaking,
+        suggestAnEdit,
         translationText,
+        suggestAnEditRef,
         translationSaved,
         translationLanguage,
         copyTranslationHandler,
         saveTranslationHandler,
+        suggestTranslationHandler,
       }}
     />
   );
@@ -63,6 +82,7 @@ const TranslationContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     translationID: state.textTranslation.id,
+    suggestAnEdit: state.textTranslation.suggestAnEdit,
     textTranslation: state.textTranslation.translation,
     translationLanguage: state.language.translationLanguage,
     goodTranslations: state.textTranslation.goodTranslations,

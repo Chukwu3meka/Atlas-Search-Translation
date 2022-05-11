@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ThumbsUpDownOutlinedIcon from "@mui/icons-material/ThumbsUpDownOutlined";
 
-import { upvoteTranslationAction, downvoteTranslationAction } from "@store/actions";
+import { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } from "@store/actions";
 
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
@@ -20,7 +20,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 const FeedbackContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { upvoteTranslationAction, downvoteTranslationAction } = props;
+  const { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } = props;
   const [voteDisabled, setVoteDisabled] = useState(true);
   // translationID: state.textTranslation.id,
   // goodTranslations: state.textTranslation.goodTranslations,
@@ -57,16 +57,18 @@ const FeedbackContainer = (props) => {
   };
 
   const downvoteTranslationHandler = () => {
-    //  downvoteTranslationAction
+    setVoteDisabled(true);
+    downvoteTranslationAction(translationID);
   };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const suggestAnEditHandler = () => {
+    hideFeedbackMenuHandler();
+    enableSuggestAnEditAction(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const displayFeedbackMenuHandler = (event) => setAnchorEl(event.currentTarget);
+
+  const hideFeedbackMenuHandler = () => setAnchorEl(null);
 
   return (
     <>
@@ -77,7 +79,7 @@ const FeedbackContainer = (props) => {
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}>
+          onClick={displayFeedbackMenuHandler}>
           {voteStatus === 1 ? <ThumbUpIcon /> : voteStatus === -1 ? <ThumbDownIcon /> : <ThumbsUpDownOutlinedIcon fontSize="small" />}
         </IconButton>
       </Tooltip>
@@ -85,7 +87,7 @@ const FeedbackContainer = (props) => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={hideFeedbackMenuHandler}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}>
@@ -119,6 +121,7 @@ const FeedbackContainer = (props) => {
             </Stack>
 
             <Button
+              onClick={suggestAnEditHandler}
               sx={{
                 textTransform: "none",
                 mb: 1.1,
@@ -128,9 +131,9 @@ const FeedbackContainer = (props) => {
               </Typography>
             </Button>
             <Typography variant="caption">Your feedback will be used to help improve the product</Typography>
-            {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-      <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+            {/* <MenuItem onClick={hideFeedbackMenuHandler}>Profile</MenuItem>
+        <MenuItem onClick={hideFeedbackMenuHandler}>My account</MenuItem>
+      <MenuItem onClick={hideFeedbackMenuHandler}>Logout</MenuItem> */}
           </Box>
         </Paper>
       </Menu>
@@ -144,6 +147,6 @@ const mapStateToProps = (state) => ({
     goodTranslations: state.textTranslation.goodTranslations,
     poorTranslations: state.textTranslation.poorTranslations,
   }),
-  mapDispatchToProps = { upvoteTranslationAction, downvoteTranslationAction };
+  mapDispatchToProps = { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedbackContainer);

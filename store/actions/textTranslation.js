@@ -34,3 +34,15 @@ export const downvoteTranslationAction = (payload) => {
     }
   };
 };
+
+// payload is either true/false
+export const enableSuggestAnEditAction = (payload) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: "SUGGEST_AN_EDIT", payload });
+      await dispatch(removeErrorAction("SUGGEST_AN_EDIT"));
+    } catch (err) {
+      return catchErr(dispatch, err, "SUGGEST_AN_EDIT");
+    }
+  };
+};

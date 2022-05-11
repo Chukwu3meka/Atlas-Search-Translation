@@ -1,9 +1,10 @@
 const initialState = {
-  id: null,
-  source: "",
-  translation: "",
-  goodTranslations: [],
-  poorTranslations: [],
+  source: "", // <= source text
+  id: null, // <= _id of current translation
+  suggestAnEdit: false, // <= enable/disable suggestion
+  translation: "", // <= best translation for source text
+  goodTranslations: [], // <=  list of all translations i've voted
+  poorTranslations: [], // <=  list of all translations i've voted
 };
 
 const translationReducer = (state = initialState, { payload, type }) => {
@@ -21,6 +22,9 @@ const translationReducer = (state = initialState, { payload, type }) => {
     case "DOWNVOTE_TRANSLATION":
       // payload is translationID
       return { ...state, poorTranslations: [...state.poorTranslations, payload] };
+    case "SUGGEST_AN_EDIT":
+      // payload is either true/false
+      return { ...state, suggestAnEdit: payload };
     default:
       return state;
   }
