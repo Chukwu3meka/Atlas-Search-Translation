@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 import { SourceText } from ".";
 import { fetcher } from "@utils/clientFuncs";
-import { setTextTranslationAction, enableSuggestAnEditAction } from "@store/actions";
+import { setTextTranslationAction, enableSuggestAnEditAction, setSourceTextAction } from "@store/actions";
 
 const TextTranslator = (props) => {
-  const { setTextTranslationAction, enableSuggestAnEditAction } = props,
+  const { setTextTranslationAction, enableSuggestAnEditAction, setSourceTextAction } = props,
     { enqueueSnackbar } = useSnackbar(),
     [speaking, setSpeaking] = useState(false),
     [sourceText, setSourceText] = useState(""),
@@ -36,7 +36,9 @@ const TextTranslator = (props) => {
   const handleSourceTextChange = async (value) => {
     // disable suggest an edit from redux store, once i type in the source container
     enableSuggestAnEditAction(false);
+    setSourceTextAction(value);
     setSourceText(value);
+
     if (!value.length) {
       // text.query cannot be empty so we add a condition to check if value is greter than one
       // enqueueSnackbar("Text to be translated cannot be empty", { variant: "error" });
@@ -62,7 +64,7 @@ const TextTranslator = (props) => {
         translationLanguage,
       });
 
-      setTextTranslationAction({ id, translation, source: value });
+      setTextTranslationAction({ id, translation });
     }
   };
 
@@ -74,6 +76,6 @@ const mapStateToProps = (state) => ({
     textTranslation: state.textTranslation.translation,
     translationLanguage: state.language.translationLanguage,
   }),
-  mapDispatchToProps = { setTextTranslationAction, enableSuggestAnEditAction };
+  mapDispatchToProps = { setTextTranslationAction, enableSuggestAnEditAction, setSourceTextAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextTranslator);

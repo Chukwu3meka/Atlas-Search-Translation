@@ -11,6 +11,17 @@ export const setTextTranslationAction = (payload) => {
   };
 };
 
+export const setSourceTextAction = (payload) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: "SET_SOURCE_TEXT", payload });
+      await dispatch(removeErrorAction("SET_SOURCE_TEXT"));
+    } catch (err) {
+      return catchErr(dispatch, err, "SET_SOURCE_TEXT");
+    }
+  };
+};
+
 // payload is the translation ID
 export const upvoteTranslationAction = (payload) => {
   return async (dispatch) => {

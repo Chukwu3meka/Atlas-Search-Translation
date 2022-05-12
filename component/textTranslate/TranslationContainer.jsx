@@ -3,11 +3,14 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState, useRef } from "react";
 
 import { Translation } from ".";
+import { enableSuggestAnEditAction } from "@store/actions";
 
 const TranslationContainer = (props) => {
-  const { enqueueSnackbar } = useSnackbar(),
+  const { enableSuggestAnEditAction } = props,
+    { enqueueSnackbar } = useSnackbar(),
     suggestAnEditRef = useRef(null),
     [speaking, setSpeaking] = useState(false),
+    [sourceText, setSourceText] = useState(""),
     [suggestAnEdit, setSuggestAnEdit] = useState(false),
     [translationText, setTranslationText] = useState(""),
     [translationSaved, setTranslationSaved] = useState(false),
@@ -15,6 +18,9 @@ const TranslationContainer = (props) => {
 
   const [translationID, setTranslationID] = useState(null);
   const [voteStatus, setVoteStatus] = useState(0);
+
+  // detect sourceText  translation change
+  useEffect(() => setSourceText(props.sourceText), [props.sourceText]);
 
   // detect text translation change
   useEffect(() => setTranslationText(props.textTranslation), [props.textTranslation]);
@@ -25,16 +31,12 @@ const TranslationContainer = (props) => {
   // detect status of suggestAnEdit
   useEffect(() => {
     setSuggestAnEdit(props.suggestAnEdit);
-    setTimeout(() => suggestAnEditRef.current.focus(), 100);
+    // set translationText to null if no translation was found
+    setTranslationText((translationText) => (translationText === "no translation found" ? "" : translationText));
+    setTimeout(() => {
+      if (suggestAnEditRef.current) suggestAnEditRef.current.focus();
+    }, 100);
   }, [props.suggestAnEdit]);
-
-  const suggestTranslationHandler = (e) => {
-    // update translation only when suggestAnEdit is not enabled
-    if (suggestAnEdit) {
-      const value = e.target.value;
-      setTranslationText(value);
-    }
-  };
 
   // detect vote event
   useEffect(() => {
@@ -49,6 +51,19 @@ const TranslationContainer = (props) => {
   // detect when translationId has changed
   useEffect(() => setTranslationID(props.translationID), [props.translationID]);
 
+  const clearTranslationHandler = () => {
+    // update translation only when suggestAnEdit is not enabled
+    if (suggestAnEdit) setTranslationText("");
+  };
+
+  const suggestTranslationHandler = (e) => {
+    // update translation only when suggestAnEdit is not enabled
+    if (suggestAnEdit) {
+      const value = e.target.value;
+      setTranslationText(value);
+    }
+  };
+
   const saveTranslationHandler = () => setTranslationSaved(!translationSaved);
 
   const copyTranslationHandler = () => {
@@ -61,19 +76,31 @@ const TranslationContainer = (props) => {
       enqueueSnackbar("Nothing to copy", { variant: "info" });
     }
   };
+
+  const submitSuggestionHandler = () => {};
+
+  const cancelSuggestAnEditHandler = () => {
+    // // disable suggest an edit from redux store, once i type in the source container
+    enableSuggestAnEditAction(false);
+  };
+
   return (
     <Translation
       {...{
         speaking,
         voteStatus,
+        sourceText,
         setSpeaking,
         suggestAnEdit,
         translationText,
         suggestAnEditRef,
         translationSaved,
+        cancelSuggestAnEditHandler,
         translationLanguage,
         copyTranslationHandler,
+        submitSuggestionHandler,
         saveTranslationHandler,
+        clearTranslationHandler,
         suggestTranslationHandler,
       }}
     />
@@ -82,12 +109,13 @@ const TranslationContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     translationID: state.textTranslation.id,
+    sourceText: state.textTranslation.source,
     suggestAnEdit: state.textTranslation.suggestAnEdit,
     textTranslation: state.textTranslation.translation,
     translationLanguage: state.language.translationLanguage,
     goodTranslations: state.textTranslation.goodTranslations,
     poorTranslations: state.textTranslation.poorTranslations,
   }),
-  mapDispatchToProps = {};
+  mapDispatchToProps = { enableSuggestAnEditAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TranslationContainer);

@@ -10,63 +10,91 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarSharpIcon from "@mui/icons-material/StarSharp";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
+import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
 import { FeedbackContainer } from ".";
 import Link from "next/link";
-import { Button, ButtonGroup, Stack } from "@mui/material";
+import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
 
 const Translation = ({
   speaking,
+  sourceText,
+  submitSuggestionHandler,
   setSpeaking,
   suggestAnEdit,
+  cancelSuggestAnEditHandler,
   translationText,
   suggestAnEditRef,
   translationSaved,
   translationLanguage,
   copyTranslationHandler,
   saveTranslationHandler,
+  clearTranslationHandler,
   suggestTranslationHandler,
 }) => (
   // payload is the source (source text), translationID and suggested translation
   // for suggest
-  <Box sx={{ width: "100%" }}>
-    <Box p={2} display="flex" alignItems="flex-start" bgcolor="#eeeeee">
-      {/* // suggestAnEdit ? ( // "hey" // ) : */}
-      <TextField
-        inputRef={suggestAnEditRef}
-        fullWidth
-        multiline
-        fullWidth
-        minRows={3}
-        value={translationText}
-        lang={translationLanguage}
-        variant="standard" // <== to enable us disable border
-        sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        inputProps={{ style: { textAlign: "right" } }} // to align text to the right
-        onChange={suggestTranslationHandler}
-        onKeyDown={(event) => {
-          if (!suggestAnEdit) event.preventDefault();
-        }} // <== disable typing in react input
-        inputProps={{ style: { fontSize: 22 } }} // font size of input text
-        InputProps={{
-          style: { fontSize: 22 }, // font size of input label
-          disableUnderline: true, // <== to hide underline in standard TextField variant
-        }}
-      />
-      <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
-        <IconButton aria-label="save-translation">
-          {translationSaved ? <StarSharpIcon color="secondary" /> : <StarBorderSharpIcon />}
-        </IconButton>
-      </Tooltip>
-    </Box>
+  <Box
+    width="100%"
+    height="100%"
+    display="flex"
+    flexDirection="column"
+    justifyContent="space-between"
+    bgcolor="#eeeeee"
+    // sx={{ border: "3px solid green" }}
+    //
+  >
+    {/* sx={{ border: "3px solid red" }} */}
 
+    {suggestAnEdit ? (
+      <Box p={2} display="flex" alignItems="flex-start">
+        <TextField
+          inputRef={suggestAnEditRef}
+          fullWidth
+          multiline
+          fullWidth
+          minRows={3}
+          value={translationText}
+          lang={translationLanguage}
+          variant="standard" // <== to enable us disable border
+          sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
+          inputProps={{ style: { textAlign: "right" } }} // to align text to the right
+          onChange={suggestTranslationHandler}
+          inputProps={{ style: { fontSize: 22 } }} // font size of input text
+          InputProps={{
+            style: { fontSize: 22 }, // font size of input label
+            disableUnderline: true, // <== to hide underline in standard TextField variant
+          }}
+        />
+        <Tooltip title="Clear text" sx={{ ml: 1 }} onClick={clearTranslationHandler}>
+          <IconButton aria-label="clear-text">
+            <CloseSharpIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
+    ) : (
+      <Box p={2} display="flex" alignItems="flex-start">
+        <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747" }}>
+          {translationText || "Translation"}
+        </Typography>
+        <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
+          <IconButton aria-label="save-translation">
+            {translationSaved ? <StarSharpIcon color="secondary" /> : <StarBorderSharpIcon />}
+          </IconButton>
+        </Tooltip>
+      </Box>
+    )}
     {suggestAnEdit ? (
       // edit translation action/info
       <Box bgcolor="#eeeeee" display="flex" flexDirection="column" alignItems="flex-end">
         <Stack direction="row">
-          <Button sx={{ textTransform: "capitalize" }}>Cancel</Button>
-          <Button sx={{ textTransform: "capitalize" }}>Submit</Button>
+          <Button sx={{ textTransform: "capitalize" }} onClick={cancelSuggestAnEditHandler}>
+            Cancel
+          </Button>
+          <Button sx={{ textTransform: "capitalize" }} onClick={submitSuggestionHandler}>
+            Submit
+          </Button>
         </Stack>
         <Alert icon={false} severity="info" sx={{ backgroundColor: "#E4E4E4", marginBottom: 5 }}>
           Your contribution will be used to improve translation quality and may be shown (without identifying you) to other users.{" "}
@@ -75,7 +103,7 @@ const Translation = ({
           </Link>
         </Alert>
       </Box>
-    ) : (
+    ) : sourceText ? (
       //  translation footer
       <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
         {translationText?.length && !translationText?.endsWith("...") ? (
@@ -112,6 +140,8 @@ const Translation = ({
           </IconButton>
         </Tooltip>
       </Box>
+    ) : (
+      ""
     )}
   </Box>
 );

@@ -10,12 +10,9 @@ const initialState = {
 const translationReducer = (state = initialState, { payload, type }) => {
   switch (type) {
     case "SET_TEXT_TRANSLATION":
-      return {
-        ...state,
-        id: payload.id,
-        source: payload.source,
-        translation: payload.translation,
-      };
+      return { ...state, id: payload.id, translation: payload.translation };
+    case "SET_SOURCE_TEXT":
+      return { ...state, source: payload };
     case "UPVOTE_TRANSLATION":
       // payload is translationID
       return { ...state, goodTranslations: [...state.goodTranslations, payload] };
