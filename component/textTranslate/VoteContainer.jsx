@@ -6,8 +6,8 @@ import { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEdit
 
 const VoteContainer = (props) => {
   const { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } = props,
+    [anchorEl, setAnchorEl] = useState(null), // <= anchorEl must appear before open else, it wont work
     open = Boolean(anchorEl),
-    [anchorEl, setAnchorEl] = useState(null),
     [voteStatus, setVoteStatus] = useState(0),
     [voteDisabled, setVoteDisabled] = useState(true),
     [translationID, setTranslationID] = useState(null),

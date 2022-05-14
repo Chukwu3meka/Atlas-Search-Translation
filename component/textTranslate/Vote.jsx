@@ -27,8 +27,8 @@ const Vote = ({
     <Tooltip title="Rate this translation">
       <IconButton
         id="basic-button"
-        aria-label="rate-this-translation"
         aria-haspopup="true"
+        aria-label="rate-this-translation"
         onClick={displayFeedbackMenuHandler}
         aria-expanded={open ? "true" : undefined}
         aria-controls={open ? "basic-menu" : undefined}>
