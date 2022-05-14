@@ -30,11 +30,13 @@ const VoteContainer = (props) => {
 
   const upvoteTranslationHandler = () => {
     setVoteDisabled(true);
+    hideFeedbackMenuHandler();
     upvoteTranslationAction(translationID);
   };
 
   const downvoteTranslationHandler = () => {
     setVoteDisabled(true);
+    hideFeedbackMenuHandler();
     downvoteTranslationAction(translationID);
   };
 

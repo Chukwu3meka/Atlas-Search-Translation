@@ -29,7 +29,7 @@ const Translation = ({
       <SuggestionContainer />
     ) : (
       <Box p={2} display="flex" alignItems="flex-start">
-        <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747", minHeight: 150 }}>
+        <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747", minHeight: 120 }}>
           {translationText}
         </Typography>
         <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
