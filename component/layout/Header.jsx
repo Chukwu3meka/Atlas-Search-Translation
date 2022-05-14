@@ -1,11 +1,11 @@
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import AuthContainer from "@component/auth/AuthContainer";
 
 const Header = ({ navBar, toggleDrawer }) => {
   return (
@@ -18,7 +18,7 @@ const Header = ({ navBar, toggleDrawer }) => {
           <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} color="text.secondary">
             OpenTranslation
           </Typography>
-          <Avatar alt="Remy Sharp" src="/images/profile.png" />
+          <AuthContainer />
         </Toolbar>
       </AppBar>
 

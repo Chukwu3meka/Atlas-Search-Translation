@@ -1,21 +1,17 @@
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
-import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import StopIcon from "@mui/icons-material/Stop";
-import Alert from "@mui/material/Alert";
 import ShareIcon from "@mui/icons-material/Share";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarSharpIcon from "@mui/icons-material/StarSharp";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
-import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
-import { VoteContainer, Suggestion, SuggestionContainer } from ".";
-import Link from "next/link";
-import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import { VoteContainer, SuggestionContainer } from ".";
 
 const Translation = ({
   speaking,

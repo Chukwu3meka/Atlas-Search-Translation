@@ -8,11 +8,12 @@ const muiTheme = createTheme({
   palette: {
     // primary: {
     //   main: "#e2ad26",
-    // main: "#1197c0",
+    //   main: "#e2ad26",
     // },
-    secondary: {
-      main: "#e2ad26",
-    },
+    // secondary: {
+    // main: "#1197c0",
+    // main: "#e2ad26",
+    // },
   },
   components: {
     MuiPaper: {
