@@ -5,5 +5,17 @@ import Suggestion from "./Suggestion";
 import TranslationContainer from "./TranslationContainer";
 import SourceTextContainer from "./SourceTextContainer";
 import VoteContainer from "./VoteContainer";
+import SuggestionContainer from "./SuggestionContainer";
+import Vote from "./Vote";
 
-export { SourceText, Suggestion, VoteContainer, SourceTextContainer, TranslationContainer, Translation, Container as default };
+export {
+  Vote,
+  SourceText,
+  SuggestionContainer,
+  Suggestion,
+  VoteContainer,
+  SourceTextContainer,
+  TranslationContainer,
+  Translation,
+  Container as default,
+};

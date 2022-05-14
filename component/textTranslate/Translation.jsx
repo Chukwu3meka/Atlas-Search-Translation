@@ -13,7 +13,7 @@ import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
-import { VoteContainer, Suggestion } from ".";
+import { VoteContainer, Suggestion, SuggestionContainer } from ".";
 import Link from "next/link";
 import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
 
@@ -30,7 +30,7 @@ const Translation = ({
 }) => (
   <Box width="100%" height="100%" display="flex" bgcolor="#eeeeee" flexDirection="column" justifyContent="space-between">
     {suggestAnEdit ? (
-      <Suggestion />
+      <SuggestionContainer />
     ) : (
       <Box p={2} display="flex" alignItems="flex-start">
         <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747" }}>

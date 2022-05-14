@@ -17,11 +17,11 @@ let cachedDb = null;
 // const collections = async (db) => {
 const collections = (db) => {
   const Greetings = db.collection("greetings");
-  // const Words = db.collection("words");
+  const Suggestions = db.collection("suggestions");
 
   return {
-    // Words,
     Greetings,
+    Suggestions,
   };
 };
 
