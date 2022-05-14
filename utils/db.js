@@ -18,10 +18,12 @@ let cachedDb = null;
 const collections = (db) => {
   const Greetings = db.collection("greetings");
   const Suggestions = db.collection("suggestions");
+  const Profiles = db.collection("profiles");
 
   return {
     Greetings,
     Suggestions,
+    Profiles,
   };
 };
 

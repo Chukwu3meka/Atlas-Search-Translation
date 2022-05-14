@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import { Translation } from ".";
 import { enableSuggestAnEditAction } from "@store/actions";
@@ -8,7 +8,6 @@ import { enableSuggestAnEditAction } from "@store/actions";
 const TranslationContainer = (props) => {
   const { enableSuggestAnEditAction } = props,
     { enqueueSnackbar } = useSnackbar(),
-    // suggestAnEditRef = useRef(null),
     [initTrans, setInitTrans] = useState(""),
     [voteStatus, setVoteStatus] = useState(0),
     [speaking, setSpeaking] = useState(false),

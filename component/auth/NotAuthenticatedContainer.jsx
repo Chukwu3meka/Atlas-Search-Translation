@@ -2,11 +2,13 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
+import { useSnackbar } from "notistack";
 
 import { fetcher } from "@utils/clientFuncs";
 import Typography from "@mui/material/Typography";
-import { ButtonGroup } from "@mui/material";
+import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import Link from "next/link";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const NotAuthenticated = () => {
   const [authMode, setAuthMode] = useState("signin");
@@ -15,18 +17,27 @@ const NotAuthenticated = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-  const signinJsx = [
-    authMode === "signup" && { id: "name", value: name, onChangeHandler: setName, label: "Name" },
-    { id: "email", value: email, onChangeHandler: setEmail, label: "eMail" },
-    authMode !== "reset" && { id: "password", value: password, onChangeHandler: setPassword, label: "Password" },
-  ];
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const signinHandler = () => {
     if (authMode !== "signin") return setAuthMode("signin");
   };
 
-  const signupHandler = () => {
+  const signupHandler = async () => {
     if (authMode !== "signup") return setAuthMode("signup");
+    fetcher;
+
+    const { status } = await fetcher("/profile/signup", { password, email, name });
+
+    if (status) {
+      enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
+    } else {
+      enqueueSnackbar("Please wait, while we translate", { variant: "info" });
+    }
+
+    // chukwuemeka@viewcrunch.com
   };
 
   const resetHandler = () => {
@@ -38,21 +49,49 @@ const NotAuthenticated = () => {
       <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
         {authMode === "signin" ? "SIGN IN TO YOUR ACCOUNT" : authMode === "signup" ? "WELCOME TO OPENTRANSLATION" : "FORGOT PASSWORD"}
       </Typography>
-      {signinJsx.map(
-        ({ id, value, onChangeHandler, label }) =>
-          id && (
-            <TextField
-              key={id}
-              fullWidth
-              label={label}
-              value={value}
-              variant="outlined"
-              sx={{ marginBottom: 1, minWidth: 290 }}
-              onChange={(e) => onChangeHandler(e.target.value)}
-            />
-          )
+      {authMode === "signup" && (
+        <TextField
+          id="name"
+          fullWidth
+          label="Name"
+          value={name}
+          variant="outlined"
+          sx={{ marginBottom: 1 }}
+          onChange={(e) => setName(e.target.value)}
+        />
       )}
 
+      <TextField
+        id="email"
+        fullWidth
+        label="eMail"
+        value={email}
+        variant="outlined"
+        sx={{ marginBottom: 1 }}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      {authMode !== "reset" && (
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="password">Password</InputLabel>
+          <OutlinedInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            autoComplete="ViewCrunch"
+            sx={{ marginBottom: 1 }}
+            type={showPassword ? "text" : "password"}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+      )}
       <ButtonGroup fullWidth>
         <Button variant="contained" color="info" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
           Sign Up
