@@ -9,7 +9,15 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
-const Suggestion = ({ suggestAnEditRef, suggestion, transLang, setSuggestion, cancelSuggestAnEditHandler, submitSuggestionHandler }) => (
+const Suggestion = ({
+  transLang,
+  suggestion,
+  setSuggestion,
+  disableButtons,
+  suggestAnEditRef,
+  submitSuggestionHandler,
+  cancelSuggestAnEditHandler,
+}) => (
   <>
     <Box p={2} display="flex" alignItems="flex-start">
       <TextField
@@ -40,10 +48,10 @@ const Suggestion = ({ suggestAnEditRef, suggestion, transLang, setSuggestion, ca
     {/* edit translation action/info */}
     <Box bgcolor="#eeeeee" display="flex" flexDirection="column" alignItems="flex-end">
       <Stack direction="row">
-        <Button sx={{ textTransform: "capitalize" }} onClick={cancelSuggestAnEditHandler}>
+        <Button sx={{ textTransform: "capitalize" }} disabled={disableButtons} onClick={cancelSuggestAnEditHandler}>
           Cancel
         </Button>
-        <Button sx={{ textTransform: "capitalize" }} onClick={submitSuggestionHandler}>
+        <Button sx={{ textTransform: "capitalize" }} disabled={disableButtons} onClick={submitSuggestionHandler}>
           Submit
         </Button>
       </Stack>

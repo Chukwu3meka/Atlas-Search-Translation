@@ -15,7 +15,8 @@ const SuggestionContainer = (props) => {
     [transID, setTransID] = useState(null),
     [transText, setTransText] = useState(""),
     [suggestion, setSuggestion] = useState(""),
-    [transLang, setTransLang] = useState("French");
+    [transLang, setTransLang] = useState("French"),
+    [disableButtons, setDisableButtons] = useState(false);
 
   // detect 1.src/tran Text change 2. trans Id has changed 3. src/trans language change
   useEffect(() => {
@@ -37,6 +38,8 @@ const SuggestionContainer = (props) => {
   }, [props.suggestAnEdit]);
 
   const submitSuggestionHandler = async () => {
+    setDisableButtons(true);
+
     if (!suggestion) return enqueueSnackbar("Suggestion cannot be empty", { variant: "info" });
     if (suggestion === transText) return enqueueSnackbar("Suggestion must be different from current translation", { variant: "info" });
 
@@ -49,8 +52,14 @@ const SuggestionContainer = (props) => {
       suggestedTranslation: suggestion,
     });
 
-    if (status) return enqueueSnackbar("Suggestion submitted successfully", { variant: "success" });
-    enqueueSnackbar("Suggestion not submitted", { variant: "info" });
+    if (status) {
+      enqueueSnackbar("Suggestion submitted successfully", { variant: "success" });
+      enableSuggestAnEditAction(false);
+    } else {
+      enqueueSnackbar("Suggestion not submitted", { variant: "info" });
+    }
+
+    setDisableButtons(false);
   };
 
   const cancelSuggestAnEditHandler = () => {
@@ -59,7 +68,17 @@ const SuggestionContainer = (props) => {
   };
 
   return (
-    <Suggestion {...{ suggestAnEditRef, suggestion, transLang, setSuggestion, cancelSuggestAnEditHandler, submitSuggestionHandler }} />
+    <Suggestion
+      {...{
+        transLang,
+        suggestion,
+        setSuggestion,
+        disableButtons,
+        suggestAnEditRef,
+        submitSuggestionHandler,
+        cancelSuggestAnEditHandler,
+      }}
+    />
   );
 };
 
