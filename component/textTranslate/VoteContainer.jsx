@@ -5,16 +5,13 @@ import { Vote } from ".";
 import { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } from "@store/actions";
 
 const VoteContainer = (props) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } = props;
-  const [voteDisabled, setVoteDisabled] = useState(true);
-
-  const [voteStatus, setVoteStatus] = useState(0);
-
-  const [translationID, setTranslationID] = useState(null);
-  const [translations, setTranslations] = useState([]); // voted translation
-  const [translationSource, setTranslationSource] = useState("");
+  const { upvoteTranslationAction, downvoteTranslationAction, enableSuggestAnEditAction } = props,
+    open = Boolean(anchorEl),
+    [anchorEl, setAnchorEl] = useState(null),
+    [voteStatus, setVoteStatus] = useState(0),
+    [voteDisabled, setVoteDisabled] = useState(true),
+    [translationID, setTranslationID] = useState(null),
+    [translations, setTranslations] = useState([]); // voted translation
 
   // detect when good/poor translations has been modified
   useEffect(() => {
@@ -28,7 +25,6 @@ const VoteContainer = (props) => {
   // detect when translationId has changed
   useEffect(() => {
     setTranslationID(props.translationID);
-    setTranslationSource(props.translationSource);
     setVoteDisabled(translations.includes(props.translationID));
   }, [props.translationID, props.translationSource]);
 
