@@ -40,7 +40,7 @@ const Translate = ({ translateOptions, translateType, translateTypeHandler }) =>
         {translateType === "Text" ? <TextTranslate /> : translateType === "Documents" ? <DocumentsTranslate /> : <WebsitesTranslate />}
       </Paper>
       <Typography textAlign="right" fontSize={12}>
-        <i>Send screenshot</i>
+        <i>Send feedback</i>
       </Typography>
     </Box>
   </Box>

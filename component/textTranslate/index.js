@@ -1,8 +1,9 @@
 import Container from "./Container";
 import SourceText from "./SourceText";
 import Translation from "./Translation";
+import Suggestion from "./Suggestion";
 import TranslationContainer from "./TranslationContainer";
 import SourceTextContainer from "./SourceTextContainer";
-import FeedbackContainer from "./FeedbackContainer";
+import VoteContainer from "./VoteContainer";
 
-export { SourceText, FeedbackContainer, SourceTextContainer, TranslationContainer, Translation, Container as default };
+export { SourceText, Suggestion, VoteContainer, SourceTextContainer, TranslationContainer, Translation, Container as default };

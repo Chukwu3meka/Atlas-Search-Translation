@@ -15,7 +15,7 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import { useEffect } from "react";
 
-const ScreenshotContainer = (props) => {
+const FeedbackContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const { upvoteTranslationAction, downvoteTranslationAction } = props;
@@ -142,4 +142,4 @@ const mapStateToProps = (state) => ({
   }),
   mapDispatchToProps = { upvoteTranslationAction, downvoteTranslationAction };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScreenshotContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackContainer);

@@ -8,16 +8,16 @@ import { enableSuggestAnEditAction } from "@store/actions";
 const TranslationContainer = (props) => {
   const { enableSuggestAnEditAction } = props,
     { enqueueSnackbar } = useSnackbar(),
-    suggestAnEditRef = useRef(null),
+    // suggestAnEditRef = useRef(null),
+    [initTrans, setInitTrans] = useState(""),
+    [voteStatus, setVoteStatus] = useState(0),
     [speaking, setSpeaking] = useState(false),
     [sourceText, setSourceText] = useState(""),
+    [translationID, setTranslationID] = useState(null),
     [suggestAnEdit, setSuggestAnEdit] = useState(false),
     [translationText, setTranslationText] = useState(""),
     [translationSaved, setTranslationSaved] = useState(false),
     [translationLanguage, setTranslationLanguage] = useState("French");
-
-  const [translationID, setTranslationID] = useState(null);
-  const [voteStatus, setVoteStatus] = useState(0);
 
   // detect sourceText  translation change
   useEffect(() => setSourceText(props.sourceText), [props.sourceText]);
@@ -31,19 +31,18 @@ const TranslationContainer = (props) => {
   // detect status of suggestAnEdit
   useEffect(() => {
     setSuggestAnEdit(props.suggestAnEdit);
-    // set translationText to null if no translation was found
-    setTranslationText((translationText) => (translationText === "no translation found" ? "" : translationText));
-    setTimeout(() => {
-      if (suggestAnEditRef.current) suggestAnEditRef.current.focus();
-    }, 100);
+    // setInitTrans(translationText); // <= save initial translationText before any editing
+    // // set translationText to null if no translation was found
+    // setTranslationText((translationText) => (translationText === "no translation found" ? "" : translationText));
+    // setTimeout(() => {
+    //   if (suggestAnEditRef.current) suggestAnEditRef.current.focus();
+    // }, 100);
   }, [props.suggestAnEdit]);
 
   // detect vote event
   useEffect(() => {
     setVoteStatus(() => {
-      // if upvoted, set voteStatus to 1
-      // if not voted, set voteStatus to 0
-      // if downvoted, set voteStatus to -1
+      // if upvoted, set voteStatus to 1 // if not voted, set voteStatus to 0 // if downvoted, set voteStatus to -1
       props.goodTranslations.includes(translationID) ? 1 : props.poorTranslations.includes(translationID) ? -1 : 0;
     });
   }, [props.goodTranslations, props.poorTranslations]);
@@ -77,11 +76,14 @@ const TranslationContainer = (props) => {
     }
   };
 
-  const submitSuggestionHandler = () => {};
+  const submitSuggestionHandler = () => {
+    console.log({ sourceText, translationText, translationID });
+  };
 
   const cancelSuggestAnEditHandler = () => {
-    // // disable suggest an edit from redux store, once i type in the source container
+    // disable suggest an edit from redux store, once i type in the source container
     enableSuggestAnEditAction(false);
+    setTranslationText(initTrans);
   };
 
   return (
@@ -93,7 +95,7 @@ const TranslationContainer = (props) => {
         setSpeaking,
         suggestAnEdit,
         translationText,
-        suggestAnEditRef,
+        // suggestAnEditRef,
         translationSaved,
         cancelSuggestAnEditHandler,
         translationLanguage,

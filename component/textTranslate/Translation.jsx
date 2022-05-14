@@ -13,70 +13,28 @@ import StarBorderSharpIcon from "@mui/icons-material/StarBorderSharp";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
 import { stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
-import { FeedbackContainer } from ".";
+import { VoteContainer, Suggestion } from ".";
 import Link from "next/link";
 import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
 
 const Translation = ({
   speaking,
   sourceText,
-  submitSuggestionHandler,
   setSpeaking,
   suggestAnEdit,
-  cancelSuggestAnEditHandler,
   translationText,
-  suggestAnEditRef,
   translationSaved,
   translationLanguage,
   copyTranslationHandler,
   saveTranslationHandler,
-  clearTranslationHandler,
-  suggestTranslationHandler,
 }) => (
-  // payload is the source (source text), translationID and suggested translation
-  // for suggest
-  <Box
-    width="100%"
-    height="100%"
-    display="flex"
-    flexDirection="column"
-    justifyContent="space-between"
-    bgcolor="#eeeeee"
-    // sx={{ border: "3px solid green" }}
-    //
-  >
-    {/* sx={{ border: "3px solid red" }} */}
-
+  <Box width="100%" height="100%" display="flex" bgcolor="#eeeeee" flexDirection="column" justifyContent="space-between">
     {suggestAnEdit ? (
-      <Box p={2} display="flex" alignItems="flex-start">
-        <TextField
-          inputRef={suggestAnEditRef}
-          fullWidth
-          multiline
-          fullWidth
-          minRows={3}
-          value={translationText}
-          lang={translationLanguage}
-          variant="standard" // <== to enable us disable border
-          sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-          inputProps={{ style: { textAlign: "right" } }} // to align text to the right
-          onChange={suggestTranslationHandler}
-          inputProps={{ style: { fontSize: 22 } }} // font size of input text
-          InputProps={{
-            style: { fontSize: 22 }, // font size of input label
-            disableUnderline: true, // <== to hide underline in standard TextField variant
-          }}
-        />
-        <Tooltip title="Clear text" sx={{ ml: 1 }} onClick={clearTranslationHandler}>
-          <IconButton aria-label="clear-text">
-            <CloseSharpIcon />
-          </IconButton>
-        </Tooltip>
-      </Box>
+      <Suggestion />
     ) : (
       <Box p={2} display="flex" alignItems="flex-start">
         <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747" }}>
-          {translationText || "Translation"}
+          {translationText}
         </Typography>
         <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
           <IconButton aria-label="save-translation">
@@ -85,26 +43,9 @@ const Translation = ({
         </Tooltip>
       </Box>
     )}
-    {suggestAnEdit ? (
-      // edit translation action/info
-      <Box bgcolor="#eeeeee" display="flex" flexDirection="column" alignItems="flex-end">
-        <Stack direction="row">
-          <Button sx={{ textTransform: "capitalize" }} onClick={cancelSuggestAnEditHandler}>
-            Cancel
-          </Button>
-          <Button sx={{ textTransform: "capitalize" }} onClick={submitSuggestionHandler}>
-            Submit
-          </Button>
-        </Stack>
-        <Alert icon={false} severity="info" sx={{ backgroundColor: "#E4E4E4", marginBottom: 5 }}>
-          Your contribution will be used to improve translation quality and may be shown (without identifying you) to other users.{" "}
-          <Link href="/">
-            <a style={{ color: "#1197c0" }}>Learn more</a>
-          </Link>
-        </Alert>
-      </Box>
-    ) : sourceText ? (
-      //  translation footer
+
+    {/* translation footer */}
+    {sourceText && !suggestAnEdit ? (
       <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
         {translationText?.length && !translationText?.endsWith("...") ? (
           <>
@@ -133,7 +74,7 @@ const Translation = ({
             <ContentCopyIcon fontSize="small" />
           </IconButton>
         </Tooltip>
-        <FeedbackContainer />
+        <VoteContainer />
         <Tooltip title="Share translation">
           <IconButton aria-label="share-translation">
             <ShareIcon fontSize="small" />

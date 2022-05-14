@@ -1,1 +1,0 @@
-1. Changed 'send feedback' home page below translation container to 'send screenshot' as I used the thumbUp/thumbDown for feedback

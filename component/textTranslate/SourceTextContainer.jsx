@@ -34,8 +34,7 @@ const TextTranslator = (props) => {
   const clearTextHandler = () => setSourceText("");
 
   const handleSourceTextChange = async (value) => {
-    // disable suggest an edit from redux store, once i type in the source container
-    enableSuggestAnEditAction(false);
+    enableSuggestAnEditAction(false); // <= disable suggest an edit from redux store, once i type in the source container
     setSourceTextAction(value);
     setSourceText(value);
 
