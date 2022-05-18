@@ -12,6 +12,7 @@ export default async (req, res) => {
           text: {
             query: sourceText,
             path: sourceLanguage.toLowerCase(),
+            // fuzzy: { maxEdits:  0 },
           },
         },
       },
