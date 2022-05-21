@@ -8,7 +8,7 @@ export default async (req, res) => {
 
     const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
 
-    // temporary fix for search score error
+    // temporary fix for search score issues
     if (exactMatch) return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
 
     const searchQuery = [
