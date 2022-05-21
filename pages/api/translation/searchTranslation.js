@@ -6,6 +6,11 @@ export default async (req, res) => {
     const projectLanguage =
       translationLanguage === "French" ? { french: 1 } : translationLanguage === "Spanish" ? { spanish: 1 } : { english: 1 };
 
+    const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
+
+    // temporary fix for search score error
+    if (exactMatch) return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
+
     const searchQuery = [
       {
         $search: {
