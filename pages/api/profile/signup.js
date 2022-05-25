@@ -1,12 +1,15 @@
 export default async (req, res) => {
   try {
-    const { password, initEmail, name } = req.body;
-    const email = String(initEmail).toLowerCase();
+    const { password, email: initEmail, name } = req.body;
+    const email = initEmail && `${initEmail}`.toLowerCase();
+    // const email = String(initEmail).toLowerCase();
+
+    // password, email, name
 
     const emailRegex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
 
-    const validatedMail = emailRegex.test(email) || null;
+    const validMail = emailRegex.test(email) || null;
 
     console.log({ password, email, name, validatedMail });
 

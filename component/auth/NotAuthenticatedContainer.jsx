@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import validate from "@utils/validator";
 
 const NotAuthenticated = () => {
   const [authMode, setAuthMode] = useState("signin");
@@ -21,23 +22,57 @@ const NotAuthenticated = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const signinHandler = () => {
+  const signinHandler = async () => {
     if (authMode !== "signin") return setAuthMode("signin");
+
+    if (!email || !password) return enqueueSnackbar("Email/Password cannot be empty", { variant: "error" });
+
+    if (!validate("email", email) || !validate("text", password))
+      return enqueueSnackbar("Email/Password is incorrect", { variant: "error" });
+
+    const { token } = await fetcher("/profile/signin", { password, email });
+
+    //   await API("post", `company/signin`, { password, email })
+    //     .then((id) => {
+    //       setProfileAction({ id });
+    //       setAuth(true);
+    //       enqueueSnackbar("Logged In", { variant: "success" });
+    //     })
+    //     .catch((err) => {
+    //       enqueueSnackbar("Wrong Details", { variant: "error" });
+    //     });
+    // }
   };
 
   const signupHandler = async () => {
-    if (authMode !== "signup") return setAuthMode("signup");
-    fetcher;
+    try {
+      if (authMode !== "signup") return setAuthMode("signup");
 
-    const { status } = await fetcher("/profile/signup", { password, email, name });
+      validate({ valueType: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
+      validate({ valueType: "email", value: email });
+      validate({
+        valueType: "password",
+        value: password,
+        attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
+      });
 
-    if (status) {
-      enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
-    } else {
-      enqueueSnackbar("Please wait, while we translate", { variant: "info" });
+      // return enqueueSnackbar("Email/Password is incorrect", { variant: "error" });
+
+      // const { status } = await fetcher("/profile/signup", { password, email, name });
+
+      // if (status) {
+      //   enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
+      // } else {
+      //   enqueueSnackbar("Please wait, while we translate", { variant: "info" });
+      // }
+
+      // chukwuemeka@viewcrunch.com
+    } catch (error) {
+      console.log(error);
+      if (error && error.message) return enqueueSnackbar(error.message, { variant: "error" });
+
+      enqueueSnackbar("An error occured", { variant: "error" });
     }
-
-    // chukwuemeka@viewcrunch.com
   };
 
   const resetHandler = () => {
