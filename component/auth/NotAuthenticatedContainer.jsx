@@ -48,29 +48,23 @@ const NotAuthenticated = () => {
     try {
       if (authMode !== "signup") return setAuthMode("signup");
 
-      validate({ valueType: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
-      validate({ valueType: "email", value: email });
+      validate({ type: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
+      validate({ type: "email", value: email });
       validate({
-        valueType: "password",
+        type: "password",
         value: password,
         attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
       });
 
-      // return enqueueSnackbar("Email/Password is incorrect", { variant: "error" });
+      const { status, error } = await fetcher("/profile/signup", { password, email, name });
 
-      // const { status } = await fetcher("/profile/signup", { password, email, name });
-
-      // if (status) {
-      //   enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
-      // } else {
-      //   enqueueSnackbar("Please wait, while we translate", { variant: "info" });
-      // }
-
-      // chukwuemeka@viewcrunch.com
+      if (status) {
+        enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
+      } else {
+        throw { message: error };
+      }
     } catch (error) {
-      console.log(error);
       if (error && error.message) return enqueueSnackbar(error.message, { variant: "error" });
-
       enqueueSnackbar("An error occured", { variant: "error" });
     }
   };

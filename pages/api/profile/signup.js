@@ -1,19 +1,71 @@
+import validate from "@utils/validator";
+
+const nodemailer = require("nodemailer");
+
+const mailTransporter = nodemailer.createTransport({
+  service: "zoho",
+  auth: {
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
+
 export default async (req, res) => {
   try {
-    const { password, email: initEmail, name } = req.body;
-    const email = initEmail && `${initEmail}`.toLowerCase();
-    // const email = String(initEmail).toLowerCase();
+    const { password, email, name } = req.body;
 
-    // password, email, name
+    validate({ type: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
+    validate({ type: "email", value: email });
+    validate({
+      type: "password",
+      value: password,
+      attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
+    });
 
-    const emailRegex =
-      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
+    const { Profiles } = await require("@db").default();
 
-    const validMail = emailRegex.test(email) || null;
+    // check if email is taken already
+    const emailTaken = await Profiles.findOne({ email });
+    if (emailTaken) throw { message: "Email taken" };
 
-    console.log({ password, email, name, validatedMail });
+    const id = "ssdd";
+    const verid = `${new Date().getTime()}-${id}-${new Date().toDateString()}`;
 
-    const { Profile } = await require("@db").default();
+    await mailTransporter.sendMail(
+      {
+        from: process.env.EMAIL_ADDRESS,
+        to: email,
+        subject: "Email Verification from OpenTranslation",
+        html: `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Email Verification!!!</title>
+            </head>
+    
+            <body>
+              <h6>Hi ${name}</h6>
+              <main>Click on the link to verify your mail http://opentranslation.vercel.app/auth/verify?verid=${verid}</main>
+              <hr/>
+              OpenTranslation  
+            </body>
+          </html>
+            `,
+      },
+
+      function (err, data) {
+        if (process.env.NODE_ENV !== "production") {
+          if (err) {
+            console.log("error sending mail", err);
+          }
+        }
+      }
+    );
+
+    console.log({ password, email, name, c: process.env.EMAIL_PASSWORD, a: process.env.EMAIL_ADDRESS });
 
     // console.log("hete", Suggestion);
 
@@ -22,10 +74,6 @@ export default async (req, res) => {
     res.status(200).json({ status: "success" });
   } catch (error) {
     process.env.NODE_ENV !== "production" && console.log(error);
-    return res.status(401).json({
-      error: ["eMail taken", "Invalid mail", "Password must be between 6-13 characters"].includes(error)
-        ? error
-        : "Internal Server error",
-    });
+    return res.status(401).json({ error: error.message || "Internal Server error" });
   }
 };

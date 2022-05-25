@@ -1,4 +1,4 @@
-const validate = ({ valueType, label, value, attributes = [] }) => {
+const validate = ({ type, label, value, attributes = [] }) => {
   const pullAttribValue = (attribute) => {
     const value = attribute.match(/\((.*)\)/);
 
@@ -33,22 +33,20 @@ const validate = ({ valueType, label, value, attributes = [] }) => {
 
       if (!validRange)
         throw {
-          message: `${
-            label || valueType.replace(/^./, valueType[0].toUpperCase())
-          } must be in the range of  ${min} to ${max} characters`,
+          message: `${label || type.replace(/^./, type[0].toUpperCase())} must be in the range of  ${min} to ${max} characters`,
         };
     }
   };
 
   // check if value to be validated is empty
-  if (!value) throw { message: `${label || valueType.replace(/^./, valueType[0].toUpperCase())} cannot be empty` };
+  if (!value) throw { message: `${label || type.replace(/^./, type[0].toUpperCase())} cannot be empty` };
 
   // validate value is within range
   validateRange();
 
   // if(!) throw {message}
 
-  switch (valueType) {
+  switch (type) {
     case "email": {
       value = value.toLowerCase();
 
