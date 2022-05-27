@@ -14,15 +14,21 @@ export default async (req, res) => {
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
 
-    // const { Profiles } = await require("@db").default();
+    const { Profiles } = await require("@db").default();
 
-    // // check if email is taken already
-    // const emailTaken = await Profiles.findOne({ email });
-    // if (emailTaken) throw { message: "Email taken" };
+    // check if email is taken already
+    const emailTaken = await Profiles.findOne({ email });
+    if (emailTaken) throw { message: "Email taken" };
 
-    const verid = `${Date.now().toString(36) + Math.random().toString(36).substr(2)}-${new Date().getTime()}-${Math.random()
-      .toString(16)
-      .slice(2)}`;
+    const verificationLink = `
+    ${Math.random().toString(16).slice(2)}
+    ${Math.random().toString(36).substring(2)}
+    ${new Date().getTime()}
+    ${Math.random().toString(36).substring(2)}
+    ${Math.random().toString(16).slice(2)}
+    `;
+
+    const verificationCode = Math.random().toString(16).slice(2).substring(6);
 
     await mailSender({
       to: email,
@@ -39,7 +45,7 @@ export default async (req, res) => {
 
       <body>
         <p>Hi ${name},</p>
-        <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/verify?verid=${verid}</main>
+        <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/verify?verificationLink=${verificationLink}</main>
         <hr/>
         OpenTranslation  
       </body>
@@ -47,14 +53,18 @@ export default async (req, res) => {
       `,
     });
 
-    console.log({ verid, a: bcrypt.hash(password), b: bcrypt.decodeBase64(password) });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // const hashed = await bcrypt.hash(this.password, 10);
-    // this.password = hashed;
-
-    // console.log("hete", Suggestion);
-
-    // await Profile.insertOne({password, email, name,});
+    await Profiles.insertOne({
+      name,
+      email,
+      $currentDate: { dateCreated: true },
+      auth: {
+        verificationLink,
+        verificationCode,
+        password: hashedPassword,
+      },
+    });
 
     res.status(200).json({ status: "success" });
   } catch (error) {

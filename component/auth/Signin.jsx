@@ -10,15 +10,8 @@ import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, Outli
 import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import validate from "@utils/validator";
-import { Signup } from ".";
 
-// import Box from "@mui/material/Box";
-// import Button from "@mui/material/Button";
-// import Divider from "@mui/material/Divider";
-// import Typography from "@mui/material/Typography";
-// import ButtonGroup from "@mui/material/ButtonGroup";
-
-const NotAuthenticated = () => {
+const Signup = () => {
   const [authMode, setAuthMode] = useState("signin");
 
   const [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_PASSWORD : "");
@@ -28,28 +21,6 @@ const NotAuthenticated = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const signinHandler = async () => {
-    if (authMode !== "signin") return setAuthMode("signin");
-
-    if (!email || !password) return enqueueSnackbar("Email/Password cannot be empty", { variant: "error" });
-
-    if (!validate("email", email) || !validate("text", password))
-      return enqueueSnackbar("Email/Password is incorrect", { variant: "error" });
-
-    const { token } = await fetcher("/profile/signin", { password, email });
-
-    //   await API("post", `company/signin`, { password, email })
-    //     .then((id) => {
-    //       setProfileAction({ id });
-    //       setAuth(true);
-    //       enqueueSnackbar("Logged In", { variant: "success" });
-    //     })
-    //     .catch((err) => {
-    //       enqueueSnackbar("Wrong Details", { variant: "error" });
-    //     });
-    // }
-  };
 
   const signupHandler = async () => {
     try {
@@ -75,38 +46,6 @@ const NotAuthenticated = () => {
       enqueueSnackbar("An error occured", { variant: "error" });
     }
   };
-
-  const resetHandler = () => {
-    if (authMode !== "reset") return setAuthMode("reset");
-  };
-
-  return (
-    <>
-      {authMode === "signup" ? <Signup /> : "signin"}
-
-      <Stack
-        // variant="outlined"
-        // size="small"
-        direction={{ xs: "column", sm: "row" }}
-        // ori
-
-        spacing={1}
-
-        // sx={{ display: { xl: 'none', xs: 'block' } }} />
-        //
-      >
-        {["signup", "signin", "reset"].map((mode) =>
-          authMode === mode ? (
-            ""
-          ) : (
-            <Button fullWidth onClick={() => setAuthMode(mode)} key={mode} variant="outlined" color="warning">
-              {mode}
-            </Button>
-          )
-        )}
-      </Stack>
-    </>
-  );
 
   return (
     <>
@@ -202,4 +141,4 @@ const NotAuthenticated = () => {
   );
 };
 
-export default NotAuthenticated;
+export default Signup;
