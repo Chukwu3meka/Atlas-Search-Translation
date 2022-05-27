@@ -14,9 +14,9 @@ import validate from "@utils/validator";
 const NotAuthenticated = () => {
   const [authMode, setAuthMode] = useState("signin");
 
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_PASSWORD : "");
+  const [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_EMAIL : "");
+  const [name, setName] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_NAME : "");
 
   const { enqueueSnackbar } = useSnackbar();
 

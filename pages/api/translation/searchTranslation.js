@@ -17,17 +17,42 @@ export default async (req, res) => {
           text: {
             query: sourceText,
             path: sourceLanguage.toLowerCase(),
-            // fuzzy: { maxEdits:  0 },
           },
         },
       },
-      // { $project: { ...projectLanguage, english: 1, score: { $meta: "searchScore" } } },
-      { $project: projectLanguage },
+      { $project: { ...projectLanguage, score: { $meta: "searchScore" } } },
       { $limit: 1 },
     ];
 
+    // const searchQuery = [
+    //   {
+    //     $search: {
+    //       compound: {
+    //         should: [
+    //           {
+    //             phrase: {
+    //               query: sourceText,
+    //               path: sourceLanguage.toLowerCase(),
+    //               score: { boost: { value: 5 } },
+    //             },
+    //           },
+    //           {
+    //             text: {
+    //               query: sourceText,
+    //               path: sourceLanguage.toLowerCase(),
+    //             },
+    //           },
+    //         ],
+    //       },
+    //     },
+    //   },
+    // // { $project: { ...projectLanguage, english: 1, score: { $meta: "searchScore" } } },
+    // { $limit: 5 },
+
     // const result = await Greetings.aggregate(searchQuery, { cursor: { batchSize: 1 } }).toArray();
     const result = await Greetings.aggregate(searchQuery).toArray();
+
+    console.log(result);
 
     // console.log(result);
 
