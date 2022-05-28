@@ -28,7 +28,9 @@ export default async (req, res) => {
 
       const token = jwt.sign({ session: profileData.auth.session }, process.env.SECRET, { expiresIn: "120 days" });
 
-      return res.status(200).json({ token, session: profileData.auth.session });
+      return res
+        .status(200)
+        .json({ token, session: profileData.auth.session, userData: { name: profileData.name, role: profileData.auth.role } });
     } else {
       // increment wrongPassword counter
       await Profiles.updateOne({ email }, { $inc: { "auth.wrongAttempts": 1 } });

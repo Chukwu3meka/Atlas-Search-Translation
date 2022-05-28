@@ -1,13 +1,14 @@
-import { connect } from "react-redux";
 import { useState } from "react";
+import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
+
 import { Signin } from ".";
 import validate from "@utils/validator";
 import { fetcher } from "@utils/clientFuncs";
-import { setTokenAction, setSessionAction } from "@store/actions";
+import { setTokenAction, setSessionAction, setUserDataAction } from "@store/actions";
 
-const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenAction, setSessionAction }) => {
+const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenAction, setSessionAction, setUserDataAction }) => {
   const router = useRouter(),
     { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
@@ -31,12 +32,13 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
         throw { label: "Invalid Email/Password" };
       }
 
-      const { token, session, error } = await fetcher("/auth/signin", { password, email });
+      const { token, session, userData, error } = await fetcher("/auth/signin", { password, email });
       setLoading(false);
 
       if (session) {
-        setSessionAction(session);
         setTokenAction(token);
+        setUserDataAction(userData);
+        setSessionAction(session);
         hideProfileMenuHandler();
         router.push("/");
       } else {
@@ -67,6 +69,6 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
 };
 
 const mapStateToProps = (state) => ({}),
-  mapDispatchToProps = { setTokenAction, setSessionAction };
+  mapDispatchToProps = { setTokenAction, setSessionAction, setUserDataAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

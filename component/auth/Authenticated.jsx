@@ -8,7 +8,7 @@ import { ExitToAppOutlined } from "@mui/icons-material";
 
 import { setSessionAction } from "@store/actions";
 
-const Authenticated = ({ setSessionAction }) => {
+const Authenticated = ({ setSessionAction, userData: { name } }) => {
   const [loading, setLoading] = useState(false);
   const [logout, setLogout] = useState(false);
 
@@ -29,7 +29,7 @@ const Authenticated = ({ setSessionAction }) => {
       <Avatar alt="Auth User" src="/images/profile.png" sx={{ mx: "auto", height: "70px", width: "70px" }} />
 
       <Typography variant="body1" mt={2} mb={4} sx={{ fontWeight: "bold", textAlignLast: "center" }}>
-        {`You're logged in as ${"name"}`}
+        {`You're logged in as ${name}`}
       </Typography>
 
       <LoadingButton
@@ -44,7 +44,9 @@ const Authenticated = ({ setSessionAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({}),
+const mapStateToProps = (state) => ({
+    userData: state.auth.userData,
+  }),
   mapDispatchToProps = { setSessionAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);

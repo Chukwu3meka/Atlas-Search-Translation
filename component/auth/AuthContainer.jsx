@@ -7,39 +7,33 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 import { Authenticated, NotAuthenticated } from ".";
-import { setSessionAction } from "@store/actions";
+import { setSessionAction, setUserDataAction } from "@store/actions";
+import { fetcher } from "@utils/clientFuncs";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
     open = Boolean(anchorEl),
-    { setSessionAction } = props,
-    [auth, setAuth] = useState(null);
+    [auth, setAuth] = useState(null),
+    { setSessionAction, setUserDataAction } = props;
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
 
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
-  useEffect(() => {
-    // verifyToken
+  const getUserDetails = async () => {
     const clientToken = localStorage.getItem("OpenTranslation");
-    if (clientToken) {
-      const base64Url = clientToken.split(".")[1];
-      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-      const jsonPayload = decodeURIComponent(
-        atob(base64)
-          .split("")
-          .map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-          })
-          .join("")
-      );
 
-      const { session } = JSON.parse(jsonPayload);
+    // get user details
+    const { userData, session, error } = await fetcher("/auth/verifyToken", { clientToken });
 
-      // get user details
-
+    if (!error && session) {
       setSessionAction(session);
+      setUserDataAction(userData);
     }
+  };
+
+  useEffect(() => {
+    getUserDetails();
   }, []);
 
   useEffect(() => {
@@ -74,6 +68,6 @@ const mapStateToProps = (state) => ({
     token: state.auth.token,
     session: state.auth.session,
   }),
-  mapDispatchToProps = { setSessionAction };
+  mapDispatchToProps = { setSessionAction, setUserDataAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
