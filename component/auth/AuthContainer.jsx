@@ -20,6 +20,7 @@ const AuthContainer = (props) => {
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   useEffect(() => {
+    // verifyToken
     const clientToken = localStorage.getItem("OpenTranslation");
     if (clientToken) {
       const base64Url = clientToken.split(".")[1];
@@ -34,6 +35,8 @@ const AuthContainer = (props) => {
       );
 
       const { session } = JSON.parse(jsonPayload);
+
+      // get user details
 
       setSessionAction(session);
     }

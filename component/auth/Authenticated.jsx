@@ -1,13 +1,50 @@
-import Typography from "@mui/material/Typography";
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
 
-const Authenticated = () => {
+import { LoadingButton } from "@mui/lab";
+import Avatar from "@mui/material/Avatar";
+import { Typography } from "@mui/material";
+import { ExitToAppOutlined } from "@mui/icons-material";
+
+import { setSessionAction } from "@store/actions";
+
+const Authenticated = ({ setSessionAction }) => {
+  const [loading, setLoading] = useState(false);
+  const [logout, setLogout] = useState(false);
+
+  useEffect(() => {
+    if (logout) logoutHandler();
+  }, [logout]);
+
+  const logoutHandler = () => {
+    setLoading(true);
+    localStorage.removeItem("OpenTranslation");
+    setSessionAction(null);
+    setLogout(false);
+    setLoading(false);
+  };
+
   return (
     <>
-      <Typography variant="body1" sx={{ fontWeight: "bold", textAlignLast: "center" }}>
-        Are you satisfied with this translation?
+      <Avatar alt="Auth User" src="/images/profile.png" sx={{ mx: "auto", height: "70px", width: "70px" }} />
+
+      <Typography variant="body1" mt={2} mb={4} sx={{ fontWeight: "bold", textAlignLast: "center" }}>
+        {`You're logged in as ${"name"}`}
       </Typography>
+
+      <LoadingButton
+        loading={loading}
+        startIcon={<ExitToAppOutlined />}
+        variant="contained"
+        sx={{ textTransform: "capitalize" }}
+        onClick={() => setLogout(true)}>
+        Logout
+      </LoadingButton>
     </>
   );
 };
 
-export default Authenticated;
+const mapStateToProps = (state) => ({}),
+  mapDispatchToProps = { setSessionAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);

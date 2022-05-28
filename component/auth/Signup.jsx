@@ -77,10 +77,10 @@ const Signup = ({
         disabled={loading}
         onClick={setModeHandler("signin")}
         sx={{ textTransform: "capitalize" }}>
-        Sign In
+        Login
       </Button>
       <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
-        Sign Up
+        Register
       </LoadingButton>
     </ButtonGroup>
   </>
