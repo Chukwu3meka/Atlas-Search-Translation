@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 
 import validate from "@utils/validator";
 import mailSender from "@utils/mailSender";
+import { verificationGenerator } from "@utils/clientFuncs";
 
 export default async (req, res) => {
   try {
@@ -21,48 +22,28 @@ export default async (req, res) => {
     const emailTaken = await Profiles.findOne({ email });
     if (emailTaken) throw { label: "Email taken" };
 
-    const verification = `${email}-${Math.random().toString(16).slice(2)}${Math.random()
-      .toString(36)
-      .substring(2)}${new Date().getTime()}${Math.random().toString(36).substring(2)}${Math.random().toString(16).slice(2)}
-    `;
+    const verification = verificationGenerator();
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const authDate = new Date().getTime();
-
-    const res = await Profiles.insertOne({
+    const dbResponse = await Profiles.insertOne({
       name,
       email,
       dateCreated: new Date(),
       auth: {
-        authDate,
         verification,
         password: hashedPassword,
         wrongAttempts: 0, // <= account locked && verification will be reset after 7 attempts
       },
     });
 
-    if (res && res) {
+    if (dbResponse && dbResponse.insertedId) {
       await mailSender({
         to: email,
         subject: "Email Verification from OpenTranslation",
         html: `
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Email Verification!!!</title>
-          </head>
-    
-          <body>
             <p>Hi ${name},</p>
-            <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/signup?verification=${verification};signupRef=${res.insertedId};date=${authDate}</main>
-            <hr/>
-            OpenTranslation  
-          </body>
-        </html>
+            <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/signup?verification=${verification}&ref=${dbResponse.insertedId}</main>
           `,
       });
     }

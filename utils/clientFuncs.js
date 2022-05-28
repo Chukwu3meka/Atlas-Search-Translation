@@ -33,6 +33,14 @@ export const fetcher = async (endpoint, data) => {
     .catch(() => null);
 };
 
+// verification code
+export const verificationGenerator = () => {
+  let text = "";
+  const allowed = "ABCDEFGHIkLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
+  for (let i = 0; i < 256; i++) text += allowed.charAt(Math.floor(Math.random() * allowed.length));
+
+  return text.replace(/\s/g, "");
+};
 // text to speech
 export const textToSpeechHandler = async ({ text, language, setLoading }) => {
   if (!window) return; //detect if window is defined

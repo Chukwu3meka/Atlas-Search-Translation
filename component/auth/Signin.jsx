@@ -62,11 +62,7 @@ const Signin = ({ email, loading, setEmail, password, setPassword, showPassword,
       </LoadingButton>
     </ButtonGroup>
 
-    <Button
-      onClick={() => {
-        console.log("Dsafsdfds");
-        setModeHandler("reset");
-      }}>
+    <Button onClick={setModeHandler("reset")}>
       <Typography letterSpacing={1} fontSize={12} textTransform="none">
         Forgot your password?
       </Typography>

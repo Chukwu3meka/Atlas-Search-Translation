@@ -6,7 +6,7 @@ import Menu from "@mui/material/Menu";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
-import { AuthenticatedContainer, NotAuthenticatedContainer } from ".";
+import { AuthenticatedContainer, NotAuthenticated } from ".";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
@@ -36,7 +36,7 @@ const AuthContainer = (props) => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {userId ? <AuthenticatedContainer /> : <NotAuthenticatedContainer hideProfileMenuHandler={hideProfileMenuHandler} />}
+            {userId ? <AuthenticatedContainer /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
           </Box>
         </Paper>
       </Menu>
