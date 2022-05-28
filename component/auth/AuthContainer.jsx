@@ -13,9 +13,9 @@ const AuthContainer = (props) => {
     open = Boolean(anchorEl),
     [userId, setUserId] = useState(null);
 
-  const displayFeedbackMenuHandler = (event) => setAnchorEl(event.currentTarget);
+  const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
 
-  const hideFeedbackMenuHandler = () => setAnchorEl(null);
+  const hideProfileMenuHandler = () => setAnchorEl(null);
 
   useEffect(() => {
     setUserId(props.userId);
@@ -26,17 +26,17 @@ const AuthContainer = (props) => {
 
   return (
     <>
-      <Avatar alt="Auth User" src="/images/profile.png" onClick={displayFeedbackMenuHandler} />
+      <Avatar alt="Auth User" src="/images/profile.png" onClick={displayProfileMenuHandler} />
 
       <Menu
         open={open}
         id="basic-menu"
         anchorEl={anchorEl}
-        onClose={hideFeedbackMenuHandler}
+        onClose={hideProfileMenuHandler}
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {userId ? <AuthenticatedContainer /> : <NotAuthenticatedContainer />}
+            {userId ? <AuthenticatedContainer /> : <NotAuthenticatedContainer hideProfileMenuHandler={hideProfileMenuHandler} />}
           </Box>
         </Paper>
       </Menu>

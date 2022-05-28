@@ -1,6 +1,7 @@
-import mailSender from "@utils/mailSender";
-import validate from "@utils/validator";
 import bcrypt from "bcryptjs";
+
+import validate from "@utils/validator";
+import mailSender from "@utils/mailSender";
 
 export default async (req, res) => {
   try {
@@ -18,14 +19,11 @@ export default async (req, res) => {
 
     // check if email is taken already
     const emailTaken = await Profiles.findOne({ email });
-    if (emailTaken) throw { message: "Email taken" };
+    if (emailTaken) throw { label: "Email taken" };
 
-    const verificationLink = `
-    ${Math.random().toString(16).slice(2)}
-    ${Math.random().toString(36).substring(2)}
-    ${new Date().getTime()}
-    ${Math.random().toString(36).substring(2)}
-    ${Math.random().toString(16).slice(2)}
+    const verificationLink = `${email}-${Math.random().toString(16).slice(2)}${Math.random()
+      .toString(36)
+      .substring(2)}${new Date().getTime()}${Math.random().toString(36).substring(2)}${Math.random().toString(16).slice(2)}
     `;
 
     const verificationCode = Math.random().toString(16).slice(2).substring(6);
@@ -58,10 +56,12 @@ export default async (req, res) => {
     await Profiles.insertOne({
       name,
       email,
-      $currentDate: { dateCreated: true },
+      dateCreated: new Date(),
       auth: {
         verificationLink,
         verificationCode,
+        wrongAttempts: 0, // <= account locked && verification will be reset after 7 attempts
+        authDate: new Date(),
         password: hashedPassword,
       },
     });
@@ -69,6 +69,6 @@ export default async (req, res) => {
     res.status(200).json({ status: "success" });
   } catch (error) {
     process.env.NODE_ENV !== "production" && console.log(error);
-    return res.status(401).json({ error: error.message || "Internal Server error" });
+    return res.status(401).json({ error: error.label || "Internal Server error" });
   }
 };

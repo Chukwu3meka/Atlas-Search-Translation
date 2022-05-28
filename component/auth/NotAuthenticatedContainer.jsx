@@ -10,7 +10,7 @@ import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, Outli
 import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import validate from "@utils/validator";
-import { Signup } from ".";
+import { SignupContainer } from ".";
 
 // import Box from "@mui/material/Box";
 // import Button from "@mui/material/Button";
@@ -18,14 +18,16 @@ import { Signup } from ".";
 // import Typography from "@mui/material/Typography";
 // import ButtonGroup from "@mui/material/ButtonGroup";
 
-const NotAuthenticated = () => {
-  const [authMode, setAuthMode] = useState("signin");
+const NotAuthenticated = ({ hideProfileMenuHandler }) => {
+  const [authMode, setAuthMode] = useState("signup");
 
   const [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_PASSWORD : "");
   const [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_EMAIL : "");
   const [name, setName] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_NAME : "");
 
   const { enqueueSnackbar } = useSnackbar();
+
+  const setModeHandler = (mode) => () => setAuthMode(mode);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -82,9 +84,13 @@ const NotAuthenticated = () => {
 
   return (
     <>
-      {authMode === "signup" ? <Signup /> : "signin"}
+      {authMode === "signup" ? (
+        <SignupContainer setModeHandler={setModeHandler} hideProfileMenuHandler={hideProfileMenuHandler} />
+      ) : (
+        "signin"
+      )}
 
-      <Stack
+      {/* <Stack
         // variant="outlined"
         // size="small"
         direction={{ xs: "column", sm: "row" }}
@@ -104,7 +110,17 @@ const NotAuthenticated = () => {
             </Button>
           )
         )}
-      </Stack>
+      </Stack> */}
+
+      {/* <Link href="/auth/resetPassword">
+        <Typography
+          onClick={resetHandler}
+          variant="body1"
+          fontSize={13}
+          sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", p: 1, cursor: "pointer" }}>
+          Forgot your password?
+        </Typography>
+      </Link> */}
     </>
   );
 
