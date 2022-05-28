@@ -43,7 +43,7 @@ export default async (req, res) => {
 
       <body>
         <p>Hi ${name},</p>
-        <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/verify?verificationLink=${verificationLink}</main>
+        <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/signup?verification=${verificationLink}</main>
         <hr/>
         OpenTranslation  
       </body>

@@ -24,7 +24,7 @@ const SignupContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
         attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
       });
 
-      const { status, error } = await fetcher("/profile/signup", { password, email, name });
+      const { status, error } = await fetcher("/auth/signup", { password, email, name });
 
       setLoading(false);
       if (status) {
