@@ -1,144 +1,77 @@
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import { useEffect, useState } from "react";
-import TextField from "@mui/material/TextField";
-import { useSnackbar } from "notistack";
-
-import { fetcher } from "@utils/clientFuncs";
-import Typography from "@mui/material/Typography";
-import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
-import Link from "next/link";
+import {
+  Button,
+  TextField,
+  Typography,
+  InputLabel,
+  IconButton,
+  ButtonGroup,
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import validate from "@utils/validator";
+import { LoadingButton } from "@mui/lab";
 
-const Signup = () => {
-  const [authMode, setAuthMode] = useState("signin");
+const Signin = ({ email, loading, setEmail, password, setPassword, showPassword, signinHandler, setModeHandler, setShowPassword }) => (
+  <>
+    <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
+      SIGN IN TO YOUR ACCOUNT
+    </Typography>
 
-  const [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_PASSWORD : "");
-  const [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_EMAIL : "");
-  const [name, setName] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_NAME : "");
+    <TextField
+      id="email"
+      fullWidth
+      label="eMail"
+      value={email}
+      variant="outlined"
+      sx={{ marginBottom: 1 }}
+      onChange={(e) => setEmail(e.target.value)}
+    />
 
-  const { enqueueSnackbar } = useSnackbar();
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const signupHandler = async () => {
-    try {
-      if (authMode !== "signup") return setAuthMode("signup");
-
-      validate({ type: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
-      validate({ type: "email", value: email });
-      validate({
-        type: "password",
-        value: password,
-        attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
-      });
-
-      const { status, error } = await fetcher("/profile/signup", { password, email, name });
-
-      if (status) {
-        enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
-      } else {
-        throw { message: error };
-      }
-    } catch (error) {
-      if (error && error.message) return enqueueSnackbar(error.message, { variant: "error" });
-      enqueueSnackbar("An error occured", { variant: "error" });
-    }
-  };
-
-  return (
-    <>
-      <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-        {authMode === "signin" ? "SIGN IN TO YOUR ACCOUNT" : authMode === "signup" ? "WELCOME TO OPENTRANSLATION" : "FORGOT PASSWORD"}
-      </Typography>
-      {authMode === "signup" && (
-        <TextField
-          id="name"
-          fullWidth
-          label="Name"
-          value={name}
-          variant="outlined"
-          sx={{ marginBottom: 1 }}
-          onChange={(e) => setName(e.target.value)}
-        />
-      )}
-
-      <TextField
-        id="email"
-        fullWidth
-        label="eMail"
-        value={email}
-        variant="outlined"
+    <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="password">Password</InputLabel>
+      <OutlinedInput
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        id="password"
+        autoComplete="ViewCrunch"
         sx={{ marginBottom: 1 }}
-        onChange={(e) => setEmail(e.target.value)}
+        type={showPassword ? "text" : "password"}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+              {showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Password"
       />
+    </FormControl>
 
-      {authMode !== "reset" && (
-        <FormControl fullWidth variant="outlined">
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <OutlinedInput
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            id="password"
-            autoComplete="ViewCrunch"
-            sx={{ marginBottom: 1 }}
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-      )}
-      <ButtonGroup fullWidth>
-        {authMode === "signin" ? (
-          <Button variant="contained" color="info" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
-            Sign Up
-          </Button>
-        ) : (
-          <Button variant="contained" sx={{ textTransform: "capitalize" }} onClick={signinHandler}>
-            Sign In
-          </Button>
-        )}
-        {authMode === "reset" ? (
-          <Button variant="contained" sx={{ textTransform: "capitalize" }} onClick={resetHandler}>
-            Reset
-          </Button>
-        ) : authMode === "signin" ? (
-          <Button variant="contained" sx={{ textTransform: "capitalize" }} onClick={signinHandler}>
-            Sign In
-          </Button>
-        ) : (
-          <Button variant="contained" color="info" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
-            Sign Up
-          </Button>
-        )}
-      </ButtonGroup>
+    <ButtonGroup fullWidth sx={{ mb: 1.2 }}>
+      <Button
+        color="info"
+        variant="contained"
+        disabled={loading}
+        onClick={setModeHandler("signup")}
+        sx={{ textTransform: "capitalize" }}>
+        Sign Up
+      </Button>
+      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signinHandler}>
+        Sign In
+      </LoadingButton>
+    </ButtonGroup>
 
-      {/* <Link href="/auth/resetPassword" > */}
-      {authMode !== "reset" ? (
-        <Typography
-          onClick={resetHandler}
-          variant="body1"
-          fontSize={13}
-          sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", p: 1, cursor: "pointer" }}>
-          Forgot your password?
-        </Typography>
-      ) : (
-        <Typography
-          variant="body1"
-          fontSize={13}
-          sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", p: 1, cursor: "pointer" }}>
-          Please enter your email address
-        </Typography>
-      )}
-    </>
-  );
-};
+    <Button
+      onClick={() => {
+        console.log("Dsafsdfds");
+        setModeHandler("reset");
+      }}>
+      <Typography letterSpacing={1} fontSize={12} textTransform="none">
+        Forgot your password?
+      </Typography>
+    </Button>
+  </>
+);
 
-export default Signup;
+export default Signin;

@@ -37,7 +37,6 @@ export default async (req, res) => {
       auth: {
         authDate,
         verification,
-
         password: hashedPassword,
         wrongAttempts: 0, // <= account locked && verification will be reset after 7 attempts
       },

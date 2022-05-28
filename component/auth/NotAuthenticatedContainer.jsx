@@ -10,7 +10,7 @@ import { ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, Outli
 import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import validate from "@utils/validator";
-import { SignupContainer } from ".";
+import { SignupContainer, SigninContainer, ResetContainer } from ".";
 
 // import Box from "@mui/material/Box";
 // import Button from "@mui/material/Button";
@@ -82,52 +82,24 @@ const NotAuthenticated = ({ hideProfileMenuHandler }) => {
     if (authMode !== "reset") return setAuthMode("reset");
   };
 
+  console.log(authMode);
+
   return (
     <>
       {authMode === "signup" ? (
         <SignupContainer setModeHandler={setModeHandler} hideProfileMenuHandler={hideProfileMenuHandler} />
+      ) : authMode === "signin" ? (
+        <SigninContainer setModeHandler={setModeHandler} hideProfileMenuHandler={hideProfileMenuHandler} />
       ) : (
-        "signin"
+        <ResetContainer setModeHandler={setModeHandler} hideProfileMenuHandler={hideProfileMenuHandler} />
       )}
-
-      {/* <Stack
-        // variant="outlined"
-        // size="small"
-        direction={{ xs: "column", sm: "row" }}
-        // ori
-
-        spacing={1}
-
-        // sx={{ display: { xl: 'none', xs: 'block' } }} />
-        //
-      >
-        {["signup", "signin", "reset"].map((mode) =>
-          authMode === mode ? (
-            ""
-          ) : (
-            <Button fullWidth onClick={() => setAuthMode(mode)} key={mode} variant="outlined" color="warning">
-              {mode}
-            </Button>
-          )
-        )}
-      </Stack> */}
-
-      {/* <Link href="/auth/resetPassword">
-        <Typography
-          onClick={resetHandler}
-          variant="body1"
-          fontSize={13}
-          sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", p: 1, cursor: "pointer" }}>
-          Forgot your password?
-        </Typography>
-      </Link> */}
     </>
   );
 
   return (
     <>
       <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-        {authMode === "signin" ? "SIGN IN TO YOUR ACCOUNT" : authMode === "signup" ? "WELCOME TO OPENTRANSLATION" : "FORGOT PASSWORD"}
+        {authMode === "signin" ? "" : authMode === "signup" ? "WELCOME TO OPENTRANSLATION" : "FORGOT PASSWORD"}
       </Typography>
       {authMode === "signup" && (
         <TextField
