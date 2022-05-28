@@ -34,10 +34,10 @@ export const fetcher = async (endpoint, data) => {
 };
 
 // verification code
-export const verificationGenerator = () => {
+export const verificationGenerator = (len = 256) => {
   let text = "";
   const allowed = "ABCDEFGHIkLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
-  for (let i = 0; i < 256; i++) text += allowed.charAt(Math.floor(Math.random() * allowed.length));
+  for (let i = 0; i < len; i++) text += allowed.charAt(Math.floor(Math.random() * allowed.length));
 
   return text.replace(/\s/g, "");
 };

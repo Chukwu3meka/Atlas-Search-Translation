@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SignupContainer, SigninContainer, ResetContainer } from ".";
 
 const NotAuthenticated = ({ hideProfileMenuHandler }) => {
-  const [authMode, setAuthMode] = useState("signup");
+  const [authMode, setAuthMode] = useState("signin");
 
   const setModeHandler = (mode) => () => setAuthMode(mode);
 

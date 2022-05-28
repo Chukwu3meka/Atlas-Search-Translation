@@ -6,23 +6,46 @@ import Menu from "@mui/material/Menu";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
-import { AuthenticatedContainer, NotAuthenticated } from ".";
+import { Authenticated, NotAuthenticated } from ".";
+import { setSessionAction } from "@store/actions";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
     open = Boolean(anchorEl),
-    [userId, setUserId] = useState(null);
+    { setSessionAction } = props,
+    [auth, setAuth] = useState(null);
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
 
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   useEffect(() => {
-    setUserId(props.userId);
-    return () => {
-      setUserId(props.userId);
-    };
-  }, [props.userId]);
+    const clientToken = localStorage.getItem("OpenTranslation");
+    if (clientToken) {
+      const base64Url = clientToken.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map(function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+          })
+          .join("")
+      );
+
+      const { session } = JSON.parse(jsonPayload);
+
+      setSessionAction(session);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (props.token) localStorage.setItem("OpenTranslation", props.token);
+  }, [props.token]);
+
+  useEffect(() => {
+    setAuth(props.session);
+  }, [props.session]);
 
   return (
     <>
@@ -36,7 +59,7 @@ const AuthContainer = (props) => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {userId ? <AuthenticatedContainer /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
+            {auth ? <Authenticated /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
           </Box>
         </Paper>
       </Menu>
@@ -45,8 +68,9 @@ const AuthContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    userId: state.auth,
+    token: state.auth.token,
+    session: state.auth.session,
   }),
-  mapDispatchToProps = {};
+  mapDispatchToProps = { setSessionAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

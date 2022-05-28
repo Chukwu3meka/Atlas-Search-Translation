@@ -1,7 +1,9 @@
-const authReducer = (state = null, { payload, type }) => {
+const authReducer = (state = {}, { payload, type }) => {
   switch (type) {
-    case "SET_AUTH":
-      return payload;
+    case "SET_SESSION":
+      return { ...state, session: payload };
+    case "SET_TOKEN":
+      return { ...state, token: payload };
     default:
       return state;
   }

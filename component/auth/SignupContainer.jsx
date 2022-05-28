@@ -34,7 +34,6 @@ const SignupContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
         throw { label: error };
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
       if (error && error.label) return enqueueSnackbar(error.label, { variant: "error" });
       enqueueSnackbar("An error occured", { variant: "error" });

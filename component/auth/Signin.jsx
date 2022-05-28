@@ -64,7 +64,7 @@ const Signin = ({ email, loading, setEmail, password, setPassword, showPassword,
 
     <Button onClick={setModeHandler("reset")}>
       <Typography letterSpacing={1} fontSize={12} textTransform="none">
-        Forgot your password?
+        Reset/Forgot your password?
       </Typography>
     </Button>
   </>
