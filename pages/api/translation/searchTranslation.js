@@ -6,22 +6,36 @@ export default async (req, res) => {
     const projectLanguage =
       translationLanguage === "French" ? { french: 1 } : translationLanguage === "Spanish" ? { spanish: 1 } : { english: 1 };
 
-    const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
+    // const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
 
-    // temporary fix for search score issues
-    if (exactMatch) return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
+    // // temporary fix for search score issues
+    // if (exactMatch) return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
 
     const searchQuery = [
       {
         $search: {
-          text: {
-            query: sourceText,
-            path: sourceLanguage.toLowerCase(),
+          compound: {
+            must: [
+              {
+                text: {
+                  query: sourceText,
+                  path: sourceLanguage.toLowerCase(),
+                  score: { boost: { value: 5 } },
+                },
+              },
+              {
+                autocomplete: {
+                  query: sourceText,
+                  path: sourceLanguage.toLowerCase(),
+                  fuzzy: { maxEdits: 1.0 },
+                },
+              },
+            ],
           },
         },
       },
       { $project: { ...projectLanguage, score: { $meta: "searchScore" } } },
-      { $limit: 1 },
+      { $limit: 5 },
     ];
 
     // const searchQuery = [
