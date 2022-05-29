@@ -25,7 +25,7 @@ const FinalizeSignup = () => {
   }, [router.isReady]);
 
   return (
-    <Box my={10} textAlign="center">
+    <Box my={10} p={1} textAlign="center">
       <Link href="/">
         <Button startIcon={<HomeOutlined />} variant="contained" sx={{ textTransform: "none" }}>
           Return to Open Translation

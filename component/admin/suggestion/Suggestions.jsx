@@ -1,9 +1,12 @@
+import Link from "next/link";
+
+import { HomeOutlined } from "@mui/icons-material";
 import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
 
-const Suggestions = ({ suggestions, rejectTranslationHandler, approveTranslationHandler }) => {
-  return (
+const Suggestions = ({ disabled, suggestions, reviewTranslationHandler }) => {
+  return suggestions.length ? (
     <Stack p={1} maxWidth={1200} mx="auto">
-      {suggestions?.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }) => (
+      {suggestions.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }) => (
         <Paper key={_id} sx={{ m: 1, flexGrow: 1 }}>
           <Grid container>
             <Grid item xs={12} sm={6} p={1}>
@@ -38,7 +41,7 @@ const Suggestions = ({ suggestions, rejectTranslationHandler, approveTranslation
               </Box>
             </Grid>
           </Grid>
-          <Divider variant="inset" flexItem />
+          <Divider variant="inset" />
           <Tooltip title="Suggested Translation">
             <Typography p={1}>{suggestedTranslation}</Typography>
           </Tooltip>
@@ -48,20 +51,48 @@ const Suggestions = ({ suggestions, rejectTranslationHandler, approveTranslation
               color="error"
               sx={{ mr: 1 }}
               variant="contained"
-              onClick={rejectTranslationHandler({ _id, sourceText, sourceLanguage, translationLanguage, suggestedTranslation })}>
+              disabled={disabled.includes(_id)}
+              onClick={reviewTranslationHandler({
+                _id,
+                review: false,
+                sourceText,
+                sourceLanguage,
+                translationLanguage,
+                suggestedTranslation,
+              })}>
               Reject
             </Button>
             <Button
               size="small"
               color="success"
               variant="contained"
-              onClick={approveTranslationHandler({ _id, sourceText, sourceLanguage, translationLanguage, suggestedTranslation })}>
+              disabled={disabled.includes(_id)}
+              onClick={reviewTranslationHandler({
+                _id,
+                review: true,
+                sourceText,
+                sourceLanguage,
+                translationLanguage,
+                suggestedTranslation,
+              })}>
               Approve
             </Button>
           </Box>
         </Paper>
       ))}
     </Stack>
+  ) : (
+    <Box my={10} p={1} textAlign="center">
+      <Typography>No suggestions to review </Typography>
+
+      <Divider variant="inset" sx={{ my: 2 }} />
+
+      <Link href="/">
+        <Button startIcon={<HomeOutlined />} variant="contained" sx={{ textTransform: "none" }}>
+          Return to Open Translation
+        </Button>
+      </Link>
+    </Box>
   );
 };
 

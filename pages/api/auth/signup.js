@@ -39,7 +39,7 @@ export default async (req, res) => {
     });
 
     if (dbResponse && dbResponse.insertedId) {
-      await Profiles.updateOne({ name, email }, { $set: { "auth.session": `${dbResponse.insertedId}${verificationGenerator(32)}` } });
+      await Profiles.updateOne({ name, email }, { $set: { "auth.session": `${dbResponse.insertedId}${verificationGenerator(256)}` } });
       await mailSender({
         to: email,
         subject: "Email Verification from OpenTranslation",
