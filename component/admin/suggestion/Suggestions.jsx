@@ -3,18 +3,21 @@ import Link from "next/link";
 import { HomeOutlined } from "@mui/icons-material";
 import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
 
-const Suggestions = ({ disabled, suggestions, reviewTranslationHandler }) => {
+const Suggestions = ({ hasNextDoc, disabled, suggestions, reviewTranslationHandler, fetchSuggestions }) => {
   return suggestions.length ? (
     <Stack p={1} maxWidth={1200} mx="auto">
-      {suggestions.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }) => (
-        <Paper key={_id} sx={{ m: 1, flexGrow: 1 }}>
+      {suggestions.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }, i) => (
+        <Paper
+          // key={_id}
+          key={i}
+          sx={{ m: 1, flexGrow: 1 }}>
           <Grid container>
             <Grid item xs={12} sm={6} p={1}>
               <Box>
                 <Stack direction="row" alignItems="center">
                   <Avatar alt={sourceLanguage} src={`/images/languages/${sourceLanguage}.png`} sx={{ width: 15, height: 15 }} />
                   <Typography fontWeight={600} variant="body2" ml={1}>
-                    {sourceLanguage[0].toUpperCase() + sourceLanguage.slice(1)}
+                    {/* {sourceLanguage[0].toUpperCase() + sourceLanguage.slice(1)} */}
                   </Typography>
                 </Stack>
                 <Tooltip title="Source Text">
@@ -31,7 +34,7 @@ const Suggestions = ({ disabled, suggestions, reviewTranslationHandler }) => {
                     sx={{ width: 15, height: 15 }}
                   />
                   <Typography fontWeight={600} variant="body2" ml={1}>
-                    {translationLanguage[0].toUpperCase() + translationLanguage.slice(1)}
+                    {/* {translationLanguage[0].toUpperCase() + translationLanguage.slice(1)} */}
                   </Typography>
                 </Stack>
 
@@ -80,6 +83,13 @@ const Suggestions = ({ disabled, suggestions, reviewTranslationHandler }) => {
           </Box>
         </Paper>
       ))}
+      {hasNextDoc && (
+        <Box mt={3} textAlign="center">
+          <Button fullWidth={false} size="small" variant="outlined" onClick={() => fetchSuggestions()}>
+            Load more...
+          </Button>
+        </Box>
+      )}
     </Stack>
   ) : (
     <Box my={10} p={1} textAlign="center">

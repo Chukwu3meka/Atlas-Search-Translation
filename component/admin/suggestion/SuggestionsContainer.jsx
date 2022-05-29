@@ -10,17 +10,38 @@ const suggestionsContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     [session, setSession] = useState(null),
     [disabled, setDisabled] = useState([]),
+    [hasNextDoc, setHasNextDoc] = useState(false),
     [suggestions, setSuggestions] = useState([]),
     [hasAdminRight, setHasAdminRight] = useState(false);
 
   useEffect(() => {
-    setSuggestions(propsSuggestions);
-  }, []);
-
-  useEffect(() => {
     setSession(props.session);
     setHasAdminRight(props.session ? ["admin", "superAdmin"].includes(props.userData.role) : false);
+    // we need session id to make  fetch request to our admin API
+    if (!suggestions.length && props.session) fetchSuggestions(props.session);
   }, [props.userData]);
+
+  const fetchSuggestions = async (propsSession) => {
+    console.log(!propsSession && !hasNextDoc);
+    if (!propsSession && !hasNextDoc) return;
+
+    const {
+      error,
+      hasNextDoc: newHasNextDoc,
+      suggestions: moreSuggestions,
+    } = await fetcher(`/admin/fetchSuggestion`, {
+      initialRequest: !!propsSession,
+      session: propsSession || session,
+      lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
+    });
+
+    if (error) return enqueueSnackbar(error.label || "An error occured", { variant: "error" });
+
+    console.log("Ads");
+
+    setHasNextDoc(newHasNextDoc);
+    setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
+  };
 
   const reviewTranslationHandler =
     ({ _id, review, sourceText, sourceLanguage, translationLanguage, suggestedTranslation }) =>
@@ -29,7 +50,7 @@ const suggestionsContainer = (props) => {
         // add suggestion from disbaled
         setDisabled((disabled) => [...disabled, _id]);
 
-        const { error } = await fetcher(`/admin/${review ? "approveTranslation" : "rejectTranslation"}`, {
+        const { error } = await fetcher(`/admin/${review ? "approveSuggestion" : "rejectSuggestion"}`, {
           _id,
           session,
           sourceText,
@@ -40,10 +61,8 @@ const suggestionsContainer = (props) => {
 
         if (error) throw { label: error };
 
-        if (review) {
-          // if review is true, remove suggestion from list if approval is succesfull
-          setSuggestions((suggestions) => suggestions.filter((suggestion) => suggestion._id !== _id));
-        }
+        //  remove suggestion from list if approval/rejection is succesfull
+        setSuggestions((suggestions) => suggestions.filter((suggestion) => suggestion._id !== _id));
 
         enqueueSnackbar(`Suggestion ${review ? "Approved" : "Rejected"}`, { variant: "success" });
       } catch (error) {
@@ -56,7 +75,13 @@ const suggestionsContainer = (props) => {
     };
 
   return hasAdminRight ? (
-    <Suggestions disabled={disabled} suggestions={suggestions} reviewTranslationHandler={reviewTranslationHandler} />
+    <Suggestions
+      hasNextDoc={hasNextDoc}
+      disabled={disabled}
+      suggestions={suggestions}
+      fetchSuggestions={fetchSuggestions}
+      reviewTranslationHandler={reviewTranslationHandler}
+    />
   ) : (
     <ErrorPage statusCode={404} />
   );

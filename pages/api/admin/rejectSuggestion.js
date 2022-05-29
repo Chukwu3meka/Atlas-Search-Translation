@@ -1,3 +1,5 @@
+const ObjectId = require("mongodb").ObjectId;
+
 export default async (req, res) => {
   try {
     const { _id, session } = req.body;
@@ -10,7 +12,7 @@ export default async (req, res) => {
     if (!["admin", "superAdmin"].includes(profileData.auth.role)) throw { label: "Incorrect URL" };
 
     // remove doc from Suggestions
-    await Suggestions.deleteOne({ _id });
+    await Suggestions.deleteOne({ _id: new ObjectId(_id) });
 
     return res.status(200).json({ status: "success" });
   } catch (error) {

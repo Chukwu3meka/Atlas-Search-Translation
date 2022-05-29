@@ -1,3 +1,5 @@
 A feedback button and automatic form submissions for translations you feel could be better 
 
 reset all translation vote when authetication is added
+
+for suggestion  _id, session, sourceText, sourceLanguage, translationLanguage, suggestedTranslation
