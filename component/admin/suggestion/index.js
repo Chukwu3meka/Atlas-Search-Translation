@@ -1,3 +1,4 @@
 import Suggestions from "./Suggestions";
+import SuggestionsContainer from "./SuggestionsContainer";
 
-export { Suggestions };
+export { Suggestions, SuggestionsContainer as default };

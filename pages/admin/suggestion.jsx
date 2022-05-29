@@ -1,5 +1,5 @@
-import { Suggestions } from "@component/admin/suggestion";
+import SuggestionsContainer from "@component/admin/suggestion";
 
-const suggestion = () => <Suggestions />;
+const SuggestionPage = () => <SuggestionsContainer />;
 
-export default suggestion;
+export default SuggestionPage;

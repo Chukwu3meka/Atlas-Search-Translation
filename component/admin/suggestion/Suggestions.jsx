@@ -1,53 +1,67 @@
-import List from "@mui/material/List";
-import Paper from "@mui/material/Paper";
-import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import Typography from "@mui/material/Typography";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
+import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
 
-const massNews = [
-  {
-    _id: "AAA",
-    date: "asDS",
-    image: "english",
-    sourceText: "saSADASS",
-    sourceLanguage: "english",
-    translationText: "aDdas",
-    translationLanguage: "french",
-    suggestedTranslation: "aDdas",
-  },
-];
-
-const Suggestions = () => {
+const Suggestions = ({ suggestions, rejectTranslationHandler, approveTranslationHandler }) => {
   return (
-    <Paper>
-      {/* <Typography variant="h5" componet="h1">{`${sponsor} NEWS`}</Typography> */}
-      <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-        {massNews?.map(({ title, image, content, date }, index) => (
-          <div key={index}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar alt={title} src={`/images/languages/${image}.png`} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={title}
-                secondary={
-                  <>
-                    <Typography sx={{ display: "inline" }} component="span" variant="body2">
-                      {content}
-                    </Typography>
-                    <i>{` — ${date}`}</i>
-                  </>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </div>
-        ))}
-      </List>
-    </Paper>
+    <Stack p={1} maxWidth={1200} mx="auto">
+      {suggestions?.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }) => (
+        <Paper key={_id} sx={{ m: 1, flexGrow: 1 }}>
+          <Grid container>
+            <Grid item xs={12} sm={6} p={1}>
+              <Box>
+                <Stack direction="row" alignItems="center">
+                  <Avatar alt={sourceLanguage} src={`/images/languages/${sourceLanguage}.png`} sx={{ width: 15, height: 15 }} />
+                  <Typography fontWeight={600} variant="body2" ml={1}>
+                    {sourceLanguage[0].toUpperCase() + sourceLanguage.slice(1)}
+                  </Typography>
+                </Stack>
+                <Tooltip title="Source Text">
+                  <Typography>{sourceText}</Typography>
+                </Tooltip>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} bgcolor="#eeeeee" p={1}>
+              <Box>
+                <Stack direction="row" alignItems="center">
+                  <Avatar
+                    alt={translationLanguage}
+                    src={`/images/languages/${translationLanguage}.png`}
+                    sx={{ width: 15, height: 15 }}
+                  />
+                  <Typography fontWeight={600} variant="body2" ml={1}>
+                    {translationLanguage[0].toUpperCase() + translationLanguage.slice(1)}
+                  </Typography>
+                </Stack>
+
+                <Tooltip title="Current Translation">
+                  <Typography>{translationText}</Typography>
+                </Tooltip>
+              </Box>
+            </Grid>
+          </Grid>
+          <Divider variant="inset" flexItem />
+          <Tooltip title="Suggested Translation">
+            <Typography p={1}>{suggestedTranslation}</Typography>
+          </Tooltip>
+          <Box sx={{ float: "right" }}>
+            <Button
+              size="small"
+              color="error"
+              sx={{ mr: 1 }}
+              variant="contained"
+              onClick={rejectTranslationHandler({ _id, sourceText, sourceLanguage, translationLanguage, suggestedTranslation })}>
+              Reject
+            </Button>
+            <Button
+              size="small"
+              color="success"
+              variant="contained"
+              onClick={approveTranslationHandler({ _id, sourceText, sourceLanguage, translationLanguage, suggestedTranslation })}>
+              Approve
+            </Button>
+          </Box>
+        </Paper>
+      ))}
+    </Stack>
   );
 };
 

@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -22,6 +23,7 @@ const Authenticated = ({ setSessionAction, userData: { name } }) => {
     setSessionAction(null);
     setLogout(false);
     setLoading(false);
+    Router.reload(window.location.pathname);
   };
 
   return (
