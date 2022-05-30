@@ -6,62 +6,59 @@ export default async (req, res) => {
     const projectLanguage =
       translationLanguage === "French" ? { french: 1 } : translationLanguage === "Spanish" ? { spanish: 1 } : { english: 1 };
 
-    // const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
+    // if (sourceText.length > 6) {
+    //   const exactMatch = await Greetings.findOne({ [sourceLanguage.toLowerCase()]: sourceText });
 
-    // // temporary fix for search score issues
-    // if (exactMatch) return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
+    //   // temporary fix for equal search score
+    //   if (exactMatch) {
+    //     return res.status(200).json({ translation: exactMatch[`${translationLanguage.toLowerCase()}`], id: exactMatch._id });
+    //   }
+    // }
 
     const searchQuery = [
-      {
-        $search: {
-          compound: {
-            must: [
-              {
-                text: {
-                  query: sourceText,
-                  path: sourceLanguage.toLowerCase(),
-                  score: { boost: { value: 5 } },
-                },
+      sourceText.length > 6
+        ? {
+            $search: {
+              phrase: {
+                query: sourceText,
+                path: sourceLanguage.toLowerCase(),
               },
-              {
-                autocomplete: {
-                  query: sourceText,
-                  path: sourceLanguage.toLowerCase(),
-                  fuzzy: { maxEdits: 1.0 },
-                },
+            },
+          }
+        : {
+            $search: {
+              index: "greaterThanSixChar",
+              compound: {
+                must: [
+                  {
+                    text: {
+                      query: sourceText,
+                      path: sourceLanguage.toLowerCase(),
+                      score: { boost: { value: 5 } },
+                    },
+                  },
+                  {
+                    autocomplete: {
+                      query: sourceText,
+                      path: sourceLanguage.toLowerCase(),
+                      // fuzzy: { maxEdits: 1.0 },
+                    },
+                  },
+                ],
               },
-            ],
+            },
           },
+      {
+        $project: {
+          // french: 1,
+          // english: 1,
+          // spanish: 1,
+          ...projectLanguage,
+          // score: { $meta: "searchScore" },
         },
       },
-      { $project: { ...projectLanguage, score: { $meta: "searchScore" } } },
-      { $limit: 5 },
+      { $limit: 1 },
     ];
-
-    // const searchQuery = [
-    //   {
-    //     $search: {
-    //       compound: {
-    //         should: [
-    //           {
-    //             phrase: {
-    //               query: sourceText,
-    //               path: sourceLanguage.toLowerCase(),
-    //               score: { boost: { value: 5 } },
-    //             },
-    //           },
-    //           {
-    //             text: {
-    //               query: sourceText,
-    //               path: sourceLanguage.toLowerCase(),
-    //             },
-    //           },
-    //         ],
-    //       },
-    //     },
-    //   },
-    // // { $project: { ...projectLanguage, english: 1, score: { $meta: "searchScore" } } },
-    // { $limit: 5 },
 
     // const result = await Greetings.aggregate(searchQuery, { cursor: { batchSize: 1 } }).toArray();
     const result = await Greetings.aggregate(searchQuery).toArray();
