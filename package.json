@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "OpenTranslation",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cd ../OpenTranslation Server && npm run multi && cd ../OpenTranslation && next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export"

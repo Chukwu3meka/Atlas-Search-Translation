@@ -4,9 +4,7 @@ let uri = process.env.MONGODB_URI;
 let dbName = process.env.MONGODB_DB;
 
 // throw an error, if mongodb uri is not found
-if (!uri) {
-  throw new Error("Please add your Mongo URI to env variables");
-}
+if (!uri) throw new Error("Please add your Mongo URI to env variables");
 
 // for the livetime of the app, we don't want to keep connecting and connecting
 // we'll try to cache our connetion
