@@ -24,12 +24,17 @@ const AuthContainer = (props) => {
     const clientToken = localStorage.getItem("OpenTranslation");
 
     // get user details
-    const { userData, session, error } = await fetcher("/auth/verifyToken", { clientToken });
+    await fetcher("/auth/verifyToken", { clientToken })
+      .then((token) => {
+        if (error && !token.session) return;
+        const { userData, session, error } = token;
 
-    if (!error && session) {
-      setSessionAction(session);
-      setUserDataAction(userData);
-    }
+        setSessionAction(session);
+        setUserDataAction(userData);
+      })
+      .catch(() => {
+        throw "error occured";
+      });
   };
 
   useEffect(() => {
