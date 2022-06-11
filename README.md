@@ -7,9 +7,9 @@ Translation is an act, process, or instance of translating: such as. a : a rende
 ### Installation, Development and Production
 
 1. To get started, clone ViewCrunch Next.js starter template
-   `git clone https://github.com/viewcrunch/NextJs-starter-template.git .`
+   `git clone https://github.com/Chukwu3meka/NextJs-starter-template.git .`
 2. Update remote repo by running
-   `git remote set-url origin https://github.com/viewcrunch/AtlasSearchTranslation.git`
+   `git remote set-url origin https://github.com/AlienForest/AtlasSearchTranslation.git`
 3. Push to Remote repo
    `git push -u origin main`
    `git add .`
