@@ -27,7 +27,7 @@ const Signup = ({
 }) => (
   <>
     <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-      WELCOME TO OPENTRANSLATION
+      WELCOME TO AtlasSearchTranslation
     </Typography>
 
     <TextField

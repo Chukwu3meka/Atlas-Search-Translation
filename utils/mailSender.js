@@ -26,7 +26,7 @@ const mailSender = async ({ to, subject, html }) =>
         <body>
 ${html}
         <hr/>
-        OpenTranslation  
+        AtlasSearchTranslation  
       </body>
     </html>
 

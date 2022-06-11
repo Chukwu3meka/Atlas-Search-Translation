@@ -27,14 +27,14 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) =>
   return (
     <>
       <Head>
-        <title>OpenTranslation</title>
+        <title>AtlasSearchTranslation</title>
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <meta name="keywords" content="OpenTranslation, view" />
+        <meta name="keywords" content="AtlasSearchTranslation, view" />
         <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="OpenTranslation" />
-        <meta property="og:title" content="OpenTranslation" />
-        <meta property="og:description" content="OpenTranslation" />
+        <meta name="description" content="AtlasSearchTranslation" />
+        <meta property="og:title" content="AtlasSearchTranslation" />
+        <meta property="og:description" content="AtlasSearchTranslation" />
       </Head>
 
       <CacheProvider value={emotionCache}>

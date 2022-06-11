@@ -16,7 +16,7 @@ const Header = ({ navBar, toggleDrawer }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} color="text.secondary">
-            OpenTranslation
+            AtlasSearchTranslation
           </Typography>
           <AuthContainer />
         </Toolbar>

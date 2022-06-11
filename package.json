@@ -1,17 +1,17 @@
 {
   "name": "open_translation",
   "version": "1.0.1",
-  "description": "OpenTranslation",
+  "description": "AtlasSearchTranslation",
   "scripts": {
-    "dev": "cd ../OpenTranslation Server && npm run multi && cd ../OpenTranslation && next dev",
+    "dev": "cd ../AtlasSearchTranslation Server && npm run multi && cd ../AtlasSearchTranslation Web && next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export"
   },
   "keywords": [
-    "OpenTranslation"
+    "AtlasSearchTranslation"
   ],
-  "author": "OpenTranslation",
+  "author": "AtlasSearchTranslation",
   "license": "MIT",
   "dependencies": {
     "@emotion/cache": "^11.7.1",

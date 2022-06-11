@@ -26,10 +26,10 @@ export default async (req, res) => {
         // verify profile
         await mailSender({
           to: email,
-          subject: "Email Verification from OpenTranslation",
+          subject: "Email Verification from AtlasSearchTranslation",
           html: `      
               <p>Hi ${name},</p>
-              <main>Welcome to OpenTranslation, Your email has been verified. You can login now</main>
+              <main>Welcome to AtlasSearchTranslation, Your email has been verified. You can login now</main>
             `,
         });
         await Profiles.updateOne(
@@ -45,10 +45,10 @@ export default async (req, res) => {
 
         await mailSender({
           to: email,
-          subject: "Email Verification from OpenTranslation",
+          subject: "Email Verification from AtlasSearchTranslation",
           html: `      
               <p>Hi ${name},</p>
-              <main>Welcome to OpenTranslation, Click on the link below to verify your mail http://opentranslation.vercel.app/auth/signup?verification=${newVerification}&ref=${ref}</main>
+              <main>Welcome to AtlasSearchTranslation, Click on the link below to verify your mail http://AtlasSearchTranslation.vercel.app/auth/signup?verification=${newVerification}&ref=${ref}</main>
             `,
         });
 

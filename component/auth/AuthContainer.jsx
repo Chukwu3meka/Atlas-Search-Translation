@@ -21,7 +21,7 @@ const AuthContainer = (props) => {
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   const getUserDetails = async () => {
-    const clientToken = localStorage.getItem("OpenTranslation");
+    const clientToken = localStorage.getItem("AtlasSearchTranslation");
 
     // get user details
     await fetcher("/auth/verifyToken", { clientToken })
@@ -42,7 +42,7 @@ const AuthContainer = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.token) localStorage.setItem("OpenTranslation", props.token);
+    if (props.token) localStorage.setItem("AtlasSearchTranslation", props.token);
   }, [props.token]);
 
   useEffect(() => {

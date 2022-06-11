@@ -19,7 +19,7 @@ const Authenticated = ({ setSessionAction, userData: { name } }) => {
 
   const logoutHandler = () => {
     setLoading(true);
-    localStorage.removeItem("OpenTranslation");
+    localStorage.removeItem("AtlasSearchTranslation");
     setSessionAction(null);
     setLogout(false);
     setLoading(false);
