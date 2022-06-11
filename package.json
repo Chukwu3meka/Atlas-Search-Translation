@@ -3,11 +3,8 @@
   "version": "1.0.1",
   "description": "AtlasSearchTranslation",
   "scripts": {
-    "dev": "cd ../AtlasSearchTranslation Server && npm run multi && cd ../AtlasSearchTranslation Web && next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export",
-    "single": "next dev"
+    "dev": "cd ../AtlasSearchTranslation Server && npm run dev && cd ../AtlasSearchTranslation Web && next dev",
+    "start": "next dev"
   },
   "keywords": [
     "AtlasSearchTranslation"

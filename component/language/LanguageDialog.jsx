@@ -11,8 +11,8 @@ import Toolbar from "@mui/material/Toolbar";
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
 
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/ArrowBack";
@@ -30,13 +30,7 @@ const LanguageDialog = ({
   searchLanguageHandler,
   selectLanguageHandler,
 }) => (
-  <Dialog
-    fullScreen
-    open={displayLangDialog}
-    onClose={hideLanguageDialog}
-    TransitionComponent={Transition}
-    //
-  >
+  <Dialog fullScreen open={displayLangDialog} onClose={hideLanguageDialog} TransitionComponent={Transition}>
     <AppBar color="transparent" sx={{ position: "relative" }} sx={{ padding: 0 }}>
       <Toolbar>
         <IconButton edge="start" color="default" onClick={hideLanguageDialog} aria-label="close">

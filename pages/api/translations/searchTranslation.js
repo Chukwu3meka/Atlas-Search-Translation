@@ -15,8 +15,9 @@ export default async (req, res) => {
     //   }
     // }
 
+    // console.log({ sourceText });
     const searchQuery = [
-      sourceText.length > 6
+      sourceText.length < 6
         ? {
             $search: {
               phrase: {
@@ -26,8 +27,8 @@ export default async (req, res) => {
             },
           }
         : {
+            index: "greaterThanSixChar",
             $search: {
-              index: "greaterThanSixChar",
               compound: {
                 must: [
                   {

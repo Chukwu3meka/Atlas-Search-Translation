@@ -57,22 +57,13 @@ const TextTranslator = (props) => {
         }
       });
 
-      const response = await fetcher("/translations/searchTranslation", {
+      const { translation } = await fetcher("/translations/searchTranslation", {
         sourceLanguage,
         sourceText: value,
         translationLanguage,
       });
 
-      // console.log("jdjd", response);
-
-      // { translation, id }
-      // const { translation, id } = await fetcher("/translation/searchTranslation", {
-      //   sourceLanguage,
-      //   sourceText: value,
-      //   translationLanguage,
-      // });
-
-      // setTextTranslationAction({ id, translation });
+      setTextTranslationAction({ translation });
     }
   };
 
