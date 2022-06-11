@@ -4,7 +4,7 @@
   "description": "AtlasSearchTranslation",
   "scripts": {
     "dev": "cd ../AtlasSearchTranslation Server && npm run dev && cd ../AtlasSearchTranslation Web && next dev",
-    "start": "next dev"
+    "web": "next dev"
   },
   "keywords": [
     "AtlasSearchTranslation"

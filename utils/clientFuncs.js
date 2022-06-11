@@ -22,15 +22,20 @@ export const addDays = (date = new Date(), days = 7) => {
 
 // api fetcher function
 export const fetcher = async (endpoint, data) => {
-  return fetch(`http://127.0.0.1:5000/API${endpoint}`, {
-    method: "POST",
-    // response must come back as json else you keep getting error
-    headers: new Headers({ "Content-Type": "application/json", Accept: "application/json" }),
-    body: JSON.stringify(data),
-    credentials: "same-origin",
-  })
+  return fetch(
+    `${
+      process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com/API" : "http://127.0.0.1:5000/API"
+    }${endpoint}`,
+    {
+      method: "POST",
+      // response must come back as json else you keep getting error
+      headers: new Headers({ "Content-Type": "application/json", Accept: "application/json" }),
+      body: JSON.stringify(data),
+      credentials: "same-origin",
+    }
+  )
     .then((res) => res.json())
-    .catch((e) => (process.env.NODE_ENV === "production" ? null : console.error("fetcher error", e)));
+    .catch((e) => (process.env.NODE_ENV === "production" ? null : console.log("fetcher error", e)));
 };
 
 // verification code
