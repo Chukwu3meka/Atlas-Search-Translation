@@ -63,7 +63,7 @@ const TextTranslator = (props) => {
         translationLanguage,
       });
 
-      console.log("jdjd", response);
+      // console.log("jdjd", response);
 
       // { translation, id }
       // const { translation, id } = await fetcher("/translation/searchTranslation", {
