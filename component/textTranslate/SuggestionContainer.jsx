@@ -38,12 +38,11 @@ const SuggestionContainer = (props) => {
   }, [props.suggestAnEdit]);
 
   const submitSuggestionHandler = async () => {
-    setDisableButtons(true);
-
     if (!suggestion) return enqueueSnackbar("Suggestion cannot be empty", { variant: "info" });
     if (suggestion === transText) return enqueueSnackbar("Suggestion must be different from current translation", { variant: "info" });
 
-    const { status } = await fetcher("/translation/suggestTranslation", {
+    setDisableButtons(true);
+    const { status } = await fetcher("/textTranslations/suggestTranslation", {
       sourceText: srcText,
       sourceLanguage: srcLang,
       translationText: transText,
@@ -53,10 +52,10 @@ const SuggestionContainer = (props) => {
     });
 
     if (status) {
-      enqueueSnackbar("Suggestion submitted successfully", { variant: "success" });
+      enqueueSnackbar("Submitted for review", { variant: "success" });
       enableSuggestAnEditAction(false);
     } else {
-      enqueueSnackbar("Suggestion not submitted", { variant: "info" });
+      enqueueSnackbar("Failed to send Suggestion", { variant: "error" });
     }
 
     setDisableButtons(false);

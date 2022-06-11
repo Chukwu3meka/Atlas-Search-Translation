@@ -57,7 +57,7 @@ const TextTranslator = (props) => {
         }
       });
 
-      const { translation } = await fetcher("/translations/searchTranslation", {
+      const { translation } = await fetcher("/textTranslations/searchTranslation", {
         sourceLanguage,
         sourceText: value,
         translationLanguage,

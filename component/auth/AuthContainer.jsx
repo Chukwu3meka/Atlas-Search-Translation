@@ -11,8 +11,6 @@ import { setSessionAction, setUserDataAction } from "@store/actions";
 import { fetcher } from "@utils/clientFuncs";
 
 const AuthContainer = (props) => {
-  return "V";
-
   const [anchorEl, setAnchorEl] = useState(null),
     open = Boolean(anchorEl),
     [auth, setAuth] = useState(null),
