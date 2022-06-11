@@ -30,7 +30,13 @@ const LanguageDialog = ({
   searchLanguageHandler,
   selectLanguageHandler,
 }) => (
-  <Dialog fullScreen open={displayLangDialog} onClose={hideLanguageDialog} TransitionComponent={Transition}>
+  <Dialog
+    fullScreen
+    open={displayLangDialog}
+    onClose={hideLanguageDialog}
+    TransitionComponent={Transition}
+    //
+  >
     <AppBar color="transparent" sx={{ position: "relative" }} sx={{ padding: 0 }}>
       <Toolbar>
         <IconButton edge="start" color="default" onClick={hideLanguageDialog} aria-label="close">
