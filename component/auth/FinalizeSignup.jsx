@@ -14,14 +14,11 @@ const FinalizeSignup = () => {
     try {
       const { verification, ref } = router.query;
 
-      console.log({ verification, ref });
-
       await fetcher("/auth/finalizeSignup", { verification, ref });
 
       enqueueSnackbar("Account verification successfull", { variant: "info" });
     } catch (error) {
-      console.log(error, error.message);
-      enqueueSnackbar(error || "Account verification Failed", { variant: "warning" });
+      enqueueSnackbar(error || "Account verification Failed", { variant: "error" });
     }
   };
 

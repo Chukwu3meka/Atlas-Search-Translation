@@ -38,7 +38,9 @@ export const fetcher = async (endpoint, data) => {
       if (response.ok) return response.json();
       throw await response.json();
     })
-    .catch((e) => e);
+    .catch((e) => {
+      throw e;
+    });
 };
 
 // verification code
