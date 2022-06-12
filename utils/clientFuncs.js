@@ -35,7 +35,10 @@ export const fetcher = async (endpoint, data) => {
     }
   )
     .then(async (response) => {
+      // A fetch Response conveniently supplies an ok , which tells you whether the request succeeded. Something like this should do the trick:
       if (response.ok) return response.json();
+
+      // Fetch promises only reject with a TypeError when a network error occurs. Since 4xx and 5xx responses aren't network errors, there's nothing to catch. You'll need to throw an error yourself to use Promise#catch.
       throw await response.json();
     })
     .catch((e) => {

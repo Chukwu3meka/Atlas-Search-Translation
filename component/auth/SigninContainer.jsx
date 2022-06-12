@@ -32,22 +32,22 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
         throw { label: "Invalid Email/Password" };
       }
 
-      const { token, session, userData, error } = await fetcher("/auth/signin", { password, email });
-      setLoading(false);
+      await fetcher("/auth/signin", { password, email }).then(({ token, session, userData }) => {
+        setLoading(false);
 
-      if (session) {
-        setTokenAction(token);
-        setUserDataAction(userData);
-        setSessionAction(session);
-        hideProfileMenuHandler();
-        router.push("/");
-      } else {
-        throw { label: error };
-      }
+        if (session) {
+          setTokenAction(token);
+          setUserDataAction(userData);
+          setSessionAction(session);
+          hideProfileMenuHandler();
+          router.push("/");
+        } else {
+          throw "Invalid session";
+        }
+      });
     } catch (error) {
       setLoading(false);
-      if (error && error.label) return enqueueSnackbar(error.label, { variant: "error" });
-      enqueueSnackbar("An error occured", { variant: "error" });
+      enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
     }
   };
 

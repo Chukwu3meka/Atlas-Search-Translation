@@ -24,19 +24,14 @@ const SignupContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
         attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
       });
 
-      const { status, error } = await fetcher("/auth/signup", { password, email, name });
+      await fetcher("/auth/signup", { password, email, name });
 
       setLoading(false);
-      if (status) {
-        hideProfileMenuHandler();
-        enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
-      } else {
-        throw { label: error };
-      }
+      hideProfileMenuHandler();
+      enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
     } catch (error) {
       setLoading(false);
-      if (error && error.label) return enqueueSnackbar(error.label, { variant: "error" });
-      enqueueSnackbar("An error occured", { variant: "error" });
+      enqueueSnackbar(error.label || error || "Unable to register account", { variant: "error" });
     }
   };
 
