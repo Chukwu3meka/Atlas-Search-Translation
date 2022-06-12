@@ -34,8 +34,11 @@ export const fetcher = async (endpoint, data) => {
       credentials: "same-origin",
     }
   )
-    .then((res) => res.json())
-    .catch((e) => (process.env.NODE_ENV === "production" ? null : console.log("fetcher error", e)));
+    .then(async (response) => {
+      if (response.ok) return response.json();
+      throw await response.json();
+    })
+    .catch((e) => e);
 };
 
 // verification code

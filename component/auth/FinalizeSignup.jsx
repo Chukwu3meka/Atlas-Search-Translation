@@ -11,13 +11,18 @@ const FinalizeSignup = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const verifyMail = async () => {
-    const { verification, ref, date } = router.query;
+    try {
+      const { verification, ref } = router.query;
 
-    const { status, error } = await fetcher("/auth/finalizeSignup", { verification, ref, date });
+      console.log({ verification, ref });
 
-    if (status) enqueueSnackbar("Acoount verification successfull", { variant: "info" });
+      await fetcher("/auth/finalizeSignup", { verification, ref });
 
-    if (error) enqueueSnackbar(error, { variant: "warning" });
+      enqueueSnackbar("Account verification successfull", { variant: "info" });
+    } catch (error) {
+      console.log(error, error.message);
+      enqueueSnackbar(error || "Account verification Failed", { variant: "warning" });
+    }
   };
 
   useEffect(() => {
