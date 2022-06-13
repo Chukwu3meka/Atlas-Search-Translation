@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
+import { Button } from "@mui/material";
 
 const suggestionsContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -20,35 +21,42 @@ const suggestionsContainer = (props) => {
     // we need session id to make  fetch request to our admin API
     // if (!suggestions.length && props.session) fetchSuggestions(props.session);
 
-    await fetcher(`/admin/fetchTextSuggestion`, {
-      initialRequest: !!propsSession,
-      session: propsSession || session,
-      lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
-    })
-
+    fetchTextSuggestions();
   }, [props.userData]);
 
-  const fetchSuggestions = async (propsSession) => {
-    console.log(!propsSession && !hasNextDoc);
-    if (!propsSession && !hasNextDoc) return;
-
-    const {
-      error,
-      hasNextDoc: newHasNextDoc,
-      suggestions: moreSuggestions,
-    } = await fetcher(`/admin/fetchSuggestion`, {
-      initialRequest: !!propsSession,
-      session: propsSession || session,
-      lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
+  const fetchTextSuggestions = async () => {
+    await fetcher(`/admin/fetchTextSuggestion`, {
+      sourceText: "come",
+      sourceLanguage: "English",
+      translationLanguage: "French",
+      password: "@72373746Jr",
+      email: "maduekwepedro@gmail.com",
+      // initialRequest: !!propsSession,
+      // session: propsSession || session,
+      // lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
     });
+    // console.log(!propsSession && !hasNextDoc);
+    // if (!propsSession && !hasNextDoc) return;
 
-    if (error) return enqueueSnackbar(error.label || "An error occured", { variant: "error" });
+    // const {
+    //   error,
+    //   hasNextDoc: newHasNextDoc,
+    //   suggestions: moreSuggestions,
+    // } = await fetcher(`/admin/fetchSuggestion`, {
+    //   initialRequest: !!propsSession,
+    //   session: propsSession || session,
+    //   lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
+    // });
 
-    console.log("Ads");
+    // if (error) return enqueueSnackbar(error.label || "An error occured", { variant: "error" });
 
-    setHasNextDoc(newHasNextDoc);
-    setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
+    // console.log("Ads");
+
+    // setHasNextDoc(newHasNextDoc);
+    // setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
   };
+
+  return <Button onClick={fetchTextSuggestions}>click</Button>;
 
   const reviewTranslationHandler =
     ({ _id, review, sourceText, sourceLanguage, translationLanguage, suggestedTranslation }) =>

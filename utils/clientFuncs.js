@@ -21,42 +21,34 @@ export const addDays = (date = new Date(), days = 7) => {
 };
 
 // api fetcher function
+
 export const fetcher = async (endpoint, data) => {
-  return (
-    fetch(
-      `${
-        process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com/API" : "http://127.0.0.1:5000/API"
-      }${endpoint}`,
-      {
-        method: "POST",
-        // response must come back as json else you keep getting error
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"), //the token is a variable which holds the token
-        },
-        credentials: "include",
-        // credentials: "same-origin",
-        body: JSON.stringify(data),
-      }
-    )
-      .then(async (response) => {
-        // A fetch Response conveniently supplies an ok , which tells you whether the request succeeded. Something like this should do the trick:
-        if (response.ok) return response.json();
+  const serverDomain = process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000";
 
-        // Fetch promises only reject with a TypeError when a network error occurs. Since 4xx and 5xx responses aren't network errors, there's nothing to catch. You'll need to throw an error yourself to use Promise#catch.
-        throw await response.json();
-      })
+  return fetch(`${serverDomain}/API${endpoint}`, {
+    method: "POST",
+    credentials: "include",
+    mode: "cors",
+    // response must come back as json else you keep getting error
+    headers: new Headers({
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": serverDomain,
+    }),
+    body: JSON.stringify(data),
+  })
+    .then(async (response) => {
+      // A fetch Response conveniently supplies an ok , which tells you whether the request succeeded. Something like this should do the trick:
+      if (response.ok) return response.json();
 
-      // .then((response) => response.json())
-      // .then((json) => {
-      // })
+      // Fetch promises only reject with a TypeError when a network error occurs. Since 4xx and 5xx responses aren't network errors, there's nothing to catch. You'll need to throw an error yourself to use Promise#catch.
+      throw await response.json();
+    })
 
-      .catch((e) => {
-        console.log("Gotcha", e);
-        throw e;
-      })
-  );
+    .catch((e) => {
+      throw e;
+    });
 };
 
 // verification code
