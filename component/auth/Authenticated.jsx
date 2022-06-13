@@ -9,7 +9,8 @@ import { ExitToAppOutlined } from "@mui/icons-material";
 
 import { setSessionAction } from "@store/actions";
 
-const Authenticated = ({ setSessionAction, userData: { name } }) => {
+const Authenticated = ({ setSessionAction, userData }) => {
+  const { name } = userData || [];
   const [loading, setLoading] = useState(false);
   const [logout, setLogout] = useState(false);
 

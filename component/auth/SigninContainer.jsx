@@ -32,22 +32,25 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
         throw { label: "Invalid Email/Password" };
       }
 
-      await fetcher("/auth/signin", { password, email }).then(({ token, session, userData }) => {
-        setLoading(false);
+      await fetcher("/auth/signin", { password, email });
 
-        if (session) {
-          setTokenAction(token);
-          setUserDataAction(userData);
-          setSessionAction(session);
-          hideProfileMenuHandler();
-          router.push("/");
-        } else {
-          throw "Invalid session";
-        }
-      });
+      // .then(({ token, session, userData }) => {
+      //   setLoading(false);
+
+      //   if (session) {
+      //     setTokenAction(token);
+      //     setUserDataAction(userData);
+      //     setSessionAction(session);
+      //     hideProfileMenuHandler();
+      //     router.push("/");
+      //   } else {
+      //     throw "Invalid session";
+      //   }
+      // });
+      setLoading(false);
     } catch (error) {
       setLoading(false);
-      enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
+      // enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
     }
   };
 

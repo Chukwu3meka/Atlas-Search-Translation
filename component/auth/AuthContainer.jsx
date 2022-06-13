@@ -37,17 +37,17 @@ const AuthContainer = (props) => {
       });
   };
 
-  useEffect(() => {
-    getUserDetails();
-  }, []);
+  // useEffect(() => {
+  //   getUserDetails();
+  // }, []);
 
-  useEffect(() => {
-    if (props.token) localStorage.setItem("AtlasSearchTranslation", props.token);
-  }, [props.token]);
+  // useEffect(() => {
+  //   if (props.token) localStorage.setItem("AtlasSearchTranslation", props.token);
+  // }, [props.token]);
 
-  useEffect(() => {
-    setAuth(props.session);
-  }, [props.session]);
+  // useEffect(() => {
+  //   setAuth(props.session);
+  // }, [props.session]);
 
   return (
     <>

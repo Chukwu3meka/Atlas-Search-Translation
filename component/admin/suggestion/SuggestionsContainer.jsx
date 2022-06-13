@@ -15,10 +15,17 @@ const suggestionsContainer = (props) => {
     [hasAdminRight, setHasAdminRight] = useState(false);
 
   useEffect(() => {
-    setSession(props.session);
-    setHasAdminRight(props.session ? ["admin", "superAdmin"].includes(props.userData.role) : false);
+    // setSession(props.session);
+    // setHasAdminRight(props.session ? ["admin", "superAdmin"].includes(props.userData.role) : false);
     // we need session id to make  fetch request to our admin API
-    if (!suggestions.length && props.session) fetchSuggestions(props.session);
+    // if (!suggestions.length && props.session) fetchSuggestions(props.session);
+
+    await fetcher(`/admin/fetchTextSuggestion`, {
+      initialRequest: !!propsSession,
+      session: propsSession || session,
+      lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
+    })
+
   }, [props.userData]);
 
   const fetchSuggestions = async (propsSession) => {
