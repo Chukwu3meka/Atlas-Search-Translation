@@ -13,8 +13,8 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAc
     { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
     [showPassword, setShowPassword] = useState(false),
-    [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_EMAIL : ""),
-    [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_DEV_PASSWORD : "");
+    [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.EMAIL : ""),
+    [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.PASSWORD : "");
 
   const signinHandler = async (e) => {
     e.preventDefault();
