@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useSnackbar } from "notistack";
 
 import { LoadingButton } from "@mui/lab";
 import Avatar from "@mui/material/Avatar";
@@ -12,9 +13,10 @@ import { fetcher } from "@utils/clientFuncs";
 // import Router from "next/router";
 
 const Authenticated = (props) => {
-  const { setUserDataAction } = props;
-  const [auth, setAuth] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [auth, setAuth] = useState({}),
+    { enqueueSnackbar } = useSnackbar(),
+    [loading, setLoading] = useState(false),
+    { setUserDataAction, hideProfileMenuHandler } = props;
 
   useState(() => {
     setAuth({ ...props.auth });
@@ -25,6 +27,8 @@ const Authenticated = (props) => {
     await fetcher("/auth/signout", {}).catch((e) => {});
     setUserDataAction({});
     setLoading(false);
+    enqueueSnackbar("Signout Successful", { variant: "success" });
+    hideProfileMenuHandler();
     // Router.reload(window.location.pathname);
   };
 

@@ -51,7 +51,11 @@ const AuthContainer = (props) => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {auth.name ? <Authenticated /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
+            {auth.name ? (
+              <Authenticated hideProfileMenuHandler={hideProfileMenuHandler} />
+            ) : (
+              <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />
+            )}
           </Box>
         </Paper>
       </Menu>
