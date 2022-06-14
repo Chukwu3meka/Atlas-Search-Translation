@@ -1,4 +1,3 @@
-import Router from "next/router";
 import { useState } from "react";
 import { connect } from "react-redux";
 
@@ -9,6 +8,8 @@ import { ExitToAppOutlined } from "@mui/icons-material";
 
 import { setUserDataAction } from "@store/actions";
 import { fetcher } from "@utils/clientFuncs";
+
+// import Router from "next/router";
 
 const Authenticated = (props) => {
   const { setUserDataAction } = props;
@@ -24,7 +25,7 @@ const Authenticated = (props) => {
     await fetcher("/auth/signout", {}).catch((e) => {});
     setUserDataAction({});
     setLoading(false);
-    Router.reload(window.location.pathname);
+    // Router.reload(window.location.pathname);
   };
 
   return (
