@@ -25,12 +25,13 @@ const suggestionsContainer = (props) => {
   }, [props.userData]);
 
   const fetchTextSuggestions = async () => {
-    await fetcher(`/admin/fetchTextSuggestion`, {
-      sourceText: "come",
-      sourceLanguage: "English",
-      translationLanguage: "French",
-      password: "@72373746Jr",
-      email: "maduekwepedro@gmail.com",
+    // await fetcher(`/admin/fetchTextSuggestion`, {
+    await fetcher(`/auth/verifyToken`, {
+      // sourceText: "come",
+      // sourceLanguage: "English",
+      // translationLanguage: "French",
+      // password: "@72373746Jr",
+      // email: "maduekwepedro@gmail.com",
       // initialRequest: !!propsSession,
       // session: propsSession || session,
       // lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,

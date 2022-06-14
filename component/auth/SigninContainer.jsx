@@ -6,9 +6,9 @@ import { useSnackbar } from "notistack";
 import { Signin } from ".";
 import validate from "@utils/validator";
 import { fetcher } from "@utils/clientFuncs";
-import { setTokenAction, setSessionAction, setUserDataAction } from "@store/actions";
+import { setUserDataAction } from "@store/actions";
 
-const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenAction, setSessionAction, setUserDataAction }) => {
+const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAction }) => {
   const router = useRouter(),
     { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
@@ -32,25 +32,22 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
         throw { label: "Invalid Email/Password" };
       }
 
-      await fetcher("/auth/signin", { password, email });
+      await fetcher("/auth/signin", { password, email })
+        .then(({ name, role }) => {
+          setUserDataAction({ name, role });
+          hideProfileMenuHandler();
+          setLoading(false);
+          enqueueSnackbar("Signin Successful", { variant: "success" });
+        })
+        .catch((e) => {
+          setLoading(false);
+          throw e;
+        });
 
-      // .then(({ token, session, userData }) => {
-      //   setLoading(false);
-
-      //   if (session) {
-      //     setTokenAction(token);
-      //     setUserDataAction(userData);
-      //     setSessionAction(session);
-      //     hideProfileMenuHandler();
-      //     router.push("/");
-      //   } else {
-      //     throw "Invalid session";
-      //   }
-      // });
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      // enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
+      enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
     }
   };
 
@@ -72,6 +69,6 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setTokenActio
 };
 
 const mapStateToProps = (state) => ({}),
-  mapDispatchToProps = { setTokenAction, setSessionAction, setUserDataAction };
+  mapDispatchToProps = { setUserDataAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

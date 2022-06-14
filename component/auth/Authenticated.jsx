@@ -1,28 +1,28 @@
 import Router from "next/router";
+import { useState } from "react";
 import { connect } from "react-redux";
-import { useEffect, useState } from "react";
 
 import { LoadingButton } from "@mui/lab";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { ExitToAppOutlined } from "@mui/icons-material";
 
-import { setSessionAction } from "@store/actions";
+import { setUserDataAction } from "@store/actions";
+import { fetcher } from "@utils/clientFuncs";
 
-const Authenticated = ({ setSessionAction, userData }) => {
-  const { name } = userData || [];
+const Authenticated = (props) => {
+  const { setUserDataAction } = props;
+  const [auth, setAuth] = useState({});
   const [loading, setLoading] = useState(false);
-  const [logout, setLogout] = useState(false);
 
-  useEffect(() => {
-    if (logout) logoutHandler();
-  }, [logout]);
+  useState(() => {
+    setAuth({ ...props.auth });
+  }, [props.auth]);
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     setLoading(true);
-    localStorage.removeItem("AtlasSearchTranslation");
-    setSessionAction(null);
-    setLogout(false);
+    await fetcher("/auth/signout", {}).catch((e) => {});
+    setUserDataAction({});
     setLoading(false);
     Router.reload(window.location.pathname);
   };
@@ -32,7 +32,7 @@ const Authenticated = ({ setSessionAction, userData }) => {
       <Avatar alt="Auth User" src="/images/profile.png" sx={{ mx: "auto", height: "70px", width: "70px" }} />
 
       <Typography variant="body1" mt={2} mb={4} sx={{ fontWeight: "bold", textAlignLast: "center" }}>
-        {`You're logged in as ${name}`}
+        {`You're logged in as ${auth.name}`}
       </Typography>
 
       <LoadingButton
@@ -40,7 +40,7 @@ const Authenticated = ({ setSessionAction, userData }) => {
         startIcon={<ExitToAppOutlined />}
         variant="contained"
         sx={{ textTransform: "capitalize" }}
-        onClick={() => setLogout(true)}>
+        onClick={logoutHandler}>
         Logout
       </LoadingButton>
     </>
@@ -48,8 +48,8 @@ const Authenticated = ({ setSessionAction, userData }) => {
 };
 
 const mapStateToProps = (state) => ({
-    userData: state.auth.userData,
+    auth: state.auth,
   }),
-  mapDispatchToProps = { setSessionAction };
+  mapDispatchToProps = { setUserDataAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);

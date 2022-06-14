@@ -7,47 +7,37 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 import { Authenticated, NotAuthenticated } from ".";
-import { setSessionAction, setUserDataAction } from "@store/actions";
+import { setUserDataAction } from "@store/actions";
 import { fetcher } from "@utils/clientFuncs";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
     open = Boolean(anchorEl),
-    [auth, setAuth] = useState(null),
-    { setSessionAction, setUserDataAction } = props;
+    { setUserDataAction } = props,
+    [auth, setAuth] = useState({});
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
 
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   const getUserDetails = async () => {
-    const clientToken = localStorage.getItem("AtlasSearchTranslation");
-
     // get user details
-    await fetcher("/auth/verifyToken", { clientToken })
-      .then((token) => {
-        if (error && !token.session) return;
-        const { userData, session, error } = token;
-
-        setSessionAction(session);
-        setUserDataAction(userData);
+    await fetcher("/auth/verifyToken", {})
+      .then(({ name, role }) => {
+        setUserDataAction({ name, role });
+        setAuth({ name, role });
       })
-      .catch(() => {
-        throw "error occured";
-      });
+      .catch((e) => setAuth({}));
   };
 
-  // useEffect(() => {
-  //   getUserDetails();
-  // }, []);
+  useEffect(() => {
+    getUserDetails();
+  }, []);
 
-  // useEffect(() => {
-  //   if (props.token) localStorage.setItem("AtlasSearchTranslation", props.token);
-  // }, [props.token]);
-
-  // useEffect(() => {
-  //   setAuth(props.session);
-  // }, [props.session]);
+  useEffect(() => {
+    setUserDataAction(props.auth);
+    setAuth(props.auth);
+  }, [props.auth.name]);
 
   return (
     <>
@@ -61,7 +51,7 @@ const AuthContainer = (props) => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {auth ? <Authenticated /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
+            {auth.name ? <Authenticated /> : <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />}
           </Box>
         </Paper>
       </Menu>
@@ -70,9 +60,8 @@ const AuthContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    token: state.auth.token,
-    session: state.auth.session,
+    auth: state.auth,
   }),
-  mapDispatchToProps = { setSessionAction, setUserDataAction };
+  mapDispatchToProps = { setUserDataAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
