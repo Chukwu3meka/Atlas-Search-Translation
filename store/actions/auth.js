@@ -1,23 +1,12 @@
 import { removeErrorAction, catchErr } from "./error";
 
-export const setTokenAction = (payload) => {
+export const setAuthAction = (payload) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: "SET_TOKEN", payload });
-      await dispatch(removeErrorAction("SET_TOKEN"));
+      dispatch({ type: "SET_AUTH", payload });
+      await dispatch(removeErrorAction("SET_AUTH"));
     } catch (err) {
-      return catchErr(dispatch, err, "SET_TOKEN");
-    }
-  };
-};
-
-export const setUserDataAction = (payload) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: "SET_USER_DATA", payload });
-      await dispatch(removeErrorAction("SET_USER_DATA"));
-    } catch (err) {
-      return catchErr(dispatch, err, "SET_USER_DATA");
+      return catchErr(dispatch, err, "SET_AUTH");
     }
   };
 };

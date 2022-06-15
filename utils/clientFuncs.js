@@ -20,35 +20,142 @@ export const addDays = (date = new Date(), days = 7) => {
   return date.toDateString();
 };
 
-// api fetcher function
+// set bearer header for axios
+export const setFetcherToken = (token) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    // No 'Access-Control-Allow-Origin' header is present on the requested resource.
+    delete axios.defaults.headers.common["Authorization"];
+  }
+};
 
-export const fetcher = async (endpoint, data) => {
+// fetcher fetcher function
+export const fetcher = async (endpoint, payload) => {
+  const axios = require("axios");
+
   const serverDomain = process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000";
 
-  return fetch(`${serverDomain}/API${endpoint}`, {
-    method: "POST",
-    credentials: "include",
-    mode: "cors",
-    // response must come back as json else you keep getting error
-    headers: new Headers({
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": serverDomain,
-    }),
-    body: JSON.stringify(data),
-  })
-    .then(async (response) => {
-      // A fetch Response conveniently supplies an ok , which tells you whether the request succeeded. Something like this should do the trick:
-      if (response.ok) return response.json();
-
-      // Fetch promises only reject with a TypeError when a network error occurs. Since 4xx and 5xx responses aren't network errors, there's nothing to catch. You'll need to throw an error yourself to use Promise#catch.
-      throw await response.json();
+  return await axios
+    .post(`${serverDomain}/API${endpoint}`, payload)
+    .then(function (res) {
+      // console.log(res);
+      // console.log(res.statusText);
+      // console.log(res.data, res.statusText);
+      // if (res.statusText !== "OK") throw "Response tampered";
+      return res.data;
     })
-
-    .catch((e) => {
-      throw e;
+    .catch(function (err) {
+      throw err?.response?.data || err?.message || err;
     });
+
+  // const fetcher = async ({ method = "post", path, payload }) => {
+  // try {
+  //   // const { data } =
+  //   const response = await axios[method](`${serverDomain}${path}`, payload);
+
+  //   console.log(response && response.data);
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  // axios
+  //   .post(`${serverDomain}clientFuncs/auth/verifyToken`, {
+  //     firstName: "Fred",
+  //     lastName: "Flintstone",
+  //   })
+  // await axios[method](`${serverDomain}clientFuncs${path}`, payload)
+
+  // const authCall = async (method = "post", path, payload, dispatch) => {
+  //   // const token = localStorage && localStorage.SoccerMASS;
+  //   if (token) {
+  //     const { data } = await axios[method](`${serverDomain}${path}`, payload);
+  //     if (data === "suspicious token") {
+  //       setToken(null);
+  //       // catchErr(dispatch, "suspicious token", "SUSPICIOUS_TOKEN");
+  //       // return dispatch({ type: "SET_MANAGER", payload: {} });
+  //     } else {
+  //       return data;
+  //     }
+  //   } else {
+  //     setToken(null);
+  //     catchErr(dispatch, "missing token", "MISSING_TOKEN");
+  //     return dispatch({ type: "SET_MANAGER", payload: {} });
+  //   }
+  // };
+
+  // const noAuthCall = async (method = "post", path, payload) => {
+  //   const response = await axios[method](
+  //     `${serverDomain}${path}`,
+  //     payload
+  //     // {
+  //     //   headers: {
+  //     //     "Content-Type": "application/json;charset=UTF-8",
+  //     //     "Access-Control-Allow-Origin": "*",
+  //     //   },
+  //     // }
+  //   );
+  //   // .then((res) => {
+  //   //   console.log("RESPONSE RECEIVED: ", res);
+  //   // })
+  //   // .catch((err) => {
+  //   //   console.log("AXIOS ERROR: ", err);
+  //   // });
+  //   return response?.data;
+  // };
+
+  // export {
+  //   setfetcherToken,
+  //   fetcher as default,
+  //   // authCall, noAuthCall, serverDomain
+  // };
+
+  // {
+  //   // `data` is the response that was provided by the server
+  //   data: {},
+
+  //   // `status` is the HTTP status code from the server response
+  //   status: 200,
+
+  //   // `statusText` is the HTTP status message from the server response
+  //   statusText: 'OK',
+
+  //   // `headers` the headers that the server responded with
+  //   // All header names are lower cased
+  //   headers: {},
+
+  //   // `config` is the config that was provided to `axios` for the request
+  //   config: {},
+
+  //   // `request` is the request that generated this response
+  //   // It is the last ClientRequest instance in node.js (in redirects)
+  //   // and an XMLHttpRequest instance the browser
+  //   request: {}
+  // }
+
+  // const serverDomain = process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000";
+  // return fetch(`${serverDomain}clientFuncs${endpoint}`, {
+  //   method: "POST",
+  //   credentials: "include",
+  //   mode: "cors",
+  //   // response must come back as json else you keep getting error
+  //   headers: new Headers({
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //     "Access-Control-Allow-Credentials": true,
+  //     "Access-Control-Allow-Origin": serverDomain,
+  //   }),
+  //   body: JSON.stringify(data),
+  // })
+  //   .then(async (response) => {
+  //     // A fetch Response conveniently supplies an ok , which tells you whether the request succeeded. Something like this should do the trick:
+  //     if (response.ok) return response.json();
+  //     // Fetch promises only reject with a TypeError when a network error occurs. Since 4xx and 5xx responses aren't network errors, there's nothing to catch. You'll need to throw an error yourself to use Promise#catch.
+  //     throw await response.json();
+  //   })
+  //   .catch((e) => {
+  //     throw e;
+  //   });
 };
 
 // verification code

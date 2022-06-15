@@ -1,7 +1,11 @@
 const authReducer = (state = {}, { payload, type }) => {
   switch (type) {
-    case "SET_USER_DATA":
-      return { ...payload };
+    case "SET_AUTH":
+      if (payload && typeof payload === "object" && !Array.isArray(payload) && payload !== null) {
+        return { ...payload };
+      } else {
+        return {};
+      }
     default:
       return state;
   }

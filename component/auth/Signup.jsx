@@ -76,10 +76,10 @@ const Signup = ({
         variant="contained"
         disabled={loading}
         onClick={setModeHandler("signin")}
-        sx={{ textTransform: "capitalize" }}>
+        sx={{ textTransform: "cfetchertalize" }}>
         Login
       </Button>
-      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
+      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={signupHandler}>
         Register
       </LoadingButton>
     </ButtonGroup>

@@ -34,10 +34,10 @@ const Reset = ({ email, loading, setEmail, password, setPassword, showPassword, 
         variant="contained"
         disabled={loading}
         onClick={setModeHandler("signin")}
-        sx={{ textTransform: "capitalize" }}>
+        sx={{ textTransform: "cfetchertalize" }}>
         Sign In
       </Button>
-      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signinHandler}>
+      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={signinHandler}>
         Reset
       </LoadingButton>
     </ButtonGroup>

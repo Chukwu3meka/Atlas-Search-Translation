@@ -1,35 +1,35 @@
 import { useState } from "react";
+import Router from "next/router";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 
-import { LoadingButton } from "@mui/lab";
-import Avatar from "@mui/material/Avatar";
-import { Typography } from "@mui/material";
 import { ExitToAppOutlined } from "@mui/icons-material";
+import { Avatar, Typography, Button } from "@mui/material";
 
-import { setUserDataAction } from "@store/actions";
-import { fetcher } from "@utils/clientFuncs";
-
-// import Router from "next/router";
+import { setAuthAction } from "@store/actions";
+import { useCookies } from "react-cookie";
+import { setfetcherToken } from "@utils/clientFuncs";
 
 const Authenticated = (props) => {
-  const [auth, setAuth] = useState({}),
-    { enqueueSnackbar } = useSnackbar(),
-    [loading, setLoading] = useState(false),
-    { setUserDataAction, hideProfileMenuHandler } = props;
+  const { enqueueSnackbar } = useSnackbar(),
+    { auth, setAuthAction, hideProfileMenuHandler } = props,
+    [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
-  useState(() => {
-    setAuth({ ...props.auth });
-  }, [props.auth]);
+  // useState(() => {
+  //   // setAuth({ ...props.auth });
+  //   if (!props.auth.name) {
+  //     console.log("reload");
+  //     Router.reload(window.location.pathname);
+  //   }
+  //   // return () => setAuth({}); // <= cleanup function
+  // }, [props.auth]);
 
   const logoutHandler = async () => {
-    setLoading(true);
-    await fetcher("/auth/signout", {}).catch((e) => {});
-    setUserDataAction({});
-    setLoading(false);
-    enqueueSnackbar("Signout Successful", { variant: "success" });
+    setfetcherToken(null); // <= remove token from axios header
+    removeCookie("token", { path: "/" }); // <= delete cookie from device
     hideProfileMenuHandler();
-    // Router.reload(window.location.pathname);
+    enqueueSnackbar("Signout Successful", { variant: "success" });
+    setAuthAction(null);
   };
 
   return (
@@ -40,14 +40,9 @@ const Authenticated = (props) => {
         {`You're logged in as ${auth.name}`}
       </Typography>
 
-      <LoadingButton
-        loading={loading}
-        startIcon={<ExitToAppOutlined />}
-        variant="contained"
-        sx={{ textTransform: "capitalize" }}
-        onClick={logoutHandler}>
+      <Button startIcon={<ExitToAppOutlined />} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={logoutHandler}>
         Logout
-      </LoadingButton>
+      </Button>
     </>
   );
 };
@@ -55,6 +50,6 @@ const Authenticated = (props) => {
 const mapStateToProps = (state) => ({
     auth: state.auth,
   }),
-  mapDispatchToProps = { setUserDataAction };
+  mapDispatchToProps = { setAuthAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);

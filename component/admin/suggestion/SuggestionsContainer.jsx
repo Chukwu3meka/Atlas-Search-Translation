@@ -18,7 +18,7 @@ const suggestionsContainer = (props) => {
   useEffect(() => {
     // setSession(props.session);
     // setHasAdminRight(props.session ? ["admin", "superAdmin"].includes(props.userData.role) : false);
-    // we need session id to make  fetch request to our admin API
+    // we need session id to make  fetch request to our admin fetcher
     // if (!suggestions.length && props.session) fetchSuggestions(props.session);
 
     fetchTextSuggestions();
@@ -26,19 +26,18 @@ const suggestionsContainer = (props) => {
 
   const fetchTextSuggestions = async () => {
     // await fetcher(`/admin/fetchTextSuggestion`, {
-    await fetcher(`/auth/verifyToken`, {
-      // sourceText: "come",
-      // sourceLanguage: "English",
-      // translationLanguage: "French",
-      // password: "@72373746Jr",
-      // email: "maduekwepedro@gmail.com",
-      // initialRequest: !!propsSession,
-      // session: propsSession || session,
-      // lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
-    });
+    // await fetcher(`/auth/verifyToken`, {
+    // sourceText: "come",
+    // sourceLanguage: "English",
+    // translationLanguage: "French",
+    // password: "@72373746Jr",
+    // email: "maduekwepedro@gmail.com",
+    // initialRequest: !!propsSession,
+    // session: propsSession || session,
+    // lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
+    // });
     // console.log(!propsSession && !hasNextDoc);
     // if (!propsSession && !hasNextDoc) return;
-
     // const {
     //   error,
     //   hasNextDoc: newHasNextDoc,
@@ -48,11 +47,8 @@ const suggestionsContainer = (props) => {
     //   session: propsSession || session,
     //   lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
     // });
-
     // if (error) return enqueueSnackbar(error.label || "An error occured", { variant: "error" });
-
     // console.log("Ads");
-
     // setHasNextDoc(newHasNextDoc);
     // setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
   };

@@ -9,9 +9,9 @@ const SignupContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
   const { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
     [showPassword, setShowPassword] = useState(false),
-    [name, setName] = useState(process.env.NODE_ENV === "development" ? process.env.NAME : ""),
-    [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.EMAIL : ""),
-    [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.PASSWORD : "");
+    [name, setName] = useState(process.env.NEXT_PUBLIC_NAME || ""),
+    [email, setEmail] = useState(process.env.NEXT_PUBLIC_EMAIL || ""),
+    [password, setPassword] = useState(process.env.NEXT_PUBLIC_PASSWORD || "");
 
   const signupHandler = async () => {
     setLoading(true);

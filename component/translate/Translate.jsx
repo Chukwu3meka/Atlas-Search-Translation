@@ -17,7 +17,7 @@ const Translate = ({ translateOptions, translateType, translateTypeHandler }) =>
           sx={{
             mr: 1,
             fontWeight: "bold",
-            textTransform: "capitalize",
+            textTransform: "cfetchertalize",
             backgroundColor: translateType === label ? "#dee7fd" : null,
             // hide "Documents option" when on mobile device
             display: label === "Documents" ? { xs: "none", sm: "none", md: "inline-block" } : "",

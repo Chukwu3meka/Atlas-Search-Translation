@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
+import { useCookies } from "react-cookie";
 
 import { Signin } from ".";
 import validate from "@utils/validator";
-import { fetcher } from "@utils/clientFuncs";
-import { setUserDataAction } from "@store/actions";
+import { fetcher, setfetcherToken } from "@utils/clientFuncs";
+import { setAuthAction } from "@store/actions";
 
-const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAction }) => {
-  const router = useRouter(),
-    { enqueueSnackbar } = useSnackbar(),
+const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction }) => {
+  const { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
+    [cookies, setCookie] = useCookies(["token"]),
     [showPassword, setShowPassword] = useState(false),
-    [email, setEmail] = useState(process.env.NODE_ENV === "development" ? process.env.EMAIL : ""),
-    [password, setPassword] = useState(process.env.NODE_ENV === "development" ? process.env.PASSWORD : "");
+    [email, setEmail] = useState(process.env.NEXT_PUBLIC_EMAIL || ""),
+    [password, setPassword] = useState(process.env.NEXT_PUBLIC_PASSWORD || "");
 
   const signinHandler = async (e) => {
     e.preventDefault();
@@ -33,8 +33,15 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAc
       }
 
       await fetcher("/auth/signin", { password, email })
-        .then(({ name, role }) => {
-          setUserDataAction({ name, role });
+        .then(async ({ name, role, token }) => {
+          if (!name && !role && !token) throw "suspicious token";
+
+          setfetcherToken(token);
+
+          setCookie("token", token, { path: "/", secure: process.env.NODE_ENV === "production" });
+
+          setAuthAction({ name, role });
+
           hideProfileMenuHandler();
           setLoading(false);
           enqueueSnackbar("Signin Successful", { variant: "success" });
@@ -47,6 +54,9 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAc
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      console.log(error);
+      return;
+
       enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
     }
   };
@@ -69,6 +79,6 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setUserDataAc
 };
 
 const mapStateToProps = (state) => ({}),
-  mapDispatchToProps = { setUserDataAction };
+  mapDispatchToProps = { setAuthAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

@@ -57,13 +57,13 @@ const TextTranslator = (props) => {
         }
       });
 
-      const { translation } = await fetcher("/textTranslations/searchTranslation", {
+      await fetcher("/textTranslations/searchTranslation", {
         sourceLanguage,
         sourceText: value,
         translationLanguage,
-      });
-
-      setTextTranslationAction({ translation });
+      })
+        .then(({ translation }) => setTextTranslationAction({ translation }))
+        .catch((e) => setTextTranslationAction({ translation: "translation not found" }));
     }
   };
 

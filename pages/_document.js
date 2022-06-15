@@ -8,10 +8,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.googlefetchers.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 
-          <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet" />
+          <link href="https://fonts.googlefetchers.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet" />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>

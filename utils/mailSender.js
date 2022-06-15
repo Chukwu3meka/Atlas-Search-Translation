@@ -3,15 +3,15 @@ const nodemailer = require("nodemailer");
 const mailTransporter = nodemailer.createTransport({
   service: "zoho",
   auth: {
-    user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
   },
 });
 
 const mailSender = async ({ to, subject, html }) =>
   await mailTransporter.sendMail(
     {
-      from: process.env.EMAIL_ADDRESS,
+      from: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
       to,
       subject,
       html: `
