@@ -24,41 +24,29 @@ const AuthContainer = (props) => {
 
   useEffect(() => {
     if (ready) {
-      setAuthAction(props.auth);
       setAuth(props.auth);
+      setAuthAction(props.auth);
+      routeChangeComplete(window.location.pathname, props.auth);
     }
     return () => ready && setAuth(props.auth);
   }, [props.auth.name]);
 
   useEffect(() => {
-    routeChangeComplete(window.location.pathname);
-    router.events.on("routeChangeStart", routeChangeStart);
+    // router.events.on("routeChangeStart", routeChangeStart);
     router.events.on("routeChangeError", routeChangeComplete);
     router.events.on("routeChangeComplete", routeChangeComplete);
     return () => {
-      routeChangeComplete(window.location.pathname);
-      router.events.off("routeChangeStart", routeChangeStart);
+      // router.events.off("routeChangeStart", routeChangeStart);
       router.events.off("routeChangeError", routeChangeComplete);
       router.events.off("routeChangeComplete", routeChangeComplete);
     };
   }, [router.events]);
 
-  const routeChangeStart = (path) => {
+  const routeChangeComplete = (path, propsAuth) => {
     if (!ready) return;
-    console.log("rout event s");
-    const { role } = auth;
-    if (path?.includes("admin") && role !== "admin") Router.push("/");
-    setPageReadyAction(false);
-  };
-
-  const routeChangeComplete = (path) => {
-    if (!ready) return;
-    const { role } = auth;
-    console.log("rout event c");
-
-    console.log({ path, role });
-    // if (path?.includes("admin") && role !== "admin") Router.push("/");
+    const { role } = propsAuth || auth;
     setPageReadyAction(true);
+    if (path?.includes("admin") && role !== "admin") Router.push("/");
   };
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
