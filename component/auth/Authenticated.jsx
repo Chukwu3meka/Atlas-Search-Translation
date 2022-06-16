@@ -8,7 +8,7 @@ import { Avatar, Typography, Button } from "@mui/material";
 
 import { setAuthAction } from "@store/actions";
 import { useCookies } from "react-cookie";
-import { setfetcherToken } from "@utils/clientFuncs";
+import { setFetcherToken } from "@utils/clientFuncs";
 
 const Authenticated = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -25,7 +25,7 @@ const Authenticated = (props) => {
   // }, [props.auth]);
 
   const logoutHandler = async () => {
-    setfetcherToken(null); // <= remove token from axios header
+    setFetcherToken(null); // <= remove token from axios header
     removeCookie("token", { path: "/" }); // <= delete cookie from device
     hideProfileMenuHandler();
     enqueueSnackbar("Signout Successful", { variant: "success" });

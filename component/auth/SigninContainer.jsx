@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 
 import { Signin } from ".";
 import validate from "@utils/validator";
-import { fetcher, setfetcherToken } from "@utils/clientFuncs";
+import { fetcher, setFetcherToken } from "@utils/clientFuncs";
 import { setAuthAction } from "@store/actions";
 
 const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction }) => {
@@ -36,7 +36,7 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
         .then(async ({ name, role, token }) => {
           if (!name && !role && !token) throw "suspicious token";
 
-          setfetcherToken(token);
+          setFetcherToken(token);
 
           setCookie("token", token, { path: "/", secure: process.env.NODE_ENV === "production" });
 
@@ -54,9 +54,8 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      console.log(error.label || error || "Unable to signin");
       return;
-
       enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
     }
   };

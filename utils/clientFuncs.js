@@ -22,6 +22,8 @@ export const addDays = (date = new Date(), days = 7) => {
 
 // set bearer header for axios
 export const setFetcherToken = (token) => {
+  const axios = require("axios");
+
   if (token) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   } else {
@@ -105,7 +107,7 @@ export const fetcher = async (endpoint, payload) => {
   // };
 
   // export {
-  //   setfetcherToken,
+  //   setFetcherToken,
   //   fetcher as default,
   //   // authCall, noAuthCall, serverDomain
   // };

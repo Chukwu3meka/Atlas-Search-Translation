@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
+import Router from "next/router";
 
 const suggestionsContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -24,6 +25,7 @@ const suggestionsContainer = (props) => {
     fetchTextSuggestions();
   }, [props.userData]);
 
+  const tester = () => Router.push("/");
   const fetchTextSuggestions = async () => {
     // await fetcher(`/admin/fetchTextSuggestion`, {
     // await fetcher(`/auth/verifyToken`, {
@@ -53,7 +55,7 @@ const suggestionsContainer = (props) => {
     // setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
   };
 
-  return <Button onClick={fetchTextSuggestions}>click</Button>;
+  return <Button onClick={tester}>click</Button>;
 
   const reviewTranslationHandler =
     ({ _id, review, sourceText, sourceLanguage, translationLanguage, suggestedTranslation }) =>

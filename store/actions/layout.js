@@ -10,3 +10,14 @@ export const displaySidebarAction = (payload) => {
     }
   };
 };
+
+export const setPageReadyAction = (payload) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: "PAGE_READY", payload });
+      await dispatch(removeErrorAction("PAGE_READY"));
+    } catch (err) {
+      return catchErr(dispatch, err, "PAGE_READY");
+    }
+  };
+};

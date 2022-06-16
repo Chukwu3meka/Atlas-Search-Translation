@@ -1,32 +1,65 @@
 import { connect } from "react-redux";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
+import Router, { useRouter } from "next/router";
+import { Box, Menu, Paper, Avatar } from "@mui/material";
 
-import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-
-import { fetcher, setfetcherToken } from "@utils/clientFuncs";
-import { setAuthAction } from "@store/actions";
 import { Authenticated, NotAuthenticated } from ".";
+import { fetcher, setFetcherToken } from "@utils/clientFuncs";
+import { setAuthAction, setPageReadyAction } from "@store/actions";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
+    router = useRouter(),
     open = Boolean(anchorEl),
-    { setAuthAction } = props,
-    [auth, setAuth] = useState({}),
-    [cookies, setCookie] = useCookies(["token"]);
+    [auth, setAuth] = useState(null),
+    [ready, setReady] = useState(false),
+    [cookies, setCookie] = useCookies(["token"]),
+    { setAuthAction, setPageReadyAction } = props;
 
   useEffect(() => {
+    setReady(true);
     getUserDetails();
   }, []);
 
   useEffect(() => {
-    setAuthAction(props.auth);
-    setAuth(props.auth);
-    return () => setAuth({}); // <= cleanup function
+    if (ready) {
+      setAuthAction(props.auth);
+      setAuth(props.auth);
+    }
+    return () => ready && setAuth(props.auth);
   }, [props.auth.name]);
+
+  useEffect(() => {
+    routeChangeComplete(window.location.pathname);
+    router.events.on("routeChangeStart", routeChangeStart);
+    router.events.on("routeChangeError", routeChangeComplete);
+    router.events.on("routeChangeComplete", routeChangeComplete);
+    return () => {
+      routeChangeComplete(window.location.pathname);
+      router.events.off("routeChangeStart", routeChangeStart);
+      router.events.off("routeChangeError", routeChangeComplete);
+      router.events.off("routeChangeComplete", routeChangeComplete);
+    };
+  }, [router.events]);
+
+  const routeChangeStart = (path) => {
+    if (!ready) return;
+    console.log("rout event s");
+    const { role } = auth;
+    if (path?.includes("admin") && role !== "admin") Router.push("/");
+    setPageReadyAction(false);
+  };
+
+  const routeChangeComplete = (path) => {
+    if (!ready) return;
+    const { role } = auth;
+    console.log("rout event c");
+
+    console.log({ path, role });
+    // if (path?.includes("admin") && role !== "admin") Router.push("/");
+    setPageReadyAction(true);
+  };
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);
 
@@ -41,7 +74,7 @@ const AuthContainer = (props) => {
         .then(({ name, role }) => {
           setAuthAction({ name, role });
           setAuth({ name, role });
-          setfetcherToken(token);
+          setFetcherToken(token);
         })
         .catch((e) => setAuth({}));
     }
@@ -59,7 +92,7 @@ const AuthContainer = (props) => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}>
         <Paper elevation={0} sx={{ borderRadius: 20 }}>
           <Box display="flex" flexDirection="column" p={1.5} maxWidth={350}>
-            {auth.name ? (
+            {auth?.name ? (
               <Authenticated hideProfileMenuHandler={hideProfileMenuHandler} auth={auth} />
             ) : (
               <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />
@@ -75,6 +108,6 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
     name: state.auth.name,
   }),
-  mapDispatchToProps = { setAuthAction };
+  mapDispatchToProps = { setAuthAction, setPageReadyAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
