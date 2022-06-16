@@ -40,7 +40,7 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
 
           setCookie("token", token, { path: "/", secure: process.env.NODE_ENV === "production" });
 
-          setAuthAction({ name, role });
+          setAuthAction({ name, role, status: true });
 
           hideProfileMenuHandler();
           setLoading(false);
