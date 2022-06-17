@@ -6,7 +6,13 @@ import { useEffect, useState } from "react";
 const LayoutContainer = (props) => {
   const { pageProps, Component } = props,
     [pageReady, setPageReady] = useState(true),
+    [authReady, setAuthReady] = useState(false),
     [sidebar, setSidebar] = useState(props.sidebar || null);
+
+  // detect when sidebar state is updated
+  useEffect(() => {
+    setAuthReady(true);
+  }, []);
 
   // detect when sidebar state is updated
   useEffect(() => {
@@ -19,10 +25,11 @@ const LayoutContainer = (props) => {
     setPageReady(props.pageReady);
   }, [props.pageReady]);
 
-  return <Layout sidebar={sidebar} pageReady={pageReady} Component={Component} pageProps={pageProps} />;
+  return <Layout authReady={authReady} sidebar={sidebar} pageReady={pageReady} Component={Component} pageProps={pageProps} />;
 };
 
 const mapStateToProps = (state) => ({
+    auth: state.auth,
     sidebar: state.layout.displaySidebar,
     pageReady: state.layout.pageReady,
   }),

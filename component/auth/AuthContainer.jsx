@@ -29,7 +29,7 @@ const AuthContainer = (props) => {
       routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
     }
     return () => ready && setAuth(props.auth);
-  }, [props.auth.status]);
+  }, [props.auth?.status]);
 
   useEffect(() => {
     router.events.on("routeChangeStart", disablePageReady);
@@ -68,6 +68,7 @@ const AuthContainer = (props) => {
 
     await sleep(0.5);
 
+    // console.log("here 1");
     if (path?.includes("admin") && role !== "admin") return Router.push("/").then(() => setPageReadyAction(true));
 
     setPageReadyAction(true);
@@ -119,7 +120,7 @@ const AuthContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
-    status: state.auth.status,
+    status: state.auth?.status,
   }),
   mapDispatchToProps = { setAuthAction, setPageReadyAction };
 

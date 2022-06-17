@@ -7,14 +7,14 @@ import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
 import Router from "next/router";
-import UseSkipFirstEffect from "@component/others/UseSkipFirstEffect";
+import useSkipFirstEffect from "@component/others/useSkipFirstEffects";
 
 const suggestionsContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     [session, setSession] = useState(null),
     [disabled, setDisabled] = useState([]),
-    [hasNextDoc, setHasNextDoc] = useState(false),
     [suggestions, setSuggestions] = useState([]),
+    [hasNextDoc, setHasNextDoc] = useState(false),
     [hasAdminRight, setHasAdminRight] = useState(false);
 
   // const firstRenderRef = useRef(true);
@@ -28,13 +28,24 @@ const suggestionsContainer = (props) => {
   //   }
   // }, [name]);
 
-  UseSkipFirstEffect(() => {
-    fetchTextSuggestions();
-  }, []);
+  const firstRenderRef = useRef(true);
 
   // useEffect(() => {
+  //   if (firstRenderRef.current) {
+  //     firstRenderRef.current = false;
+  //   } else {
+  //     // alert('Hi ' + name);
+  //     fetchTextSuggestions();
+  //   }
+  // }, []);
+
+  // useSkipFirstEffect(() => {
   //   fetchTextSuggestions();
   // }, []);
+
+  useEffect(() => {
+    fetchTextSuggestions();
+  }, []);
 
   const fetchTextSuggestions = async () => {
     console.log("here 2");
@@ -111,10 +122,12 @@ const suggestionsContainer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-    userData: state.auth.userData,
-    session: state.auth.session,
-  }),
-  mapDispatchToProps = {};
+// const mapStateToProps = (state) => ({
+//     userData: state.auth.userData,
+//     session: state.auth.session,
+//   }),
+//   mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(suggestionsContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(suggestionsContainer);
+
+export default suggestionsContainer;
