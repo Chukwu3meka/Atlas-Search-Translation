@@ -59,22 +59,18 @@ const AuthContainer = (props) => {
     };
   }, [router]); // Add any state variables to dependencies array if needed.
 
-  const disablePageReady = () => {
-    setPageReadyAction(false);
-  };
+  const disablePageReady = () => setPageReadyAction(false);
 
   const routeChangeComplete = async (path, propsAuth) => {
     if (!ready) return;
 
     const { role } = propsAuth || auth || props.auth;
 
-    console.log(role, path);
     await sleep(0.5);
-    if (path?.includes("admin") && role !== "admin") {
-      Router.push("/").then(() => setPageReadyAction(true));
-    } else {
-      setPageReadyAction(true);
-    }
+
+    if (path?.includes("admin") && role !== "admin") return Router.push("/").then(() => setPageReadyAction(true));
+
+    setPageReadyAction(true);
   };
 
   const displayProfileMenuHandler = (event) => setAnchorEl(event.currentTarget);

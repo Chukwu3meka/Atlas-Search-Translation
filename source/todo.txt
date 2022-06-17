@@ -3,3 +3,42 @@ A feedback button and automatic form submissions for translations you feel could
 reset all translation vote when authetication is added
 
 for suggestion  _id, session, sourceText, sourceLanguage, translationLanguage, suggestedTranslation
+
+
+const propsSuggestions = [
+  {
+    _id: "AAA",
+    date: "asDS",
+    sourceLanguage: "english",
+    sourceText:
+      "Quis dolore ad aliquip veniam. Exercitation dolore commodo occaecat elit officia minim Adipisicing esse eu tempor cillum voluptate ad cupidatat incididunt labore.",
+    translationLanguage: "french",
+    translationText:
+      "Tempor quis ad commodo ad irure excepteur non quis duis eiusmod Lorem irure. Ut reprehenderit do cillum ipsum amet et ut amet do id ea dolore aliquip. Sunt ullamco eiusmod dolore ipsum commodo consectetur incididunt laborum magna.",
+    suggestedTranslation:
+      "Minim consectetur qui excepteur ullamco minim laborum reprehenderit pariatur tempor amet elit voluptate irure aliquip in ex veniam ullamco culpa. Elit deserunt quis velit ex consectetur.",
+  },
+  {
+    _id: "AAA2121",
+    date: "asDS12",
+    sourceLanguage: "french",
+    sourceText:
+      "Non laborum magna pariatur esse consectetur officia excepteur consequat. Pariatur commodo  fugiat et velit ad ea sint excepteur do.",
+    translationLanguage: "spanish",
+    translationText:
+      "Irure nostrud ut voluptate est ad exercitation aliquip culpa veniam sint. Deserunt veniam officia ex excepteur consectetur.",
+    suggestedTranslation:
+      "Enim tempor tempor duis qui do commodo officia proident nisi reprehenderit et velit nisi. quis non ea consectetur.",
+  },
+  {
+    _id: "AAA21211",
+    date: "asDS121",
+    sourceLanguage: "english",
+    sourceText:
+      "Ea qui id voluptate adipisicing incididunt consequat voluptate voluptate tempor ullamco consectetur magna culpa. Eiusmod in fugiat minim anim amet.",
+    translationLanguage: "spanish",
+    translationText: "Amet enim commodo mollit deserunt ad proident consectetur tempor adipisicing culpa  commodo aute eu aliquip.",
+    suggestedTranslation:
+      "Irure officia mollit commodo consectetur id exercitation in eiusmod non eu. Culpa aliquip  minim aliquip sint et.",
+  },
+];
