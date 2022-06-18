@@ -17,7 +17,7 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
     [password, setPassword] = useState(process.env.NEXT_PUBLIC_PASSWORD || "");
 
   const signinHandler = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setLoading(true);
     try {
       try {
@@ -28,7 +28,6 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
           attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
         });
       } catch (error) {
-        setLoading(false);
         throw { label: "Invalid Email/Password" };
       }
 
@@ -47,15 +46,10 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
           enqueueSnackbar("Signin Successful", { variant: "success" });
         })
         .catch((e) => {
-          setLoading(false);
           throw e;
         });
-
-      setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error.message || error || "Unable to signin");
-      return;
       enqueueSnackbar(error.message || error || "Unable to signin", { variant: "error" });
     }
   };

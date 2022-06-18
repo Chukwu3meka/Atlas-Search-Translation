@@ -1,28 +1,17 @@
-import { useState } from "react";
-import Router from "next/router";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
+import { useCookies } from "react-cookie";
 
 import { ExitToAppOutlined } from "@mui/icons-material";
 import { Avatar, Typography, Button } from "@mui/material";
 
 import { setAuthAction } from "@store/actions";
-import { useCookies } from "react-cookie";
 import { setFetcherToken } from "@utils/clientFuncs";
 
 const Authenticated = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     { auth, setAuthAction, hideProfileMenuHandler } = props,
     [cookies, setCookie, removeCookie] = useCookies(["token"]);
-
-  // useState(() => {
-  //   // setAuth({ ...props.auth });
-  //   if (!props.auth.name) {
-  //     console.log("reload");
-  //     Router.reload(window.location.pathname);
-  //   }
-  //   // return () => setAuth({}); // <= cleanup function
-  // }, [props.auth]);
 
   const logoutHandler = async () => {
     setFetcherToken(null); // <= remove token from axios header
@@ -47,9 +36,7 @@ const Authenticated = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-    auth: state.auth,
-  }),
+const mapStateToProps = (state) => ({}),
   mapDispatchToProps = { setAuthAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);
