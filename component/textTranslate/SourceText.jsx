@@ -17,6 +17,7 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
       <TextField
         name="source-text"
         multiline
+        id="source"
         minRows={3}
         fullWidth
         value={sourceText}
