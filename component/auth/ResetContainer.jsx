@@ -34,7 +34,7 @@ const ResetContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      if (error && error.label) return enqueueSnackbar(error.label, { variant: "error" });
+      if (error && error.message) return enqueueSnackbar(error.message, { variant: "error" });
       enqueueSnackbar("An error occured", { variant: "error" });
     }
   };

@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import { HomeOutlined } from "@mui/icons-material";
 import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
-const Suggestions = ({ hasNextDoc, disabled, suggestions, reviewTranslationHandler, fetchSuggestions }) => {
+const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslationHandler, fetchTextSuggestions }) => {
   return suggestions.length ? (
     <Stack p={1} maxWidth={1200} mx="auto">
       {suggestions.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }, i) => (
@@ -48,6 +49,11 @@ const Suggestions = ({ hasNextDoc, disabled, suggestions, reviewTranslationHandl
           <Tooltip title="Suggested Translation">
             <Typography p={1}>{suggestedTranslation}</Typography>
           </Tooltip>
+
+
+
+
+          
           <Box sx={{ float: "right" }}>
             <Button
               size="small"
@@ -55,14 +61,9 @@ const Suggestions = ({ hasNextDoc, disabled, suggestions, reviewTranslationHandl
               sx={{ mr: 1 }}
               variant="contained"
               disabled={disabled.includes(_id)}
-              onClick={reviewTranslationHandler({
-                _id,
-                review: false,
-                sourceText,
-                sourceLanguage,
-                translationLanguage,
-                suggestedTranslation,
-              })}>
+              onClick={() =>                reviewTranslationHandler({_id,                  review: false,
+                })
+              }>
               Reject
             </Button>
             <Button
@@ -70,24 +71,19 @@ const Suggestions = ({ hasNextDoc, disabled, suggestions, reviewTranslationHandl
               color="success"
               variant="contained"
               disabled={disabled.includes(_id)}
-              onClick={reviewTranslationHandler({
-                _id,
-                review: true,
-                sourceText,
-                sourceLanguage,
-                translationLanguage,
-                suggestedTranslation,
-              })}>
+              onClick={() =>                reviewTranslationHandler({_id,                  review: true,
+                })
+              }>
               Approve
             </Button>
           </Box>
         </Paper>
       ))}
-      {hasNextDoc && (
+      {hasNext && (
         <Box mt={3} textAlign="center">
-          <Button fullWidth={false} size="small" variant="outlined" onClick={() => fetchSuggestions()}>
+          <LoadingButton loading={fetching} fullWidth={false} size="small" variant="outlined" onClick={fetchTextSuggestions}>
             Load more...
-          </Button>
+          </LoadingButton>
         </Box>
       )}
     </Stack>

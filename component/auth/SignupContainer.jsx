@@ -31,7 +31,7 @@ const SignupContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
       enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
     } catch (error) {
       setLoading(false);
-      enqueueSnackbar(error.label || error || "Unable to register account", { variant: "error" });
+      enqueueSnackbar(error.message || error || "Unable to register account", { variant: "error" });
     }
   };
 

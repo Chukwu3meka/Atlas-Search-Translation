@@ -10,20 +10,14 @@ const LayoutContainer = (props) => {
     [sidebar, setSidebar] = useState(props.sidebar || null);
 
   // detect when sidebar state is updated
-  useEffect(() => {
-    setAuthReady(true);
-  }, []);
+  // this will prevent re-render in child components
+  useEffect(() => setAuthReady(true), []);
 
   // detect when sidebar state is updated
-  useEffect(() => {
-    setSidebar(props.sidebar);
-  }, [props.sidebar]);
+  useEffect(() => setSidebar(props.sidebar), [props.sidebar]);
 
-  // pageReady
   // detect when sidebar state is updated
-  useEffect(() => {
-    setPageReady(props.pageReady);
-  }, [props.pageReady]);
+  useEffect(() => setPageReady(props.pageReady), [props.pageReady]);
 
   return <Layout authReady={authReady} sidebar={sidebar} pageReady={pageReady} Component={Component} pageProps={pageProps} />;
 };

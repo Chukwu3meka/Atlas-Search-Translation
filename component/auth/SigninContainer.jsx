@@ -54,9 +54,9 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error.label || error || "Unable to signin");
+      console.log(error.message || error || "Unable to signin");
       return;
-      enqueueSnackbar(error.label || error || "Unable to signin", { variant: "error" });
+      enqueueSnackbar(error.message || error || "Unable to signin", { variant: "error" });
     }
   };
 

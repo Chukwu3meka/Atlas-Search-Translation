@@ -1,4 +1,3 @@
-import ErrorPage from "next/error";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { useState, useEffect, useRef } from "react";
@@ -9,125 +8,61 @@ import { Button } from "@mui/material";
 import Router from "next/router";
 import useSkipFirstEffect from "@component/others/useSkipFirstEffects";
 
-const suggestionsContainer = (props) => {
+const suggestionsContainer = () => {
   const { enqueueSnackbar } = useSnackbar(),
-    [session, setSession] = useState(null),
     [disabled, setDisabled] = useState([]),
-    [suggestions, setSuggestions] = useState([]),
-    [hasNextDoc, setHasNextDoc] = useState(false),
-    [hasAdminRight, setHasAdminRight] = useState(false);
+    [hasNext, setHasNext] = useState(false),
+    [fetching, setFetching] = useState(false),
+    [suggestions, setSuggestions] = useState([]);
 
-  // const firstRenderRef = useRef(true);
-  // const [name, setName] = useState("");
-
-  // useEffect(() => {
-  //   if (firstRenderRef.current) {
-  //     firstRenderRef.current = false;
-  //   } else {
-  //     alert("Hi " + name);
-  //   }
-  // }, [name]);
-
-  const firstRenderRef = useRef(true);
-
-  // useEffect(() => {
-  //   if (firstRenderRef.current) {
-  //     firstRenderRef.current = false;
-  //   } else {
-  //     // alert('Hi ' + name);
-  //     fetchTextSuggestions();
-  //   }
-  // }, []);
-
-  // useSkipFirstEffect(() => {
-  //   fetchTextSuggestions();
-  // }, []);
-
-  useEffect(() => {
-    fetchTextSuggestions();
-  }, []);
+  useEffect(() => fetchTextSuggestions(), []);
 
   const fetchTextSuggestions = async () => {
-    console.log("here 2");
-
-    await fetcher(`/admin/fetchTextSuggestion`, {
-      lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
-    })
-      .then((res) => {
-        console.log(res);
+    setFetching(true);
+    await fetcher(`/admin/fetchTextSuggestion`, { hasNext })
+      .then(({ hasNext, suggestions: moreSuggestions }) => {
+        setHasNext(hasNext);
+        setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
       })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    // if (!propsSession && !hasNextDoc) return;
-    // const {
-    //   error,
-    //   hasNextDoc: newHasNextDoc,
-    //   suggestions: moreSuggestions,
-    // } = await fetcher(`/admin/fetchSuggestion`, {
-    //   initialRequest: !!propsSession,
-    //   session: propsSession || session,
-    //   lastDocId: suggestions?.length ? suggestions[suggestions.length - 1]._id : null,
-    // });
-    // if (error) return enqueueSnackbar(error.label || "An error occured", { variant: "error" });
-    // console.log("Ads");
-    // setHasNextDoc(newHasNextDoc);
-    // setSuggestions((suggestions) => [...suggestions, ...moreSuggestions]);
+      .catch((e) => enqueueSnackbar(e.message || e || "Unable to retreive suggestions", { variant: "error" }));
+    setFetching(false);
   };
 
-  return "hey";
+  const reviewTranslationHandler = async ({ _id, review }) => {
+    // add suggestion from disbaled
 
-  const reviewTranslationHandler =
-    ({ _id, review, sourceText, sourceLanguage, translationLanguage, suggestedTranslation }) =>
-    async () => {
-      try {
-        // add suggestion from disbaled
-        setDisabled((disabled) => [...disabled, _id]);
 
-        const { error } = await fetcher(`/admin/${review ? "approveSuggestion" : "rejectSuggestion"}`, {
-          _id,
-          session,
-          sourceText,
-          sourceLanguage,
-          translationLanguage,
-          suggestedTranslation,
-        });
+    setDisabled((disabled) => [...disabled, _id]);
 
-        if (error) throw { label: error };
+// console.log(_id)
+// return 
 
+    await fetcher(`/admin/${review ? "approveSuggestion" : "rejectSuggestion"}`, {
+      _id,
+    })
+      .then(() => {
         //  remove suggestion from list if approval/rejection is succesfull
         setSuggestions((suggestions) => suggestions.filter((suggestion) => suggestion._id !== _id));
 
         enqueueSnackbar(`Suggestion ${review ? "Approved" : "Rejected"}`, { variant: "success" });
-      } catch (error) {
+      })
+      .catch((error) => {
         // remove suggestion from disbaled
         setDisabled((disabled) => disabled.filter((id) => id !== _id));
+        return enqueueSnackbar(error.message || error || "Server not responding to review request", { variant: "error" });
+      });
+  };
 
-        if (error && error.label) return enqueueSnackbar(error.label, { variant: "error" });
-        enqueueSnackbar("An error occured", { variant: "error" });
-      }
-    };
-
-  return hasAdminRight ? (
+  return (
     <Suggestions
-      hasNextDoc={hasNextDoc}
+      hasNext={hasNext}
+      fetching={fetching}
       disabled={disabled}
       suggestions={suggestions}
-      fetchSuggestions={fetchTextSuggestions}
+      fetchTextSuggestions={fetchTextSuggestions}
       reviewTranslationHandler={reviewTranslationHandler}
     />
-  ) : (
-    <ErrorPage statusCode={404} />
   );
 };
-
-// const mapStateToProps = (state) => ({
-//     userData: state.auth.userData,
-//     session: state.auth.session,
-//   }),
-//   mapDispatchToProps = {};
-
-// export default connect(mapStateToProps, mapDispatchToProps)(suggestionsContainer);
 
 export default suggestionsContainer;

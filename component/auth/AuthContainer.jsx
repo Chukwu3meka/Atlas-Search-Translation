@@ -66,7 +66,7 @@ const AuthContainer = (props) => {
 
     const { role } = propsAuth || auth || props.auth;
 
-    await sleep(0.5);
+    await sleep(0.3);
 
     // console.log("here 1");
     if (path?.includes("admin") && role !== "admin") return Router.push("/").then(() => setPageReadyAction(true));
