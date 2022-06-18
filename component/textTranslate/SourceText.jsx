@@ -15,7 +15,6 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
   <Box width="100%" height="100%" display="flex" flexDirection="column" justifyContent="space-between">
     <Box p={2} display="flex" alignItems="flex-start">
       <TextField
-        fullWidth
         multiline
         minRows={3}
         fullWidth

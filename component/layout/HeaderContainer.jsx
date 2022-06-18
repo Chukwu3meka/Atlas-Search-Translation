@@ -31,7 +31,7 @@ const HeaderContainer = () => {
     // https://github.com/mui/material-ui/issues/10587
     // If you inject the contents of the Drawer using a function like in the demo, it slides.
 
-    <Drawer anchor="left" open={displayNavBar} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+    <Drawer disableEnforceFocus anchor="left" open={displayNavBar} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
       <Box sx={{ width: 270 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
         <Typography variant="h6" component="h1" p={2}>
           AtlasSearchTranslation
