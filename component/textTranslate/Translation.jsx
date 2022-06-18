@@ -21,6 +21,7 @@ const Translation = ({
   translationText,
   translationSaved,
   translationLanguage,
+  translating,
   copyTranslationHandler,
   saveTranslationHandler,
 }) => (
@@ -30,7 +31,13 @@ const Translation = ({
     ) : (
       <Box p={2} display="flex" alignItems="flex-start">
         <Typography flexGrow={1} sx={{ fontSize: 21, fontWeight: 500, color: "#474747", minHeight: 120 }}>
-          {translationText}
+          {translating
+            ? translationText === "no translation found"
+              ? "translating..."
+              : translationText
+              ? `${translationText}...`
+              : "translating..."
+            : translationText}
         </Typography>
         <Tooltip title="Save Translation" sx={{ ml: 1 }} onClick={saveTranslationHandler}>
           <IconButton aria-label="save-translation">
@@ -41,7 +48,7 @@ const Translation = ({
     )}
 
     {/* translation footer */}
-    {sourceText && !suggestAnEdit ? (
+    {!suggestAnEdit && sourceText ? (
       <Box display="flex" alignItems="center" bgcolor="#eeeeee" pb={1}>
         {translationText?.length && !translationText?.endsWith("...") ? (
           <>

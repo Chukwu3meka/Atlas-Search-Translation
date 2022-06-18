@@ -31,16 +31,13 @@ const suggestionsContainer = () => {
   const reviewTranslationHandler = async ({ _id, review }) => {
     // add suggestion from disbaled
 
-
     setDisabled((disabled) => [...disabled, _id]);
 
-// console.log(_id)
-// return 
+    await fetcher(`/admin/${review ? "approveSuggestion" : "rejectSuggestion"}`, { _id })
+      .then(async () => {
+        // fetch doc if no longer visible
+        if (hasNext && !(suggestions.length - 1)) await fetchTextSuggestions();
 
-    await fetcher(`/admin/${review ? "approveSuggestion" : "rejectSuggestion"}`, {
-      _id,
-    })
-      .then(() => {
         //  remove suggestion from list if approval/rejection is succesfull
         setSuggestions((suggestions) => suggestions.filter((suggestion) => suggestion._id !== _id));
 
@@ -48,7 +45,7 @@ const suggestionsContainer = () => {
       })
       .catch((error) => {
         // remove suggestion from disbaled
-        setDisabled((disabled) => disabled.filter((id) => id !== _id));
+        setDisabled((disabled) => disabled?.filter((id) => id !== _id));
         return enqueueSnackbar(error.message || error || "Server not responding to review request", { variant: "error" });
       });
   };

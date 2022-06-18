@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 
 const Suggestion = ({
-  transLang,
+  language,
   suggestion,
   setSuggestion,
   disableButtons,
@@ -27,7 +27,7 @@ const Suggestion = ({
         fullWidth
         minRows={3}
         value={suggestion}
-        lang={transLang}
+        lang={language}
         variant="standard" // <== to enable us disable border
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
         inputProps={{ style: { textAlign: "right" } }} // to align text to the right

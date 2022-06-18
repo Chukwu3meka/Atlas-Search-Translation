@@ -49,11 +49,6 @@ const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslati
           <Tooltip title="Suggested Translation">
             <Typography p={1}>{suggestedTranslation}</Typography>
           </Tooltip>
-
-
-
-
-          
           <Box sx={{ float: "right" }}>
             <Button
               size="small"
@@ -61,9 +56,7 @@ const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslati
               sx={{ mr: 1 }}
               variant="contained"
               disabled={disabled.includes(_id)}
-              onClick={() =>                reviewTranslationHandler({_id,                  review: false,
-                })
-              }>
+              onClick={() => reviewTranslationHandler({ _id, review: false })}>
               Reject
             </Button>
             <Button
@@ -71,9 +64,7 @@ const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslati
               color="success"
               variant="contained"
               disabled={disabled.includes(_id)}
-              onClick={() =>                reviewTranslationHandler({_id,                  review: true,
-                })
-              }>
+              onClick={() => reviewTranslationHandler({ _id, review: true })}>
               Approve
             </Button>
           </Box>

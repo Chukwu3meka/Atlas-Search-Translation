@@ -1,26 +1,22 @@
 const initialState = {
-  source: "", // <= source text
-  id: null, // <= _id of current translation
+  translating: false,
   suggestAnEdit: false, // <= enable/disable suggestion
-  translation: "", // <= best translation for source text
+  translation: {}, // <= translation object from database
   goodTranslations: [], // <=  list of all translations i've voted
   poorTranslations: [], // <=  list of all translations i've voted
 };
 
 const translationReducer = (state = initialState, { payload, type }) => {
   switch (type) {
-    case "SET_TEXT_TRANSLATION":
-      return { ...state, translation: payload.translation };
-    case "SET_SOURCE_TEXT":
-      return { ...state, source: payload };
+    case "SET_TRANSLATION":
+      return { ...state, translation: payload };
+    case "SET_TRANSLATING":
+      return { ...state, translating: payload };
     case "UPVOTE_TRANSLATION":
-      // payload is translationID
       return { ...state, goodTranslations: [...state.goodTranslations, payload] };
     case "DOWNVOTE_TRANSLATION":
-      // payload is translationID
       return { ...state, poorTranslations: [...state.poorTranslations, payload] };
     case "SUGGEST_AN_EDIT":
-      // payload is either true/false
       return { ...state, suggestAnEdit: payload };
     default:
       return state;

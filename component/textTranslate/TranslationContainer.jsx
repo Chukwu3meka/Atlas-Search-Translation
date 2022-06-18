@@ -14,16 +14,17 @@ const TranslationContainer = (props) => {
     [sourceText, setSourceText] = useState(""),
     [translationID, setTranslationID] = useState(null),
     [suggestAnEdit, setSuggestAnEdit] = useState(false),
+    [translating, setTranslating] = useState(false),
     [translationText, setTranslationText] = useState(""),
     [translationSaved, setTranslationSaved] = useState(false),
     [translationLanguage, setTranslationLanguage] = useState("French");
 
   // detect sourceText  translation change
+  useEffect(() => setTranslating(props.translating), [props.translating]);
+  // detect sourceText  translation change
   useEffect(() => setSourceText(props.sourceText), [props.sourceText]);
-
   // detect text translation change
   useEffect(() => setTranslationText(props.textTranslation), [props.textTranslation]);
-
   // detect translation language change
   useEffect(() => setTranslationLanguage(props.translationLanguage), [props.translationLanguage]);
 
@@ -95,6 +96,7 @@ const TranslationContainer = (props) => {
         suggestAnEdit,
         translationText,
         // suggestAnEditRef,
+        translating,
         translationSaved,
         cancelSuggestAnEditHandler,
         translationLanguage,
@@ -109,13 +111,13 @@ const TranslationContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    translationID: state.textTranslation.id,
-    sourceText: state.textTranslation.source,
-    suggestAnEdit: state.textTranslation.suggestAnEdit,
-    textTranslation: state.textTranslation.translation,
-    translationLanguage: state.language.translationLanguage,
+    translating: state.textTranslation.translating,
+    textTranslation: state.textTranslation.translation.result,
     goodTranslations: state.textTranslation.goodTranslations,
     poorTranslations: state.textTranslation.poorTranslations,
+    translationLanguage: state.language.translationLanguage,
+    suggestAnEdit: state.textTranslation.suggestAnEdit,
+    sourceText: state.textTranslation.translation.query,
   }),
   mapDispatchToProps = { enableSuggestAnEditAction };
 

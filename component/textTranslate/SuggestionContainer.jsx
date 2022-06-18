@@ -10,23 +10,22 @@ const SuggestionContainer = (props) => {
   const { enableSuggestAnEditAction } = props,
     suggestAnEditRef = useRef(null),
     { enqueueSnackbar } = useSnackbar(),
-    [srcText, setSrcText] = useState(""),
+    [suggestion, setSuggestion] = useState(""),
+    [language, setLanguage] = useState({}),
+    [translation, setTranslation] = useState({}),
+    [disableButtons, setDisableButtons] = useState(false);
+
+  const [srcText, setSrcText] = useState(""),
     [srcLang, setSrcLang] = useState(""),
     [transID, setTransID] = useState(null),
     [transText, setTransText] = useState(""),
-    [suggestion, setSuggestion] = useState(""),
-    [transLang, setTransLang] = useState("French"),
-    [disableButtons, setDisableButtons] = useState(false);
+    [transLang, setTransLang] = useState("French");
 
-  // detect 1.src/tran Text change 2. trans Id has changed 3. src/trans language change
   useEffect(() => {
-    setSrcText(props.srcText);
-    setTransID(props.transID);
-    setSrcLang(props.srcLang);
-    setTransText(props.transText);
-    setTransLang(props.transLang);
-    setSuggestion(props.transText);
-  }, [props.srcText, props.transText, props.transID, props.transLang, props.srcLang]);
+    setLanguage(props.language);
+    setTranslation(props.translation);
+    setSuggestion(props.translation.result);
+  }, [props.language, props.translation]);
 
   // detect status of suggestAnEdit
   useEffect(() => {
@@ -39,24 +38,25 @@ const SuggestionContainer = (props) => {
 
   const submitSuggestionHandler = async () => {
     if (!suggestion) return enqueueSnackbar("Suggestion cannot be empty", { variant: "info" });
-    if (suggestion === transText) return enqueueSnackbar("Suggestion must be different from current translation", { variant: "info" });
+    if (suggestion === translation.result)
+      return enqueueSnackbar("Suggestion must be different from current translation", { variant: "info" });
 
     setDisableButtons(true);
-    const { status } = await fetcher("/textTranslations/suggestTranslation", {
-      sourceText: srcText,
-      sourceLanguage: srcLang,
-      translationText: transText,
-      translationLanguage: transLang,
-      translationId: transID,
-      suggestedTranslation: suggestion,
-    });
-
-    if (status) {
-      enqueueSnackbar("Submitted for review", { variant: "success" });
-      enableSuggestAnEditAction(false);
-    } else {
-      enqueueSnackbar("Failed to send Suggestion", { variant: "error" });
-    }
+    await fetcher("/textTranslations/suggestTranslation", {
+      suggestion,
+      english: translation.english,
+      sourceText: translation.query,
+      sourceLanguage: language.sourceLanguage,
+      translationText: translation.result,
+      translationLanguage: language.translationLanguage,
+    })
+      .then(() => {
+        enqueueSnackbar("Submitted for review", { variant: "success" });
+        enableSuggestAnEditAction(false);
+      })
+      .catch(() => {
+        enqueueSnackbar("Failed to send Suggestion", { variant: "error" });
+      });
 
     setDisableButtons(false);
   };
@@ -69,27 +69,37 @@ const SuggestionContainer = (props) => {
   return (
     <Suggestion
       {...{
-        transLang,
         suggestion,
         setSuggestion,
         disableButtons,
         suggestAnEditRef,
         submitSuggestionHandler,
         cancelSuggestAnEditHandler,
+        language: language.translationLanguage,
       }}
     />
   );
 };
 
 const mapStateToProps = (state) => ({
-    transID: state.textTranslation.id,
-    srcText: state.textTranslation.source,
-    srcLang: state.language.sourceLanguage,
-    transText: state.textTranslation.translation,
-    transLang: state.language.translationLanguage,
+    // translation: {
+    //   query: 'he',
+    //   _id: '627355bf306c2f330b15f620',
+    //   english: 'he',
+    //   result: 'il'
+    // },
+
+    translation: state.textTranslation.translation,
+    language: state.language,
+
+    // transID: state.textTranslation.id,
+    //   srcText: state.textTranslation.source,
+    // srcLang: state.language.sourceLanguage,
+    // transText: state.textTranslation.translation,
+    // transLang: state.language.translationLanguage,
     suggestAnEdit: state.textTranslation.suggestAnEdit,
-    goodTranslations: state.textTranslation.goodTranslations,
-    poorTranslations: state.textTranslation.poorTranslations,
+    // goodTranslations: state.textTranslation.goodTranslations,
+    // poorTranslations: state.textTranslation.poorTranslations,
   }),
   mapDispatchToProps = { enableSuggestAnEditAction };
 
