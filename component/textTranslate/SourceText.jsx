@@ -15,7 +15,7 @@ import { Input } from "@mui/material";
 const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage, speaking, setSpeaking }) => (
   <Box width="100%" height="100%" display="flex" flexDirection="column" justifyContent="space-between">
     <Box p={2} display="flex" alignItems="flex-start">
-      <Input
+      {/* <Input
         id="search-language"
         value={sourceText}
         variant="outlined"
@@ -26,9 +26,9 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
         disableUnderline={true}
         placeholder="Search Languages"
         sx={{ fontSize: 20, mb: 0.7, caretColor: "#1197c0" }}
-      />
+      /> */}
 
-      {/* <TextField
+      <TextField
         name="source-text"
         multiline
         id="source"
@@ -41,13 +41,21 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
           console.log("hfhgfhgf", v);
           handleSourceTextChange(e.target.value);
         }}
-        sx={{ fontSize: 122, fontWeight: 500, color: "#474747" }}
+        sx={{
+          fontSize: 122,
+          fontWeight: 500,
+          color: "#474747",
+          "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
+          "-moz-user-select": "text" /* Firefox 2+ */,
+          "-ms-user-select": "text" /* IE 10+ */,
+          "user-select": "text" /* Standard syntax */,
+        }}
         inputProps={{ style: { fontSize: 22 } }} // font size of input text
         InputProps={{
           style: { fontSize: 22 }, // font size of input label
           disableUnderline: true, // <== to hide underline in standard TextField variant
         }}
-      /> */}
+      />
       <Tooltip title="Clear source text" sx={{ ml: 1 }}>
         <IconButton aria-label="clear-source-text" onClick={clearTextHandler}>
           <CloseSharpIcon />
