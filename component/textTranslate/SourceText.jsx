@@ -10,11 +10,25 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 import { speechToTextHandler, stopTextToSpeechHandler, textToSpeechHandler } from "@utils/clientFuncs";
+import { Input } from "@mui/material";
 
 const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sourceLanguage, speaking, setSpeaking }) => (
   <Box width="100%" height="100%" display="flex" flexDirection="column" justifyContent="space-between">
     <Box p={2} display="flex" alignItems="flex-start">
-      <TextField
+      <Input
+        id="search-language"
+        value={sourceText}
+        variant="outlined"
+        fullWidth
+        onChange={(e) => handleSourceTextChange(e.target.value)}
+        autoFocus
+        fullWidth
+        disableUnderline={true}
+        placeholder="Search Languages"
+        sx={{ fontSize: 20, mb: 0.7, caretColor: "#1197c0" }}
+      />
+
+      {/* <TextField
         name="source-text"
         multiline
         id="source"
@@ -23,14 +37,17 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
         value={sourceText}
         // size={122}
         variant="standard" // <== to enable us disable border
-        onChange={(e) => handleSourceTextChange(e.target.value)}
+        onChange={(e, v) => {
+          console.log("hfhgfhgf", v);
+          handleSourceTextChange(e.target.value);
+        }}
         sx={{ fontSize: 122, fontWeight: 500, color: "#474747" }}
         inputProps={{ style: { fontSize: 22 } }} // font size of input text
         InputProps={{
           style: { fontSize: 22 }, // font size of input label
           disableUnderline: true, // <== to hide underline in standard TextField variant
         }}
-      />
+      /> */}
       <Tooltip title="Clear source text" sx={{ ml: 1 }}>
         <IconButton aria-label="clear-source-text" onClick={clearTextHandler}>
           <CloseSharpIcon />
