@@ -7,6 +7,7 @@ import { Box, Menu, Paper, Avatar, Stack, Typography, Button } from "@mui/materi
 import { Authenticated } from ".";
 import { fetcher, setFetcherToken, sleep } from "@utils/clientFuncs";
 import { setAuthAction, setPageReadyAction } from "@store/actions";
+import Link from "next/link";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
@@ -50,6 +51,7 @@ const AuthContainer = (props) => {
         // router events won't catch back/forward botton
         // console.log(window.location.pathname, as, router.asPath);
         routeChangeComplete(as);
+        console.log(as);
       }
       return true;
     });
@@ -62,6 +64,8 @@ const AuthContainer = (props) => {
   const disablePageReady = () => setPageReadyAction(false);
 
   const routeChangeComplete = async (path, propsAuth) => {
+    console.log("hey");
+
     if (!ready) return;
 
     const { role } = propsAuth || auth || props.auth;
@@ -110,15 +114,15 @@ const AuthContainer = (props) => {
               <Authenticated hideProfileMenuHandler={hideProfileMenuHandler} auth={auth} />
             ) : (
               <Stack spacing={2} sx={{ textAlign: "center" }}>
-                <Button onClick={hideProfileMenuHandler} href="/auth/signup">
-                  Create account
-                </Button>
-                <Button onClick={hideProfileMenuHandler} href="/auth/signin">
-                  Signin to Account
-                </Button>
-                {/* <Button onClick={hideProfileMenuHandler} href="/auth/reset">
-                  Reset/Forgot your password?
-                </Button> */}
+                <Link href="/auth/signup">
+                  <Button onClick={hideProfileMenuHandler}>Create account</Button>
+                </Link>
+                <Link href="/auth/signin">
+                  <Button onClick={hideProfileMenuHandler}>Signin to Account</Button>
+                </Link>
+                {/* <Link href="/auth/reset">
+                  <Button onClick={hideProfileMenuHandler}>Reset/Forgot your password?</Button>
+                </Link> */}
               </Stack>
             )}
           </Box>

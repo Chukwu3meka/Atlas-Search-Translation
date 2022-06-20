@@ -1,14 +1,14 @@
 import Router from "next/router";
 import { useState } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 
 import { Signup } from ".";
 import validate from "@utils/validator";
-import { setAuthAction } from "@store/actions";
+// import { setAuthAction } from "@store/actions";
 import { fetcher, sleep } from "@utils/clientFuncs";
 
-const SignupContainer = ({ setAuthAction }) => {
+const SignupContainer = () => {
   const [values, setValues] = useState({
       showPassword: false,
       name: process.env.NEXT_PUBLIC_NAME || "",
@@ -47,21 +47,13 @@ const SignupContainer = ({ setAuthAction }) => {
         attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
       });
 
-      // await fetcher("/auth/signup", { password, email, name });
-
-      setValues({
-        showPassword: false,
-        name: process.env.NEXT_PUBLIC_NAME || "",
-        email: process.env.NEXT_PUBLIC_EMAIL || "",
-        password: process.env.NEXT_PUBLIC_PASSWORD || "",
-      });
+      await fetcher("/auth/signup", { password, email, name });
 
       setLoading(false);
+      setValues({ showPassword: false, name: "", email: "", password: "" });
       enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
 
-      // await sleep(0.6);
-      // setAuthAction
-
+      await sleep(0.3);
       Router.push("/");
     } catch (error) {
       setLoading(false);
@@ -92,7 +84,9 @@ const SignupContainer = ({ setAuthAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({}),
-  mapDispatchToProps = { setAuthAction };
+// const mapStateToProps = (state) => ({}),
+//   mapDispatchToProps = { setAuthAction };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
+
+export default SignupContainer;

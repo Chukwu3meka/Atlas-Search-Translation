@@ -51,7 +51,7 @@ const SigninContainer = ({ setAuthAction }) => {
       await fetcher("/auth/signin", { password, email })
         .then(async ({ name, role, token }) => {
           if (!name && !role && !token) throw "suspicious token";
-          setAuthAction(); // <= to prevent infinite loading
+          // setAuthAction(); // <= to prevent infinite loading
 
           setFetcherToken(token);
 
