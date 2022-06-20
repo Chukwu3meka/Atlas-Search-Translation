@@ -1,5 +1,4 @@
 import AuthContainer from "./AuthContainer";
-import NotAuthenticated from "./NotAuthenticated";
 import Authenticated from "./Authenticated";
 import Signin from "./Signin";
 import Signup from "./Signup";
@@ -18,6 +17,5 @@ export {
   SigninContainer,
   FinalizeSignup,
   Authenticated,
-  NotAuthenticated,
   AuthContainer as default,
 };

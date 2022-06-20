@@ -1,5 +1,5 @@
-import { FinalizeSignup } from "@component/auth";
+import { SignupContainer } from "@component/auth";
 
-const FinalizeSignupPage = () => <FinalizeSignup />;
+const SignupPage = () => <SignupContainer />;
 
-export default FinalizeSignupPage;
+export default SignupPage;

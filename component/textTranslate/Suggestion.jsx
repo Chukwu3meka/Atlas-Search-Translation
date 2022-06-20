@@ -48,10 +48,10 @@ const Suggestion = ({
     {/* edit translation action/info */}
     <Box bgcolor="#eeeeee" display="flex" flexDirection="column" alignItems="flex-end">
       <Stack direction="row">
-        <Button sx={{ textTransform: "cfetchertalize" }} disabled={disableButtons} onClick={cancelSuggestAnEditHandler}>
+        <Button sx={{ textTransform: "capitalize" }} disabled={disableButtons} onClick={cancelSuggestAnEditHandler}>
           Cancel
         </Button>
-        <Button sx={{ textTransform: "cfetchertalize" }} disabled={disableButtons} onClick={submitSuggestionHandler}>
+        <Button sx={{ textTransform: "capitalize" }} disabled={disableButtons} onClick={submitSuggestionHandler}>
           Submit
         </Button>
       </Stack>

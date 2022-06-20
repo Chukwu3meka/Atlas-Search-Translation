@@ -1,14 +1,4 @@
-import {
-  Button,
-  TextField,
-  Typography,
-  InputLabel,
-  IconButton,
-  ButtonGroup,
-  FormControl,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
+import { Box, Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
@@ -22,68 +12,68 @@ const Signup = ({
   setPassword,
   showPassword,
   signupHandler,
-  setModeHandler,
   setShowPassword,
+
+  values,
+
+  handleChange,
+  handleClickShowPassword,
+  handleMouseDownPassword,
 }) => (
-  <>
-    <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-      WELCOME TO AtlasSearchTranslation
-    </Typography>
+  <Box px={1.5} py={5} maxWidth={500} m="auto">
+    <Stack spacing={3}>
+      <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
+        WELCOME TO AtlasSearchTranslation
+      </Typography>
 
-    <TextField
-      id="name"
-      fullWidth
-      label="Name"
-      value={name}
-      variant="outlined"
-      sx={{ marginBottom: 1 }}
-      onChange={(e) => setName(e.target.value)}
-    />
-
-    <TextField
-      id="email"
-      fullWidth
-      label="eMail"
-      value={email}
-      variant="outlined"
-      sx={{ marginBottom: 1 }}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-
-    <FormControl fullWidth variant="outlined">
-      <InputLabel htmlFor="password">Password</InputLabel>
-      <OutlinedInput
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        id="password"
-        autoComplete="ViewCrunch"
+      <TextField
+        id="name"
+        fullWidth
+        label="Name"
+        value={values.name}
+        variant="outlined"
         sx={{ marginBottom: 1 }}
-        type={showPassword ? "text" : "password"}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-              {showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }
-        label="Password"
+        onChange={handleChange("name")}
       />
-    </FormControl>
 
-    <ButtonGroup fullWidth>
-      <Button
-        color="info"
-        variant="contained"
-        disabled={loading}
-        onClick={setModeHandler("signin")}
-        sx={{ textTransform: "cfetchertalize" }}>
-        Login
-      </Button>
-      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={signupHandler}>
+      <TextField
+        id="email"
+        fullWidth
+        label="eMail"
+        value={values.email}
+        variant="outlined"
+        sx={{ marginBottom: 1 }}
+        onChange={handleChange("email")}
+      />
+
+      <FormControl sx={{ mb: 1 }} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          key="password"
+          id="outlined-adornment-password"
+          type={values.showPassword ? "text" : "password"}
+          value={values.password}
+          onChange={handleChange("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end">
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+        />
+      </FormControl>
+
+      <LoadingButton fullWidth loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signupHandler}>
         Register
       </LoadingButton>
-    </ButtonGroup>
-  </>
+    </Stack>
+  </Box>
 );
 
 export default Signup;

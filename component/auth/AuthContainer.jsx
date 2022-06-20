@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
-import { Box, Menu, Paper, Avatar } from "@mui/material";
+import { Box, Menu, Paper, Avatar, Stack, Typography, Button } from "@mui/material";
 
-import { Authenticated, NotAuthenticated } from ".";
+import { Authenticated } from ".";
 import { fetcher, setFetcherToken, sleep } from "@utils/clientFuncs";
 import { setAuthAction, setPageReadyAction } from "@store/actions";
 
@@ -109,7 +109,17 @@ const AuthContainer = (props) => {
             {auth?.status ? (
               <Authenticated hideProfileMenuHandler={hideProfileMenuHandler} auth={auth} />
             ) : (
-              <NotAuthenticated hideProfileMenuHandler={hideProfileMenuHandler} />
+              <Stack spacing={2} sx={{ textAlign: "center" }}>
+                <Button onClick={hideProfileMenuHandler} href="/auth/signup">
+                  Create account
+                </Button>
+                <Button onClick={hideProfileMenuHandler} href="/auth/signin">
+                  Signin to Account
+                </Button>
+                {/* <Button onClick={hideProfileMenuHandler} href="/auth/reset">
+                  Reset/Forgot your password?
+                </Button> */}
+              </Stack>
             )}
           </Box>
         </Paper>

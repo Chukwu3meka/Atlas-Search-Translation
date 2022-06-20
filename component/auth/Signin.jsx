@@ -1,73 +1,52 @@
-import {
-  Button,
-  TextField,
-  Typography,
-  InputLabel,
-  IconButton,
-  ButtonGroup,
-  FormControl,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Box, Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const Signin = ({ email, loading, setEmail, password, setPassword, showPassword, signinHandler, setModeHandler, setShowPassword }) => (
-  <>
-    <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-      SIGN IN TO YOUR ACCOUNT
-    </Typography>
+const Signin = ({ values, loading, handleChange, signinHandler, handleClickShowPassword, handleMouseDownPassword }) => (
+  <Box px={1.5} py={5} maxWidth={500} m="auto">
+    <Stack spacing={3}>
+      <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
+        SIGN IN TO YOUR ACCOUNT
+      </Typography>
 
-    <TextField
-      id="email"
-      fullWidth
-      label="eMail"
-      value={email}
-      variant="outlined"
-      sx={{ marginBottom: 1 }}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-
-    <FormControl fullWidth variant="outlined">
-      <InputLabel htmlFor="password">Password</InputLabel>
-      <OutlinedInput
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        id="password"
-        autoComplete="ViewCrunch"
+      <TextField
+        id="email"
+        fullWidth
+        label="email"
+        value={values.email}
+        variant="outlined"
         sx={{ marginBottom: 1 }}
-        type={showPassword ? "text" : "password"}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-              {showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }
-        label="Password"
+        onChange={handleChange("email")}
       />
-    </FormControl>
 
-    <ButtonGroup fullWidth sx={{ mb: 1.2 }}>
-      <Button
-        color="info"
-        variant="contained"
-        disabled={loading}
-        onClick={setModeHandler("signup")}
-        sx={{ textTransform: "cfetchertalize" }}>
-        Register
-      </Button>
-      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={signinHandler}>
+      <FormControl sx={{ mb: 1 }} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          key="password"
+          id="outlined-adornment-password"
+          type={values.showPassword ? "text" : "password"}
+          value={values.password}
+          onChange={handleChange("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end">
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+        />
+      </FormControl>
+
+      <LoadingButton loading={loading} variant="contained" sx={{ textTransform: "capitalize" }} onClick={signinHandler}>
         Login
       </LoadingButton>
-    </ButtonGroup>
-
-    <Button onClick={setModeHandler("reset")}>
-      <Typography letterSpacing={1} fontSize={12} textTransform="none">
-        Reset/Forgot your password?
-      </Typography>
-    </Button>
-  </>
+    </Stack>
+  </Box>
 );
 
 export default Signin;

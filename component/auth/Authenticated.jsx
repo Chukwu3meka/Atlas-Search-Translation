@@ -29,7 +29,7 @@ const Authenticated = (props) => {
         {`You're logged in as ${auth.name}`}
       </Typography>
 
-      <Button startIcon={<ExitToAppOutlined />} variant="contained" sx={{ textTransform: "cfetchertalize" }} onClick={logoutHandler}>
+      <Button startIcon={<ExitToAppOutlined />} variant="contained" sx={{ textTransform: "capitalize" }} onClick={logoutHandler}>
         Logout
       </Button>
     </>

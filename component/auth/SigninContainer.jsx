@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
@@ -5,20 +6,36 @@ import { useCookies } from "react-cookie";
 
 import { Signin } from ".";
 import validate from "@utils/validator";
-import { fetcher, setFetcherToken } from "@utils/clientFuncs";
 import { setAuthAction } from "@store/actions";
+import { fetcher, setFetcherToken } from "@utils/clientFuncs";
 
-const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction }) => {
-  const { enqueueSnackbar } = useSnackbar(),
+const SigninContainer = ({ setAuthAction }) => {
+  const [values, setValues] = useState({
+      showPassword: false,
+      email: process.env.NEXT_PUBLIC_EMAIL || "",
+      password: process.env.NEXT_PUBLIC_PASSWORD || "",
+    }),
+    { enqueueSnackbar } = useSnackbar(),
     [loading, setLoading] = useState(false),
-    [cookies, setCookie] = useCookies(["token"]),
-    [showPassword, setShowPassword] = useState(false),
-    [email, setEmail] = useState(process.env.NEXT_PUBLIC_EMAIL || ""),
-    [password, setPassword] = useState(process.env.NEXT_PUBLIC_PASSWORD || "");
+    [cookies, setCookie] = useCookies(["token"]);
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues((values) => ({ ...values, showPassword: !values.showPassword }));
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const signinHandler = async (e) => {
-    // e.preventDefault();
     setLoading(true);
+
+    const { name, email, password } = values;
+
     try {
       try {
         validate({ type: "email", value: email });
@@ -34,16 +51,17 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
       await fetcher("/auth/signin", { password, email })
         .then(async ({ name, role, token }) => {
           if (!name && !role && !token) throw "suspicious token";
+          setAuthAction(); // <= to prevent infinite loading
 
           setFetcherToken(token);
 
           setCookie("token", token, { path: "/", secure: process.env.NODE_ENV === "production" });
 
           setAuthAction({ name, role, status: true });
-
-          hideProfileMenuHandler();
           setLoading(false);
           enqueueSnackbar("Signin Successful", { variant: "success" });
+
+          Router.push("/");
         })
         .catch((e) => {
           throw e;
@@ -57,15 +75,12 @@ const SigninContainer = ({ setModeHandler, hideProfileMenuHandler, setAuthAction
   return (
     <Signin
       {...{
-        email,
+        values,
         loading,
-        setEmail,
-        password,
-        setPassword,
-        showPassword,
+        handleChange,
         signinHandler,
-        setModeHandler,
-        setShowPassword,
+        handleClickShowPassword,
+        handleMouseDownPassword,
       }}
     />
   );
