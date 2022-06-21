@@ -47,7 +47,7 @@ const SignupContainer = () => {
         attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
       });
 
-      await fetcher("/auth/signup", { password, email, name });
+      // await fetcher("/auth/signup", { password, email, name });
 
       setLoading(false);
       setValues({ showPassword: false, name: "", email: "", password: "" });

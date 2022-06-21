@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Router from "next/router";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { useCookies } from "react-cookie";
@@ -19,19 +21,24 @@ const Authenticated = (props) => {
     hideProfileMenuHandler();
     enqueueSnackbar("Signout Successful", { variant: "success" });
     setAuthAction(null);
+    Router.push("/");
   };
 
   return (
     <>
       <Avatar alt="Auth User" src="/images/profile.png" sx={{ mx: "auto", height: "70px", width: "70px" }} />
-
       <Typography variant="body1" mt={2} mb={4} sx={{ fontWeight: "bold", textAlignLast: "center" }}>
         {`You're logged in as ${auth.name}`}
       </Typography>
-
       <Button startIcon={<ExitToAppOutlined />} variant="contained" sx={{ textTransform: "capitalize" }} onClick={logoutHandler}>
         Logout
       </Button>
+      <hr />
+      <Link href="/">
+        <Typography variant="body1" fontSize={13} mt={1} sx={{ textAlignLast: "center" }}>
+          Privacy Policy • Terms of Service
+        </Typography>
+      </Link>
     </>
   );
 };

@@ -13,23 +13,16 @@ const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
     router = useRouter(),
     open = Boolean(anchorEl),
-    [auth, setAuth] = useState(null),
+    [auth, setAuth] = useState({}),
     [ready, setReady] = useState(false),
     [cookies, setCookie] = useCookies(["token"]),
     { setAuthAction, setPageReadyAction } = props;
 
-  useEffect(() => {
-    setReady(true);
-    getUserDetails();
-  }, []);
+  useEffect(() => getUserDetails(), []);
 
   useEffect(() => {
-    if (ready) {
-      setAuth(props.auth);
-      setAuthAction(props.auth);
-      routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
-    }
-    return () => ready && setAuth(props.auth);
+    setAuth(props.auth);
+    setAuthAction(props.auth);
   }, [props.auth?.status]);
 
   useEffect(() => {
@@ -43,38 +36,10 @@ const AuthContainer = (props) => {
     };
   }, [router.events]);
 
-  useEffect(() => {
-    router.beforePopState(({ as }) => {
-      if (as !== router.asPath) {
-        // Will run when leaving the current page; on back/forward actions
-        // Add your logic here, like toggling the modal state
-        // router events won't catch back/forward botton
-        // console.log(window.location.pathname, as, router.asPath);
-        routeChangeComplete(as);
-        console.log(as);
-      }
-      return true;
-    });
-
-    return () => {
-      router.beforePopState(() => true);
-    };
-  }, [router]); // Add any state variables to dependencies array if needed.
-
   const disablePageReady = () => setPageReadyAction(false);
 
-  const routeChangeComplete = async (path, propsAuth) => {
-    console.log("hey");
-
-    if (!ready) return;
-
-    const { role } = propsAuth || auth || props.auth;
-
+  const routeChangeComplete = async () => {
     await sleep(0.1);
-
-    // console.log("here 1");
-    if (path?.includes("admin") && role !== "admin") return Router.push("/").then(() => setPageReadyAction(true));
-
     setPageReadyAction(true);
   };
 
@@ -96,6 +61,7 @@ const AuthContainer = (props) => {
     } else {
       setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
     }
+    routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
   };
 
   return (
@@ -134,7 +100,7 @@ const AuthContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
-    status: state.auth?.status,
+    status: state.auth.status,
   }),
   mapDispatchToProps = { setAuthAction, setPageReadyAction };
 

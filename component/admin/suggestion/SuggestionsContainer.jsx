@@ -5,8 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
-import Router from "next/router";
-import useSkipFirstEffect from "@component/others/useSkipFirstEffects";
+import AuthController from "@component/others/AuthController";
 
 const suggestionsContainer = () => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -16,6 +15,12 @@ const suggestionsContainer = () => {
     [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => fetchTextSuggestions(), []);
+
+  // useEffect(() => {
+  //   const a = <AuthController />;
+
+  //   console.log(a);
+  // }, []);
 
   const fetchTextSuggestions = async () => {
     setFetching(true);
@@ -51,13 +56,17 @@ const suggestionsContainer = () => {
   };
 
   return (
-    <Suggestions
-      hasNext={hasNext}
-      fetching={fetching}
-      disabled={disabled}
-      suggestions={suggestions}
-      fetchTextSuggestions={fetchTextSuggestions}
-      reviewTranslationHandler={reviewTranslationHandler}
+    <AuthController
+      Component={
+        <Suggestions
+          hasNext={hasNext}
+          fetching={fetching}
+          disabled={disabled}
+          suggestions={suggestions}
+          fetchTextSuggestions={fetchTextSuggestions}
+          reviewTranslationHandler={reviewTranslationHandler}
+        />
+      }
     />
   );
 };

@@ -1,5 +1,5 @@
-// const authReducer = (state = {}, { payload, type }) => {
-const authReducer = (state = null, { payload, type }) => {
+// const authReducer = (state = null, { payload, type }) => {
+const authReducer = (state = {}, { payload, type }) => {
   switch (type) {
     case "SET_AUTH":
       if (payload && typeof payload === "object" && !Array.isArray(payload) && payload !== null) {
