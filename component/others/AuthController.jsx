@@ -1,6 +1,6 @@
 import ErrorPage from "next/error";
-import { connect } from "react-redux";
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
 const AuthController = (props) => {
   const { Component } = props,
@@ -12,8 +12,8 @@ const AuthController = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    role: state.auth?.role,
     status: state.auth?.status,
+    role: state.auth?.role,
   }),
   mapDispatchToProps = {};
 

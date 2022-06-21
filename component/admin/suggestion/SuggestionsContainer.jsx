@@ -7,7 +7,7 @@ import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
 import AuthController from "@component/others/AuthController";
 
-const suggestionsContainer = () => {
+const SuggestionsContainer = () => {
   const { enqueueSnackbar } = useSnackbar(),
     [disabled, setDisabled] = useState([]),
     [hasNext, setHasNext] = useState(false),
@@ -15,12 +15,6 @@ const suggestionsContainer = () => {
     [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => fetchTextSuggestions(), []);
-
-  // useEffect(() => {
-  //   const a = <AuthController />;
-
-  //   console.log(a);
-  // }, []);
 
   const fetchTextSuggestions = async () => {
     setFetching(true);
@@ -71,4 +65,4 @@ const suggestionsContainer = () => {
   );
 };
 
-export default suggestionsContainer;
+export default SuggestionsContainer;
