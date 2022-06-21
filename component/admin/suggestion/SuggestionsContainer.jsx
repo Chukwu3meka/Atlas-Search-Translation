@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
-import AuthController from "@component/others/AuthController";
+import AdminController from "@component/others/AdminController";
 
 const SuggestionsContainer = () => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -50,7 +50,7 @@ const SuggestionsContainer = () => {
   };
 
   return (
-    <AuthController
+    <AdminController
       Component={
         <Suggestions
           hasNext={hasNext}

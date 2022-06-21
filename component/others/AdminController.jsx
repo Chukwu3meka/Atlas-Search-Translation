@@ -2,7 +2,7 @@ import ErrorPage from "next/error";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-const AuthController = (props) => {
+const AdminController = (props) => {
   const { Component } = props,
     [auth, setAuth] = useState(false);
 
@@ -17,4 +17,4 @@ const mapStateToProps = (state) => ({
   }),
   mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthController);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminController);
