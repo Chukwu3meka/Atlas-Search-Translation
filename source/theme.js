@@ -18,6 +18,9 @@ const muiTheme = createTheme({
 
   components: {
     MuiTextField: iPhoneInput,
+    MuiInput: iPhoneInput,
+    MuiFilledInput: iPhoneInput,
+    MuiOutlinedInput: iPhoneInput,
     MuiPaper: {
       styleOverrides: {
         root: {
