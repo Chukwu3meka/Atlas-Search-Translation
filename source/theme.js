@@ -17,34 +17,7 @@ const muiTheme = createTheme({
   },
 
   components: {
-    MuiTextField: {
-      // defaultProps: {
-      //   InputProps: {
-      //     "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
-      //     "-moz-user-select": "text" /* Firefox 2+ */,
-      //     "-ms-user-select": "text" /* IE 10+ */,
-      //     "user-select": "text" /* Standard syntax */,
-      //   },
-      //   inputProps: {
-      //     "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
-      //     "-moz-user-select": "text" /* Firefox 2+ */,
-      //     "-ms-user-select": "text" /* IE 10+ */,
-      //     "user-select": "text" /* Standard syntax */,
-      //   },
-      // },
-      styleOverrides: {
-        root: {
-          "*": {
-            "-webkit-user-select": "text !important" /* Chrome, Opera, Safari */,
-            "-moz-user-select": "text !important" /* Firefox 2+ */,
-            "-ms-user-select": "text !important" /* IE 10+ */,
-            "user-select": "text !important" /* Standard syntax */,
-            // borderLeftWidth: 6,
-            // padding: "4px !important", // override inline-style
-          },
-        },
-      },
-    },
+    MuiTextField: iPhoneInput,
     MuiPaper: {
       styleOverrides: {
         root: {
@@ -58,3 +31,18 @@ const muiTheme = createTheme({
 });
 
 export default muiTheme;
+
+const iPhoneInput = {
+  styleOverrides: {
+    root: {
+      "*": {
+        "-webkit-user-select": "text !important" /* Chrome, Opera, Safari */,
+        "-moz-user-select": "text !important" /* Firefox 2+ */,
+        "-ms-user-select": "text !important" /* IE 10+ */,
+        "user-select": "text !important" /* Standard syntax */,
+        // borderLeftWidth: 6,
+        // padding: "4px !important", // override inline-style
+      },
+    },
+  },
+};
