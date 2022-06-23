@@ -25,7 +25,7 @@ const muiTheme = createTheme({
           "user-select": "text !important" /* Standard syntax */,
           // border: "3px solid red !important",
 
-          "& input:valid:focus + fieldset": {
+          "*": {
             "-webkit-user-select": "text !important" /* Chrome, Opera, Safari */,
             "-moz-user-select": "text !important" /* Firefox 2+ */,
             "-ms-user-select": "text !important" /* IE 10+ */,

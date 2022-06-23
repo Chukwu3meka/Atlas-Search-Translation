@@ -28,10 +28,6 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
           fontSize: 122,
           fontWeight: 500,
           color: "#474747",
-          "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
-          "-moz-user-select": "text" /* Firefox 2+ */,
-          "-ms-user-select": "text" /* IE 10+ */,
-          "user-select": "text" /* Standard syntax */,
         }}
         inputProps={{
           style: {
@@ -45,7 +41,6 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
         InputProps={{
           style: {
             fontSize: 22,
-
             "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
             "-moz-user-select": "text" /* Firefox 2+ */,
             "-ms-user-select": "text" /* IE 10+ */,
