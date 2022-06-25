@@ -29,23 +29,9 @@ const SourceText = ({ sourceText, clearTextHandler, handleSourceTextChange, sour
           fontWeight: 500,
           color: "#474747",
         }}
-        inputProps={{
-          style: {
-            fontSize: 22,
-            "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
-            "-moz-user-select": "text" /* Firefox 2+ */,
-            "-ms-user-select": "text" /* IE 10+ */,
-            "user-select": "text" /* Standard syntax */,
-          },
-        }} // font size of input text
+        inputProps={{ style: { fontSize: 22 } }} // font size of input text
         InputProps={{
-          style: {
-            fontSize: 22,
-            "-webkit-user-select": "text" /* Chrome, Opera, Safari */,
-            "-moz-user-select": "text" /* Firefox 2+ */,
-            "-ms-user-select": "text" /* IE 10+ */,
-            "user-select": "text" /* Standard syntax */,
-          }, // font size of input label
+          style: { fontSize: 22 }, // font size of input label
           disableUnderline: true, // <== to hide underline in standard TextField variant
         }}
       />

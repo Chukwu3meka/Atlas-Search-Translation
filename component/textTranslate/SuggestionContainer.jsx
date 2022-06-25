@@ -43,12 +43,9 @@ const SuggestionContainer = (props) => {
 
     setDisableButtons(true);
     await fetcher("/textTranslations/suggestTranslation", {
+      language,
       suggestion,
       english: translation.english,
-      sourceText: translation.query,
-      sourceLanguage: language.sourceLanguage,
-      translationText: translation.result,
-      translationLanguage: language.translationLanguage,
     })
       .then(() => {
         enqueueSnackbar("Submitted for review", { variant: "success" });
