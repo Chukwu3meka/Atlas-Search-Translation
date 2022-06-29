@@ -15,12 +15,6 @@ const SuggestionContainer = (props) => {
     [translation, setTranslation] = useState({}),
     [disableButtons, setDisableButtons] = useState(false);
 
-  const [srcText, setSrcText] = useState(""),
-    [srcLang, setSrcLang] = useState(""),
-    [transID, setTransID] = useState(null),
-    [transText, setTransText] = useState(""),
-    [transLang, setTransLang] = useState("French");
-
   useEffect(() => {
     setLanguage(props.language);
     setTranslation(props.translation);
@@ -45,7 +39,7 @@ const SuggestionContainer = (props) => {
     await fetcher("/textTranslations/suggestTranslation", {
       language,
       suggestion,
-      english: translation.english,
+      ...translation,
     })
       .then(() => {
         enqueueSnackbar("Submitted for review", { variant: "success" });
@@ -60,7 +54,7 @@ const SuggestionContainer = (props) => {
 
   const cancelSuggestAnEditHandler = () => {
     enableSuggestAnEditAction(false);
-    setSuggestion(transText); // <= grab  initial translation from transText
+    setSuggestion(translation.result); // <= grab  initial translation from transText
   };
 
   return (

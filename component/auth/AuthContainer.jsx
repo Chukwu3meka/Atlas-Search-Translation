@@ -86,6 +86,7 @@ const AuthContainer = (props) => {
                 <Link href="/auth/signin">
                   <Button onClick={hideProfileMenuHandler}>Signin to Account</Button>
                 </Link>
+
                 {/* <Link href="/auth/reset">
                   <Button onClick={hideProfileMenuHandler}>Reset/Forgot your password?</Button>
                 </Link> */}

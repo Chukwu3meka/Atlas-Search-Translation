@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from "react";
 import { Suggestions } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { Button } from "@mui/material";
-import AdminController from "@component/others/AdminController";
 
 const SuggestionsContainer = () => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -50,17 +49,13 @@ const SuggestionsContainer = () => {
   };
 
   return (
-    <AdminController
-      Component={
-        <Suggestions
-          hasNext={hasNext}
-          fetching={fetching}
-          disabled={disabled}
-          suggestions={suggestions}
-          fetchTextSuggestions={fetchTextSuggestions}
-          reviewTranslationHandler={reviewTranslationHandler}
-        />
-      }
+    <Suggestions
+      hasNext={hasNext}
+      fetching={fetching}
+      disabled={disabled}
+      suggestions={suggestions}
+      fetchTextSuggestions={fetchTextSuggestions}
+      reviewTranslationHandler={reviewTranslationHandler}
     />
   );
 };

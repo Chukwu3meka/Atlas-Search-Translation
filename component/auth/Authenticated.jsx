@@ -33,7 +33,13 @@ const Authenticated = (props) => {
       <Button startIcon={<ExitToAppOutlined />} variant="contained" sx={{ textTransform: "capitalize" }} onClick={logoutHandler}>
         Logout
       </Button>
-      <hr />
+
+      <Typography variant="body1" sx={{ textAlignLast: "center", mt: 2, textTransform: "capitalize" }}>
+        {auth.role !== "user" && `${auth.role} Privledge`}
+      </Typography>
+
+      <hr width="50%" style={{ marginRight: 0 }} />
+
       <Link href="/">
         <Typography variant="body1" fontSize={13} mt={1} sx={{ textAlignLast: "center" }}>
           Privacy Policy • Terms of Service
