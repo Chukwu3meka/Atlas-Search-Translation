@@ -33,7 +33,7 @@ const Admin = () => {
   ];
 
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", mx: "auto", my: 3 }}>
+    <List sx={{ width: "100%", maxWidth: 720, bgcolor: "background.paper", mx: "auto", my: 3 }}>
       {adminPages.map(({ title, Icon, path, desc }, index, arr) => (
         <Fragment key={title}>
           <ListItem alignItems="flex-start">
