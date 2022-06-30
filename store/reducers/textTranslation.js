@@ -2,8 +2,8 @@ const initialState = {
   translating: false,
   suggestAnEdit: false, // <= enable/disable suggestion
   translation: {}, // <= translation object from database
-  goodTranslations: [], // <=  list of all translations i've voted
-  poorTranslations: [], // <=  list of all translations i've voted
+  goodTranslations: [], // <=  ID list of all translations i've voted
+  poorTranslations: [], // <=  ID list of all translations i've voted
 };
 
 const translationReducer = (state = initialState, { payload, type }) => {

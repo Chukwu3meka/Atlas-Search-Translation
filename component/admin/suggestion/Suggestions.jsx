@@ -1,28 +1,26 @@
 import Link from "next/link";
 
+import { LoadingButton } from "@mui/lab";
 import { HomeOutlined } from "@mui/icons-material";
 import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 
 const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslationHandler, fetchTextSuggestions }) => {
   return suggestions.length ? (
     <Stack p={1} maxWidth={1200} mx="auto">
-      {suggestions.map(({ _id, sourceText, sourceLanguage, translationText, translationLanguage, suggestedTranslation }, i) => (
-        <Paper
-          // key={_id}
-          key={i}
-          sx={{ m: 1, flexGrow: 1 }}>
+      {suggestions.map(({ _id, sourceLanguage, translationLanguage, query, translation, suggestion }) => (
+        <Paper key={_id} sx={{ m: 1, flexGrow: 1 }}>
           <Grid container>
             <Grid item xs={12} sm={6} p={1}>
               <Box>
                 <Stack direction="row" alignItems="center">
                   <Avatar alt={sourceLanguage} src={`/images/languages/${sourceLanguage}.png`} sx={{ width: 15, height: 15 }} />
                   <Typography fontWeight={600} variant="body2" ml={1}>
-                    {/* {sourceLanguage[0].toUpperCase() + sourceLanguage.slice(1)} */}
+                    {/* {query} */}
+                    {sourceLanguage[0].toUpperCase() + sourceLanguage.slice(1)}
                   </Typography>
                 </Stack>
                 <Tooltip title="Source Text">
-                  <Typography>{sourceText}</Typography>
+                  <Typography>{query}</Typography>
                 </Tooltip>
               </Box>
             </Grid>
@@ -40,14 +38,14 @@ const Suggestions = ({ fetching, hasNext, disabled, suggestions, reviewTranslati
                 </Stack>
 
                 <Tooltip title="Current Translation">
-                  <Typography>{translationText}</Typography>
+                  <Typography>{translation}</Typography>
                 </Tooltip>
               </Box>
             </Grid>
           </Grid>
           <Divider variant="inset" />
           <Tooltip title="Suggested Translation">
-            <Typography p={1}>{suggestedTranslation}</Typography>
+            <Typography p={1}>{suggestion}</Typography>
           </Tooltip>
           <Box sx={{ float: "right" }}>
             <Button

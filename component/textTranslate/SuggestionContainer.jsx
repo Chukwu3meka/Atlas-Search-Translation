@@ -23,12 +23,17 @@ const SuggestionContainer = (props) => {
 
   // detect status of suggestAnEdit
   useEffect(() => {
-    // set transText to null if no translation was found
+    suggestAnEditHookHandler();
+    return () => suggestAnEditHookHandler();
+  }, [props.suggestAnEdit]);
+
+  // set transText to null if no translation was found
+  const suggestAnEditHookHandler = () => {
     setSuggestion((suggestion) => (suggestion === "no translation found" ? "" : suggestion));
     setTimeout(() => {
       if (suggestAnEditRef.current) suggestAnEditRef.current.focus();
     }, 100);
-  }, [props.suggestAnEdit]);
+  };
 
   const submitSuggestionHandler = async () => {
     if (!suggestion) return enqueueSnackbar("Suggestion cannot be empty", { variant: "info" });
@@ -39,13 +44,15 @@ const SuggestionContainer = (props) => {
     await fetcher("/textTranslations/suggestTranslation", {
       language,
       suggestion,
-      ...translation,
+      query: translation.query,
+      translation: translation.result,
     })
       .then(() => {
         enqueueSnackbar("Submitted for review", { variant: "success" });
-        enableSuggestAnEditAction(false);
+        cancelSuggestAnEditHandler();
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         enqueueSnackbar("Failed to send Suggestion", { variant: "error" });
       });
 
