@@ -34,7 +34,7 @@ const SigninContainer = ({ setAuthAction }) => {
   const signinHandler = async (e) => {
     setLoading(true);
 
-    const { name, email, password } = values;
+    const { email, password } = values;
 
     try {
       try {

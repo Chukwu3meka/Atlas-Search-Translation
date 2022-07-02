@@ -18,7 +18,7 @@ const FinalizeSignup = () => {
 
       enqueueSnackbar("Account verification successfull", { variant: "info" });
     } catch (error) {
-      enqueueSnackbar(error || "Account verification Failed", { variant: "error" });
+      enqueueSnackbar(error.message || error || "Account verification Failed", { variant: "error" });
     }
   };
 

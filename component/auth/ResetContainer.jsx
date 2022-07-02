@@ -29,7 +29,7 @@ const ResetContainer = ({ setModeHandler, hideProfileMenuHandler }) => {
         hideProfileMenuHandler();
         // enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });
       } else {
-        throw { label: error };
+        throw { message: error };
       }
     } catch (error) {
       console.log(error);
