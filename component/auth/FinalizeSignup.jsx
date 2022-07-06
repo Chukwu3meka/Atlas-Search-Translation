@@ -14,7 +14,7 @@ const FinalizeSignup = () => {
     try {
       const { verification, ref } = router.query;
 
-      await fetcher("/auth/finalizeSignup", { verification, ref });
+      await fetcher("/auth/verifyMail", { verification, ref });
 
       enqueueSnackbar("Account verification successfull", { variant: "info" });
     } catch (error) {
