@@ -1,10 +1,5 @@
 export default [
   {
-    english: "what if",
-    french: "",
-    spanish: "",
-  },
-  {
     english: "what if it",
     french: "",
     spanish: "",

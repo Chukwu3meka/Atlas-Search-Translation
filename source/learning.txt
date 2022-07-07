@@ -1,3 +1,0 @@
-          onKeyDown={(event) => {
-            if (!suggestAnEdit) event.preventDefault();
-          }} // <== disable typing in react input
