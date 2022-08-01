@@ -4,6 +4,8 @@ Translation is an act, process, or instance of translating: such as. a : a rende
 
 > Instantly translates words, phrases, and web pages between English, French and Spanish
 
+For production site, kindly visit https://atlassearchtranslation.com/, else visit https://atlassearchtranslation.vercel.app/ for development
+
 ### Installation, Development and Production
 
 1. To get started, clone ViewCrunch Next.js starter template
@@ -22,11 +24,11 @@ Translation is an act, process, or instance of translating: such as. a : a rende
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br />
 6. [Live Preview](http://AtlasSearchTranslation.vercel.app/)
 
-### Authors
+<!-- ### Authors
 
 ![Marcus Eagan Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
 
-![Marcus Eagan GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Marcus Eagan GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) -->
 
 <!-- for badges -->
 <!-- https://github.com/Ileriayo/markdown-badges#markdown-badges -->

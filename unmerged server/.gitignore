@@ -1,0 +1,23 @@
+#dependencies
+node_modules/
+
+# #next.js
+# /out/
+# /.next/
+
+#production
+build/
+
+#misc
+.git/
+.vscode/
+.DS_Store
+package-lock.json
+
+#debug
+.log
+report.*
+npm-debug.log*
+
+#local env files
+/*.env
