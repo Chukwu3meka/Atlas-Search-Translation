@@ -29,14 +29,14 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) =>
   return (
     <>
       <Head>
-        <title>AtlasSearchTranslation</title>
+        <title>Atlas Search Translation</title>
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <meta name="keywords" content="AtlasSearchTranslation, view" />
+        <meta name="keywords" content="Atlas Search Translation, view" />
         <meta httpEquiv="Content-Type" content="text/html; charSet=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="AtlasSearchTranslation" />
-        <meta property="og:title" content="AtlasSearchTranslation" />
-        <meta property="og:description" content="AtlasSearchTranslation" />
+        <meta name="description" content="Atlas Search Translation" />
+        <meta property="og:title" content="Atlas Search Translation" />
+        <meta property="og:description" content="Atlas Search Translation" />
       </Head>
 
       <CookiesProvider>

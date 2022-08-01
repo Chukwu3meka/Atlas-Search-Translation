@@ -23,7 +23,7 @@ const Signup = ({
   <Box px={1.5} py={5} maxWidth={500} m="auto">
     <Stack spacing={3}>
       <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>
-        WELCOME TO AtlasSearchTranslation
+        WELCOME TO Atlas Search Translation
       </Typography>
 
       <TextField

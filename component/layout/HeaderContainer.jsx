@@ -14,7 +14,7 @@ const navBarLinks = [
   { label: "Privacy & Terms", path: "/Privacy&Terms" },
   { label: "Help", path: "/help" },
   { label: "Send feedback", path: "/sendFeedback" },
-  { label: "About AtlasSearchTranslation", path: "/aboutAtlasSearchTranslation" },
+  { label: "About Atlas Search Translation", path: "/aboutAtlasSearchTranslation" },
 ];
 
 const HeaderContainer = () => {
@@ -41,12 +41,12 @@ const HeaderContainer = () => {
       onClose={toggleDrawer(false)}>
       <Box sx={{ width: 270 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
         <Typography variant="h6" component="h1" p={2}>
-          AtlasSearchTranslation
+          Atlas Search Translation
         </Typography>
         <Link href="/about">
           <a>
             <Typography variant="body2" mt={1} mb={3} pl={5}>
-              About AtlasSearchTranslation
+              About Atlas Search Translation
             </Typography>
           </a>
         </Link>
