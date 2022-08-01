@@ -48,19 +48,25 @@ const AuthContainer = (props) => {
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   const getUserDetails = async () => {
-    const token = cookies.token;
-    if (token) {
-      await fetcher("/auth/verifyToken", {
-        token,
+    console.log("verify cookie");
+    // const token = cookies.token;
+    // if (token) {
+    await fetcher("/auth/verifyToken")
+      .then(({ name, role }) => {
+        console.log("1", name, role);
+
+        setAuthAction({ name, role, status: true });
+        // setFetcherToken(token);
       })
-        .then(({ name, role }) => {
-          setAuthAction({ name, role, status: true });
-          setFetcherToken(token);
-        })
-        .catch((e) => setAuth({}));
-    } else {
-      setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
-    }
+      .catch((e) => {
+        console.log("1", e);
+        setAuth({});
+
+        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+      });
+    // } else {
+    // }
+
     routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
   };
 

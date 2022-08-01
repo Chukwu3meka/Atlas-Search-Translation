@@ -20,36 +20,57 @@ export const addDays = (date = new Date(), days = 7) => {
   return date.toDateString();
 };
 
-// set bearer header for axios
-export const setFetcherToken = (token) => {
-  const axios = require("axios");
+// // set bearer header for axios
+// export const setFetcherToken = (token) => {
+//   const axios = require("axios");
 
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else {
-    // No 'Access-Control-Allow-Origin' header is present on the requested resource.
-    delete axios.defaults.headers.common["Authorization"];
-  }
-};
+//   if (token) {
+//     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+//   } else {
+//     // No 'Access-Control-Allow-Origin' header is present on the requested resource.
+//     delete axios.defaults.headers.common["Authorization"];
+//   }
+// };
 
 // fetcher fetcher function
 export const fetcher = async (endpoint, payload) => {
-  const axios = require("axios");
+  // const url = `${
+  //   process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000"
+  // }/api${endpoint}`;
 
-  const serverDomain = process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000";
+  const url = `/api${endpoint}`;
 
-  return await axios
-    .post(`${serverDomain}/API${endpoint}`, payload)
-    .then(function (res) {
-      // console.log(res);
-      // console.log(res.statusText);
-      // console.log(res.data, res.statusText);
-      // if (res.statusText !== "OK") throw "Response tampered";
-      return res.data;
+  return fetch(url, {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(payload),
+    credentials: "same-origin",
+  })
+    .then(async (response) => {
+      if (!response.ok) throw await response.json();
+      // if (!response.ok) throw response.json();
+      return response.json();
     })
-    .catch(function (err) {
-      throw err?.response?.data || err?.message || err;
+    .catch((err) => {
+      throw err;
     });
+
+  // const axios = require("axios");
+
+  // const serverDomain = process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000";
+
+  // return await axios
+  //   .post(`${serverDomain}/API${endpoint}`, payload)
+  //   .then(function (res) {
+  //     // console.log(res);
+  //     // console.log(res.statusText);
+  //     // console.log(res.data, res.statusText);
+  //     // if (res.statusText !== "OK") throw "Response tampered";
+  //     return res.data;
+  //   })
+  //   .catch(function (err) {
+  //     throw err?.response?.data || err?.message || err;
+  //   });
 
   // const fetcher = async ({ method = "post", path, payload }) => {
   // try {

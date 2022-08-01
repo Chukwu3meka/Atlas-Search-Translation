@@ -1,6 +1,13 @@
-exports.signin = async (req, res) => {
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { setCookie } from "cookies-next";
+
+import validate from "@utils/validator";
+import clientPromise from "@utils/mongodb";
+import { resendVerification, differenceInHour } from "@utils/serverFuncs";
+
+const handler = async (req, res) => {
   try {
-    if (process.env.NODE === "production") throw { message: "Server error" };
     const { password, email } = req.body;
 
     validate({ type: "email", value: email });
@@ -9,6 +16,9 @@ exports.signin = async (req, res) => {
       value: password,
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
+
+    const client = await clientPromise;
+    const Profiles = client.db().collection("profiles");
 
     // verify that account exist, else throw an error
     const profileData = await Profiles.findOne({ email });
@@ -51,28 +61,18 @@ exports.signin = async (req, res) => {
 
       const token = jwt.sign({ session, name, role }, process.env.JWT_SECRET, { expiresIn: "120 days" });
 
-      //       SameSite=None must be secure #
-      // Rejected
+      setCookie("atlasSearchTranslation", token, {
+        res,
+        req,
+        path: "/",
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE === "production", // Setting a cookie without Secure will be rejected.
+        sameSite: process.env.NODE === "production" ? "strict" : "lax", // <= SameSite=None must be secure
+        expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
+      });
 
-      // Set-Cookie: widget_session=abc123; SameSite=None
-      // Setting a cookie without Secure will be rejected.
-      // Accepted
-
-      // Set-Cookie: widget_session=abc123; SameSite=None; Secure
-      // You must ensure that you pair SameSite=None with the Secure attribute.
-      // You can test this behavior as of Chrome 76 by enabling about://flag
-
-      res
-        .status(202)
-        // .cookie("token", token, {
-        //   path: "/",
-        //   // httpOnly: true,
-        //   // sameSite: "lax",
-        //   secure: process.env.NODE === "production",
-        //   // sameSite: process.env.NODE === "production" ? "none" : "lax",
-        //   expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
-        // })
-        .json({ name, role, token });
+      res.status(200).json({ session, name, role });
     } else {
       await Profiles.updateOne(
         { email },
@@ -82,9 +82,12 @@ exports.signin = async (req, res) => {
         }
       );
 
-      throw { message: "Invalid Email/Password" };
+      throw { label: "Invalid Email/Password" };
     }
   } catch (err) {
-    return catchError({ res, err, message: err.message || "A signin error occured" });
+    console.assert(process.env.NODE_ENV === "production", err);
+    return res.status(400).json({ label: err.label || "Temporary server error" });
   }
 };
+
+export default handler;

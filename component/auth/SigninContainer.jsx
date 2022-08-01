@@ -48,6 +48,7 @@ const SigninContainer = ({ setAuthAction }) => {
         throw { message: "Invalid Email/Password" };
       }
 
+      // await fetcher("/auth/signin", { password, email })
       await fetcher("/auth/signin", { password, email })
         .then(async ({ name, role, token }) => {
           if (!name && !role && !token) throw "suspicious token";
@@ -66,9 +67,9 @@ const SigninContainer = ({ setAuthAction }) => {
         .catch((e) => {
           throw e;
         });
-    } catch (error) {
+    } catch ({ label }) {
       setLoading(false);
-      enqueueSnackbar(error.message || error || "Unable to signin", { variant: "error" });
+      enqueueSnackbar(label, { variant: "error" });
     }
   };
 
