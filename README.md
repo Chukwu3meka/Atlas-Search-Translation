@@ -22,6 +22,15 @@ Translation is an act, process, or instance of translating: such as. a : a rende
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br />
 6. [Live Preview](http://AtlasSearchTranslation.vercel.app/)
 
+### Authors
+
+![Marcus Eagan Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
+
+![Marcus Eagan GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+<!-- for badges -->
+<!-- https://github.com/Ileriayo/markdown-badges#markdown-badges -->
+
 <!-- Marcus -->
 <!-- https://github.com/MarcusSorealheis -->
 
