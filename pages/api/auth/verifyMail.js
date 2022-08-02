@@ -7,6 +7,7 @@ import mailSender from "@utils/mailSender";
 import { catchError, verificationGenerator, resendVerification, differenceInHour } from "@utils/serverFuncs";
 
 import clientPromise from "@utils/mongodb";
+import { catchApiError } from "@utils/clientFuncs";
 
 const ObjectId = require("mongodb").ObjectId;
 
@@ -15,8 +16,7 @@ const handler = async (req, res) => {
   const Profiles = client.db().collection("profiles");
   try {
   } catch (err) {
-    console.assert(process.env.NODE_ENV === "production", JSON.stringify(err));
-    return res.status(400).json({ label: err.label || "Temporary server error" });
+    return catchApiError({ err, res });
   }
 };
 

@@ -120,7 +120,7 @@ const mailSender = async ({ email, subject, template, preheader, ...templatesPar
       }
     </style>
   </head>
-  <body style="background-color: #e9ecef">
+  <body style="background-color: #e9ecef; font-size: 20px">
     <!-- start preheader -->
     <div
       class="preheader"

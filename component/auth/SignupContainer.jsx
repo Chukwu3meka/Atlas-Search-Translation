@@ -44,7 +44,7 @@ const SignupContainer = () => {
       });
 
       await fetcher("/auth/signup", { password, email, name });
-
+      console.log("done");
       setLoading(false);
       setValues({ showPassword: false, name: "", email: "", password: "" });
       enqueueSnackbar("A verification link has been sent to your mail", { variant: "info" });

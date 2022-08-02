@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 
 import validate from "@utils/validator";
-import mailSender from "@utils/mailSender";
 import clientPromise from "@utils/mongodb";
-import { verificationGenerator } from "@utils/serverFuncs";
+import mailSender from "@utils/mailSender";
+import { catchApiError, verificationGenerator } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
   try {
@@ -47,29 +47,23 @@ const handler = async (req, res) => {
     });
 
     if (dbResponse && dbResponse.insertedId) {
-      const ObjectId = require("mongodb").ObjectId,
-        verifyLink = `/auth/verifyMail?verification=${verification}&ref=${dbResponse.insertedId}`;
-
-      console.log(2, new ObjectId(dbResponse.insertedId), email);
-      await Profiles.updateOne({ _id: new ObjectId(dbResponse.insertedId), email });
-      console.log(3);
+      const verifyLink = `/auth/verifyMail?verification=${verification}&ref=${dbResponse.insertedId}`;
 
       await mailSender({
         name,
         email,
         verifyLink,
         template: "verify",
-        subject: "Email Verification",
+        subject: "Atlas Search Translation Email Verification",
         preheader: `Hello, ${name}! Kindly verify your email.`,
       });
-      console.log(4);
+
       res.status(200).json({ status: "success" });
     } else {
       throw { label: "Server could not complete the process" };
     }
   } catch (err) {
-    console.assert(process.env.NODE_ENV === "production", JSON.stringify(err));
-    return res.status(400).json({ label: err.label || "Unable to create account" });
+    return catchApiError({ err, res });
   }
 };
 

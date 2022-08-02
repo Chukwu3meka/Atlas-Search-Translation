@@ -56,3 +56,4 @@ As of Git v2.3, git branch -d (delete) learned to honor the -f (force) flag.
 You will receive an error if you try to delete the currently selected branch. -->
 
 <!-- https://www.npmjs.com/package/cookies-next -->
+<!-- https://github.com/andreizanik/cookies-next -->

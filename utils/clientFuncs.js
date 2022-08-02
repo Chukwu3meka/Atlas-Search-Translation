@@ -33,6 +33,7 @@ export const addDays = (date = new Date(), days = 7) => {
 // };
 
 // fetcher fetcher function
+
 export const fetcher = async (endpoint, payload) => {
   // const url = `${
   //   process.env.NODE_ENV === "production" ? "https://atlassearchtranslation.herokuapp.com" : "http://127.0.0.1:5000"

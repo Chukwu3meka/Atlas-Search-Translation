@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 import { getCookie } from "cookies-next";
 
 import clientPromise from "@utils/mongodb";
+import { catchApiError } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
   try {
@@ -28,8 +29,7 @@ const handler = async (req, res) => {
       }
     });
   } catch (err) {
-    console.assert(process.env.NODE_ENV === "production", JSON.stringify(err));
-    return res.status(400).json({ label: err.label || "Unable to validate session" });
+    return catchApiError({ err, res });
   }
 };
 

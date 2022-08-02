@@ -3,13 +3,13 @@
 // const mailSender = require("./mailSender");
 
 // // catch err in return
-// module.exports.catchError = ({ res, err, status = 400, message = "Internal Server Error" }) => {
+// export const     catchError = ({ res, err, status = 400, message = "Internal Server Error" }) => {
 //   if (process.env.NODE_ENV === "development") console.log(`${res.req.originalUrl}: ${err || message}`);
 //   res.status(status).json({ message });
 // };
 
 // verification code
-module.exports.verificationGenerator = (len = 256) => {
+export const verificationGenerator = (len = 256) => {
   let text = "";
   const allowed = "ABCDEFGHIkLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
   for (let i = 0; i < len; i++) text += allowed.charAt(Math.floor(Math.random() * allowed.length));
@@ -18,7 +18,7 @@ module.exports.verificationGenerator = (len = 256) => {
 };
 
 // // resend email verification
-// module.exports.resendVerification = async ({
+// export const     resendVerification = async ({
 //   ref,
 //   name,
 //   code,
@@ -43,13 +43,13 @@ module.exports.verificationGenerator = (len = 256) => {
 // };
 
 // difference in hours between date
-module.exports.differenceInHour = (date) => {
+export const differenceInHour = (date) => {
   const diff = Math.round((new Date() - new Date(date)) / (1000 * 60 * 60));
   return diff;
 };
 
 // convert all values in object to lowercase
-module.exports.objectValuesToLowerCase = (object) => {
+export const objectValuesToLowerCase = (object) => {
   const reqBody = {};
 
   for (const [key, value] of Object.entries(object)) {
@@ -57,4 +57,11 @@ module.exports.objectValuesToLowerCase = (object) => {
   }
 
   return reqBody;
+};
+
+export const catchApiError = ({ err, res }) => {
+  // catch catchApiError from pages/api
+  console.assert(process.env.NODE_ENV === "production", Object.keys(err).length ? JSON.stringify(err) : err);
+
+  return res.status(400).json({ label: err.label || "Unable to handle request" });
 };
