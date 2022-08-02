@@ -9,18 +9,14 @@ import validate from "@utils/validator";
 import { fetcher, sleep } from "@utils/clientFuncs";
 
 const SignupContainer = () => {
-  const [values, setValues] = useState({
+  const { enqueueSnackbar } = useSnackbar(),
+    [loading, setLoading] = useState(false),
+    [values, setValues] = useState({
       showPassword: false,
       name: process.env.NEXT_PUBLIC_NAME || "",
       email: process.env.NEXT_PUBLIC_EMAIL || "",
       password: process.env.NEXT_PUBLIC_PASSWORD || "",
-    }),
-    { enqueueSnackbar } = useSnackbar(),
-    [loading, setLoading] = useState(false),
-    [showPassword, setShowPassword] = useState(false),
-    [name, setName] = useState(process.env.NEXT_PUBLIC_NAME || ""),
-    [email, setEmail] = useState(process.env.NEXT_PUBLIC_EMAIL || ""),
-    [password, setPassword] = useState(process.env.NEXT_PUBLIC_PASSWORD || "");
+    });
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -55,30 +51,21 @@ const SignupContainer = () => {
 
       await sleep(0.3);
       Router.push("/");
-    } catch (error) {
+    } catch ({ label }) {
       setLoading(false);
-      enqueueSnackbar(error.message || error || "Unable to register account", { variant: "error" });
+      enqueueSnackbar(label || "Unable to register account", { variant: "error" });
     }
   };
 
   return (
     <Signup
       {...{
-        name,
-        email,
         loading,
-        setName,
-        setEmail,
-        password,
-        setPassword,
-        showPassword,
-        signupHandler,
-        setShowPassword,
+        values,
         handleChange,
+        signupHandler,
         handleClickShowPassword,
         handleMouseDownPassword,
-
-        values,
       }}
     />
   );

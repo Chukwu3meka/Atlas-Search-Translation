@@ -122,7 +122,7 @@ export const fetcher = async (endpoint, payload) => {
   //   //   console.log("RESPONSE RECEIVED: ", res);
   //   // })
   //   // .catch((err) => {
-  //   //   console.log("AXIOS ERROR: ", err);
+  //   //   console.log("AXIOS ERROR: ", JSON.stringify(err))
   //   // });
   //   return response?.data;
   // };

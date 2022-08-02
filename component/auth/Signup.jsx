@@ -2,24 +2,7 @@ import { Box, Stack, TextField, Typography, InputLabel, IconButton, FormControl,
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-const Signup = ({
-  name,
-  email,
-  loading,
-  setName,
-  setEmail,
-  password,
-  setPassword,
-  showPassword,
-  signupHandler,
-  setShowPassword,
-
-  values,
-
-  handleChange,
-  handleClickShowPassword,
-  handleMouseDownPassword,
-}) => (
+const Signup = ({ loading, values, handleChange, signupHandler, handleClickShowPassword, handleMouseDownPassword }) => (
   <Box px={1.5} py={5} maxWidth={500} m="auto">
     <Stack spacing={3}>
       <Typography variant="body1" sx={{ letterSpacing: 1, fontWeight: "bold", textAlign: "center", px: 1, py: 2 }}>

@@ -7,17 +7,15 @@ import { ExitToAppOutlined } from "@mui/icons-material";
 import { Avatar, Typography, Button } from "@mui/material";
 
 import { setAuthAction } from "@store/actions";
-import { setFetcherToken } from "@utils/clientFuncs";
 
 const Authenticated = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
     { auth, setAuthAction, hideProfileMenuHandler } = props;
 
   const logoutHandler = async () => {
-    setFetcherToken(null); // <= remove token from axios header
+    setAuthAction(null);
     hideProfileMenuHandler();
     enqueueSnackbar("Signout Successful", { variant: "success" });
-    setAuthAction(null);
     Router.push("/");
   };
 

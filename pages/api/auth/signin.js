@@ -85,7 +85,7 @@ const handler = async (req, res) => {
       throw { label: "Invalid Email/Password" };
     }
   } catch (err) {
-    console.assert(process.env.NODE_ENV === "production", err);
+    console.assert(process.env.NODE_ENV === "production", JSON.stringify(err));
     return res.status(400).json({ label: err.label || "Temporary server error" });
   }
 };

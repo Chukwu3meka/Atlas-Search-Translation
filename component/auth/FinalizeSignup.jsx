@@ -17,8 +17,8 @@ const FinalizeSignup = () => {
       await fetcher("/auth/verifyMail", { verification, ref });
 
       enqueueSnackbar("Account verification successfull", { variant: "info" });
-    } catch (error) {
-      enqueueSnackbar(error.message || error || "Account verification Failed", { variant: "error" });
+    } catch ({ label }) {
+      enqueueSnackbar(label || "Account verification Failed", { variant: "error" });
     }
   };
 

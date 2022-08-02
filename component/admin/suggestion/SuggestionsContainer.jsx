@@ -41,10 +41,10 @@ const SuggestionsContainer = () => {
 
         enqueueSnackbar(`Suggestion ${review ? "Approved" : "Rejected"}`, { variant: "success" });
       })
-      .catch((error) => {
+      .catch(({ label }) => {
         // remove suggestion from disbaled
         setDisabled((disabled) => disabled?.filter((id) => id !== _id));
-        return enqueueSnackbar(error.message || error || "Server not responding to review request", { variant: "error" });
+        return enqueueSnackbar(label || "Server not responding to review request", { variant: "error" });
       });
   };
 
