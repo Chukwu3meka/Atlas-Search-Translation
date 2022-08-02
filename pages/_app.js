@@ -15,7 +15,7 @@ import createEmotionCache from "@source/createEmotionCache";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-import { CookiesProvider } from "react-cookie";
+// import { CookiesProvider } from "react-cookie";
 
 const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
@@ -39,19 +39,19 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) =>
         <meta property="og:description" content="Atlas Search Translation" />
       </Head>
 
-      <CookiesProvider>
-        <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Provider store={store}>
-              <SnackbarProvider maxSnack={1} preventDuplicate>
-                <Layout {...{ pageProps, Component }} />
-              </SnackbarProvider>
-            </Provider>
-          </ThemeProvider>
-        </CacheProvider>
-      </CookiesProvider>
+      {/* <CookiesProvider> */}
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Provider store={store}>
+            <SnackbarProvider maxSnack={1} preventDuplicate>
+              <Layout {...{ pageProps, Component }} />
+            </SnackbarProvider>
+          </Provider>
+        </ThemeProvider>
+      </CacheProvider>
+      {/* </CookiesProvider>]po\]565= */}
     </>
   );
 };

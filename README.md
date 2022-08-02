@@ -54,3 +54,5 @@ The -d option is an alias for --delete, which only deletes the branch if it has 
 The -D option is an alias for --delete --force, which deletes the branch "irrespective of its merged status." [Source: man git-branch]
 As of Git v2.3, git branch -d (delete) learned to honor the -f (force) flag.
 You will receive an error if you try to delete the currently selected branch. -->
+
+<!-- https://www.npmjs.com/package/cookies-next -->

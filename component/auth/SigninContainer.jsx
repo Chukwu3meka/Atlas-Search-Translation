@@ -2,22 +2,20 @@ import Router from "next/router";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useCookies } from "react-cookie";
 
 import { Signin } from ".";
 import validate from "@utils/validator";
 import { setAuthAction } from "@store/actions";
-import { fetcher, setFetcherToken } from "@utils/clientFuncs";
+import { fetcher } from "@utils/clientFuncs";
 
 const SigninContainer = ({ setAuthAction }) => {
-  const [values, setValues] = useState({
+  const { enqueueSnackbar } = useSnackbar(),
+    [loading, setLoading] = useState(false),
+    [values, setValues] = useState({
       showPassword: false,
       email: process.env.NEXT_PUBLIC_EMAIL || "",
       password: process.env.NEXT_PUBLIC_PASSWORD || "",
-    }),
-    { enqueueSnackbar } = useSnackbar(),
-    [loading, setLoading] = useState(false),
-    [cookies, setCookie] = useCookies(["token"]);
+    });
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -50,18 +48,11 @@ const SigninContainer = ({ setAuthAction }) => {
 
       // await fetcher("/auth/signin", { password, email })
       await fetcher("/auth/signin", { password, email })
-        .then(async ({ name, role, token }) => {
-          if (!name && !role && !token) throw "suspicious token";
-          // setAuthAction(); // <= to prevent infinite loading
-
-          setFetcherToken(token);
-
-          setCookie("token", token, { path: "/", secure: process.env.NODE_ENV === "production" });
-
-          setAuthAction({ name, role, status: true });
+        .then(async ({ name, role }) => {
+          if (!name && !role) throw "suspicious token";
           setLoading(false);
+          setAuthAction({ name, role, status: true });
           enqueueSnackbar("Signin Successful", { variant: "success" });
-
           Router.push("/");
         })
         .catch((e) => {

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Router from "next/router";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useCookies } from "react-cookie";
 
 import { ExitToAppOutlined } from "@mui/icons-material";
 import { Avatar, Typography, Button } from "@mui/material";
@@ -12,12 +11,10 @@ import { setFetcherToken } from "@utils/clientFuncs";
 
 const Authenticated = (props) => {
   const { enqueueSnackbar } = useSnackbar(),
-    { auth, setAuthAction, hideProfileMenuHandler } = props,
-    [cookies, setCookie, removeCookie] = useCookies(["token"]);
+    { auth, setAuthAction, hideProfileMenuHandler } = props;
 
   const logoutHandler = async () => {
     setFetcherToken(null); // <= remove token from axios header
-    removeCookie("token", { path: "/" }); // <= delete cookie from device
     hideProfileMenuHandler();
     enqueueSnackbar("Signout Successful", { variant: "success" });
     setAuthAction(null);

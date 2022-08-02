@@ -1,21 +1,18 @@
+import Link from "next/link";
 import { connect } from "react-redux";
-import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Router, { useRouter } from "next/router";
 import { Box, Menu, Paper, Avatar, Stack, Typography, Button } from "@mui/material";
 
 import { Authenticated } from ".";
-import { fetcher, setFetcherToken, sleep } from "@utils/clientFuncs";
+import { fetcher, sleep } from "@utils/clientFuncs";
 import { setAuthAction, setPageReadyAction } from "@store/actions";
-import Link from "next/link";
 
 const AuthContainer = (props) => {
   const [anchorEl, setAnchorEl] = useState(null),
     router = useRouter(),
     open = Boolean(anchorEl),
     [auth, setAuth] = useState({}),
-    [ready, setReady] = useState(false),
-    [cookies, setCookie] = useCookies(["token"]),
     { setAuthAction, setPageReadyAction } = props;
 
   useEffect(() => getUserDetails(), []);
@@ -48,24 +45,12 @@ const AuthContainer = (props) => {
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
   const getUserDetails = async () => {
-    console.log("verify cookie");
-    // const token = cookies.token;
-    // if (token) {
     await fetcher("/auth/verifyToken")
-      .then(({ name, role }) => {
-        console.log("1", name, role);
-
-        setAuthAction({ name, role, status: true });
-        // setFetcherToken(token);
-      })
+      .then(({ name, role }) => setAuthAction({ name, role, status: true }))
       .catch((e) => {
-        console.log("1", e);
         setAuth({});
-
         setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
       });
-    // } else {
-    // }
 
     routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
   };

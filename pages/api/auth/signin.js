@@ -22,7 +22,7 @@ const handler = async (req, res) => {
 
     // verify that account exist, else throw an error
     const profileData = await Profiles.findOne({ email });
-    if (!profileData) throw { message: "Invalid Email/Password" };
+    if (!profileData) throw { label: "Invalid Email/Password" };
 
     const {
       _id,
@@ -44,7 +44,7 @@ const handler = async (req, res) => {
       // check if account has been locked for 3 hours
       const accountTempLocked = differenceInHour(accountLocked) <= 3;
 
-      if (wrongAttempts >= 5 && accountTempLocked) throw { message: "Account is temporarily locked, Please try again later" };
+      if (wrongAttempts >= 5 && accountTempLocked) throw { label: "Account is temporarily locked, Please try again later" };
 
       if (!emailVerified) {
         return await resendVerification({
@@ -72,7 +72,7 @@ const handler = async (req, res) => {
         expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
       });
 
-      res.status(200).json({ session, name, role });
+      res.status(200).json({ name, role });
     } else {
       await Profiles.updateOne(
         { email },
