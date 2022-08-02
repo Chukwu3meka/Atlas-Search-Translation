@@ -7,6 +7,9 @@ import { catchApiError } from "@utils/serverFuncs";
 const handler = async (req, res) => {
   try {
     const token = getCookie("atlasSearchTranslation", { req, res });
+
+    if (!token) return res.status(200).json({});
+
     // if (!token) throw { label: "You're not authorized to access this page" };
 
     return jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {

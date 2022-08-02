@@ -3,7 +3,7 @@ module.exports = ({ verifyLink, name, email }) => `
   <td
     align="left"
     bgcolor="#ffffff"
-    style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px"
+    style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 24px"
   > 
     <p style="margin: 0">
       Hi ${name}, Welcome to Atlas Search Translation. Confirm your email address
@@ -30,7 +30,7 @@ module.exports = ({ verifyLink, name, email }) => `
                     display: inline-block;
                     padding: 13px 30px;
                     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-                    font-size: 16px;
+                    font-size: 20px;
                     color: #ffffff;
                     text-decoration: none;
                     border-radius: 5px;
@@ -51,7 +51,7 @@ module.exports = ({ verifyLink, name, email }) => `
   <td
     align="left"
     bgcolor="#ffffff"
-    style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px"
+    style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 24px"
   >
     <p style="margin: 0">If that doesn't work, copy and paste the following link in your browser:
     <br/>

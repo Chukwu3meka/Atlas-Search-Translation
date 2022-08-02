@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
-import emailTemplates from "@source/emailTemplates";
+const nodemailer = require("nodemailer");
+const emailTemplates = require("@source/emailTemplates");
 
 const mailTransporter = nodemailer.createTransport({
   service: "zoho",
@@ -120,7 +120,7 @@ const mailSender = async ({ email, subject, template, preheader, ...templatesPar
       }
     </style>
   </head>
-  <body style="background-color: #e9ecef; font-size: 20px">
+  <body style="background-color: #e9ecef">
     <!-- start preheader -->
     <div
       class="preheader"
@@ -258,9 +258,9 @@ const mailSender = async ({ email, subject, template, preheader, ...templatesPar
     },
 
     (err, data) => {
-      console.assert(process.env.NODE_ENV === "production", { "nodemailer res": err });
-      if (err) throw "error sending mail";
       if (data) return true;
+      console.assert(process.env.NODE_ENV === "production", { "nodemailer res": err });
+      throw { label: "error sending mail" };
     }
   );
 

@@ -15,7 +15,18 @@ const AuthContainer = (props) => {
     [auth, setAuth] = useState({}),
     { setAuthAction, setPageReadyAction } = props;
 
-  useEffect(() => getUserDetails(), []);
+  useEffect(async () => {
+    await fetcher("/auth/verifyToken")
+      .then(({ name, role }) => {
+        if (name && role) return setAuthAction({ name, role, status: true });
+        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+      })
+      .catch((e) => {
+        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+      });
+
+    routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
+  }, []);
 
   useEffect(() => {
     setAuth(props.auth);
@@ -44,16 +55,16 @@ const AuthContainer = (props) => {
 
   const hideProfileMenuHandler = () => setAnchorEl(null);
 
-  const getUserDetails = async () => {
-    await fetcher("/auth/verifyToken")
-      .then(({ name, role }) => setAuthAction({ name, role, status: true }))
-      .catch((e) => {
-        setAuth({});
-        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
-      });
+  // const getUserDetails = async () => {
+  //   await fetcher("/auth/verifyToken")
+  //     .then(({ name, role }) => setAuthAction({ name, role, status: true }))
+  //     .catch((e) => {
+  //       setAuth({});
+  //       setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+  //     });
 
-    routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
-  };
+  //   routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
+  // };
 
   return (
     <>

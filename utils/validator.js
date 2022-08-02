@@ -141,6 +141,7 @@ const validate = ({ type, label, value, attributes = [] }) => {
         throw { label: "A validation error occured" };
     }
   } catch (err) {
+    console.log(process.env.NODE_ENV === "production", `INPUT VALIDATION ERROR: ${err}`);
     console.assert(process.env.NODE_ENV === "production", `INPUT VALIDATION ERROR: ${err}`);
     throw { label: err.label || "Error cannot be determined" };
   }
