@@ -2,6 +2,8 @@
 // const { Profiles } = require("../models");
 // const mailSender = require("./mailSender");
 
+import mailSender from "@utils/mailSender";
+
 // // catch err in return
 // export const     catchError = ({ res, err, status = 400, message = "Internal Server Error" }) => {
 //   if (process.env.NODE_ENV === "development") console.log(`${res.req.originalUrl}: ${err || message}`);
@@ -17,30 +19,30 @@ export const verificationGenerator = (len = 256) => {
   return text.replace(/\s/g, "");
 };
 
-// // resend email verification
-// export const     resendVerification = async ({
-//   ref,
-//   name,
-//   code,
-//   email,
-//   errMsg = "Link might have expired, we just sent another verification link",
-// }) => {
-//   const newVerification = code || this.verificationGenerator();
+// resend email verification
+export const resendVerification = async ({
+  ref,
+  name,
+  code,
+  email,
+  label = "Link might have expired, we just sent another verification link",
+}) => {
+  const newVerification = code || verificationGenerator();
 
-//   await mailSender({
-//     email,
-//     subject: "Email Verification",
-//     template: "verify",
-//     preheader: `Hello, ${name}! Kindly verify your email.`,
-//     verifyLink: `/auth/verifyMail?verification=${newVerification}&ref=${ref}`,
-//     name,
-//   });
+  await mailSender({
+    email,
+    subject: "Atlas Search Translation Email Verification",
+    template: "verify",
+    preheader: `Hello, ${name}! Kindly verify your email.`,
+    verifyLink: `/auth/verifyMail?verification=${newVerification}&ref=${ref}`,
+    name,
+  });
 
-//   if (!code)
-//     await Profiles.updateOne({ _id: new ObjectId(ref) }, { $set: { "auth.verification": { code: newVerification, time: new Date() } } });
+  if (!code)
+    await Profiles.updateOne({ _id: new ObjectId(ref) }, { $set: { "auth.verification": { code: newVerification, time: new Date() } } });
 
-//   throw { message: errMsg };
-// };
+  throw { label };
+};
 
 // difference in hours between date
 export const differenceInHour = (date) => {

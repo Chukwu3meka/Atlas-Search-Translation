@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
-import { fetcher } from "@utils/clientFuncs";
+
 import { Box, Button } from "@mui/material";
-import Link from "next/link";
+import { fetcher } from "@utils/clientFuncs";
 import { HomeOutlined } from "@mui/icons-material";
 
 const FinalizeSignup = () => {
@@ -13,6 +15,8 @@ const FinalizeSignup = () => {
   const verifyMail = async () => {
     try {
       const { verification, ref } = router.query;
+
+      // console.log({ verification, ref });
 
       await fetcher("/auth/verifyMail", { verification, ref });
 

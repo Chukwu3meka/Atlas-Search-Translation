@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { LoadingButton } from "@mui/lab";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { HomeOutlined } from "@mui/icons-material";
 import { Avatar, Paper, Divider, Typography, Box, Button, Grid, Stack, Tooltip } from "@mui/material";
 

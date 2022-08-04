@@ -2,26 +2,38 @@ import { forwardRef, Fragment } from "react";
 
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import Slide from "@mui/material/Slide";
+// import Slide from "@mui/material/Slide";
 import Paper from "@mui/material/Paper";
 import Input from "@mui/material/Input";
-import Dialog from "@mui/material/Dialog";
+// import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from "@mui/material/ListItemButton";
 
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/ArrowBack";
 
+// import Button from "@mui/material/Button";
+// import DialogTitle from "@mui/material/DialogTitle";
+// import DialogActions from "@mui/material/DialogActions";
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
+
+// import { forwardRef } from "react";
+
+import Slide from "@mui/material/Slide";
 import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -36,7 +48,13 @@ const LanguageDialog = ({
   searchLanguageHandler,
   selectLanguageHandler,
 }) => (
-  <Dialog fullScreen open={displayLangDialog} onClose={hideLanguageDialog} TransitionComponent={Transition}>
+  <Dialog
+    keepMounted
+    aria-describedby="alert-dialog-slide-description"
+    fullScreen
+    open={!!displayLangDialog}
+    onClose={hideLanguageDialog}
+    TransitionComponent={Transition}>
     <AppBar color="transparent" sx={{ position: "relative" }} sx={{ padding: 0 }}>
       <Toolbar>
         <IconButton edge="start" color="default" onClick={hideLanguageDialog} aria-label="close">

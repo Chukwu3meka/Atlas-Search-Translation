@@ -12,7 +12,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { LoadingButton } from "@mui/lab";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const Reset = ({ email, loading, setEmail, password, setPassword, showPassword, signinHandler, setModeHandler, setShowPassword }) => (
   <Box px={1.5} py={5} maxWidth={500} m="auto">

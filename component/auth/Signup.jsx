@@ -1,6 +1,6 @@
 import { Box, Stack, TextField, Typography, InputLabel, IconButton, FormControl, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { LoadingButton } from "@mui/lab";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const Signup = ({ loading, values, handleChange, signupHandler, handleClickShowPassword, handleMouseDownPassword }) => (
   <Box px={1.5} py={5} maxWidth={500} m="auto">
