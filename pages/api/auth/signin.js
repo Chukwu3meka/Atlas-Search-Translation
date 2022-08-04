@@ -17,18 +17,13 @@ const handler = async (req, res) => {
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
 
-    console.log("asdsadas 1");
-
     const client = await clientPromise;
     const Profiles = client.db().collection("profiles");
-
-    console.log("asdsadas 2", email);
 
     // verify that account exist, else throw an error
     const profileData = await Profiles.findOne({ email });
     if (!profileData) throw { label: "Invalid Email/Password" };
 
-    console.log("asdsadas 3");
     const {
       _id,
       name,
