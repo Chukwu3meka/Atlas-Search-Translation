@@ -5,8 +5,8 @@ import { useSnackbar } from "notistack";
 
 import { Signin } from ".";
 import validate from "@utils/validator";
-import { setAuthAction } from "@store/actions";
 import { fetcher } from "@utils/clientFuncs";
+import { setAuthAction } from "@store/actions";
 
 const SigninContainer = ({ setAuthAction }) => {
   const { enqueueSnackbar } = useSnackbar(),
@@ -46,7 +46,6 @@ const SigninContainer = ({ setAuthAction }) => {
         throw { message: "Invalid Email/Password" };
       }
 
-      // await fetcher("/auth/signin", { password, email })
       await fetcher("/auth/signin", { password, email })
         .then(async ({ name, role }) => {
           if (!name && !role) throw "suspicious token";
