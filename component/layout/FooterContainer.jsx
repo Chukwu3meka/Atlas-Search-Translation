@@ -8,8 +8,8 @@ import { Footer } from ".";
 import { displaySidebarAction } from "@store/actions";
 
 const bottomButtons = [
-  { label: "Saved", icon: <StarIcon fontSize="large" /> },
   { label: "History", icon: <HistoryIcon fontSize="large" /> },
+  { label: "Saved", icon: <StarIcon fontSize="large" /> },
   { label: "Contribuute", icon: <PeopleAltOutlinedIcon fontSize="large" /> },
 ];
 
