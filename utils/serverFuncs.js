@@ -62,7 +62,7 @@ export const objectValuesToLowerCase = (object) => {
 };
 
 export const catchApiError = ({ err, res }) => {
-  console.log(err);
+  // console.log(err);
 
   // catch catchApiError from pages/api
   console.assert(process.env.NODE_ENV === "production", Object.keys(err).length ? JSON.stringify(err) : err);

@@ -15,17 +15,20 @@ const AuthContainer = (props) => {
     [auth, setAuth] = useState({}),
     { setAuthAction, setPageReadyAction } = props;
 
-  useEffect(async () => {
-    await fetcher("/auth/verifyToken")
-      .then(({ name, role }) => {
-        if (name && role) return setAuthAction({ name, role, status: true });
-        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
-      })
-      .catch((e) => {
-        setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
-      });
+  useEffect(() => {
+    async function verifyToken() {
+      await fetcher("/auth/verifyToken")
+        .then(({ name, role }) => {
+          if (name && role) return setAuthAction({ name, role, status: true });
+          setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+        })
+        .catch((e) => {
+          setAuthAction({ status: false }); // <= set empty object else unauthenticated user can't access the page
+        });
 
-    routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
+      routeChangeComplete(window.location.pathname, props.auth); // <= initial page load
+    }
+    verifyToken();
   }, []);
 
   useEffect(() => {
