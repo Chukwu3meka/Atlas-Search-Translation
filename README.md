@@ -4,7 +4,7 @@ Translation is an act, process, or instance of translating: such as. a : a rende
 
 > Instantly translates words, phrases, and web pages between English, French and Spanish
 
-For production site, kindly visit https://atlassearchtranslation.com/, else visit https://atlassearchtranslation.vercel.app/ for development
+For production site, kindly visit https://atlassearchtranslation.com/
 
 ### Installation, Development and Production
 
