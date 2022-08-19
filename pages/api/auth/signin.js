@@ -8,7 +8,9 @@ import { resendVerification, differenceInHour, catchApiError } from "@utils/serv
 
 const handler = async (req, res) => {
   try {
-    const { password, email } = req.body;
+    const { password, email: tempMail } = req.body;
+
+    const email = tempMail.toLowerCase();
 
     validate({ type: "email", value: email });
     validate({
