@@ -190,6 +190,7 @@ export const verificationGenerator = (len = 256) => {
 
   return text.replace(/\s/g, "");
 };
+
 // text to speech
 export const textToSpeechHandler = async ({ text, language, setLoading }) => {
   if (!window) return; //detect if window is defined

@@ -7,7 +7,9 @@ import { catchApiError, verificationGenerator } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
   try {
-    const { password, email, name } = req.body;
+    const { password, email: tempMail, name } = req.body;
+
+    const email = tempMail.toLowerCase();
 
     validate({ type: "handle", value: name, label: "Name", attributes: ["hasRange(3,30)"] });
     validate({ type: "email", value: email });
