@@ -8,10 +8,10 @@ For production site, kindly visit https://atlassearchtranslation.com/
 
 ### Installation, Development and Production
 
-1. To get started, clone ViewCrunch Next.js starter template
+1. To get started, clone AlienForest Next.js starter template
    `git clone https://github.com/Chukwu3meka/NextJs-starter-template.git .`
 2. Update remote repo by running
-   `git remote set-url origin https://github.com/AlienForest/AtlasSearchTranslation.git`
+   `git remote set-url origin https://github.com/Chukwu3meka/AtlasSearchTranslation.git`
 3. Push to Remote repo
    `git push -u origin main`
    `git add .`
@@ -24,17 +24,21 @@ For production site, kindly visit https://atlassearchtranslation.com/
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br />
 6. [Live Preview](http://AtlasSearchTranslation.vercel.app/)
 
-<!-- ### Authors
+Tools:
 
-![Marcus Eagan Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
+- JavaScript
+- Atlas Search
+- MongoDB
+- Next.js
+- Material-UI
+- API's
+- Node.js
 
-![Marcus Eagan GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) -->
+## ✨ Authors
 
-<!-- for badges -->
-<!-- https://github.com/Ileriayo/markdown-badges#markdown-badges -->
+> [Marcus Eagan](https://twitter.com/MarcusForPeace)
 
-<!-- Marcus -->
-<!-- https://github.com/MarcusSorealheis -->
+> [Chukwuemeka Maduekwe](https://twitter.com/Chukwu3meka)
 
 <!-- https://cloud.mongodb.com/v2/6266f035f8818000903c457b#metrics/replicaSet/6266f149a9ab1b5880de47b9/explorer/translations/greetings/find -->
 
