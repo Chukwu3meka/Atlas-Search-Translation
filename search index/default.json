@@ -1,0 +1,40 @@
+{
+  "mappings": {
+    "dynamic": true,
+    "fields": {
+      "english": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.english",
+          "searchAnalyzer": "lucene.english",
+          "type": "string"
+        }
+      ],
+      "french": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.french",
+          "searchAnalyzer": "lucene.french",
+          "type": "string"
+        }
+      ],
+      "spanish": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.spanish",
+          "searchAnalyzer": "lucene.spanish",
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

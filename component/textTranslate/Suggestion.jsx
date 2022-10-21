@@ -24,15 +24,19 @@ const Suggestion = ({
         inputRef={suggestAnEditRef}
         fullWidth
         multiline
-        fullWidth
+        // fullWidth
         minRows={3}
         value={suggestion}
         lang={language}
         variant="standard" // <== to enable us disable border
         sx={{ fontSize: 22, fontWeight: 500, color: "#474747" }}
-        inputProps={{ style: { textAlign: "right" } }} // to align text to the right
         onChange={(e) => setSuggestion(e.target.value)}
-        inputProps={{ style: { fontSize: 22 } }} // font size of input text
+        inputProps={{
+          style: {
+            fontSize: 22, // font size of input text
+            textAlign: "right", // to align text to the right
+          },
+        }}
         InputProps={{
           style: { fontSize: 22 }, // font size of input label
           disableUnderline: true, // <== to hide underline in standard TextField variant

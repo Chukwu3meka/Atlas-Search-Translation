@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@db": ["utils/db.js"],
+      "@db": ["utils/mongodb.js"],
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
       "@source/*": ["source/*"],

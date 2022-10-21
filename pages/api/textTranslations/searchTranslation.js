@@ -2,6 +2,8 @@ import validate from "@utils/validator";
 import clientPromise from "@utils/mongodb";
 import { resendVerification, differenceInHour, catchApiError, objectValuesToLowerCase } from "@utils/serverFuncs";
 
+// import { Translations } from "@db";
+
 const handler = async (req, res) => {
   try {
     const { sourceText, sourceLanguage, translationLanguage } = objectValuesToLowerCase(req.body);
@@ -9,73 +11,29 @@ const handler = async (req, res) => {
     if ([sourceText, sourceLanguage, translationLanguage].some((x) => x === null || x === undefined))
       throw { label: "Search phrase cannot be empty" };
 
-    const client = await clientPromise;
-    const Translations = client.db().collection("greetings");
+    const searchIndex = sourceLanguage === "english" ? "englishSearch" : sourceLanguage === "french" ? "frenchSearch" : "spanishIndex";
 
-    const searchOption = [
-      {
-        $search:
-          // sourceText.length > 6   sln to atlas search  returning multiple same score
-          // sourceText.length > 6
-          //   ? {
-          //       // phrase: {
-          //       //   query: sourceText,
-          //       //   path: souSrceLanguage.toLowerCase(),
-          //       // },
-          //       text: {
-          //         query: sourceText,
-          //         path: sourceLanguage,
-          //         // fuzzy: {},
-          //       },
-          //     }
-          //   :
-          {
-            index: "lessThanSixChars",
-            compound: {
-              must: [
-                {
-                  text: {
-                    query: sourceText,
-                    path: sourceLanguage,
-                    score: { boost: { value: 5 } },
-                  },
-                },
-                {
-                  // autocomplete: {
-                  phrase: {
-                    query: sourceText,
-                    path: sourceLanguage,
-                  },
-                },
-              ],
-            },
-            // },
-          },
-      },
-      {
-        // $project: translationLanguage === "French" ? { french: 1 } : translationLanguage === "Spanish" ? { spanish: 1 } : { english: 1 },
+    const { Translations } = await require("@db").default();
 
-        $project: {
-          french: 1,
-          english: 1,
-          spanish: 1,
-          score: { $meta: "searchScore" },
-        },
-      },
-      { $limit: 4 },
-    ];
-
-    const result = await Translations.aggregate(searchOption).toArray();
-
-    // const translation = result && result[0] ? result[0][`${translationLanguage.toLowerCase()}`] : "no translation found";
-
-    // Suggestions.in
+    const result = await Translations.aggregate([
+      { $search: { index: searchIndex, text: { query: sourceText, path: sourceLanguage } } },
+      { $limit: 1 },
+      // {
+      //   $project: {
+      //     _id: 0,
+      //   },
+      // },
+      { $project: { score: { $meta: "searchScore" }, [sourceLanguage]: 1, [translationLanguage]: 1 } },
+    ]).toArray();
 
     const translation = {
       query: sourceText,
       id: result[0] ? result[0]._id : null,
+      [sourceLanguage]: result[0] ? result[0][sourceLanguage] : `Nothing found for ${sourceLanguage}`,
       result: result[0] ? result[0][translationLanguage] : "no translation found",
     };
+
+    console.log(translation);
 
     res.status(200).json(translation);
   } catch (err) {

@@ -6,6 +6,8 @@ import { SourceText } from ".";
 import { fetcher } from "@utils/clientFuncs";
 import { setTranslationAction, enableSuggestAnEditAction, setTranslatingAction } from "@store/actions";
 
+const maxSourceCharacter = 1000;
+
 const TextTranslator = (props) => {
   const { setTranslationAction, enableSuggestAnEditAction, setTranslatingAction } = props,
     { enqueueSnackbar } = useSnackbar(),
@@ -37,12 +39,14 @@ const TextTranslator = (props) => {
     enableSuggestAnEditAction(false); // <= disable suggest an edit from redux store, once i type in the source container
     setSourceText(value);
 
+    // console.log("fsfdds", value);
+
     if (!value.length) {
       // text.query cannot be empty so we add a condition to check if value is greter than one
       // enqueueSnackbar("Text to be translated cannot be empty", { variant: "error" });
-    } else if (value.length > 5000) {
-      // we've limited the length of transfer to 5000 characters, so a condition is also included
-      enqueueSnackbar("Text to be translated cannot exceed 5000 characters", { variant: "warning" });
+    } else if (value.length > maxSourceCharacter) {
+      // we've limited the length of transfer to maxSourceCharacter characters, so a condition is also included
+      enqueueSnackbar(`Text to be translated cannot exceed ${maxSourceCharacter} characters`, { variant: "warning" });
     } else {
       setTranslatingAction(true);
 

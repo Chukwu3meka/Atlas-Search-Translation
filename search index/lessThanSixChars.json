@@ -1,0 +1,49 @@
+{
+  "mappings": {
+    "dynamic": true,
+    "fields": {
+      "english": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.keyword",
+          "searchAnalyzer": "lucene.keyword",
+          "type": "string"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ],
+      "french": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.keyword",
+          "searchAnalyzer": "lucene.keyword",
+          "type": "string"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ],
+      "spanish": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "analyzer": "lucene.keyword",
+          "searchAnalyzer": "lucene.keyword",
+          "type": "string"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ]
+    }
+  }
+}
