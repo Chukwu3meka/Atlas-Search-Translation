@@ -1,8 +1,4 @@
-import validate from "@utils/validator";
-import clientPromise from "@utils/mongodb";
-import { resendVerification, differenceInHour, catchApiError, objectValuesToLowerCase } from "@utils/serverFuncs";
-
-// import { Translations } from "@db";
+import { catchApiError, objectValuesToLowerCase } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
   try {
@@ -18,11 +14,7 @@ const handler = async (req, res) => {
     const result = await Translations.aggregate([
       { $search: { index: searchIndex, text: { query: sourceText, path: sourceLanguage } } },
       { $limit: 1 },
-      // {
-      //   $project: {
-      //     _id: 0,
-      //   },
-      // },
+      // { $project: { _id: 0 } },
       { $project: { score: { $meta: "searchScore" }, [sourceLanguage]: 1, [translationLanguage]: 1 } },
     ]).toArray();
 

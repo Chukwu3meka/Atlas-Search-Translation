@@ -1,7 +1,5 @@
 const jwt = require("jsonwebtoken");
 import { getCookie } from "cookies-next";
-
-import clientPromise from "@utils/mongodb";
 import { catchApiError } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
@@ -9,7 +7,6 @@ const handler = async (req, res) => {
     const token = getCookie("atlasSearchTranslation", { req, res });
 
     if (!token) return res.status(200).json({});
-
     // if (!token) throw { label: "You're not authorized to access this page" };
 
     return jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
@@ -19,8 +16,7 @@ const handler = async (req, res) => {
       const { session, name, role } = decoded;
 
       if (session && name && role) {
-        const client = await clientPromise;
-        const Profiles = client.db().collection("profiles");
+        const { Profiles } = await require("@db").default();
 
         // verify that session account exist, else throw an error
         const profileData = await Profiles.findOne({ "auth.session": session, name, "auth.role": role });

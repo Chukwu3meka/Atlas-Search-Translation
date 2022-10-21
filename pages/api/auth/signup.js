@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 
 import validate from "@utils/validator";
-import clientPromise from "@utils/mongodb";
 import mailSender from "@utils/mailSender";
 import { catchApiError, verificationGenerator } from "@utils/serverFuncs";
 
@@ -19,8 +18,7 @@ const handler = async (req, res) => {
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
 
-    const client = await clientPromise;
-    const Profiles = client.db().collection("profiles");
+    const { Profiles } = await require("@db").default();
 
     // check if email is taken already
     const emailTaken = await Profiles.findOne({ email });
@@ -45,6 +43,7 @@ const handler = async (req, res) => {
         password: hashedPassword,
         wrongAttempts: 0, // <= account locked && verification will be reset after 5 attempts
         accountLocked: false,
+        session: verificationGenerator(),
       },
     });
 

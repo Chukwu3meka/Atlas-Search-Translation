@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 
 import validate from "@utils/validator";
-import clientPromise from "@utils/mongodb";
+// import clientPromise from "@utils/mongodb";
 import { resendVerification, differenceInHour, catchApiError } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
@@ -19,8 +19,7 @@ const handler = async (req, res) => {
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
 
-    const client = await clientPromise;
-    const Profiles = client.db().collection("profiles");
+    const { Profiles } = await require("@db").default();
 
     // verify that account exist, else throw an error
     const profileData = await Profiles.findOne({ email });
