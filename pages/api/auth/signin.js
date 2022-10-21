@@ -60,8 +60,6 @@ const handler = async (req, res) => {
       // reset wrongPassword counter
       await Profiles.updateOne({ email }, { $set: { "auth.wrongAttempts": 0 } });
 
-      console.log({ session, name, role });
-
       const token = jwt.sign({ session, name, role }, process.env.JWT_SECRET, { expiresIn: "120 days" });
 
       setCookie("atlasSearchTranslation", token, {
@@ -75,7 +73,7 @@ const handler = async (req, res) => {
         expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
       });
 
-      res.status(200).json({ name, role, session });
+      res.status(200).json({ name, role });
     } else {
       await Profiles.updateOne(
         { email },

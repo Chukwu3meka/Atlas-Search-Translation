@@ -43,6 +43,7 @@ const handler = async (req, res) => {
         password: hashedPassword,
         wrongAttempts: 0, // <= account locked && verification will be reset after 5 attempts
         accountLocked: false,
+        session: verificationGenerator(),
       },
     });
 
