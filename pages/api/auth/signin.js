@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { setCookie } from "cookies-next";
 
 import validate from "@utils/validator";
-import clientPromise from "@utils/mongodb";
+// import clientPromise from "@utils/mongodb";
 import { resendVerification, differenceInHour, catchApiError } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
@@ -19,8 +19,7 @@ const handler = async (req, res) => {
       attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
     });
 
-    const client = await clientPromise;
-    const Profiles = client.db().collection("profiles");
+    const { Profiles } = await require("@db").default();
 
     // verify that account exist, else throw an error
     const profileData = await Profiles.findOne({ email });
@@ -61,6 +60,8 @@ const handler = async (req, res) => {
       // reset wrongPassword counter
       await Profiles.updateOne({ email }, { $set: { "auth.wrongAttempts": 0 } });
 
+      console.log({ session, name, role });
+
       const token = jwt.sign({ session, name, role }, process.env.JWT_SECRET, { expiresIn: "120 days" });
 
       setCookie("atlasSearchTranslation", token, {
@@ -74,7 +75,7 @@ const handler = async (req, res) => {
         expires: new Date(new Date().getTime() + 3600000 * 24 * 120), // <= expires in 120 days,
       });
 
-      res.status(200).json({ name, role });
+      res.status(200).json({ name, role, session });
     } else {
       await Profiles.updateOne(
         { email },

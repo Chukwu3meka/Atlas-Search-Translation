@@ -47,10 +47,10 @@ const SigninContainer = ({ setAuthAction }) => {
       }
 
       await fetcher("/auth/signin", { password, email })
-        .then(async ({ name, role }) => {
-          if (!name && !role) throw "suspicious token";
+        .then(async ({ name, role, session }) => {
+          if (!name && !role && !session) throw "suspicious token";
           setLoading(false);
-          setAuthAction({ name, role, status: true });
+          setAuthAction({ name, role, session, status: true });
           enqueueSnackbar("Signin Successful", { variant: "success" });
           Router.push("/");
         })

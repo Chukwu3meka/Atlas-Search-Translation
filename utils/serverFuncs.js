@@ -13,10 +13,15 @@ import mailSender from "@utils/mailSender";
 // verification code
 export const verificationGenerator = (len = 256) => {
   let text = "";
-  const allowed = "ABCDEFGHIkLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
+  const allowed = "ABCDEFGHIkLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   for (let i = 0; i < len; i++) text += allowed.charAt(Math.floor(Math.random() * allowed.length));
 
-  return text.replace(/\s/g, "");
+  const session = text
+    .replace(/\s/g, "")
+    .match(/.{1,64}/g) // chunks of 32 bits
+    .join("-"); //add hyphen after each chunk
+
+  return session;
 };
 
 // resend email verification

@@ -1,11 +1,6 @@
-import bcrypt from "bcryptjs";
 import validate from "@utils/validator";
-
-// import { Profiles } from "../models";
-import { resendVerification, differenceInHour } from "@utils/serverFuncs";
-
-import clientPromise from "@utils/mongodb";
 import { catchApiError } from "@utils/serverFuncs";
+import { resendVerification, differenceInHour } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
   try {
@@ -23,9 +18,11 @@ const handler = async (req, res) => {
       throw { label: "Link appears to be broken, Kindly Click on the button or link, sent to your mail" };
     }
 
-    const client = await clientPromise,
-      ObjectId = require("mongodb").ObjectId,
-      Profiles = client.db().collection("profiles"),
+    const { Profiles } = await require("@db").default();
+
+    const ObjectId = require("mongodb").ObjectId,
+      //  client = await clientPromise,
+      //  Profiles = client.db().collection("profiles"),
       profileData = await Profiles.findOne({ _id: new ObjectId(ref) });
 
     // check if profile exists and has not been verified
@@ -47,7 +44,14 @@ const handler = async (req, res) => {
 
         await Profiles.updateOne(
           { _id: new ObjectId(ref), "auth.verification.code": verification },
-          { $set: { "auth.verification.code": false, "auth.emailVerified": true } }
+          {
+            $set: {
+              "auth.verification.code": false,
+              "auth.emailVerified": true,
+
+              "auth.session": "",
+            },
+          }
         );
 
         return res.status(200).json({ status: "Email Verification successful" });

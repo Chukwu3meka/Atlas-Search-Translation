@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 import { getCookie } from "cookies-next";
 
-import clientPromise from "@utils/mongodb";
 import { catchApiError } from "@utils/serverFuncs";
 
 const handler = async (req, res) => {
@@ -16,11 +15,14 @@ const handler = async (req, res) => {
       if (err) throw { label: "Suspicious token" };
       if (!decoded) throw { label: "User not Authenticated" };
 
+      console.log(decoded);
+
       const { session, name, role } = decoded;
 
       if (session && name && role) {
-        const client = await clientPromise;
-        const Profiles = client.db().collection("profiles");
+        const { Profiles } = await require("@db").default();
+        // const client = await clientPromise;
+        // const Profiles = client.db().collection("profiles");
 
         // verify that session account exist, else throw an error
         const profileData = await Profiles.findOne({ "auth.session": session, name, "auth.role": role });
