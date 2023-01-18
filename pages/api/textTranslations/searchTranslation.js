@@ -12,7 +12,29 @@ const handler = async (req, res) => {
 
     const result = await Translations.aggregate([
       // { $search: { index: searchIndex, text: { query: sourceText, path: sourceLanguage } } },
-      { $search: { text: { query: sourceText, path: sourceLanguage } } },
+      // { $search: { text: { query: sourceText, path: sourceLanguage } } },
+      {
+        $search: {
+          compound: {
+            should: [
+              {
+                text: {
+                  query: sourceText,
+                  path: sourceLanguage,
+                },
+              },
+              {
+                text: {
+                  query: sourceText,
+                  path: sourceLanguage,
+                  fuzzy: { maxEdits: 1 },
+                  score: { boost: { value: 3 } },
+                },
+              },
+            ],
+          },
+        },
+      },
       { $limit: 1 },
       // { $project: { _id: 0 } },
       { $project: { score: { $meta: "searchScore" }, [sourceLanguage]: 1, [translationLanguage]: 1 } },
