@@ -1,16 +1,23 @@
 const nodemailer = require("nodemailer");
 const emailTemplates = require("@source/emailTemplates");
 
-const mailTransporter = nodemailer.createTransport({
-  service: "zoho",
-  auth: {
-    user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+const mailSender = async ({ email, subject, template, preheader, ...templatesParams }) => {
+  const mailTransporter = nodemailer.createTransport({ service: "zoho", auth: { user: process.env.EMAIL_ADDRESS, pass: process.env.EMAIL_PASSWORD } });
+  // const emailAccount = account === "noreply" ? "NO_REPLY_EMAIL" : account === "accounts" ? "ACCOUNTS_EMAIL" : "CONTACT_US_EMAIL";
+  // const emailPassword = process.env.EMAIL_PASSWORD;
+  // const emailAddress = process.env[emailAccount];
 
-const mailSender = async ({ email, subject, template, preheader, ...templatesParams }) =>
-  await mailTransporter.sendMail(
+  // const mailTransporter = nodemailer.createTransport({ service: "zoho", auth: { user: emailAddress, pass: emailPassword } });
+  // console.log({
+  //   user: process.env.EMAIL_ADDRESS,
+
+  //   pass1: process.env.EMAIL_PASSWORD,
+  //   pass2: "_8376 .SoccerMASS ( ls) - jR13",
+  //   //
+  //   a: process.env.EMAIL_PASSWORD === "_8376 .SoccerMASS ( ls) - jR13",
+  // });
+
+  return await mailTransporter.sendMail(
     {
       from: process.env.EMAIL_ADDRESS,
       to: email,
@@ -259,9 +266,10 @@ const mailSender = async ({ email, subject, template, preheader, ...templatesPar
 
     (err, data) => {
       if (data) return true;
+      console.log(err);
       console.assert(process.env.NODE_ENV === "production", { "nodemailer res": err });
       throw { label: "error sending mail" };
     }
   );
-
+};
 module.exports = mailSender;
