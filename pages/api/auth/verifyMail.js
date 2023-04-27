@@ -6,17 +6,19 @@ const handler = async (req, res) => {
   try {
     const { verification, ref } = req.body;
 
-    try {
-      validate({
-        type: "string",
-        value: verification,
-        label: "Verification Code",
-        attributes: ["hasRange(256,256)"],
-      });
-      validate({ type: "string", value: ref, label: "Reference", attributes: ["hasRange(24,24)", "alphanumeric"] });
-    } catch (err) {
-      throw { label: "Link appears to be broken, Kindly Click on the button or link, sent to your mail" };
-    }
+    // try {
+    //   validate({
+    //     type: "string",
+    //     value: verification,
+    //     label: "Verification Code",
+    //     attributes: ["hasRange(256,256)"],
+    //   });
+    //   validate({ type: "string", value: ref, label: "Reference", attributes: ["hasRange(24,24)", "alphanumeric"] });
+    // } catch (err) {
+    //   throw { label: "Link appears to be broken, Kindly Click on the button or link, sent to your mail" };
+    // }
+
+    if (!verification || !ref) throw { label: "Link appears to be broken, Kindly Click on the button or link, sent to your mail" };
 
     const { Profiles } = await require("@db").default();
 
