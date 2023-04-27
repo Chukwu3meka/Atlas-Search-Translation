@@ -43,7 +43,7 @@ const SigninContainer = ({ setAuthAction }) => {
           attributes: ["hasNumber", "hasSpecialChar", "hasRange", "hasLetter"],
         });
       } catch (error) {
-        throw { message: "Invalid Email/Password" };
+        throw { label: "Invalid Email/Password" };
       }
 
       await fetcher("/auth/signin", { password, email })
